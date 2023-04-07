@@ -127,6 +127,16 @@ search:
   content: true
   format: html
 
+# Post Wordcount
+# https://github.com/next-theme/hexo-word-counter
+symbols_count_time:
+  symbols: true
+  time: true
+  total_symbols: true
+  total_time: true
+  awl: 4    # average Word Length
+  wpm: 275  # average words per minute
+
 # 百度站点地图
 # baidusitemap:
 #   path: baidusitemap.xml
