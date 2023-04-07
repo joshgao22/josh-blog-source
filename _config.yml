@@ -108,7 +108,7 @@ theme: next
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   - type: git
-    repo: https://e.coding.net/josh-gao/josh-blog/josh-blog.git
+    repo: git@e.coding.net:josh-gao/josh-blog/josh-blog.git
     branch: master
   - type: git
     repo: git@github.com:JoshGao-bit/JoshGao-bit.github.io.git
