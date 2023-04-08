@@ -31,12 +31,14 @@ busuanzi_count:
   post_views_icon: fa fa-eye
 ```
 
-# 不蒜子和 Live2D 冲突的问题
+# 不蒜子和 Live2D 冲突的问题 （2020-11-27）
 
 <!-- more -->
 
 > Hexo 版本：5.2.0
+>
 > NexT 版本：8.0.2
+>
 > 不蒜子版本: 2.3
 
 ## 问题描述
@@ -97,7 +99,7 @@ busuanzi_count:
 
 ``` html next/layout/_third-party/statistics/busuanzi-counter.swig
 {%- if theme.busuanzi_count.total_visitors %}
-  <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+  <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: inline;">
     <!-- ... -->
   </span>
 {%- endif %}
@@ -105,7 +107,7 @@ busuanzi_count:
 <!-- ... -->
 
 {%- if theme.busuanzi_count.total_views %}
-  <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+  <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: inline;">
     <!-- ... -->
   </span>
 {%- endif %}
@@ -113,8 +115,32 @@ busuanzi_count:
 
 ``` html next/layout/_macro/post.swig
 {%- if not is_index and theme.busuanzi_count.enable and theme.busuanzi_count.post_views %}
-  <span class="post-meta-item" title="{{ __('post.views') }}" id="busuanzi_container_page_pv" style="display: none;">
+  <span class="post-meta-item" title="{{ __('post.views') }}" id="busuanzi_container_page_pv" style="display: inline;">
     <!-- ... -->
   </span>
 {%- endif %}
 ```
+
+# 不蒜子和 Live2D 冲突的问题 （2023-04-08）
+
+> Hexo 版本：6.3.0
+>
+> NexT 版本：8.15.1
+>
+> 不蒜子版本: 2.3
+
+重新捣鼓博客的时候发现不蒜子又不显示了，依然已经不维护的 `hexo-helper-live2d` 插件导致的。2020 年的方法写的模棱两可，NexT 的一些网页架构也有了细微改变，因此将新的解决方法附于下方。很多方法是通过直接修改 NexT 主题下的源文件实现的，但是 NexT 并不推荐这样的写法，因为主题目录下的文件是会随着主题更新而被覆盖的，而且不便于使用 Git 管理。经过寻找，在 NexT 的 Github Issues 中找到了优雅的解决方法。
+
+在 `source/_data/styles.styl` 中添加如下代码即可解决。
+
+``` styl source/_data/styles.styl
+#busuanzi_container_site_uv, #busuanzi_container_site_pv, #busuanzi_container_page_pv {
+  display: inline !important;
+}
+```
+
+> REF:
+>
+> 1. 上述解决方法来源：[【必读】更新说明及常见问题](https://github.com/next-theme/hexo-theme-next/issues/4#issuecomment-690864794)
+>
+> 2. 这篇文章分析了 `hexo-helper-live2d` 插件导致不蒜子不显示的根本原因：[busuanzi 访问量统计与 live2d 插件同时使用导致 busuanzi 不显示的根本原因以及解决方法](https://ouuan.moe/post/2022/08/busuanzi-and-live2d)
