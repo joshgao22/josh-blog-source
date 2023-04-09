@@ -108,13 +108,13 @@ theme: next
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   - type: git
+    repo: josh@101.43.227.73:/home/josh/documents/josh-blog-deploy.git
+    branch: master
+  - type: git
     repo: git@e.coding.net:josh-gao/josh-blog/josh-blog.git
     branch: master
   - type: git
     repo: git@github.com:JoshGao-bit/JoshGao-bit.github.io.git
-    branch: master
-  - type: git
-    repo: git@101.43.227.73:/data/josh_blog.git
     branch: master
 
 # MathJax [Redundant]
