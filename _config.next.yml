@@ -66,8 +66,8 @@ creative_commons:
   license: by-nc-sa
   # Available values: big | small
   size: small
-  sidebar: true
-  post: false
+  sidebar: false
+  post: true
   # You can set a language value if you prefer a translated version of CC license, e.g. deed.zh
   # CC licenses are available in 39 languages, you can find the specific and correct abbreviation you need on https://creativecommons.org
   language: deed.zh
@@ -402,7 +402,7 @@ bookmark:
   color: "#222"
   # If auto, save the reading progress when closing the page or clicking the bookmark-icon.
   # If manual, only save it by clicking the bookmark-icon.
-  save: auto
+  save: manual
 
 # `Follow me on GitHub` banner in the top-right corner.
 github_banner:

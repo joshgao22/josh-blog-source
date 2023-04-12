@@ -5,14 +5,14 @@ tags:
   - 翻译
   - 上采样
 categories:
-  - - MATLAB
-  - - 翻译
-    - 帮助文档
+  - [MATLAB, 函数用法]
 mathjax: true
 copyright: true
+comments: true
 abbrlink: 3a606c9c
 date: 2020-11-26 22:23:39
 ---
+
 `upsample`：将采样率提高整数倍
 
 # 语法
@@ -30,16 +30,16 @@ date: 2020-11-26 22:23:39
 
 # 示例
 
-## 提高采样率<span id="Examples-01"></span>
+## 提高采样率<a name="Examples-01"></a>
 
 将序列的采样率提高 `3` 倍。
 
-```m
+``` matlab 输入
 x = [1 2 3 4];
 y = upsample(x,3)
 ```
 
-```no
+``` plain 输出
 y = 1×12
 
     1     0     0     2     0     0     3     0     0     4     0     0
@@ -47,12 +47,12 @@ y = 1×12
 
 将序列的采样率增加 `3` 倍，并将相位偏移增加 `2`。
 
-```m
+``` matlab 输入
 x = [1 2 3 4];
 y = upsample(x,3,2)
 ```
 
-```no
+``` plain 输出
 y = 1×12
 
     0     0     1     0     0     2     0     0     3     0     0     4     0
@@ -60,14 +60,14 @@ y = 1×12
 
 将矩阵的采样率提高3倍。
 
-```m
+``` matlab 输入
 x = [1 2;
      3 4;
      5 6];
 y = upsample(x,3)
 ```
 
-```no
+``` plain 输出
 y = 9×2
 
     1     2
@@ -115,12 +115,12 @@ y = 9×2
 
 > 使用 MATLAB® Coder™ 生成 C 代码和 C++ 代码。
 
+# 版本历史
+
+在 R2006a 之前推出
+
 # 另请参阅
 
 [`decimate`](https://ww2.mathworks.cn/help/signal/ref/decimate.html) | [`downsample`](https://ww2.mathworks.cn/help/signal/ref/downsample.html) | [`interp`](https://ww2.mathworks.cn/help/signal/ref/interp.html) | [`interp1`](https://ww2.mathworks.cn/help/matlab/ref/interp1.html) | [`resample`](https://ww2.mathworks.cn/help/signal/ref/resample.html) | [`spline`](https://ww2.mathworks.cn/help/matlab/ref/spline.html) | [`upfirdn`](https://ww2.mathworks.cn/help/signal/ref/upfirdn.html)
 
---------------------------------------------------------------------------------
-在 R2006a 之前推出
-
---------------------------------------------------------------------------------
-原文参考：[https://ww2.mathworks.cn/help/signal/ref/upsample.html](https://ww2.mathworks.cn/help/signal/ref/upsample.html)
+> 原文参考：[https://ww2.mathworks.cn/help/signal/ref/upsample.html](https://ww2.mathworks.cn/help/signal/ref/upsample.html)

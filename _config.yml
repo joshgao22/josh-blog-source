@@ -111,6 +111,9 @@ deploy:
     repo: josh@101.43.227.73:/home/josh/documents/josh-blog-deploy.git
     branch: master
   - type: git
+    repo: josh@172.245.154.153:/home/josh/documents/josh-blog.git
+    branch: master
+  - type: git
     repo: git@e.coding.net:josh-gao/josh-blog/josh-blog.git
     branch: master
   - type: git
@@ -193,3 +196,15 @@ neat_js:
     - '**/jquery.fancybox.pack.js'
     - '**/index.js'
     - '**/fireworks.js'
+
+related_posts:
+  enabled: true
+  filter_threshold: 0.1
+  related_count: 5
+  weight:
+    title: 0.1
+    description: 0.05
+    keywords: 0.01
+    tags: 0.005
+    categories: 0.005
+    text: 1

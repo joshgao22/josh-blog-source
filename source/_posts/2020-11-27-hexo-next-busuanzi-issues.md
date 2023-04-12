@@ -5,8 +5,10 @@ tags:
   - Hexo
   - Next
 categories:
-  - [Blog, Hexo, Next]
+  - [Blog, Hexo]
 abbrlink: e96c9b26
+copyright: true
+comments: true
 date: 2020-11-27 11:15:21
 ---
 

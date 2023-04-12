@@ -8,13 +8,11 @@ tags:
   - 行为级
   - RTL
   - 寄存器传输级
-categories: 
-  - [Verilog, Verilog 简介]
+categories:
   - [Josh 的学习笔记, Verilog]
 mathjax: true
 comments: true
 copyright: true
-sticky: false
 toc:
   enable: true
   number: false

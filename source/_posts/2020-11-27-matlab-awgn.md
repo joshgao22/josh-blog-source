@@ -5,13 +5,11 @@ tags:
   - 翻译
   - 高斯白噪声
 categories:
-  - - MATLAB
-  - - 翻译
-    - 帮助文档
-  - - 信号处理
-    - 噪声
+  - [MATLAB, 函数用法]
+  - [信号处理, 噪声]
 mathjax: true
 copyright: true
+comments: true
 abbrlink: 2f6db45b
 date: 2020-11-27 01:15:12
 ---
@@ -49,14 +47,14 @@ date: 2020-11-27 01:15:12
 
 创建一个锯齿波。
 
-```m
+``` matlab
 t = (0:0.1:10)';
 x = sawtooth(t);
 ```
 
 添加高斯白噪声并绘制结果。
 
-```m
+``` matlab
 y = awgn(x,10,'measured');
 plot(t,[x y])
 legend('Original Signal','Signal with AWGN')
@@ -72,32 +70,32 @@ legend('Original Signal','Signal with AWGN')
 
 根据电话线调制解调器的 V.29 标准创建一个 16-QAM 星座。
 
-```m
+``` matlab
 c = [-5 -5i 5 5i -3 -3-3i -3i 3-3i 3 3+3i 3i -3+3i -1 -1i 1 1i];
 M = length(c);
 ```
 
 生成随机符号。
 
-```m
+``` matlab
 data = randi([0 M-1],2000,1);
 ```
 
 使用 `genqammod` 函数调制数据。由于星座图不是矩形，因此必须进行常规 QAM 调制。
 
-```m
+``` matlab
 modData = genqammod(data,c);
 ```
 
 使信号通过具有 20 dB 信噪比（SNR）的 AWGN 信道。
 
-```m
+``` matlab
 rxSig = awgn(modData,20,'measured');
 ```
 
 显示接收信号的星座图和参考星座图。
 
-```m
+``` matlab
 h = scatterplot(rxSig);
 hold on
 scatterplot(c,[],[],'r*',h)
@@ -111,25 +109,25 @@ hold off
 
 使用 `genqamdemod` 函数解调接收到的信号。计算误符号数和误符号率。
 
-```m
+``` matlab 输入
 demodData = genqamdemod(rxSig,c);
 [numErrors,ser] = symerr(data,demodData)
 ```
 
-```no
+``` plain 输出
 numErrors = 1
 ser = 5.0000e-04
 ```
 
 使用具有 10 dB SNR 的 AWGN 信道重复传输和解调过程。计算降低 SNR 后的误符号率。不出所料，当 SNR 降低时，性能会下降。
 
-```m
+``` matlab 输入
 rxSig = awgn(modData,10,'measured');
 demodData = genqamdemod(rxSig,c);
 [numErrors,ser] = symerr(data,demodData)
 ```
 
-```no
+``` plain 输出
 numErrors = 462
 ser = 0.2310
 ```
@@ -140,7 +138,7 @@ ser = 0.2310
 
 将 X 的功率指定为 0 dBW，添加噪声以产生 10 dB 的 SNR，并利用本地随机流。
 
-```m
+``` matlab 输入
 S = RandStream('mt19937ar','Seed',5489);
 sigin = sqrt(2)*sin(0:pi/8:6*pi);
 sigout1 = awgn(sigin,10,0,S);
@@ -148,25 +146,25 @@ sigout1 = awgn(sigin,10,0,S);
 
 将 AWGN 添加到 `sigin`。 使用 [`isequal`](https://ww2.mathworks.cn/help/matlab/ref/isequal.html) 比较 `sigout1` 和 `sigout2`。 当不重置随机流时，输出不相等。
 
-```m
+``` matlab 输入
 sigout2 = awgn(sigin,10,0,S);
 isequal(sigout1,sigout2)
 ```
 
-```no
+``` plain 输出
 ans = logical
    0
 ```
 
 重置随机流对象，将对象置为初始状态，然后再将 AWGN 添加到 `sigout1`。将 AWGN 添加到 `sigin` 并将 `sigout1` 与 `sigout3` 比较。 重置随机流后，输出相等。
 
-```m
+``` matlab 输入
 reset(S);
 sigout3 = awgn(sigin,10,0,S);
 isequal(sigout1,sigout3)
 ```
 
-```no
+``` plain 输出
 ans = logical
    1
 ```
@@ -260,6 +258,10 @@ ans = logical
 >>
 >> 支持代码生成，但包括 [`RandStream`](https://ww2.mathworks.cn/help/matlab/ref/randstream.html) 对象的语法除外。
 
+# 版本历史
+
+在 R2006a 之前推出
+
 # 另请参阅
 
 ## 函数
@@ -274,8 +276,4 @@ ans = logical
 
 [AWGN Channel Noise Level](https://ww2.mathworks.cn/help/comm/ug/awgn-channel.html#a1071501088)
 
---------------------------------------------------------------------------------
-在 R2006a 之前推出
-
---------------------------------------------------------------------------------
 原文参考：[https://ww2.mathworks.cn/help/comm/ref/awgn.html](https://ww2.mathworks.cn/help/comm/ref/awgn.html)

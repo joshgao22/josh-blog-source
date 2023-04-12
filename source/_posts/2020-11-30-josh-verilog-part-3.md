@@ -8,7 +8,6 @@ tags:
   - 设计层次
   - Verilog 语法
 categories:
-  - [Verilog, Verilog 设计]
   - [Josh 的学习笔记, Verilog]
 mathjax: true
 comments: true
@@ -64,23 +63,23 @@ assign #1 A_xor_wire = eq0 ^ eq1;
 ### 2.2.1. 连续赋值语句的特点
 
 1. **连续驱动**
-    
+
     在 [Part 2 的 7.2 驱动和赋值](https://josh-gao.top/posts/fd2ca242.html#%E5%AF%84%E5%AD%98%E5%99%A8%E7%B1%BB%E5%9E%8B)部分，已经解释了驱动和赋值之间的微妙区别。
-    
+
     连续赋值语句是连续驱动的。也就是说，任何时刻输入的任何变化都将导致该语句的重新计算。
 
 2. **只有线网类型能在 `assign` 中赋值**
-    
+
     由于仿真器中不会存储连续赋值语句中被赋值的变量值，因此该变量是线网类型（Net），不能是寄存器类型。需要记住，只有线网类型的变量才可以在 `assign` 语句中被赋值。
-    
+
     另外，线网类型的变量可以被多重驱动，也就是说，可以在多个连续赋值语句中驱动同一个线网。在[2.4 驱动源线网](#drive)中将进一步介绍。但是，寄存器变量就不同了，它不能被不同的行为进程（例如 `always` 语句块）驱动。
-    
+
 3. **使用 `assign` 对组合逻辑建模**
-    
+
     通常建议使用 `assign` 对组合逻辑建模。因为 `assign` 语句的连续驱动特点与组合逻辑的行为非常相似。而且，在 `assign` 语句中加延时可以非常精确的模拟组合逻辑的惯性延时。
 
 4. **并行性**
-    
+
     `assign` 语句和行为语句块（`always` 和 `initial`)、其他连续赋值语句、门级模型之间是并行的。一个连续赋值语句是一个独立的进程，进程之间是并发，同时也是交织的。
 
 ### 2.2.2. 实例
@@ -105,7 +104,7 @@ output C_out;
 assign sum = X ^ Y;
 assign C_out = X & Y;
 
-endmodule 
+endmodule
 ```
 
 ```verilog FullAdd.v
@@ -131,15 +130,15 @@ HalfAdd u_HalfAdd_A(
     .s      (HalfAdd_A_sum),
     .C_out  (HalfAdd_A_Cout)
     );
-    
+
 HalfAdd u_HalfAdd_B(
     .X      (C_in),
     .Y      (HalfAdd_A_sum),
     .s      (sum),
     .C_out  (HalfAdd_B_Cout)
     );
-    
-endmodule 
+
+endmodule
 ```
 
 在 `HalfAdd` 模块中，两个 `assign` 语句之间是**完全并行独立执行**的，它们的顺序与逻辑功能无关。同样，`FullAdd` 模块中，两个 `HalfAdd` 的实例和或门的 `assign` 语句之间的关系也是独立的。
@@ -329,7 +328,7 @@ always              // 每 5ns 将 clk 翻转一次
 下面的代码描述了语句组和高级编程语句的互相嵌套：
 
 ```verilog
-always @(posedge clk or negedge rst_n) 
+always @(posedge clk or negedge rst_n)
 begin                               // 语句组
     if (~rst_n)                     // 高级编程语句
     begin                           // 语句组
@@ -605,7 +604,7 @@ end
 
 always @(negedge clk)
     Q = D;
-    
+
 endmodule
 ```
 
@@ -873,18 +872,18 @@ endcase
 循环语句后面可以跟语句或语句组（`begin ... end` 或 `fork ... join`)。
 
 1. `forever` 循环：永远执行
-    
+
     ```verilog
     initial begin
         clk = 0;
         forever #25 clk = ~clk;
     end
     ```
-    
+
     以上语句产生了一个周期为 50 个时间单位的时钟。
 
 2. `repeat` 循环：执行固定的次数
-    
+
     ```verilog
     if (rotate == 1)
     repeat (8)
@@ -893,11 +892,11 @@ endcase
             data = {data<<1, temp};
         end
     ```
-   
+
     以上语句中，当为 1 时，重复对 `data` 数据做8次循环左移。
 
 3. `while` 循环：当表达式为真时执行
-    
+
     ```verilog
     initial begin
         count = 0;
@@ -907,11 +906,11 @@ endcase
         end
     end
     ```
-    
+
     在 `while` 语句中，只要后面的条件满足，就持续执行该语句，直到条件不满足，跳出循环。这里，将 `count` 从 0 递增到 101，逐步打印出来。
 
 4. `for` 循环：从初始值开始，如果表达式为真就执行
-    
+
     ```verilog
     integer i;          // 为 for 循环声明索引
     always @(inp or cnt) begin
@@ -924,7 +923,7 @@ endcase
         end
     end
     ```
-    
+
     `for` 语句开始执行直到 `i` 大于 7，跳出循环。如上代码实现了一个位的左移器。
 
 简单介绍了 Verilog 中的高级编程语句，只要对 C 语言有一定基础，就能迅速掌握其中的用法。
@@ -948,7 +947,7 @@ output C_out;
 xor u_xor(sum, X, Y);                               // 门级原语实例
 and u_and(C_out, X, Y);                             // 门级原语实例
 
-endmodule 
+endmodule
 ```
 
 ```verilog FullAdd.v
@@ -973,15 +972,15 @@ HalfAdd u_HalfAdd_A(                                // 半加器实例 A
     .sum    (HalfAdd_A_sum),
     .C_out  (HalfAdd_A_Cout)
     );
-    
+
 HalfAdd u_HalfAdd_B(                                // 半加器实例 B
     .X      (C_in),
     .Y      (HalfAdd_A_sum),
     .sum    (sum),
     .C_out  (HalfAdd_B_Cout)
     );
-    
-endmodule 
+
+endmodule
 ```
 
 上例已将[原半加器代码](#半加器代码)中的语句改为门原语的实例化。在全加器的模块中，有两个半加器模块的实例和一个 `or` 门原语的实例。
@@ -1157,7 +1156,7 @@ defparam
     altsyncram_component.widthad_a = 5,                 // 5 位地址
     altsyncram_component.width_a = 8,                   // 8 位宽的数据
     altsyncram_component.width_byteena_a = 1;
-    
+
 endmodule
 ```
 
@@ -1362,7 +1361,7 @@ output C_out;
 xor u_xor(sum, X, Y);                               // 门级原语实例
 and u_and(C_out, X, Y);                             // 门级原语实例
 
-endmodule 
+endmodule
 ```
 
 其中直接调用了 `xor` 和 `and` 的两个 Verilog 门原语。

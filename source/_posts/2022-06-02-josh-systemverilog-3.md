@@ -2,7 +2,7 @@
 title: 'Josh''s Notes: SystemVerilog 验证 (Part 3 — 过程语句和子程序)'
 mathjax: true
 comments: true
-copyright: false
+copyright: true
 sticky: false
 toc:
   enable: true

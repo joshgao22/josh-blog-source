@@ -3,19 +3,18 @@ title: MATLAB 函数 —— rcosdesign
 tags:
   - MATLAB
   - 翻译
-  - 成型滤波器
+  - 成形滤波器
   - 滤波器
 categories:
-  - - MATLAB
-  - - 翻译
-    - 帮助文档
+  - [MATLAB, 函数用法]
 mathjax: true
 copyright: true
+comments: true
 abbrlink: 5c45edfe
 date: 2020-11-25 22:32:42
 ---
 
-`rcosdesign`：升余弦 FIR 脉冲成型滤波器设计
+`rcosdesign`：升余弦 FIR 脉冲成形滤波器设计
 
 # 语法
 
@@ -32,18 +31,18 @@ date: 2020-11-25 22:32:42
 
 # 示例
 
-## 设计根升余弦滤波器<span id="Examples-01"></span>
+## 设计根升余弦滤波器<a name="Examples-01"></a>
 
 将滚降系数设为 `0.25`，波器的符号数设为 `6`，每个符号 `4` 个采样点。验证 `sqrt` 是 `shape` 参数的默认值。
 
-```m
+``` matlab
 h = rcosdesign(0.25,6,4);
 mx = max(abs(h-rcosdesign(0.25,6,4,'sqrt')))
 ```
 
 > <font face="Consolas">mx = 0</font><br>
 
-```m
+``` matlab
 fvtool(h,'Analysis','impulse')
 ```
 
@@ -51,13 +50,13 @@ fvtool(h,'Analysis','impulse')
   <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-25-matlab-rcosdesign/2020-11-25-matlab-rcosdesign-010-DesignASquareRootRaisedCosineFilterExample-01.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/fontsize/15/dissolve/60/gravity/southeast/dx/5/dy/5"/>
 </div>
 
-## 升余弦和根升余弦滤波器的脉冲响应<span id="Examples-02"></span>
+## 升余弦和根升余弦滤波器的脉冲响应<a name="Examples-02"></a>
 
-将升余弦滤波器与根升余弦滤波器进行比较。一个理想的（无限长）升余弦脉冲成型滤波器等效于两个级联的理想的根升余弦滤波器。因此，FIR 升余弦滤波器的脉冲响应应类似于与其自身卷积的根升余弦滤波器的脉冲响应。
+将升余弦滤波器与根升余弦滤波器进行比较。一个理想的（无限长）升余弦脉冲成形滤波器等效于两个级联的理想的根升余弦滤波器。因此，FIR 升余弦滤波器的脉冲响应应类似于与其自身卷积的根升余弦滤波器的脉冲响应。
 
 设计一个衰减为 `0.25` 的升余弦滤波器。指定滤波器有 `4` 个符号，每个符号 `3` 个采样点。
 
-```m
+``` matlab
 rf = 0.25;
 span = 4;
 sps = 3;
@@ -72,7 +71,7 @@ fvtool(h1,'impulse')
 
 **升余弦滤波器在 `sps` 的整数倍处具有零值点**。因此，它满足无码间串扰（ISI）的 Nyquist 准则。但是，根升余弦滤波器没有这样的特性：
 
-```m
+``` matlab
 h2 = rcosdesign(rf,span,sps,'sqrt');
 fvtool(h2,'impulse')
 ```
@@ -83,7 +82,7 @@ fvtool(h2,'impulse')
 
 将根升余弦滤波器与自身进行卷积。在最大值处截断脉冲响应，使其长度与 `h1` 相同。使用最大值将响应归一化。然后，将卷积后的根升余弦滤波器与升余弦滤波器进行比较。
 
-```m
+``` matlab
 h3 = conv(h2,h2);
 p2 = ceil(length(h3)/2);
 m2 = ceil(p2-length(h1)/2);
@@ -102,13 +101,13 @@ legend('h1','h2 * h2')
 
 卷积响应的长度是有限的，因此根升余弦滤波器与自身进行卷积得到的结果会与升余弦滤波器不一致。增加 `span` 可以在响应之间获得更紧密的一致性，并更好地符合 Nyquist 准则。
 
-## 将信号通过升余弦滤波器<span id="Examples-03"></span>
+## 将信号通过升余弦滤波器<a name="Examples-03"></a>
 
 本例说明如何将信号通过根升余弦滤波器。
 
 指定滤波器参数。
 
-```m
+``` matlab
 rolloff = 0.25;     % 滚降因子
 span = 6;           % 滤波器宽度（符号数）
 sps = 4;            % 每个符号的样本数
@@ -116,31 +115,31 @@ sps = 4;            % 每个符号的样本数
 
 生成根升余弦滤波器的系数。
 
-```m
+``` matlab
 b = rcosdesign(rolloff, span, sps);
 ```
 
 生成双极性数据向量。
 
-```m
+``` matlab
 d = 2*randi([0 1], 100, 1) - 1;
 ```
 
-上采样并对数据进行滤波以实现脉冲成型。
+上采样并对数据进行滤波以实现脉冲成形。
 
-```m
+``` matlab
 x = upfirdn(d, b, sps);
 ```
 
 添加噪声。
 
-```m
+``` matlab
 r = x + randn(size(x))*0.01;
 ```
 
 对接收到的信号进行滤波和下采样以进行匹配滤波。
 
-```m
+``` matlab
 y = upfirdn(r, b, 1, sps);
 ```
 
@@ -196,6 +195,10 @@ y = upfirdn(r, b, 1, sps);
 >>
 >> 所有输入必须为常数。 如果表达式或变量的值不变，则也允许使用。
 
+# 版本历史
+
+在 R2013b 中推出
+
 # 另请参阅
 
 [`gaussdesign`](https://ww2.mathworks.cn/help/signal/ref/gaussdesign.html)
@@ -204,10 +207,4 @@ y = upfirdn(r, b, 1, sps);
 
 [用 RRC 滤波器进行插值和抽取](https://ww2.mathworks.cn/help/comm/ug/interpolate-and-decimate-using-rrc-filter.html)（Communications Toolbox）
 
-----
-
-在 R2013b 中推出
-
-----
-
-原文参考：[https://ww2.mathworks.cn/help/signal/ref/rcosdesign.html](https://ww2.mathworks.cn/help/signal/ref/rcosdesign.html)
+> 原文参考：[https://ww2.mathworks.cn/help/signal/ref/rcosdesign.html](https://ww2.mathworks.cn/help/signal/ref/rcosdesign.html)

@@ -8,7 +8,6 @@ tags:
   - 自底向上
   - Verilog 语法
 categories:
-  - [Verilog, Verilog 语法]
   - [Josh 的学习笔记, Verilog]
 mathjax: true
 comments: true
@@ -63,7 +62,7 @@ EDA 行业的先行者们发明了 Verilog 硬件描述语言，其最根本的�
 
 **这些电路单元都是同时并行工作的，相互之间并没有先后顺序关系，这一点与软件设计程序很不一样。**
 
-下面具体分析 [JoshVerilog 模块](#JoshVerilog模块)的电路功能。源代码如下。
+下面具体分析 [JoshVerilog 模块](#JoshVerilog模块) 的电路功能。源代码如下。
 
 <a name="JoshVerilog代码"></a>
 
@@ -260,7 +259,7 @@ reg eq3;
 module 模块名称( 端口列表 );
 // 声明：
     reg, parameter,
-    input, output, 
+    input, output,
     function, task, ...
 // 语句：
     initial 语句
@@ -288,7 +287,7 @@ input [1:0] A_in；
 
 模块内部使用的 `reg`（寄存器类型的一种）、`wire`（线网类型的一种）、参数、函数以及任务等，都将在 `module` 中声明。
 
-一般来说，`module` 的 
+一般来说，`module` 的
 
 - `input` 默认定义为 `wire` 类型；
 - `output` 信号可以是 `wire`，也可以是 `reg` 类型（如果在 `always` 或 `initial` 语句块中被赋值）；
@@ -499,9 +498,9 @@ Message = "HeIIo World";
 ### 7.2.1 `reg` 类型
 
 1. 寄存器类型数
-    
+
     `reg` 类型可以定位为一个寄存器，可以定义一位或者多位，例如：
-    
+
     ```verilog
     reg         AB;             // 定义一个名为 AB 的 1 位寄存器
     reg [3:0]   ABC;            // 定义一个名为 ABC 的 4 位寄存器
@@ -516,9 +515,9 @@ Message = "HeIIo World";
     ```
 
     这样，整个 `ABC` 变量的值为 `4'b1010`。
-    
+
 2. 寄存器类型数组
-    
+
     `reg` 类型可以作为二维数组，也就是存储器，例如：
 
     ```verilog
@@ -532,7 +531,7 @@ Message = "HeIIo World";
     ```
 
     同时，在 Verilog 中，不存可以对整个存储器赋值的语句，必须对每个单元独立赋值。除非使用 `$readmemb` 或 `$readmemh` 系统任务从文件中读入整个或者部分存储器的数据。
-    
+
 [comment]: <> (在第7章将讨论如何从文件中读入数据给存储器赋值。)
 
 ### 7.2.2. `integer` 类型

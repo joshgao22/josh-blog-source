@@ -2,7 +2,7 @@
 title: 'Josh''s Notes: SystemVerilog 验证 (Part 1 — 验证导论)'
 mathjax: true
 comments: true
-copyright: false
+copyright: true
 sticky: false
 toc:
   enable: true
