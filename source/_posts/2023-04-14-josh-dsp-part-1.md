@@ -274,7 +274,11 @@ X_e\left(e^{j\omega}\right)=\frac{1}{2}\left[X\left(e^{j\omega}\right)+X^\ast\le
 
 # 9. 傅里叶变换、拉氏变换和 $z$ 变换的关系
 
-![傅里叶变换、拉氏变换和 $z$ 变换的关系](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-14-josh-dsp-part-1/2023-04-14-josh-dsp-part-1-010-RelationshipBetweenTransform.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/14/dissolve/20/gravity/southeast/dx/5/dy/5){width=600px}
+![傅里叶变换、拉氏变换和 $z$ 变换的关系](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-14-josh-dsp-part-1/2023-04-14-josh-dsp-part-1-010-RelationshipBetweenTransform.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/80/dissolve/20/gravity/southeast/dx/5/dy/5){width=600px}
+
+# 参考文献
+
+王世一. *数字信号处理, 修订版.* 北京理工大学出版社, 1997.
 
 [^1]: $f\left( x \right)$ 的以 $2l$ 为周期的傅氏级数的指数形式为
 $$
