@@ -7,7 +7,7 @@ toc:
   enable: true
   number: false
   wrap: true
-  expand_all: true
+  expand_all: false
   max_depth: 4
 abbrlink: 7c6d68a2
 date: 2023-04-14 23:11:52

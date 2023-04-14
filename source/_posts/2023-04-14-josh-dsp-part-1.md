@@ -6,7 +6,7 @@ copyright: true
 toc:
   enable: true
   number: false
-  wrap: true
+  wrap: false
   expand_all: true
   max_depth: 4
 abbrlink: 1391fb05

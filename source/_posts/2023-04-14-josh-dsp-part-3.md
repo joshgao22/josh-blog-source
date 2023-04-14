@@ -6,7 +6,7 @@ copyright: true
 toc:
   enable: true
   number: false
-  wrap: true
+  wrap: false
   expand_all: true
   max_depth: 3
 abbrlink: fd9f9a29
@@ -168,7 +168,7 @@ x\left(N-m+n\right),&0\leqslant n\leqslant m
 \end{aligned}
 \end{equation}$$
 
-### 3.9.2 圆周反转（周期化→反转→取主值）
+### 3.8.2 圆周反转（周期化→反转→取主值）
 
 $$\begin{equation}
 x\left(\left(-n\right)\right)_NR_N\left(n\right)=
