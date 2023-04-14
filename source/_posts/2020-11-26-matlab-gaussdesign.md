@@ -40,9 +40,7 @@ h = gaussdesign(bt,span,sps);
 fvtool(h,'impulse')
 ```
 
-<div align="center">
-  <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-26-matlab-gaussdesign/2020-11-26-matlab-gaussdesign-010-GaussianFilterForAGSMGMSKDigitalCellularCommunicationSysExample-01.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/fontsize/15/dissolve/60/gravity/southeast/dx/5/dy/5"/>
-</div>
+![ ](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-26-matlab-gaussdesign/2020-11-26-matlab-gaussdesign-010-GaussianFilterForAGSMGMSKDigitalCellularCommunicationSysExample-01.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/14/dissolve/20/gravity/southeast/dx/5/dy/5)
 
 # 输入参数
 

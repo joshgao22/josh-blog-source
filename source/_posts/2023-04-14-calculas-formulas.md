@@ -5,7 +5,7 @@ comments: true
 copyright: true
 toc:
   enable: true
-  number: ture
+  number: false
   wrap: true
   expand_all: true
   max_depth: 4

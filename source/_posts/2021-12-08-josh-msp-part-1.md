@@ -14,7 +14,7 @@ tags:
   - 抽样率转换
   - 抽取
   - 内插
-  - 分数被抽样
+  - 分数倍抽样
 categories:
   - - Josh 的学习笔记
     - 多抽样率信号处理
@@ -75,9 +75,8 @@ X_s\left( j\Omega \right) =\frac{1}{2\pi}X_c\left( j\Omega \right) \ast \frac{2\
 &emsp;&emsp;式 $\eqref{Relationship between the spectrum of the sampled signal and the original signal}$ 说明，采样信号的频谱是将原始信号频谱以 $\Omega_s$ 进行周期延拓，且幅度变为原来的 $1/T$，[图 1.1](#图1.1) 给出了该过程的示意图。显然，若采样率过低则会造成相邻周期的频谱交叠在一起产生失真，这种现象称为混叠 (aliasing)。为避免混叠，采样率应大于信号最高频率的 2 倍。在此条件下，通过适当选取一个低通滤波器，可以从采样信号的频谱恢复出原始信号的频谱。这就是著名的 Nyquist-Shannon 采样定理。
 
 <a id="图1.1"></a>
-<div align="center">
-  <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2021-12-08-josh-msp-part-1/2021-12-08-josh-msp-part-1-010-RelationshipBetweenSampledSignalandAnalogSignal.png" width=500px alt="图1.1 采样信号与模拟信号的关系"/>
-</div>
+
+![图1.1 采样信号与模拟信号的关系](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2021-12-08-josh-msp-part-1/2021-12-08-josh-msp-part-1-010-RelationshipBetweenSampledSignalandAnalogSignal.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/14/dissolve/20/gravity/southeast/dx/5/dy/5){width=500px}
 
 **定理 1.1 (Nyquist-Shannon 采样定理)** 设 $x\left(t\right)$ 是带限信号，频带范围为 $\left(-\Omega_M,\Omega_M\right)$。如果采样率满足
 
@@ -134,9 +133,8 @@ y_D\left( nT_2 \right) =x\left( nDT_1 \right)
 其中 $T_1$、$T_2$ 分别为抽取前后的采样间隔，且 $T_2 = DT_1$。[图 1.2(a)](#图1.2) 给出了 $D=3$ 时抽取过程的示意图。
 
 <a id="图1.2"></a>
-<div align="center">
-  <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2021-12-08-josh-msp-part-1/2021-12-08-josh-msp-part-1-020-DecimationDemostration.png" width=500px alt="图1.2 抽取"/>
-</div>
+
+![图1.2 抽取](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2021-12-08-josh-msp-part-1/2021-12-08-josh-msp-part-1-020-DecimationDemostration.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/14/dissolve/20/gravity/southeast/dx/5/dy/5){width=500px}
 
 &emsp;&emsp;上述关系也可以简记为
 

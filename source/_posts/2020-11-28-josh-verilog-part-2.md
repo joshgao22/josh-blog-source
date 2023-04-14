@@ -52,9 +52,7 @@ EDA 行业的先行者们发明了 Verilog 硬件描述语言，其最根本的�
 
 <a name="JoshVerilog模块"></a>首先看一个简单的如下图所示的电路（模块）：JoshVerilog。它可以是一个独立的设计，也可以是更大的系统的一个组成部分。
 
-<div align="center">
-  <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-28-josh-verilog-part-2/2020-11-28-josh-verilog-part-2-010-JoshVerilog.png!700px"/>
-</div>
+![ ](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-28-josh-verilog-part-2/2020-11-28-josh-verilog-part-2-010-JoshVerilog.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/18/dissolve/20/gravity/southeast/dx/5/dy/5){width=800px}
 
 该电路首先在两个 2 位的输入数据 `A_in[1:0]` 的和 `B_in[1:0]` 之间，由 `sel` 信号做二选一。后面是一个 2-4 译码电路，将输入的信号 `result[1:0]`解析成 `eq0`、`eql`、`eq2` 和 `eq3` 这4个信号，它们同时只有一个为 1。
 

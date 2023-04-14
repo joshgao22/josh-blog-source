@@ -47,23 +47,15 @@ busuanzi_count:
 
 添加 Live2D 前的不蒜子显示情况如下。
 
-<div align="center">
-  <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-27-hexo-next-busuanzi-issues/2020-11-27-hexo-next-busuanzi-issues-010-Live2D-01.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/fontsize/15/dissolve/60/gravity/southeast/dx/5/dy/5"/>
-</div>
+![添加 Live2D 前单篇博客的不蒜子显示情况](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-27-hexo-next-busuanzi-issues/2020-11-27-hexo-next-busuanzi-issues-010-Live2D-01.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/14/dissolve/20/gravity/southeast/dx/5/dy/5)
 
-<div align="center">
-  <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-27-hexo-next-busuanzi-issues/2020-11-27-hexo-next-busuanzi-issues-020-Live2D-02.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/fontsize/15/dissolve/60/gravity/southeast/dx/5/dy/5"/>
-</div>
+![添加 Live2D 前网站的不蒜子显示情况](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-27-hexo-next-busuanzi-issues/2020-11-27-hexo-next-busuanzi-issues-020-Live2D-02.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/14/dissolve/20/gravity/southeast/dx/5/dy/5)
 
 添加 Live2D 后，不蒜子在页面中不显示。
 
-<div align="center">
-  <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-27-hexo-next-busuanzi-issues/2020-11-27-hexo-next-busuanzi-issues-030-Live2D-03.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/fontsize/15/dissolve/60/gravity/southeast/dx/5/dy/5"/>
-</div>
+![添加 Live2D 后单篇博客的不蒜子显示情况](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-27-hexo-next-busuanzi-issues/2020-11-27-hexo-next-busuanzi-issues-030-Live2D-03.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/14/dissolve/20/gravity/southeast/dx/5/dy/5)
 
-<div align="center">
-  <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-27-hexo-next-busuanzi-issues/2020-11-27-hexo-next-busuanzi-issues-040-Live2D-04.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/fontsize/15/dissolve/60/gravity/southeast/dx/5/dy/5"/>
-</div>
+![添加 Live2D 后网站的不蒜子显示情况](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-27-hexo-next-busuanzi-issues/2020-11-27-hexo-next-busuanzi-issues-040-Live2D-04.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/14/dissolve/20/gravity/southeast/dx/5/dy/5)
 
 ## 问题原因
 
@@ -93,9 +85,7 @@ busuanzi_count:
 
 在网页生成引擎中修改代码，去掉不蒜子部分的 `id` 和 `style` 属性，重新生成网页即可解决该问题。若将 `class` 属性一并删除，会导不蒜子部分和前面的其他显示部分缺少分隔符，如下图。
 
-<div align="center">
-  <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-27-hexo-next-busuanzi-issues/2020-11-27-hexo-next-busuanzi-issues-050-Delimeter-01.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/fontsize/15/dissolve/60/gravity/southeast/dx/5/dy/5"/>
-</div>
+![ ](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-27-hexo-next-busuanzi-issues/2020-11-27-hexo-next-busuanzi-issues-050-Delimeter-01.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/14/dissolve/20/gravity/southeast/dx/5/dy/5)
 
 具体需要修改两个文件，`next/layout/_third-party/statistics/busuanzi-counter.swig` 中修改的是网页页脚部分的不蒜子显示，`next/layout/_macro/post.swig` 中修改的博客文章阅览数的不蒜子显示。
 
