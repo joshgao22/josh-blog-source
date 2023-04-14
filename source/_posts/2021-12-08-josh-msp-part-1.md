@@ -30,11 +30,11 @@ date: 2021-12-08 15:28:38
 - 如何实现分数倍抽样率转换？
 - 如何利用 MATLAB 实现抽样率转换？
 
-&emsp;&emsp;多抽样率信号处理的研究对象是不同抽样率[^ChineseofSampling]下的信号，其中抽样率转换 (Sampling Rate Conversion, SRC) 是核心问题之一。早期的抽样率转换通常采用模拟方法，即将给定的抽样信号通过数模转换器 (Digital-to-Analog Converter, DAC) 转换成模拟信号 (连续时间信号)，再对该模拟信号进行新的抽样，经模数转换器 (Analog-to-Digital Converter, DAC) 得到所需的抽样信号。而随着数字电路的普及和数字信号处理技术的发展，采用数字方法，即直接在离散时间域上完成抽样率转换已成为当前的主要方式。相比于模拟方法，数字方法不需要进行D/A和A/D转换，降低了系统的复杂度，同时避免了由量化、编码等过程产生的失真问题。
+&emsp;&emsp;多抽样率信号处理的研究对象是不同抽样率[^SamplingRate]下的信号，其中抽样率转换 (Sampling Rate Conversion, SRC) 是核心问题之一。早期的抽样率转换通常采用模拟方法，即将给定的抽样信号通过数模转换器 (Digital-to-Analog Converter, DAC) 转换成模拟信号 (连续时间信号)，再对该模拟信号进行新的抽样，经模数转换器 (Analog-to-Digital Converter, DAC) 得到所需的抽样信号。而随着数字电路的普及和数字信号处理技术的发展，采用数字方法，即直接在离散时间域上完成抽样率转换已成为当前的主要方式。相比于模拟方法，数字方法不需要进行D/A和A/D转换，降低了系统的复杂度，同时避免了由量化、编码等过程产生的失真问题。
 
 &emsp;&emsp;本文首先回顾采样的概念；随后介绍抽样率转换的两个基本运算单元，即抽取和内插；进而讨论如何利用抽取和内插实现分数倍抽样率转换；最后介绍抽样率转换在 MATLAB 上的实现。
 
-[^ChineseofSampling]: 又称采样率，在本文中，“采样”与“抽样”涵义相同，两者经常交换使用。
+[^SamplingRate]: 又称采样率，在本文中，“采样”与“抽样”涵义相同，两者经常交换使用。
 
 <!-- more -->
 
@@ -66,15 +66,15 @@ $$\begin{equation}
 
 对上式作傅里叶变换，记采样信号的频谱为 $X_s\left( j\Omega \right)$，原始信号的频谱为 $X_c\left( j\Omega \right)$，同时注意到脉冲序列的傅里叶变换依然是脉冲序列，根据卷积定理可知，采样信号与原始信号的频谱具有如下关系：
 
-$$\begin{equation} \label{1}
+$$\begin{equation} \label{Relationship between the spectrum of the sampled signal and the original signal}
 X_s\left( j\Omega \right) =\frac{1}{2\pi}X_c\left( j\Omega \right) \ast \frac{2\pi}{T}\sum_{n=-\infty}^{\infty}{\delta \left( \Omega -n\Omega _s \right)}=\frac{1}{T}\sum_{n=-\infty}^{\infty}{X_c\left( j\left( \Omega -\Omega _s \right) \right)}
 \end{equation}$$
 
 其中 $\Omega_s = \displaystyle\frac{2\pi}{T}=2\pi F_s$ 为采样角频率 (亦简称为采样率) 。
 
-&emsp;&emsp;式 $\eqref{1}$ 说明，采样信号的频谱是将原始信号频谱以 $\Omega_s$ 进行周期延拓，且幅度变为原来的 $1/T$，[图 1.1](#图1.1) 给出了该过程的示意图。显然，若采样率过低则会造成相邻周期的频谱交叠在一起产生失真，这种现象称为混叠 (aliasing)。为避免混叠，采样率应大于信号最高频率的 2 倍。在此条件下，通过适当选取一个低通滤波器，可以从采样信号的频谱恢复出原始信号的频谱。这就是著名的 Nyquist-Shannon 采样定理。
+&emsp;&emsp;式 $\eqref{Relationship between the spectrum of the sampled signal and the original signal}$ 说明，采样信号的频谱是将原始信号频谱以 $\Omega_s$ 进行周期延拓，且幅度变为原来的 $1/T$，[图 1.1](#图1.1) 给出了该过程的示意图。显然，若采样率过低则会造成相邻周期的频谱交叠在一起产生失真，这种现象称为混叠 (aliasing)。为避免混叠，采样率应大于信号最高频率的 2 倍。在此条件下，通过适当选取一个低通滤波器，可以从采样信号的频谱恢复出原始信号的频谱。这就是著名的 Nyquist-Shannon 采样定理。
 
-<span id="图1.1"></span>
+<a id="图1.1"></a>
 <div align="center">
   <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2021-12-08-josh-msp-part-1/2021-12-08-josh-msp-part-1-010-RelationshipBetweenSampledSignalandAnalogSignal.png" width=500px alt="图1.1 采样信号与模拟信号的关系"/>
 </div>
@@ -133,7 +133,7 @@ y_D\left( nT_2 \right) =x\left( nDT_1 \right)
 
 其中 $T_1$、$T_2$ 分别为抽取前后的采样间隔，且 $T_2 = DT_1$。[图 1.2(a)](#图1.2) 给出了 $D=3$ 时抽取过程的示意图。
 
-<span id="图1.2"></span>
+<a id="图1.2"></a>
 <div align="center">
   <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2021-12-08-josh-msp-part-1/2021-12-08-josh-msp-part-1-020-DecimationDemostration.png" width=500px alt="图1.2 抽取"/>
 </div>
