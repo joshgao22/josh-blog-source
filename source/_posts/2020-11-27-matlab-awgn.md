@@ -19,10 +19,17 @@ date: 2020-11-27 01:15:12
 # 语法
 
 `out = awgn(in,snr)`
+
 `out = awgn(in,snr,signalpower)`
 
+---
+
 `out = awgn(in,snr,signalpower,randobject)`
+
 `out = awgn(in,snr,signalpower,seed)`
+
+---
+
 `out = awgn(___,powertype)`
 
 <!-- more -->

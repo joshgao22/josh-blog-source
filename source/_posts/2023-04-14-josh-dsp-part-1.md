@@ -179,7 +179,7 @@ y^T=\left[\begin{matrix}h_1&h_2&h_3&\cdots&h_{m-1}&h_m\\\end{matrix}\right]_{1\t
 
 # 7. 单位取样响应 $h\left(n\right)$ 和系统频率响应 $H\left(e^{j\omega}\right)$ 的关系
 
-## 7.1 通过单位取样响应 $h\left(n\right)$ 从时域表征系统
+## 7.1. 通过单位取样响应 $h\left(n\right)$ 从时域表征系统
 
 &emsp;&emsp;当系统的输入为单位取样序列 $\delta\left(n\right)$ 时的输出序列称为系统的单位取样响应 $h\left(n\right)$，记
 
@@ -208,11 +208,11 @@ $$\begin{align}
 
 故任何离散时间线性时不变系统，可以通过其单位取样响应 $h\left(n\right)$ 来**完全表征**。
 
-## 7.2 通过系统频率响应 $H\left(e^{j\omega}\right)$ 从频域表征系统
+## 7.2. 通过系统频率响应 $H\left(e^{j\omega}\right)$ 从频域表征系统
 
 &emsp;&emsp;离散时间系统的频率响应是由系统的结构参数决定的。当输入频率为 $\omega$ 的复指数序列时，其输出必仍为同一频率的、乘上因子 $H\left(e^{j\omega}\right)$ 的复指数序列。随着输入频率 $\omega$ 的不同，$H\left(e^{j\omega}\right)$ 的值也不同。因此系统的频率响应 $H\left(e^{j\omega}\right)$ **描述了系统对不同频率的复指数序列的不同传输能力**。
 
-## 7.3 单位取样响应 $h\left(n\right)$ 和系统频率响应 $H\left(e^{j\omega}\right)$ 的关系
+## 7.3. 单位取样响应 $h\left(n\right)$ 和系统频率响应 $H\left(e^{j\omega}\right)$ 的关系
 
 &emsp;&emsp;令单位取样响应为 $h\left(n\right)$ 的线性时不变系统的输入 $x\left(n\right)=Ae^{j\left(\omega n+\varphi_x\right)}=Ae^{j\omega n}e^{j\varphi_x}$，则输出
 
@@ -230,15 +230,15 @@ H\left(e^{j\omega}\right)=\sum_{k=-\infty}^{\infty}{h\left(k\right)e^{-j\omega k
 
 # 8. 共轭对称与共轭反对称
 
-## 8.1 共轭对称
+## 8.1. 共轭对称
 
 &emsp;&emsp;若序列 $x_e\left(n\right)=x_e^\ast(-n)$，则称 $x_e\left(n\right)$ 是共轭对称的序列，对实序列，又称为偶序列。
 
-## 8.2 共轭反对称
+## 8.2. 共轭反对称
 
 &emsp;&emsp;若序列 $x_o\left(n\right)=-x_o^\ast(-n)$，则称 $x_o\left(n\right)$ 是共轭反对称的序列，对实序列，又称为奇序列。
 
-## 8.3 序列的对称性
+## 8.3. 序列的对称性
 
 &emsp;&emsp;若
 
@@ -252,7 +252,7 @@ $$\begin{equation}
 x\left(n\right)=x_e\left(n\right)+x_o\left(n\right)
 \end{equation}$$
 
-## 8.4 傅里叶变换的共轭对称性
+## 8.4. 傅里叶变换的共轭对称性
 
 $$\begin{equation}
 X\left(e^{j\omega}\right)=X_e\left(e^{j\omega}\right)+X_o\left(e^{j\omega}\right)
@@ -266,7 +266,7 @@ X_e\left(e^{j\omega}\right)=\frac{1}{2}\left[X\left(e^{j\omega}\right)+X^\ast\le
 
 ![傅里叶变换、拉氏变换和 $z$ 变换的关系](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-14-josh-dsp-part-1/2023-04-14-josh-dsp-part-1-010-RelationshipBetweenTransform.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/80/dissolve/20/gravity/southeast/dx/5/dy/5){width=600px}
 
-# 参考文献
+# 10. 参考文献
 
 王世一. *数字信号处理, 修订版.* 北京理工大学出版社, 1997.
 
