@@ -6,9 +6,9 @@ copyright: true
 toc:
   enable: true
   number: false
-  wrap: false
-  expand_all: true
-  max_depth: 4
+  wrap: true
+  expand_all: false
+  max_depth: 3
 tags:
   - 数字信号和处理
   - DSP

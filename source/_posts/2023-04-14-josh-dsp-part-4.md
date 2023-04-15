@@ -8,7 +8,7 @@ toc:
   number: false
   wrap: true
   expand_all: false
-  max_depth: 4
+  max_depth: 3
 abbrlink: 7c6d68a2
 date: 2023-04-14 23:11:52
 tags:
@@ -444,7 +444,7 @@ $$\begin{equation}
 X\left(k\right)=X_1\left(k\right)+jX_2\left(k\right)
 \end{equation}$$
 
-再由的[复序列的 DFT 性质](https://josh-gao.top/posts/fd9f9a29.html#3.8.5.3)
+再由的[复序列的 DFT 性质](https://josh-gao.top/posts/fd9f9a29.html#共轭复序列的-dft)
 
 $$\begin{equation}
 X\left(k\right)=X_{ep}\left(k\right)+X_{op}\left(k\right)

@@ -6,9 +6,9 @@ copyright: true
 toc:
   enable: true
   number: false
-  wrap: false
-  expand_all: true
-  max_depth: 4
+  wrap: true
+  expand_all: false
+  max_depth: 3
 abbrlink: 1391fb05
 date: 2023-04-14 17:24:45
 tags:
