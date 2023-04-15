@@ -119,3 +119,7 @@ categories:
 可以定义如下基-4 DIF-FFT 简化蝶形来简化流图表示的复杂程度
 
 ![基-4 DIF-FFT 简化蝶形](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-5/2023-04-15-josh-dsp-part-5-190-SimplifiedRadix4Butterfly.png!sign){width=800px}
+
+# 参考文献
+
+王世一. *数字信号处理, 修订版.* 北京理工大学出版社, 1997.
