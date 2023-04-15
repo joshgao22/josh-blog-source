@@ -27,8 +27,14 @@ body{
   }
 }
 
-
 // 修复不蒜子显示属性被 hexo-helper-live2d 覆盖
 #busuanzi_container_site_uv, #busuanzi_container_site_pv, #busuanzi_container_page_pv {
   display: inline !important;
+}
+
+// solve line overflow of numbered equations
+// Ref: https://github.com/mathjax/MathJax/issues/2562
+// Ref: https://github.com/mathjax/MathJax/issues/2280
+mjx-container.MathJax.CtxtMenu_Attached_0 {
+    min-width: auto !important;
 }

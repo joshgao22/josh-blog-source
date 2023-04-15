@@ -31,13 +31,11 @@ categories:
 
 &emsp;&emsp;考察列长为 $N$ 的序列 $x\left(n\right)$ 的 DFT
 
-$$\begin{equation}
-\begin{aligned}
+$$\begin{align}
 X\left(k\right)&=\sum_{n=0}^{N-1}{x\left(n\right)W_N^{nk}}=\sum_{n=0}^{N-1}\left\{\Re{\left[x\left(n\right)\right]}+j\Im{\left[x\left(n\right)\right]}\right\}\left\{\Re{\left[W_N^{nk}\right]}+j\Im{\left[W_N^{nk}\right]}\right\}
 \\
 &=\sum_{n=0}^{N-1}{\left\{ \Re \left[ x\left( n \right) \right] \Re \left[ W_{N}^{nk} \right] -\Im \left[ x\left( n \right) \right] \Im \left[ W_{N}^{nk} \right] \right\} +j\left\{ \Re \!\:\left[ x\left( n \right) \right] \Im \!\:\left[ W_{N}^{nk} \right] +\Im \left[ \!\:x\left( n \right) \right] \Re \!\:\left[ W_{N}^{nk} \right] \right\}}
-\end{aligned}
-\end{equation}$$
+\end{align}$$
 
 由此，直接计算 DFT 时，在不忽略 $W_N^0=1$ 等特例时，实数乘法次数为 $4N^2$，实数加法次数为 $2N\left(2N-1\right)$，均与 $N^2$ 成正比，计算量非常庞大。
 
@@ -88,15 +86,13 @@ x_2\left(r\right)=x\left(2r+1\right)
 
 则序列 DFT 的**前半部分**可表示为
 
-$$\begin{equation}
-\begin{aligned}
+$$\begin{align}
 X\left(k\right)&=\sum_{r=0}^{\frac{N}{2}-1}{x\left(2r\right)W_N^{2rk}}+\sum_{r=0}^{\frac{N}{2}-1}{x\left(2r+1\right)W_N^{\left(2r+1\right)k}}=\sum_{r=0}^{\frac{N}{2}-1}{x_1\left(r\right)W_{\frac{N}{2}}^{rk}}+W_N^k\sum_{r=0}^{\frac{N}{2}-1}{x_2\left(r\right)W_{\frac{N}{2}}^{rk}}
 \\
 &=\mathrm{DFT}\left[x_1\left(n\right)\right]+W_N^k\mathrm{DFT}\left[x_2\left(n\right)\right]
 \\
 &=X_1\left(k\right)+W_N^kX_2\left(k\right),\ \ k=0,1,\cdots,\frac{N}{2}-1
-\end{aligned}
-\end{equation}$$
+\end{align}$$
 
 由旋转因子的周期性，即
 
@@ -106,15 +102,13 @@ W_{\frac{N}{2}}^{rk}=W_{\frac{N}{2}}^{r\left(k+\frac{N}{2}\right)}
 
 可将序列 DFT 的**后半部分**表示为
 
-$$\begin{equation}
-\begin{aligned}
+$$\begin{align}
 X\left(k+\frac{N}{2}\right)&=X_1\left(k+\frac{N}{2}\right)+W_N^{\left(k+\frac{N}{2}\right)}X_2\left(k+\frac{N}{2}\right)
 \\
 &=X_1\left(k\right)+W_N^{\left(k+\frac{N}{2}\right)}X_2\left(k\right)
 \\
 &=X_1\left(k\right)-W_N^kX_2\left(k\right),\ \ k=0,1,\cdots,\frac{N}{2}-1
-\end{aligned}
-\end{equation}$$
+\end{align}$$
 
 类似地，可以将分离后的序列继续按奇偶序号分成两个序列计算，**直到每个序列中只含有两个点**。此时开始计算 DFT。这种方法称为**基-2 按时间抽取的 FFT 算法**。
 
@@ -137,13 +131,11 @@ $$\begin{align}
 
 对于第二级分解
 
-$$\begin{equation}
-\begin{aligned}
+$$\begin{align}
 X_1\left(k\right)&=\sum_{l=0}^{\frac{N}{4}-1}{x_1\left(2l\right)W_{\frac{N}{2}}^{2lk}}+\sum_{l=0}^{\frac{N}{4}-1}{x_1\left(2l+1\right)W_{\frac{N}{2}}^{\left(2l+1\right)k}}
 \\
 &=\sum_{l=0}^{\frac{N}{4}-1}{x_3\left(l\right)W_{\frac{N}{4}}^{lk}}+W_{\frac{N}{2}}^k\sum_{l=0}^{\frac{N}{4}-1}{x_4\left(l\right)W_{\frac{N}{4}}^{lk}}=X_3\left(k\right)+W_{\frac{N}{2}}^kX_4\left(k\right),\ \ k=0,1,\cdots,\frac{N}{4}-1
-\end{aligned}
-\end{equation}$$
+\end{align}$$
 
 $$\begin{equation}
 X_1\left(k+\frac{N}{4}\right)=X_3\left(k\right)-W_{\frac{N}{2}}^kX_4\left(k\right),\ \ k=0,1,\cdots,\frac{N}{4}-1
@@ -157,12 +149,10 @@ X_2\left(k\right)=X_5\left(k\right)+W_{\frac{N}{2}}^kX_6\left(k\right),X_2\left(
 
 对于最后剩下的四个 $\dfrac{N}{4}=2$ 点的 DFT，即 $X_3\left(k\right)、X_4\left(k\right)、X_5\left(k\right)、X_6\left(k\right)，k=0,1$，可按定义计算，如对 $X_3\left(k\right)$
 
-$$\begin{equation}
-\begin{aligned}
+$$\begin{align}
 &X_3\left(k\right)=\sum_{l=0}^{\frac{N}{4}-1}{x_3\left(l\right)W_{\frac{N}{4}}^{lk}}=\sum_{l=0}^{1}{x_3\left(l\right)W_{\frac{N}{4}}^{lk}}\\
 \Longrightarrow &X_3\left(0\right)=x_3\left(0\right)+W_2^0x_3\left(1\right)=x\left(0\right)+W_N^0x\left(4\right),X_3\left(1\right)=x_3\left(0\right)+W_2^1x_3\left(1\right)=x\left(0\right)-W_N^0x\left(4\right)
-\end{aligned}
-\end{equation}$$
+\end{align}$$
 
 将上述各式的旋转因子统一为 $W_{\frac{N}{2}}^k=W_N^{2k}$，则一个 8 点的 DFT 可以分解为四个 $\dfrac{N}{4}$ 点的 DFT ，先做 $\dfrac{N}{4}$ 点的 DFT，再用相应的两个 $\dfrac{N}{4}$ 点 DFT 的结果合成 $\dfrac{N}{2}$ 点的 DFT，从而得到 $X_1\left(k\right)、X_2\left(k\right)$，最后组合成为 $N$ 点的 DFT。上述过程的运算流图如下左图，实际绘制按照如下右图即可。
 
@@ -182,12 +172,10 @@ $$\begin{equation}
 
 &emsp;&emsp;对于长度为 $N=2^\nu$ 的序列，共有 $\nu$ 级蝶形运算，每级有 $\dfrac{N}{2}$ 个蝶形，每个蝶形有 $1$ 次复数加法、$2$ 次复数乘法，因此 $\nu$ 级蝶形运算共有
 
-$$\begin{equation}
-\begin{aligned}
+$$\begin{align}
 &复数乘法：m_F=\frac{N}{2}\cdot\nu=\frac{N}{2}\log_2{N}\\
 &复数加法：a_F=N\cdot\nu=N\log_2{N}
-\end{aligned}
-\end{equation}$$
+\end{align}$$
 
 ### 3.4.4 各类蝶形运算两个点相距的“距离”及 $W_N^k$ 的变化规律
 
@@ -231,15 +219,13 @@ $$\begin{equation}
 
 则序列的 DFT 可表示为
 
-$$\begin{equation}
-\begin{aligned}
+$$\begin{align}
 X\left(k\right)&=\sum_{n=0}^{\frac{N}{2}-1}{x\left(n\right)W_N^{nk}}+\sum_{n=\frac{N}{2}}^{N-1}{x\left(n\right)W_N^{nk}}=\sum_{n=0}^{\frac{N}{2}-1}{x\left(n\right)W_N^{nk}}+\sum_{n=0}^{\frac{N}{2}-1}{x\left(n+\frac{N}{2}\right)W_N^{(n+\frac{N}{2})k}}
 \\
 &=\sum_{n=0}^{\frac{N}{2}-1}{\left[x\left(n\right)+W_N^{\frac{N}{2}k}x\left(n+\frac{N}{2}\right)\right]W_N^{nk}}
 \\
 &\xlongequal{W_{N}^{\frac{N}{2}k}=\left( -1 \right) ^k}\sum_{n=0}^{\frac{N}{2}-1}{\left[x\left(n\right)+\left(-1\right)^kx\left(n+\frac{N}{2}\right)\right]W_N^{nk}},\ \ k=0,1,\cdots,\frac{N}{2}-1
-\end{aligned}
-\end{equation}$$
+\end{align}$$
 
 由 $W_N^{\frac{N}{2}k}=\left(-1\right)^k$，按照 $k$ 的奇偶可将 $X\left(k\right)$ 分成两部分，令 $k=2r$ 及 $k=2r+1,\ r=0,1,\cdots,\dfrac{N}{2}-1$，则
 
@@ -295,12 +281,10 @@ X\left(2r\right)=\sum_{n=0}^{\frac{N}{2}-1}{x_1\left(n\right)W_{\frac{N}{2}}^{rn
 
 &emsp;&emsp;对于长度为 $N=2^\nu$ 的序列，共有 $\nu$ 级蝶形运算，每级有 $\dfrac{N}{2}$ 个蝶形，每个蝶形有 $1$ 次复数加法、$2$ 次复数乘法，因此 $\nu$ 级蝶形运算共有
 
-$$\begin{equation}
-\begin{aligned}
+$$\begin{align}
 &复数乘法：m_F=\frac{N}{2}\cdot\nu=\frac{N}{2}\log_2{N}\\
 &复数加法：a_F=N\cdot\nu=N\log_2{N}
-\end{aligned}
-\end{equation}$$
+\end{align}$$
 
 # 5. 基-2 DIT-FFT 和 基-2 DIF-FFT 的比较
 
@@ -330,8 +314,7 @@ $$\begin{equation}
 
 则序列的 DFT 可表示为
 
-$$\begin{equation}
-\begin{aligned}
+$$\begin{align}
 X\left(k\right)&=\sum_{n=0}^{\frac{N}{4}-1}{x\left(n\right)W_N^{nk}}+\sum_{n=\frac{N}{4}}^{\frac{N}{2}-1}{x\left(n\right)W_N^{nk}}+\sum_{n=\frac{N}{2}}^{\frac{3N}{4}-1}{x\left(n\right)W_N^{nk}}+\sum_{n=\frac{3N}{4}}^{N-1}{x\left(n\right)W_N^{nk}}
 \\
 &=\sum_{n=0}^{\frac{N}{4}-1}\left[x\left(n\right)W_N^{nk}+x\left(n+\frac{N}{4}\right)W_N^{\left(n+\frac{N}{4}\right)k}+x\left(n+\frac{N}{2}\right)W_N^{\left(n+\frac{N}{2}\right)k}+x\left(n+\frac{3N}{4}\right)W_N^{\left(n+\frac{3N}{4}\right)k}\right]
@@ -339,8 +322,7 @@ X\left(k\right)&=\sum_{n=0}^{\frac{N}{4}-1}{x\left(n\right)W_N^{nk}}+\sum_{n=\fr
 &=\sum_{n=0}^{\frac{N}{4}-1}{\left[x\left(n\right)+x\left(n+\frac{N}{4}\right)W_N^{\frac{N}{4}k}+x\left(n+\frac{N}{2}\right)W_N^{\frac{N}{2}k}+x\left(n+\frac{3N}{4}\right)W_N^{\frac{3N}{4}k}\right]W_N^{nk}}
 \\
 &=\sum_{n=0}^{\frac{N}{4}-1}{\left[x\left(n\right)+x\left(n+\frac{N}{4}\right)W_4^k+x\left(n+\frac{N}{2}\right)W_4^{2k}+x\left(n+\frac{3N}{4}\right)W_4^{3k}\right]W_N^{nk}}
-\end{aligned}
-\end{equation}$$
+\end{align}$$
 
 按照 $k$ 除以 $4$ 的余数可将 $X\left(k\right)$ 分成四部分，分别令 $k=4r、k=4r+1、k=4r+2、k=4r+3$，其中 $r=0,1,\cdots,\dfrac{N}{4}-1$，则有
 
@@ -417,12 +399,10 @@ l_i=\dfrac{N}{4}-\dfrac{l_{j-1}}{2}=\dfrac{N}{6}\left[1-\left(-\dfrac{1}{2}\righ
 
 其中 $l_i$ 来自 L 蝶形的特殊结构。总的复乘次数为 L 蝶形数的两倍，而总的复加次数与基-2 FFT 算法相同，即
 
-$$\begin{equation}
-\begin{aligned}
+$$\begin{align}
 &复数乘法：C_F=2\cdot\sum_{i=1}^{\nu-1}l_i=\frac{N}{3}\log_2{N}-\frac{2N}{9}+\frac{\left(-1\right)^\nu2}{9}\ \ \propto\ \ \frac{N}{3}\log_2{N}\\
 &复数加法：a_F=N\cdot\nu=N\log_2{N}
-\end{aligned}
-\end{equation}$$
+\end{align}$$
 
 显然，**复乘次数相比基-2 FFT 算法下降了33%**。
 
@@ -499,8 +479,7 @@ X_2\left(k\right)=-{jY}_{op}\left(k\right)=-\frac{j}{2}\left[Y\left(k\right)-Y^\
 
 因此 $x\left(n\right)$ 的傅里叶变换（类似基-2 DIT）
 
-$$\begin{equation}
-\begin{aligned}
+$$\begin{align}
 X\left(k\right)&=\sum_{n=0}^{2N-1}{x\left(n\right)W_N^{nk}}=\sum_{n=0}^{N-1}{x\left(2n\right)W_{2N}^{2nk}}+\sum_{n=0}^{N-1}{x\left(2n+1\right)W_{2N}^{\left(2n+1\right)k}}
 \\
 &=\sum_{n=0}^{N-1}{x\left(2n\right)W_{2N}^{2nk}}+W_{2N}^k\sum_{n=0}^{N-1}{x\left(2n+1\right)W_{2N}^{2nk}}
@@ -508,8 +487,7 @@ X\left(k\right)&=\sum_{n=0}^{2N-1}{x\left(n\right)W_N^{nk}}=\sum_{n=0}^{N-1}{x\l
 &=\sum_{n=0}^{N-1}{x_1\left(n\right)W_N^{nk}}+W_{2N}^k\sum_{n=0}^{N-1}{x_2\left(n\right)W_N^{nk}}
 \\
 &=X_1\left(k\right)+W_{2N}^kX_2\left(k\right),\ \ \ \ \ \ \ \ \ \ \ k=0,1,\cdots,N-1
-\end{aligned}
-\end{equation}$$
+\end{align}$$
 
 $$\begin{equation}
 X\left(k+N\right)=X_1\left(k\right)-W_{2N}^kX_2\left(k\right),\ \ k=0,1,\cdots,N-1\qquad\qquad\quad\

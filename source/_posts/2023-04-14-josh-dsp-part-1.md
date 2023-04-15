@@ -66,12 +66,10 @@ p_\delta\left(t\right)=\sum_{n=-\infty}^{\infty}\delta\left(t-nT\right)=\frac{1}
 
 &emsp;&emsp;理想取样信号 $\hat{x}\left(t\right)$ 的傅里叶变换（取样角频率 $\Omega_s=\dfrac{2\pi}{T}$）
 
-$$\begin{equation}
-\begin{aligned}
+$$\begin{align}
   \hat{X}\left(j\Omega\right)&=\int_{-\infty}^{\infty}{\hat{x}\left(t\right)e^{-j\Omega t}\mathrm{d}t}=\int_{-\infty}^{\infty}{x_a\left(t\right)p_\delta\left(t\right)e^{-j\Omega t}\mathrm{d}t}\\
   &=\frac{1}{T}\int_{-\infty}^{\infty}{x_a\left(t\right)\sum_{m=-\infty}^{\infty}{e^{jm\Omega_st}e^{-j\Omega t}}\mathrm{d}t}=\frac{1}{T}\sum_{m=-\infty}^{\infty}\int_{-\infty}^{\infty}{x_a\left(t\right)e^{-j\left(\Omega-m\Omega_s\right)t}\mathrm{d}t}
-\end{aligned}
-\end{equation}$$
+\end{align}$$
 
 与连续时间信号 $x_a\left(t\right)$ 的傅里叶变换对比
 
@@ -90,24 +88,20 @@ $$\begin{equation}
 
 &emsp;&emsp;设有输入连续时间信号 $x_a\left(t\right)$，取样信号 $\hat{x}\left(t\right)$，幅度为 $1$ 重复周期为 $T$ 宽度为 $\tau$ 的周期取样脉冲 $p\left(t\right)$。取样脉冲的傅里叶变换[^3]为
 
-$$\begin{equation}
-\begin{aligned}
+$$\begin{align}
 p\left( t \right) =\begin{cases}
   1,&0<\left| t \right|<\dfrac{\tau}{2}\\
   0,&\dfrac{\tau}{2}<\left| t \right|<\dfrac{T}{2}\\
 \end{cases}
 且p\left(t+T\right)=p\left(t\right) \xleftrightarrow{\text{Fourier Transform}} P\left(j\Omega\right)=\sum_{m=-\infty}^{\infty}\frac{2\sin{\left(\dfrac{m\pi\tau}{T}\right)}}{m}\delta\left(\Omega-\frac{2\pi}{T}\right)
-\end{aligned}
-\end{equation}$$
+\end{align}$$
 
 则取样信号 $\hat{x}\left(t\right)$ 的频谱
 
-$$\begin{equation}
-\begin{aligned}
+$$\begin{align}
 \hat{X}\left(j\Omega\right)&=\dfrac{1}{2\pi}X_a\left(j\Omega\right)\ast P\left(j\Omega\right)=\dfrac{1}{2\pi}\sum_{m=-\infty}^{\infty}\dfrac{2\sin{\left(\dfrac{m\pi\tau}{T}\right)}}{m}X_a\left[j\left(\Omega-m\frac{2\pi}{T}\right)\right]\\
 &=\frac{\tau}{T}\sum_{m=-\infty}^{\infty}Sa\left(\frac{m\pi\tau}{T}\right)X_a\left[j\left(\Omega-m\frac{2\pi}{T}\right)\right]
-\end{aligned}
-\end{equation}$$
+\end{align}$$
 
 其中
 
@@ -143,13 +137,11 @@ h_a\left( t \right) =\frac{1}{2\pi}\int_{-\infty}^{\infty}{H\left( j\Omega \righ
 
 则由时域卷积定理[^5]
 
-$$\begin{equation}
-\begin{aligned}
+$$\begin{align}
   y\left(t\right)&=\hat{x}\left(t\right)\ast h_a\left(t\right)=\int_{-\infty}^{\infty}{\hat{x}\left(t\right)h_a\left(t-\tau\right)d\tau}=\int_{-\infty}^{\infty}{\left[\sum_{n=-\infty}^{\infty}{x_a\left(\tau\right)\delta\left(\tau-nT\right)}\right]h_a\left(t-\tau\right)d\tau}\\
   &=\sum_{n=-\infty}^{\infty}\int_{-\infty}^{\infty}{x_a\left(\tau\right)h_a\left(t-\tau\right)\delta\left(\tau-nT\right)d\tau}=\sum_{n=-\infty}^{\infty}{x_a\left(nT\right)h_a\left(t-nT\right)}\\
   &=\sum_{n=-\infty}^{\infty}{x_a\left(nT\right)\dfrac{\sin{\dfrac{\pi}{T}\left(t-nT\right)}}{\dfrac{\pi}{T}\left(t-nT\right)}=x_a\left(t\right)}
-\end{aligned}
-\end{equation}$$
+\end{align}$$
 
 其中内插函数
 
@@ -209,12 +201,10 @@ x\left(n\right)=\sum_{k=-\infty}^{\infty}x\left(k\right)\delta\left(n-k\right)
 
 由此，线性时不变系统的输出可表示为
 
-$$\begin{equation}
-\begin{aligned}
+$$\begin{align}
   y\left(n\right)&=T\left[x\left(n\right)\right]=T\left[\sum_{k=-\infty}^{\infty}x\left(k\right)\delta\left(n-k\right)\right]\\
   &\xlongequal{\text{叠加性、均匀性}}\sum_{k=-\infty}^{\infty}{x\left( k \right)}T\left[ \delta \left( n-k \right) \right] \xlongequal{\text{非时变性}}\sum_{k=-\infty}^{\infty}{x\left( k \right)}\text{h}\left( n-k \right)
-\end{aligned}
-\end{equation}$$
+\end{align}$$
 
 故任何离散时间线性时不变系统，可以通过其单位取样响应 $h\left(n\right)$ 来**完全表征**。
 

@@ -49,7 +49,7 @@ x\left(n\right)=\widetilde{x}\left(n\right)R_N\left(n\right)=\frac{1}{N}\sum_{k=
 
 # 2. DFT 的矩阵算法
 
-&emsp;&emsp;若令 $X=\left[\begin{matrix}X\left(0\right)&X\left(1\right)&\cdots&X\left(N-1\right)\\\end{matrix}\right]^\mathrm{T}，x=\left[\begin{matrix}x\left(0\right)&x\left(1\right)&\cdots&x\left(N-1\right)\\\end{matrix}\right]^\mathrm{T}$，则 DFT 和 IDFT 可分别表示为
+&emsp;&emsp;若令 $X=\left[\begin{matrix}X\left(0\right),X\left(1\right),\cdots,X\left(N-1\right)\\\end{matrix}\right]^\mathrm{T}$，$x=\left[\begin{matrix}x\left(0\right),x\left(1\right),\cdots,x\left(N-1\right)\\\end{matrix}\right]^\mathrm{T}$，则 DFT 和 IDFT 可分别表示为
 
 $$\begin{equation}
 X=D_Nx,\ \ x=D_N^{-1}X
@@ -95,13 +95,11 @@ $$\begin{equation}
 
 证明：
 
-$$\begin{equation}
-\begin{aligned}
+$$\begin{align}
 &x\left(-n\right)=x\left(N-n\right)=\frac{1}{N}\sum_{k=0}^{N-1}{X\left(k\right)W_N^{-\left(N-n\right)k}}=\frac{1}{N}\sum_{k=0}^{N-1}{X\left(k\right)W_N^{nk}}
 \\
 \Longrightarrow &x\left(-k\right)=x\left(N-k\right)=\sum_{n=0}^{N-1}{\left[\frac{X\left(n\right)}{N}\right]W_N^{kn}}=\mathrm{DFT}\left[\frac{X\left(n\right)}{N}\right]
-\end{aligned}
-\end{equation}$$
+\end{align}$$
 
 ## 3.4 反转定理
 
@@ -133,23 +131,19 @@ x\left(0\right)=\frac{1}{N}\left.\sum_{k=0}^{N-1}{X\left(k\right)W_N^{-kn}}\righ
 
 $$\begin{equation}
 g\left(n\right)=
-\begin{aligned}
 \begin{cases}
 x(n),&n=0,1,⋯,N-1\\
 0,&n=N,N+1,⋯rN-1
 \end{cases}
-\end{aligned}
 \end{equation}$$
 
 则 $g\left(n\right)$ 的 DFT
 
-$$\begin{equation}
-\begin{aligned}
+$$\begin{align}
 G\left(k\right)&=\mathrm{DFT}\left[g\left(n\right)\right]=\sum_{n=0}^{rN-1}{g\left(n\right)e^{-j\frac{2\pi nk}{rN}}}=\sum_{n=0}^{N-1}{g\left(n\right)e^{-j\frac{2\pi n\left(\frac{k}{r}\right)}{N}}}
 \\
 &=X\left(\frac{k}{r}\right),\ \ k=0,1,\cdots,rN-1\
-\end{aligned}
-\end{equation}$$
+\end{align}$$
 
 由此，**$G\left(k\right)$ 与 $X\left(k\right )$具有相同的形状，但 $G\left(k\right)$ 的频谱间隔比 $X\left(k\right)$ 的小。即 {% label primary @通过补零，频谱变得更加细致。但是补零不能提高频谱分辨能力。%}**
 
@@ -159,26 +153,22 @@ G\left(k\right)&=\mathrm{DFT}\left[g\left(n\right)\right]=\sum_{n=0}^{rN-1}{g\le
 
 $$\begin{equation}
 x\left(\left(n-m\right)\right)_NR_N\left(n\right)=
-\begin{aligned}
 \begin{cases}
 x\left(n-m\right),&m\leqslant n\leqslant N-1
 \\
 x\left(N-m+n\right),&0\leqslant n\leqslant m
 \end{cases}
-\end{aligned}
 \end{equation}$$
 
 ### 3.8.2 圆周反转（周期化→反转→取主值）
 
 $$\begin{equation}
 x\left(\left(-n\right)\right)_NR_N\left(n\right)=
-\begin{aligned}
 \begin{cases}
 x\left(0\right),&n=0
 \\
 x\left(N-n\right),&1\leqslant n\leqslant N-1
 \end{cases}
-\end{aligned}
 \end{equation}$$
 
 ### 3.8.3 有限长序列的时间圆周移位定理（可以通过 DFS 证明）
@@ -263,13 +253,11 @@ $$\begin{equation}
 \mathrm{DFT}\left[x^\ast\left(n\right)\right]=\sum_{n=0}^{N-1}{x^\ast\left(n\right)W_N^{kn}}=\left[\sum_{n=0}^{N-1}{x\left(n\right)W_N^{-kn}}\right]^\ast=X^\ast\left(-k\right)=X^\ast\left(\left(N-k\right)\right)_N
 \end{equation}$$
 
-$$\begin{equation}
-\begin{aligned}
+$$\begin{align}
 \mathrm{DFT}\left[x^\ast\left(-n\right)\right]&=\sum_{n=0}^{N-1}{x^\ast\left(-n\right)W_N^{kn}}=\left[\sum_{n=0}^{N-1}{x\left(-n\right)W_N^{-kn}}\right]^\ast
 \\
 &=\left[\sum_{m=-N+1}^{0}{x\left(m\right)W_N^{km}}\right]^\ast=\left[\sum_{n=0}^{N-1}{x\left(n\right)W_N^{kn}}\right]^\ast=X^\ast\left(k\right)
-\end{aligned}
-\end{equation}$$
+\end{align}$$
 
 <a id=3.8.5.4></a>
 
@@ -326,23 +314,19 @@ X_{op}\left(k\right)=-X_{op}^\ast\left(N-k\right)(实部相反，虚部相等)
 
 #### 3.8.6.1 时域圆周卷积定理
 
-$$\begin{equation}
-\begin{aligned}
+$$\begin{align}
 x\left(n\right)=x_1\left(n\right)\odot x_2\left(n\right)&=\widetilde{y}\left(n\right)=\sum_{m=0}^{N-1}{x_1\left(m\right)\left[x_2\left(\left(n-m\right)\right)_NR_N\left(n\right)\right]}
 \\
 &=\mathrm{IDFT}\left[X_1\left(k\right)\cdot X_2\left(k\right)\right]
-\end{aligned}
-\end{equation}$$
+\end{align}$$
 
 #### 3.8.6.2 频域圆周卷积定理
 
-$$\begin{equation}
-\begin{aligned}
+$$\begin{align}
 X\left(k\right)=X_1\left(k\right)\odot X_2\left(k\right)&=\widetilde{X}\left(k\right)R_N\left(k\right)=\frac{1}{N}\sum_{l=0}^{N-1}{X_1\left(l\right)\left[X_2\left(\left(k-l\right)\right)_NR_N\left(k\right)\right]}
 \\
 &=\mathrm{DFT}\left[x_1\left(n\right)\cdot x_2\left(n\right)\right]
-\end{aligned}
-\end{equation}$$
+\end{align}$$
 
 #### 3.8.6.3 圆周卷积和线性卷积的关系
 
@@ -379,23 +363,19 @@ h\left(n\right)=\left\{1,-2,-3\right\}(0\leqslant n\leqslant2)
 
 &emsp;&emsp;&emsp;将长序列 $x\left(n\right)$ 分段，每段长度为 $5$
 
-$$\begin{equation}
-\begin{aligned}
+$$\begin{align}
 &x_1\left(n\right)=\left\{2,-3,4,5,-6\right\} \\
 &x_2\left(n\right)=\left\{7,8,-9,-10,11\right\} \\
 &x_3\left(n\right)=\left\{ -12,-13,-14\right\}
-\end{aligned}
-\end{equation}$$
+\end{align}$$
 
 &emsp;&emsp;&emsp;用圆周卷积计算计算各段与 $h\left(n\right)$ 的线性卷积，下划线标注部分是需要重叠相加的部分
 
-$$\begin{equation}
-\begin{aligned}
+$$\begin{align}
 &y_1\left(n\right)=\left\{2,-7,4,6,-28,\underline{-3,18}\right\}\\
 &y_2\left(n\right)=\left\{\underline{7,-6},-46,-16,58,\underline{8,-33}\right\}\\
 &y_3\left(n\right)=\left\{\underline{-12,11},48,67,42\right\}
-\end{aligned}
-\end{equation}$$
+\end{align}$$
 
 &emsp;&emsp;&emsp;将各段结果重叠相加，连接成线性卷积结果
 
@@ -407,27 +387,23 @@ y\left(n\right)=\left\{2,-7,4,6,-28,\mathbf{4},\mathbf{12},-46,-16,58,-\mathbf{4
 
 &emsp;&emsp;&emsp;将长序列 $x\left(n\right)$ 分段，每段长度为 $5$
 
-$$\begin{equation}
-\begin{aligned}
+$$\begin{align}
 &x_1\left(n\right)=\left\{\underline{0,0,2},-3,4\right\}\\
 &x_2\left(n\right)=\left\{\underline{-3,4},5,-6,7\right\}\\
 &x_3\left(n\right)=\left\{\underline{-6,-7},8,-9,-10\right\}\\
 &x_4\left(n\right)=\left\{\underline{-9,-10},11,-12,-13\right\}\\
 &x_5\left(n\right)=\left\{\underline{-12,-13},-14,0,0\right\}
-\end{aligned}
-\end{equation}$$
+\end{align}$$
 
 &emsp;&emsp;&emsp;用圆周卷积计算计算各段与 $h\left(n\right)$ 的线性卷积，下划线标注部分是需要舍去的部分
 
-$$\begin{equation}
-\begin{aligned}
+$$\begin{align}
 &y_1\left(n\right)=\left\{\underline{1,-12},2,-7,4\right\}\\
 &y_2\left(n\right)=\left\{\underline{1,-11},6,28,4\right\}\\
 &y_3\left(n\right)=\left\{\underline{41,49},12,-46,-16\right\}\\
 &y_4\left(n\right)=\left\{\underline{53,47},58,-4,-22\right\}\\
 &y_5\left(n\right)=\left\{\underline{-12,11},48,67,42\right\}
-\end{aligned}
-\end{equation}$$
+\end{align}$$
 
 &emsp;&emsp;&emsp;将各段重叠部分舍去，连接成线性卷积结果
 
@@ -443,13 +419,11 @@ $$\begin{equation}
 
 ## 3.10 DFT 与 $z$ 变换
 
-$$\begin{equation}
-\begin{aligned}
+$$\begin{align}
 X\left(k\right)&=\sum_{n=0}^{N-1}{x\left(n\right)W_N^{nk}}=\sum_{n=0}^{N-1}{x\left(n\right)e^{-j\frac{2\pi}{N}nk}}=\left.\sum_{n=0}^{N-1}{x\left(n\right)z^{-n}}\right|_{z=e^{j\frac{2\pi}{N}k}}
 \\
 &=\left.X\left(z\right)\right|_{z=e^{j\frac{2\pi}{N}k}}=\left.\sum_{n=0}^{N-1}{x\left(n\right)e^{-j\omega n}}\right|_{\omega=\frac{2\pi}{N}k}\left(k=0,1,\cdots,N-1\right)
-\end{aligned}
-\end{equation}$$
+\end{align}$$
 
 因此 $x\left(n\right)$ 的 DFT 的 $N$ 个系数即为 $x\left(n\right)$ 的 $z$ 变换 $X\left(z\right)$ 在单位圆上 $N$ 等分的取样点。
 
@@ -475,15 +449,13 @@ N\geqslant M
 
 &emsp;&emsp;用 DFT 表示 ZT
 
-$$\begin{equation}
-\begin{aligned}
+$$\begin{align}
 X\left(z\right)&=\sum_{n=0}^{N-1}{x\left(n\right)z^{-n}}=\sum_{n=0}^{N-1}{\left[\frac{1}{N}\sum_{k=0}^{N-1}{X\left(k\right)W_N^{-nk}}\right]z^{-n}}=\frac{1}{N}\sum_{k=0}^{N-1}\left[X\left(k\right)\sum_{n=0}^{N-1}\left(W_N^{-k}z^{-1}\right)^n\right]
 \\
 &=\frac{1}{N}\sum_{k=0}^{N-1}{X\left(k\right)\frac{1-W_N^{-kn}z^{-N}}{1-W_N^{-k}z^{-1}}}=\frac{1}{N}\sum_{k=0}^{N-1}{X\left(k\right)\frac{1-z^{-N}}{1-W_N^{-k}z^{-1}}}
 \\
 &=\frac{1-z^{-N}}{N}\sum_{k=0}^{N-1}\frac{X\left(k\right)}{1-W_N^{-k}z^{-1}}=\sum_{k=0}^{N-1}{X\left(k\right)\varphi_k\left(z\right)}
-\end{aligned}
-\end{equation}$$
+\end{align}$$
 
 其中 $X\left(z\right)$ 的内插公式
 
