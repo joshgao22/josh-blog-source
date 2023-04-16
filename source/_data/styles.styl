@@ -1,22 +1,14 @@
 // Custom styles.
 
-// 设置背景图片
 body{
-  // background:url('https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/backgroud.jpg');
-  background:url(../images/bg.svg);
-  background-repeat:repeat;
-  // background-attachment:fixed;
-  // background-position:center;
-  // background-size:100% 100%;
-}
-
-// 博客内容透明化
-// :root {
-//   --content-bg-color:rgba(255, 255, 255, 0.96);
-// }
+    // 设置背景图片
+    background:url(../images/bg.svg);
+    background-repeat:repeat;
+  }
 
 @media (prefers-color-scheme: light) {
   :root {
+    // 博客内容透明化
     --content-bg-color:rgba(255, 255, 255, 0.96);
   }
 }
@@ -25,6 +17,9 @@ body{
   :root {
     --content-bg-color:rgba(0, 0, 0, 0.88);
   }
+  // img{
+  //   filter: invert(1);
+  // }
 }
 
 // 修复不蒜子显示属性被 hexo-helper-live2d 覆盖
