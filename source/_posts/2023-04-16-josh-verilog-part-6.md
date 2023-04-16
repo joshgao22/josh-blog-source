@@ -1,6 +1,6 @@
 ---
 title: Josh 的学习笔记之 Verilog（Part 6——如何写好状态机）
-mathjax: true
+mathjax: false
 comments: true
 copyright: true
 toc:
