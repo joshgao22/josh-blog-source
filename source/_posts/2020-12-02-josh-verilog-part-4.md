@@ -193,7 +193,7 @@ RTL 描述中时序逻辑和组合逻辑的连接关系和拓扑结构决定了�
 
     {% note info %}
 
-    请注意，这个命题的反命题不一定成立。**某些信号虽然被定义为 `reg` 型，但是最终综合实现结果并不是寄存器**，如上述例子 [cnt2.v](#cnt2.v) 中 `cnt_out_plus` 虽然被指定为 `reg` 型，但是实现时是纯组合逻辑。**只有定义为 `reg` 型，且 `always` 的敏感表为 `posedge` 或 `negedge` 沿敏感操作时，该信号才是寄存器**。在[《Part 2 —— Verilog 语言基础》](https://josh-gao.top/posts/fd2ca242.html)和[《Part 3 —— 描述方式和设计层次》](https://josh-gao.top/posts/fd117896.html)也有相关内容描述这个问题。
+    请注意，这个命题的反命题不一定成立。**某些信号虽然被定义为 `reg` 型，但是最终综合实现结果并不是寄存器**，如上述例子 [cnt2.v](#cnt2.v) 中 `cnt_out_plus` 虽然被指定为 `reg` 型，但是实现时是纯组合逻辑。**只有定义为 `reg` 型，且 `always` 的敏感表为 `posedge` 或 `negedge` 沿敏感操作时，该信号才是寄存器**。在 [Part 2——Verilog 语言基础][] 和 [Part 3——描述方式和设计层次][] 也有相关内容描述这个问题。
 
     {% endnote %}
 
