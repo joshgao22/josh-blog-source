@@ -110,9 +110,9 @@ deploy:
   - type: git
     repo: josh@101.43.227.73:/home/josh/documents/josh-blog-deploy.git
     branch: master
-  - type: git
-    repo: josh@172.245.154.153:/home/josh/documents/josh-blog.git
-    branch: master
+  # - type: git
+  #   repo: josh@172.245.154.153:/home/josh/documents/josh-blog.git
+  #   branch: master
   - type: git
     repo: git@e.coding.net:josh-gao/josh-blog/josh-blog.git
     branch: master

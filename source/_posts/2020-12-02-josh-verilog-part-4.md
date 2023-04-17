@@ -193,7 +193,7 @@ RTL 描述中时序逻辑和组合逻辑的连接关系和拓扑结构决定了�
 
     {% note info %}
 
-    请注意，这个命题的反命题不一定成立。**某些信号虽然被定义为 `reg` 型，但是最终综合实现结果并不是寄存器**，如上述例子 [cnt2.v](#cnt2.v) 中 `cnt_out_plus` 虽然被指定为 `reg` 型，但是实现时是纯组合逻辑。**只有定义为 `reg` 型，且 `always` 的敏感表为 `posedge` 或 `negedge` 沿敏感操作时，该信号才是寄存器**。在 [Part 2——Verilog 语言基础][] 和 [Part 3——描述方式和设计层次][] 也有相关内容描述这个问题。
+    请注意，这个命题的反命题不一定成立。**某些信号虽然被定义为 `reg` 型，但是最终综合实现结果并不是寄存器**，如上述例子 [cnt2.v](#cnt2.v) 中 `cnt_out_plus` 虽然被指定为 `reg` 型，但是实现时是纯组合逻辑。**只有定义为 `reg` 型，且 `always` 的敏感表为 `posedge` 或 `negedge` 沿敏感操作时，该信号才是寄存器**。在 [Part 2——Verilog 语言基础](https://josh-gao.top/posts/fd2ca242.html) 和 [Part 3——描述方式和设计层次](https://josh-gao.top/posts/fd117896.html) 也有相关内容描述这个问题。
 
     {% endnote %}
 
@@ -958,7 +958,7 @@ endmodule
 
   {% note info %}
 
-  同步时序电路的概念参见 [Part 5——RTL 设计与编码指导的 2.1 同步设计原则][]小节；亚稳态的概念参见 [Part 5——RTL 设计与编码指导的 2.2 亚稳态][]小节。
+  同步时序电路的概念参见 [Part 5——RTL 设计与编码指导的 2.1 同步设计原则](https://josh-gao.top/posts/53b8b42e.html#toc.2.1)小节；亚稳态的概念参见 [Part 5——RTL 设计与编码指导的 2.2 亚稳态](https://josh-gao.top/posts/53b8b42e.html#toc.2.2)小节。
 
   {% endnote %}
 
@@ -1084,7 +1084,7 @@ endmodule
 
 ![图 4-7 异步复位同步化](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-070-AsynchronousReset-02.png!sign){width=500px}
 
-## 3.10. 用 `case` 和 `if ... else` 建模
+## 3.10. 用 `case` 和 `if ... else` 建模<a id="toc.3.10"></a>
 
 一般来说， `case` 语句是“平行”（Balance, Parallel）的结构，即每个 `case` 分支的条件判断和执行都是并行的，没有“优先级（Prior）” 。而 `if ... else`、`if ... else if ...` 语句可以建模**无优先级**的判断结构，`if ... if ... if ...` 结构可以建模具**有优先级**的判断结构。
 
@@ -1280,8 +1280,6 @@ EDA 先锋工作室. *轻松成为设计高手——Verilog HDL 实用精解.* �
 [Part 3——描述方式和设计层次的 3.4 高级编程语句]: https://josh-gao.top/posts/fd117896.html#toc.3.4
 [Part 3——描述方式和设计层次的 5. 设计层次]: https://josh-gao.top/posts/fd117896.html#toc.5
 [Part 5——RTL 设计与编码指导]: https://josh-gao.top/posts/53b8b42e.html
-[Part 5——RTL 设计与编码指导的 2.1 同步设计原则]: https://josh-gao.top/posts/53b8b42e.html#toc.2.1
-[Part 5——RTL 设计与编码指导的 2.2 亚稳态]: https://josh-gao.top/posts/53b8b42e.html#toc.2.2
 [Part 5——RTL 设计与编码指导的 4. 结构层次和模块划分]: https://josh-gao.top/posts/53b8b42e.html#toc.4
 [Part 5——RTL 设计与编码指导的 7. RTL 代码优化技巧]: https://josh-gao.top/posts/53b8b42e.html#toc.7
 [Part 6——如何写好状态机]: https://josh-gao.top/posts/d860a67e.html
