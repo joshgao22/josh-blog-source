@@ -51,9 +51,11 @@ EDA 行业的先行者们发明了 Verilog 硬件描述语言，其最根本的�
 
 <a id="HelloVlog"></a>
 
-首先看一个简单的如下图所示的电路（模块）：`HelloVlog`。它可以是一个独立的设计，也可以是更大的系统的一个组成部分。
+首先看一个简单的如[图 2-1](#fig.2-1) 所示的电路（模块）：`HelloVlog`。它可以是一个独立的设计，也可以是更大的系统的一个组成部分。
 
-![HelloVlog 模块](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-28-josh-verilog-part-2/2020-11-28-josh-verilog-part-2-010-JoshVerilog.png!sign){width=800px}
+<a id="fig.2-1"></a>
+
+![图 2-1 HelloVlog 模块](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-28-josh-verilog-part-2/2020-11-28-josh-verilog-part-2-010-JoshVerilog.png!sign){width=800px}
 
 该电路首先在两个 2 位的输入数据 `A_in[1:0]` 的和 `B_in[1:0]` 之间，由 `sel` 信号做二选一。后面是一个 2-4 译码电路，将输入的信号 `result[1:0]`解析成 `eq0`、`eql`、`eq2` 和 `eq3` 这4个信号，它们同时只有一个为 1。
 
@@ -621,24 +623,25 @@ always @(eq0 or eq1)
 reg A_xor_wire
 ```
 
-这两者描述的目的一样，都是一个异或门，如下图所示。
+这两者描述的目的一样，都是一个异或门，如[图 2-2](#fig.2-2) 所示。
 
-<a id=XorGate></a>
+<a id="fig.2-2"></a>
 
-![异或门](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-28-josh-verilog-part-2/2020-11-28-josh-verilog-part-2-020-XORGate.png!sign){width=700px}
+![图 2-2 异或门](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-28-josh-verilog-part-2/2020-11-28-josh-verilog-part-2-020-XORGate.png!sign){width=700px}
 
 下面从语义上的角度探讨两种描述方式的不同。
 
-第一种描述方式使用 `assign` 语句，Verilog 中将其称为连续赋值语句（Continuously Assignment），实际上是**连续驱动**的过程。也就是说，在任意一个仿真时刻，当前时刻 `eq0` 和 `eq1` 相异或的结果决定了 `1ns` 以后（语句 `#1` 的延时控制）的线网变量 `A_xor_wire` 的值，**不管 `eq0` 和 `eq1` 变化与否，这个驱动过程一直存在**，因此称为连续驱动。（在仿真器中，线网变量是不占用仿真内存空间的。）如上[异或门图](#XorGate)中的时序所示，这个驱动过程在任意时刻都存在。
+第一种描述方式使用 `assign` 语句，Verilog 中将其称为连续赋值语句（Continuously Assignment），实际上是**连续驱动**的过程。也就是说，在任意一个仿真时刻，当前时刻 `eq0` 和 `eq1` 相异或的结果决定了 `1ns` 以后（语句 `#1` 的延时控制）的线网变量 `A_xor_wire` 的值，**不管 `eq0` 和 `eq1` 变化与否，这个驱动过程一直存在**，因此称为连续驱动。（在仿真器中，线网变量是不占用仿真内存空间的。）如上[图 2-2](#fig.2-2) 中的时序所示，这个驱动过程在任意时刻都存在。
 
-在第二种描述方式中使用了 `always` 语句，后面紧跟着一个敏感列表：`@(eq0 or eq1)` 因此，这个语句只有在 `eq0` 或 `eq1` 发生变化时才会执行。如上[异或门图](#XorGate)中，在时刻 2、3 和 6，该语句都将执行，将 `eq0` 和 `eq1` 赋值的结果延时 1ns 以后赋值给 `A_xor_wire` 变量。**在其他时刻，`A_xor_wire` 变量必须保持**。因此，**从仿真语义上讲，需要一个存储单元，也可以说是寄存器，来保存 `A_xor_wire` 变量的中间值**。这就是 Verilog 语言的“寄存器类型”变量的来历，而这个 `A_xor_wire` 变量首先需要定义为 `reg` 类型。
+在第二种描述方式中使用了 `always` 语句，后面紧跟着一个敏感列表：`@(eq0 or eq1)` 因此，这个语句只有在 `eq0` 或 `eq1` 发生变化时才会执行。如[图 2-2](#fig.2-2) 中，在时刻 2、3 和 6，该语句都将执行，将 `eq0` 和 `eq1` 赋值的结果延时 1ns 以后赋值给 `A_xor_wire` 变量。**在其他时刻，`A_xor_wire` 变量必须保持**。因此，**从仿真语义上讲，需要一个存储单元，也可以说是寄存器，来保存 `A_xor_wire` 变量的中间值**。这就是 Verilog 语言的“寄存器类型”变量的来历，而这个 `A_xor_wire` 变量首先需要定义为 `reg` 类型。
 
 不管采用哪种方式，所描述的是一样的组合逻辑电路。尤其是第二种描述，虽然其在语言中被定义为 `reg` 型，但并不是对应硬件上的触发器（flip-flop），而是 Verilog 语言仿真语义上的寄存器概念。
 
-但是，在对实际电路中 D 触发器建模的时候，必须采用 `reg` 型的变量。下图是 D 触发器的模型。
+但是，在对实际电路中 D 触发器建模的时候，必须采用 `reg` 型的变量。[图 2-3](#fig.2-3)是 D 触发器的模型。
 
-![D 触发器模型](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-28-josh-verilog-part-2/2020-11-28-josh-verilog-part-2-030-DFlipFlop.png!sign){width=300px}
+<a id="fig.2-3"></a>
 
+![图 2-3 D 触发器模型](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-28-josh-verilog-part-2/2020-11-28-josh-verilog-part-2-030-DFlipFlop.png!sign){width=300px}
 
 在上述[实例代码](#HelloVlogCode)中相应的描述如下：
 

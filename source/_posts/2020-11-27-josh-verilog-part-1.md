@@ -109,9 +109,11 @@ Verilog 语言是根据 C 语言发明而来的，因此 Verilog 具备了 C 语
 
 # 3. HDL 的设计与验证流程<a id="03"></a>
 
-HDL 的基本功能就是有效地描述并仿真硬件系统。在此部分，抛开具体的 PLD 或 ASIC 设计流程，从 HDL 语言层次入手，分析典型的 HDL 设计与验证流程。基于 HDL 的设计、仿真流程如下图所示。图中，虚线框表示的步骤可以根据项目的复杂度省略，而实线框表示的步骤为必须执行的步骤。
+HDL 的基本功能就是有效地描述并仿真硬件系统。在此部分，抛开具体的 PLD 或 ASIC 设计流程，从 HDL 语言层次入手，分析典型的 HDL 设计与验证流程。基于 HDL 的设计、仿真流程如[图 1-1](#fig.1-1) 所示。图中，虚线框表示的步骤可以根据项目的复杂度省略，而实线框表示的步骤为必须执行的步骤。
 
-![基于 HDL 的设计、仿真流程](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-27-josh-verilog-part-1/2020-11-27-josh-verilog-part-1-010-DesignSimulationFlowChartBasedonHDL.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/14/dissolve/20/gravity/southeast/dx/5/dy/5){width=800px}
+<a id="fig.1-1"></a>
+
+![图 1-1 基于 HDL 的设计、仿真流程](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-27-josh-verilog-part-1/2020-11-27-josh-verilog-part-1-010-DesignSimulationFlowChartBasedonHDL.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/14/dissolve/20/gravity/southeast/dx/5/dy/5){width=800px}
 
 下面对一些关键设计步骤与概念进行展开。
 

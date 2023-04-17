@@ -47,9 +47,11 @@ description: Verilog 语言可以用多种方式来描述硬件，同时，使�
 
 ## 2.2. 连续赋值语句
 
-![一个电路模型](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-010-XORGate.png!sign){width=800px}
+<a id="fig.3-1"></a>
 
-上图中的电路模型可以用如下的语句来描述：
+![图 3-1 一个电路模型](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-010-XORGate.png!sign){width=800px}
+
+[图 3-1](#fig.3-1) 中的电路模型可以用如下的语句来描述：
 
 ``` verilog
 assign #1 A_xor_wire = eq0 ^ eq1;
@@ -81,9 +83,11 @@ assign #1 A_xor_wire = eq0 ^ eq1;
 
 ### 2.2.2. 实例
 
-![两个半加器和一个或门组成全加器](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-020-FullAdder.png!sign){width=800px}
+<a id="fig.3-2"></a>
 
-在上图中，用两个半加器和一个或门组成一个全加器，这里将使用连续赋值语句描述这个电路。代码如下。
+![图 3-2 两个半加器和一个或门组成全加器](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-020-FullAdder.png!sign){width=800px}
+
+在[图 3-2](#fig.3-2) 中，用两个半加器和一个或门组成一个全加器，这里将使用连续赋值语句描述这个电路。代码如下。
 
 <a id="HalfAdder"></a>
 
@@ -218,9 +222,11 @@ assign WireOr = C & D;
 endmodule
 ```
 
-逻辑综合以后，它具体对应的逻辑电路如下图所示。
+逻辑综合以后，它具体对应的逻辑电路如[图 3-3](#fig.3-3) 所示。
 
-![线或的功能](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-030-WireOr.png!sign){width=700px}
+<a id="fig.3-3"></a>
+
+![图 3-3 线或的功能](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-030-WireOr.png!sign){width=700px}
 
 同样，可以使用 `wand` 线网类型来将不同的输出“线与”在一起，如下：
 
@@ -238,9 +244,11 @@ assign WireAnd = C & D;
 endmodule
 ```
 
-它对应的逻辑电路如下图所示。
+它对应的逻辑电路如[图 3-4](#fig.3-4) 所示。
 
-![线与的功能](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-040-WireAnd.png!sign){width=700px}
+<a id="fig.3-4"></a>
+
+![图 3-4 线与的功能](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-040-WireAnd.png!sign){width=700px}
 
 ### 2.4.3. 三态总线功能
 
@@ -260,9 +268,11 @@ assign WireTri = (en2_n) ? 1'bz : (C & D);
 endmodule
 ```
 
-其实现的电路如下图所示。
+其实现的电路如[图 3-5](#fig.3-5) 所示。
 
-![三态驱动总线电路](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-050-WireTri.png!sign){width=700px}
+<a id="fig.3-5"></a>
+
+![图 3-5 三态驱动总线电路](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-050-WireTri.png!sign){width=700px}
 
 # 3. 行为描述<a id="03"><a>
 
@@ -350,9 +360,11 @@ end
 
 #### 3.1.3.1. 事件语句（`@`）的用法
 
-![D 触发器模型](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-060-DFlipFlop.png!sign){width=600px}
+<a id="fig.3-6"></a>
 
-要实现上图中这样一个 D 触发器，通常用以下代码：
+![图 3-6 D 触发器模型](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-060-DFlipFlop.png!sign){width=600px}
+
+要实现[图 3-6](#fig.3-6) 中这样一个 D 触发器，通常用以下代码：
 
 ``` verilog TYP_DFF.v
 module TYP_DFF (clk, D, Q);
@@ -373,7 +385,7 @@ endmodule
 
 由于 `always` 语句的特点，`always` 语句马上开始重新执行，当遇到 `@(posedge clk)` 语句时，进程再一次挂起，等待 `clk` 的上升沿到来，才继续往下执行。
 
-这样，在 `always` 语句中使用 `@` 事件语句很好地模拟了触发器的行为。综合工具会马上将上述代码映射成上图中的 D 触发器。
+这样，在 `always` 语句中使用 `@` 事件语句很好地模拟了触发器的行为。综合工具会马上将上述代码映射成[图 3-6](#fig.3-6) 中的 D 触发器。
 
 同样的道理，采用如下的代码也可以得到一样的 D 触发器功能：
 
@@ -494,9 +506,11 @@ always @(A_in or B_in or C_in) begin
 end
 ```
 
-设计者的根本目的是得到如下图所示的电路。
+设计者的根本目的是得到如[图 3-7](#fig.3-7) 所示的电路。
 
-![一个组合逻辑](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-070-ACombinationalLogic.png!sign){width=700px}
+<a id="fig.3-7"></a>
+
+![图 3-7 一个组合逻辑](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-070-ACombinationalLogic.png!sign){width=700px}
 
 在以上代码仿真时，正是利用了阻塞赋值的这一特点才模拟了该组合逻辑的行为。
 
@@ -561,9 +575,11 @@ always @(posedge clk) begin
 end
 ```
 
-其实现结果如下图：
+其实现结果如[图 3-8](#fig.3-8)：
 
-![三级流水的寄存器](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-080-ThreeFlowStateRegister.png!sign){width=600px}
+<a id="fig.3-8"></a>
+
+![图 3-8 三级流水的寄存器](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-080-ThreeFlowStateRegister.png!sign){width=600px}
 
 正是利用了语句之间的非阻塞性，才实现了这个 3 级流水线的逻辑功能。
 
@@ -636,9 +652,11 @@ begin
 end
 ```
 
-由于语句是顺序执行的，产生的波形如下图所示。
+由于语句是顺序执行的，产生的波形如[图 3-9](#fig.3-9) 所示。
 
-![顺序语句块的执行波形](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-090-SequentialWave.png!sign){width=500px}
+<a id="fig.3-9"></a>
+
+![图 3-9 顺序语句块的执行波形](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-090-SequentialWave.png!sign){width=500px}
 
 ### 3.3.2. 并行语句组 `fork ... join`
 
@@ -654,9 +672,11 @@ fork
 join
 ```
 
-由于其中的所有语句并行执行，也就是以上 4 条语句都是从 0 时刻开始同时执行的，产生的波形如下图。
+由于其中的所有语句并行执行，也就是以上 4 条语句都是从 0 时刻开始同时执行的，产生的波形如[图 3-10](#fig.3-10)。
 
-![并行语句块的执行波形](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-100-ParallelWave.png!sign){width=500px}
+<a id="fig.3-10"></a>
+
+![图 3-10 并行语句块的执行波形](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-100-ParallelWave.png!sign){width=500px}
 
 ### 3.3.3. 语句组的标识符
 
@@ -712,9 +732,11 @@ always @(sel_a or sel_b or a or b or c) begin
 end
 ```
 
-它要实现的逻辑如下图。
+它要实现的逻辑如[图 3-11](#fig.3-11)。
 
-![`if ... else` 语句](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-110-IfElseStatement.png!sign){width=600px}
+<a id="fig.3-11"></a>
+
+![图 3-11 `if ... else` 语句](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-110-IfElseStatement.png!sign){width=600px}
 
 在 `if ... else` 语句中，条件是从上到下逐条检查的。因此，当满足一个条件时，就执行其后的语句，跳过 `else` 后面的语句、当所有条件都不满足，便执行最后一条 `else` 后面的语句。因此 `if ... else` 语句实际上是有优先级顺序的。
 
@@ -737,11 +759,11 @@ always @(sel or a or b or c) begin
 end
 ```
 
-由于，最后一个条件 `sel == 2'b11` 的语句没有被显式地写出，言下之意是，当 `sel` 为 `2'b11` 时，`q` 值需要保持不变。这个代码在综合时自然就会产生锁存器，如下图。
+由于，最后一个条件 `sel == 2'b11` 的语句没有被显式地写出，言下之意是，当 `sel` 为 `2'b11` 时，`q` 值需要保持不变。这个代码在综合时自然就会产生锁存器，如[图 3-12](#fig.3-12)。
 
-<a id="CombinationalLogicWithLatch"></a>
+<a id="fig.3-12"></a>
 
-![产生锁存器](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-120-CombinationalLogicwithLatch.png!sign){width=800px}
+![图 3-12 产生锁存器](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-120-CombinationalLogicwithLatch.png!sign){width=800px}
 
 {% note warning %}
 
@@ -764,11 +786,11 @@ always @(sel or a or b or c) begin
 end
 ```
 
-既然不关心 `sel` 为 `2'b11` 时 `q` 的值，那么有的综合工具就顺手将 `sel` 等于 `2'b11` 时 `q` 的值也赋值为 `c`，这样就避免了锁存器的产生。实现电路如下图。
+既然不关心 `sel` 为 `2'b11` 时 `q` 的值，那么有的综合工具就顺手将 `sel` 等于 `2'b11` 时 `q` 的值也赋值为 `c`，这样就避免了锁存器的产生。实现电路如[图 3-13](#fig.3-13)。
 
-<a id="CombinationalLogicWithoutLatch"></a>
+<a id="fig.3-13"></a>
 
-![无锁存器的组合逻辑电路](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-130-CombinationalLogicwithoutLatch.png!sign){width=800px}
+![图 3-13 无锁存器的组合逻辑电路](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-130-CombinationalLogicwithoutLatch.png!sign){width=800px}
 
 然而，在描述时序逻辑时，通常将利用 `if` 语句的隐式条件对带时钟使能的 D 触发器建模。代码如下：
 
@@ -781,9 +803,11 @@ always @(posedge clk or negedge rst_n) begin
 end
 ```
 
-以上语句表示在时钟正沿来临时，如果 `en` 为 1，则将 `a + b` 的值付给 `sum`。言下之意：如果 `en` 为 0，那么 `sum` 保持原值不变。因此，这里综合工具会把代码综合成一个时钟使能的寄存器，如下图所示。
+以上语句表示在时钟正沿来临时，如果 `en` 为 1，则将 `a + b` 的值付给 `sum`。言下之意：如果 `en` 为 0，那么 `sum` 保持原值不变。因此，这里综合工具会把代码综合成一个时钟使能的寄存器，如[图 3-14](#fig.3-14) 所示。
 
-![带时钟使能的 D 触发器](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-140-DFlipFlopClock.png!sign){width=800px}
+<a id="fig.3-14"></a>
+
+![图 3-14 带时钟使能的 D 触发器](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-140-DFlipFlopClock.png!sign){width=800px}
 
 其中，`en` 信号时 D 触发器的时钟使能端，`rst_n` 是 D 触发器的异步清零信号。
 
@@ -806,7 +830,7 @@ end
 
 在 `case` 语句中，`default:` 一条描述了所有没有明确说明的其他可能情况。比如，这里的 `default` 就包含了 `sel` 为 `2'b11`、`2'bzz` 和 `2'bxx` 等情况。
 
-以上的代码将实现如上的[无锁存器的组合逻辑电路](#CombinationalLogicWithoutLatch)。
+以上的代码将实现如上的[无锁存器的组合逻辑电路](#fig.3-13)。
 
 与 `if ... else` 语句不同的是，在 `case` 语句中，所有被判断的分支条件都具有一样的优先级。
 
@@ -822,7 +846,7 @@ always @(sel or a or b or c) begin
 end
 ```
 
-这样，将会产生与如上的[带锁存器的组合逻辑电路](#CombinationalLogicWithLatch)。这是设计者不愿意看到的。
+这样，将会产生与如上的[带锁存器的组合逻辑电路](#fig.3-12)。这是设计者不愿意看到的。
 
 对于 `case` 语句，有两个派生语句，即 `casez` 及 `casex`。
 
@@ -976,9 +1000,11 @@ endmodule
 
 在以上代码中，实例化的 `or` 门原语是 Verilog 语言自带的电路，实例化的半加器模块则是用户自己设计的模块。
 
-实现电路如下图。
+实现电路如[图 3-15](#fig.3-15)。
 
-![全加器](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-150-FullAdder.png!sign){width=800px}
+<a id="fig.3-15"></a>
+
+![图 3-15 全加器](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-150-FullAdder.png!sign){width=800px}
 
 以上内容提到了实例化基本门和其他模块。
 
@@ -1002,9 +1028,11 @@ endmodule
 
 初学者经常犯这样一个错误，将寄存器变量驱动 `inout` 端口，导致编译出错。因为，只有线网类型可以驱动 `inout` 端口。
 
-下图清楚地了模块端口在内部和外部的类型。
+[图 3-16](#fig.3-16) 清楚地了模块端口在内部和外部的类型。
 
-![模块实例端口连接规则](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-160-ModuleConnection.png!sign){width=800px}
+<a id="fig.3-16"></a>
+
+![图 3-16 模块实例端口连接规则](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-160-ModuleConnection.png!sign){width=800px}
 
 下面举例说明模块内部和外部的端口：
 
@@ -1240,7 +1268,9 @@ Verilog 语言是一种强大的硬件描述语言，可以支持多个设计层
 
 Verilog 语言作为一种用户工具，提供给用户许多描述硬件的手段，如前面所述：数据流描述、行为描述（`always` 和 `initial` 语句）、结构化描述。同时，不同用户可以根据自己的需要，在不同抽象层次上对硬件进行描述。有如下设计层次金字塔供参考。
 
-![设计层次金字塔](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-170-DesignLevelPyramid.png!sign){width=600px}
+<a id="fig.3-17"></a>
+
+![图 3-17 设计层次金字塔](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-170-DesignLevelPyramid.png!sign){width=600px}
 
 下面简单介绍几种不同角色的工作特点，以及它们所处的设计层次：
 
@@ -1254,7 +1284,9 @@ Verilog 语言作为一种用户工具，提供给用户许多描述硬件的手
 
 这里的行为级描述，不同于 [3. 行为描述](#03)中所述的“行为描述方式”。这里特指一种描述的抽象层次。
 
-下面举一个实例说明 RTL 级和行为级的区别，要实现的状态机一部分如下图所示。
+下面举一个实例说明 RTL 级和行为级的区别，要实现的状态机一部分如[图 3-18](#fig.3-18) 所示。=
+
+<a id="fig.3-18"></a>
 
 ![一个简单的握手协议状态机](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-30-josh-verilog-part-3/2020-11-30-josh-verilog-part-3-180-ASimpleHandshakingStateMachine.png!sign){width=500px}
 
