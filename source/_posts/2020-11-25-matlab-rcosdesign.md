@@ -19,6 +19,7 @@ date: 2020-11-25 22:32:42
 # 语法
 
 `b = rcosdesign(beta,span,sps)`
+
 `b = rcosdesign(beta,span,sps,shape)`
 
 <!-- more -->
