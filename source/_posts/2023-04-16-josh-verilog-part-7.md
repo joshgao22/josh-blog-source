@@ -106,7 +106,7 @@ testbench 概念提供了一个很好的验证芯片的平台。
 
 关于这个设计的验证，在后续笔记将重点介绍。
 
-## 2.1. 编写仿真激励<a id=2.1></a>
+## 2.1. 编写仿真激励<a id=toc.2.1></a>
 
 对于初学者来说，迅速掌握一些常用测试激励的写法非常重要。这样可以有效提高代码的质量，减少错误的产生。
 
@@ -114,7 +114,7 @@ testbench 概念提供了一个很好的验证芯片的平台。
 
 ### 2.1.1. 仿真激励与被测对象的连接
 
-在 [《Part 3——描述方式和设计层次》的 5.1 小节][]中介绍了结构化描述方法的模块实例端口连接关系。
+在 [Part 3——描述方式和设计层次的 5.1 系统级和行为级]中介绍了结构化描述方法的模块实例端口连接关系。
 
 同样，在 testbench 中，需要实例化被测试模块（DUV），DUV 的端口和 test­bench 中的信号互连也遵循同样的规则。请参考模块实例端口连接规则，如[图 7-6](#fig.7-6) 所示。
 
@@ -493,7 +493,7 @@ end
 
 `force` 和 `release` 并不常用。有时，可以利用它们和仿真工具做简单的交互操作。例如，VerilogXL 的图形界面可以很方便的将一个变量 `force` 为 `0` 或 `1`。而在 testbench 里，可以检测变量是否被 `force` 为固定的值，当被 `force` 为固定的值时就执行预定的操作，实现了简单交互操作。
 
-### 2.1.10. 封装功能模块<a id=2.1.10></a>
+### 2.1.10. 封装功能模块<a id=toc.2.1.10></a>
 
 与 C 语言类似，在编写 testbench 的时候，可以将固定的一些操作封装成任务或者函数。
 
@@ -575,7 +575,7 @@ ProductResult = Product(A,B);    // 将 A 和 B 的乘积赋给 ProductResult �
 
 那么，如何将待测设计和仿真激励连接起来，是对设计进行仿真的重要一步。
 
-在[《Part 3——描述方式和设计层次》的 5.1 小节][]和[本篇笔记的 2.1 小节](#2.1)中，都提到了如何在模块中实例化其他模块的方法。大家可以参考这些内容，掌握如何在 testbench 中实例化 DUV 或其他模块。
+在[Part 3——描述方式和设计层次的 5.1 系统级和行为级][]小节和本文的 [2.1 小节](#toc.2.1)中，都提到了如何在模块中实例化其他模块的方法。大家可以参考这些内容，掌握如何在 testbench 中实例化 DUV 或其他模块。
 
 将以[图 7-13](#fig.7-13) 中的 testbench 为实例，介绍端口的连接关系。
 
@@ -617,7 +617,7 @@ MPI u_MPI(
 endmodule
 ```
 
-另外，在Verilog 语言中，也支持多顶层结构。关于多顶层的 testbench，请参考 [4.5.2 小节](#4.5.2)的叙述。
+另外，在Verilog 语言中，也支持多顶层结构。关于多顶层的 testbench，请参考 [4.5.2 小节](#toc.4.5.2)的叙述。
 
 将仿真平台建好以后，就可以开始仿真了。
 
@@ -716,7 +716,7 @@ VCD 文件是一种标准格式的波形记录文件。该文件只记录发生�
 
 上述仅仅是一些基本的仿真原则，限于篇幅，不能展开论述，希望大家带着问题，在后续学习笔记中作为重点去理解。
 
-# 3. CPU 接口仿真实例<a id=3></a>
+# 3. CPU 接口仿真实例<a id=toc.3></a>
 
 前面介绍了许多编写 testbench 的方法和技巧，现在轮到如何利用这些技巧了。所谓实践出真知，下面就一个常用的实例，帮助大家继续深入体会如何编写 testbench, 如何验证设计。
 
@@ -775,7 +775,7 @@ endmodule
 
 该设计中，输入地址采用 `6` 位，地址 `0~31` 为设计中的块状 RAM（`8` 位宽，`32` 字节深度），地址 `32~47` 为设计中的 D 触发器实现的 `8` 位寄存器，地址 `48~63` 保留未使用。
 
-## 3.2. 一种 testbench<a id=3.2></a>
+## 3.2. 一种 testbench<a id=toc.3.2></a>
 
 以下介绍一种 testbench，供大家学习使用。使用 `$random` 产生激励，用 `$display` 输出仿真结果。
 
@@ -873,9 +873,9 @@ endmodule
 
 为了检查读/写数据是否一致，只需要查看以上的显示内容即可。另外，还可以通过查看具体的波形来调试。
 
-## 3.3. 另一种 testbench<a id=3.3></a>
+## 3.3. 另一种 testbench<a id=toc.3.3></a>
 
-在本小节中，采用另一种 testbench 。与 [3.2 小节](#3.2)中的 testbench 对比，这里有两点不同：
+在本小节中，采用另一种 testbench 。与 [3.2 小节](#toc.3.2)中的 testbench 对比，这里有两点不同：
 
 - 写数据源是从文件 `Read_In_File.txt` 中读入的，不再是由 `$random` 系统函数产生的随机数；
 
@@ -933,13 +933,13 @@ endmodule
 读出的地址和数据用系统函数 `$display` 输出到仿真标准输出设备。同时，也将输出数据和地址按照与 `Read_In_File.txt` 文件中一样格式写入到文件 `Write_Out_File. txt` 中，以便于比较。运行仿真以后，在仿真目录下，会生成一个 `Write_Out_File.txt` 文件，用来存储读出的地址和数据。因此只要将这两个文件打开，手动比
 较，或者利用一些自动比较工具比较，就可以知道仿真结果正确与否。
 
-关于具体的仿真步骤请参考 [3.2 小节](#3.2)中的操作步骤。工程文件在本文[附带资源][]中的 `Example-7-2` 中。
+关于具体的仿真步骤请参考 [3.2 小节](#toc.3.2)中的操作步骤。工程文件在本文[附带资源][]中的 `Example-7-2` 中。
 
 大家将发现，运行完仿真后，在工程目录下会生成一个文件： `Write_Out _File.txt`。可以拿它与文 `Read_In_File.txt` 比较，如果两者一致说明仿真结果正确，否则结果错误。此外，还可以手动查看仿真波形调试问题。
 
 # 4. 结构化 testbench 思想
 
-在[第 3 节](#3)中，介绍了两种验证 MPI 模块的 testbench。
+在[第 3 节](#toc.3)中，介绍了两种验证 MPI 模块的 testbench。
 
 在这些平台中，在 testbench 的顶层直接描述接口的时序，将测试数据加上去。
 
@@ -966,7 +966,7 @@ endmodule
 
 ## 4.1. 任务和函数
 
-在 [2.1.10 小节](#2.1.10)中，介绍了在 Verilog 中的两种功能封装方法：
+在 [2.1.10 小节](#toc.2.1.10)中，介绍了在 Verilog 中的两种功能封装方法：
 
 - 任务：`task`;
 - 函数：`function`。
@@ -977,7 +977,7 @@ endmodule
 
 BFM 是一种将物理的接口时序操作转化成更高抽象层次接口的总线模型。
 
-以[第 3 节](#3)中的设计为例，BFM 结构如[图 7-17](#fig.7-17) 所示。
+以[第 3 节](#toc.3)中的设计为例，BFM 结构如[图 7-17](#fig.7-17) 所示。
 
 为了验证 FPGA 中 MPI 接口的功能，需要给 MPI 接口加各种各样的激励，仿真激励的种类越多，仿真越完备。
 
@@ -1036,7 +1036,7 @@ initial begin
 end
 ```
 
-### 4.5.2. 多顶层 testbench<a id=4.5.2></a>
+### 4.5.2. 多顶层 testbench<a id=toc.4.5.2></a>
 
 Verilog 语言支持多顶层结构。
 
@@ -1081,7 +1081,7 @@ testbench 不是凭空设计的，它的根本起点还是一个设计的需求�
 
 以上重点介绍了结构化 testbench 的思想、基本组成部分和优点。在这里，通过两个实例，从理论到实战过渡。
 
-## 5.1. 单顶层 testbench<a id=5.1></a>
+## 5.1. 单顶层 testbench<a id=toc.5.1></a>
 
 单顶层 testbench 结构如[图 7-29](#fig.7-29) 所示。
 
@@ -1193,7 +1193,7 @@ inst_harness.inst_BFM.Write(Data_out, i);   // Data_out 为写数据, i 为写�
 inst_harness.inst_BFM.Read(Data_in, i);   // Data_in 为读数据, i 为读地址
 ```
 
-关于具体的仿真步骤请参考 [3.2 小节](#3.2)中的操作步骤。工程文件在本文[附带资源][]中的 `Example-7-3` 目录中。仿真运行结果打印如下：
+关于具体的仿真步骤请参考 [3.2 小节](#toc.3.2)中的操作步骤。工程文件在本文[附带资源][]中的 `Example-7-3` 目录中。仿真运行结果打印如下：
 
 ``` log
 # case1, Addr: 0000002f -> DataWrite: 24
@@ -1212,7 +1212,7 @@ inst_harness.inst_BFM.Read(Data_in, i);   // Data_in 为读数据, i 为读地�
 ...
 ```
 
-这里的 `case1` 就是延用 [3.2 小节](#3.2)中的测试激励，数据源为随机数。而 `case2` 就是 [3.3 小节](#3.3)中的测试激励，数据源是从文件 `Read_In_File.txt` 中读出的。这里将两种数据的测试用例合并到一个文件的不同用例下，检查仿真结果的方法也相同。
+这里的 `case1` 就是延用 [3.2 小节](#toc.3.2)中的测试激励，数据源为随机数。而 `case2` 就是 [3.3 小节](#toc.3.3)中的测试激励，数据源是从文件 `Read_In_File.txt` 中读出的。这里将两种数据的测试用例合并到一个文件的不同用例下，检查仿真结果的方法也相同。
 
 ## 5.2. 多顶层 testbench
 
@@ -1256,26 +1256,26 @@ begin: MYCASE
     # 222 ;
     // testcase 1:
     for ( i=6'b101111; i>= 0; i=i-1 ) begin
-    Data_out = {$random} % 256; //data between 0~255
-    harness.inst_BFM.Write(Data_out, i);
-    $display ("case1, Addr: %h -> DataWrite: %h", i, Data_out);
-    harness.inst_BFM.Read(Data_in, i);
-    $display ("case1, Addr: %h -> DataRead: %h", i, Data_in);
-    $display ("------------------------");
-  end
+        Data_out = {$random} % 256; //data between 0~255
+        harness.inst_BFM.Write(Data_out, i);
+        $display ("case1, Addr: %h -> DataWrite: %h", i, Data_out);
+        harness.inst_BFM.Read(Data_in, i);
+        $display ("case1, Addr: %h -> DataRead: %h", i, Data_in);
+        $display ("------------------------");
+    end
 
     $readmemh ( "Read_In_File.txt", DataSource );
     Write_Out_File = $fopen("Write_Out_File.txt");
     // testcase 2
-  for ( i=6'b101111; i>= 0; i=i-1 ) begin
-    Data_out = DataSource[i] ;
-    harness.inst_BFM.Write(Data_out, i);
-    $display ("case2, Addr: %h -> DataWrite: %h", i, Data_out);
-    harness.inst_BFM.Read(Data_in, i);
-    $display ("case2, Addr: %h -> DataRead: %h", i, Data_in);
-    $display ("------------------------");
-    $fdisplay (Write_Out_File, "@%h\n%h", i, Data_in);
-  end
+    for ( i=6'b101111; i>= 0; i=i-1 ) begin
+        Data_out = DataSource[i] ;
+        harness.inst_BFM.Write(Data_out, i);
+        $display ("case2, Addr: %h -> DataWrite: %h", i, Data_out);
+        harness.inst_BFM.Read(Data_in, i);
+        $display ("case2, Addr: %h -> DataRead: %h", i, Data_in);
+        $display ("------------------------");
+        $fdisplay (Write_Out_File, "@%h\n%h", i, Data_in);
+    end
     $fclose ( Write_Out_File );
     $display ("Simulation Finished!");
     $stop;
@@ -1290,13 +1290,13 @@ endmodule
 harness.inst_BFM.Write(Data_out, i);    // 直接引用 harness 模块名
 ```
 
-而在 [5.1 小节](#5.1)的单顶层 testbench 中格式如下：
+而在 [5.1 小节](#toc.5.1)的单顶层 testbench 中格式如下：
 
 ``` verilog
 inst_harness.inst_BFM.Write(Data_out, i);  // 引用 harness 在 testcase 中的实例名: inst_harness
 ```
 
-具体的仿真步骤请参考 [3.2 小节](#3.2)中的操作步骤。工程文件在本文[附带资源][]中的 `Example-7-4` 目录中。
+具体的仿真步骤请参考 [3.2 小节](#toc.3.2)中的操作步骤。工程文件在本文[附带资源][]中的 `Example-7-4` 目录中。
 
 # 6. 扩展 Verilog 的高层建模能力
 
@@ -1322,6 +1322,6 @@ inst_harness.inst_BFM.Write(Data_out, i);  // 引用 harness 在 testcase 中的
 
 EDA 先锋工作室. *轻松成为设计高手——Verilog HDL 实用精解.* 北京航空航天大学出版社, 2012.
 
-[《Part 3——描述方式和设计层次》的 5.1 小节]: https://josh-gao.top/posts/fd117896.html#5.1
+[Part 3——描述方式和设计层次的 5.1 系统级和行为级]: https://josh-gao.top/posts/fd117896.html#toc.5.1
 [《Josh 的学习笔记之 Verilog》]: https://josh-gao.top/categories/Josh-%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Verilog/
 [附带资源]: https://download.csdn.net/download/weixin_43870101/12451000
