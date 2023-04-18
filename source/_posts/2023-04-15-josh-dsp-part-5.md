@@ -1,12 +1,12 @@
 ---
-title: Josh 的学习笔记之数字信号处理（Part 5——部分 FFT 蝶形图）
+title: "Josh's Review: 数字信号处理（Part 5 — 部分 FFT 蝶形图）"
 mathjax: true
 comments: true
 copyright: true
 toc:
   enable: true
   number: false
-  wrap: ture
+  wrap: true
   expand_all: false
   max_depth: 4
 abbrlink: 14fc3f1c

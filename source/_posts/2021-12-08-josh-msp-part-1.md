@@ -1,5 +1,5 @@
 ---
-title: Josh 的学习笔记之多抽样率信号处理 (Part 1 —— 抽样率转换)
+title: "Josh's Notes: 多抽样率信号处理 (Part 1 — 抽样率转换)"
 mathjax: true
 comments: true
 copyright: true

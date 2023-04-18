@@ -1,5 +1,5 @@
 ---
-title: Josh 的学习笔记之数字信号处理（Part 4——快速傅里叶变换 FFT）
+title: "Josh's Review: 数字信号处理（Part 4 — 快速傅里叶变换 FFT）"
 mathjax: true
 comments: true
 copyright: true
@@ -8,7 +8,7 @@ toc:
   number: false
   wrap: true
   expand_all: false
-  max_depth: 3
+  max_depth: 4
 abbrlink: 7c6d68a2
 date: 2023-04-14 23:11:52
 tags:

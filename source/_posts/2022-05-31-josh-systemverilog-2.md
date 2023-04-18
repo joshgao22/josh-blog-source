@@ -1,5 +1,5 @@
 ---
-title: 'Josh''s Notes: SystemVerilog 验证 (Part 2 — 数据类型)'
+title: "Josh's Notes: SystemVerilog 验证（Part 2 — 数据类型）"
 mathjax: true
 comments: true
 copyright: true

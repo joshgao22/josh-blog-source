@@ -1,5 +1,5 @@
 ---
-title: Josh 的学习笔记之 Verilog（Part 4 —— RTL 概念与常用 RTL 建模）
+title: "Josh's Notes: Verilog（Part 4 — RTL 概念与常用 RTL 建模）"
 mathjax: true
 comments: true
 copyright: true

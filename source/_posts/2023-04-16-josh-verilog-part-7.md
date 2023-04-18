@@ -1,5 +1,5 @@
 ---
-title: Josh 的学习笔记之 Verilog（Part 7——逻辑验证与 testbench 编写）
+title: "Josh's Notes: Verilog（Part 7 —— 逻辑验证与 testbench 编写）"
 mathjax: false
 comments: true
 copyright: true

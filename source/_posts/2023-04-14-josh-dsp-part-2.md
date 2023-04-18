@@ -1,5 +1,5 @@
 ---
-title: Josh 的学习笔记之数字信号处理（Part 2——离散傅里叶级数 DFS）
+title: "Josh's Review: 数字信号处理（Part 2 — 离散傅里叶级数 DFS）"
 mathjax: true
 comments: true
 copyright: true
@@ -8,7 +8,7 @@ toc:
   number: false
   wrap: true
   expand_all: false
-  max_depth: 3
+  max_depth: 4
 tags:
   - 数字信号和处理
   - DSP

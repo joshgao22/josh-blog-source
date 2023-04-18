@@ -1,5 +1,5 @@
 ---
-title: Josh 的学习笔记之 Verilog（Part 1 —— 初识 HDL 设计方法）
+title: "Josh's Notes: Verilog（Part 1 — 初识 HDL 设计方法）"
 date: 2020-11-27 22:58:07
 tags:
   - Verilog

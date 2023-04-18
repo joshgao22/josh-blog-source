@@ -1,5 +1,5 @@
 ---
-title: Josh 的学习笔记之数字信号处理（Part 1——离散时间信号和系统分析基础）
+title: "Josh's Review: 数字信号处理（Part 1 — 离散时间信号和系统分析基础）"
 mathjax: true
 comments: true
 copyright: true
@@ -8,7 +8,7 @@ toc:
   number: false
   wrap: true
   expand_all: false
-  max_depth: 3
+  max_depth: 4
 abbrlink: 1391fb05
 date: 2023-04-14 17:24:45
 tags:
