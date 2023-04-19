@@ -217,6 +217,8 @@ $$\begin{equation}
 
 定义
 
+<a id="DefinitionOfArrayManifoldVector"></a>
+
 $$\begin{equation} \label{DefinitionOfArrayManifoldVector}
   \vec{v}_{\vec{k}}\left(\vec{k}\right) = \left[ \begin{array}{c}
     e^{-j \vec{k}^\mathrm{T}\vec{p}_0} \\
