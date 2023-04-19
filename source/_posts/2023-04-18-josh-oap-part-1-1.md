@@ -106,19 +106,125 @@ $$\begin{equation} \label{SampleVectorInFreqDomain}
 
 在大多数情况下，去掉 $\eqref{SampleVectorInFreqDomain}$ 中左边的 $\vec{p}$, 直接使用 $\vec{F}(\omega)$ 。
 
-下面考虑[图 1-1-4](#fig.1-1-4) 所示的简单的波束形成的操作。输入是一个平面波，传播方向为 $\vec{a}$, 时域频率（弧度）为 $\omega$。由该输入而产生的传感器的时间函数可以用两种等效的方式进行表示。第一种方式强调由千在不同的传感器上的不同到达时间而对应的时间延时。设 $f(t)$ 是在坐标系原点接收到的信号，则
+&emsp;&emsp;下面考虑如[图 1-1-4](#fig.1-1-4) 所示的简单的波束形成操作。外部信号输入为传播方向为 $\vec{a}$, 时域频率（弧度）为 $\omega$ 的平面波，则在时域上每个阵元的输入信号可以用两种等效的方式进行表示。
 
 <a id="fig.1-1-4"></a>
 
 ![图 1-1-4 具有平面波输入的阵列](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-18-josh-oap-part-1-1/2023-04-18-josh-oap-part-1-1-040-ArrayWithPlaneWaveInput.png!sign){width=600px}
 
-$$\begin{equation}
-\vec{f}(t, \vec{p}) = \left[
-  \begin{array}{c}
-    f\left(t - \tao_0\right) \\
-    f\left(t - \tao_1\right) \\
-    \vdots \\
-    f\left(t - \tao_{N-1}\right) \\
-  \end{array}
-\right]
+&emsp;&emsp;由于信号到达不同阵元的时间不同，因此第一种方式强调信号到达不同阵元的时间延时。设 $f(t)$ 是**在坐标系原点接收到的信号**，其在变换域表示为 $F (\omega)$，则
+
+$$\begin{equation} \label{DelayedSignal}
+  \vec{f}(t, \vec{p}) = \left[
+    \begin{array}{c}
+      f\left(t - \tau_0\right) \\
+      f\left(t - \tau_1\right) \\
+      \vdots \\
+      f\left(t - \tau_{N-1}\right) \\
+    \end{array}
+  \right]
 \end{equation}$$
+
+其中
+
+$$\begin{equation} \label{ExpressionOfDelayByDirection}
+  \tau_n = \frac{\vec{a}^\mathrm{T}\vec{p}_n}{c}
+\end{equation}$$
+
+其中 $c$ 是信号在介质中的传播速度，$\vec{a}$ 是一个单位矢量，可以表示为
+
+$$\begin{equation}
+  \vec{a} = \left[ \begin{array}{c}
+    -\sin\theta\cos\varphi \\
+    -\sin\theta\sin\varphi \\
+    -\cos\theta
+  \end{array} \right]
+\end{equation}$$
+
+上式中的负号是考虑了 $\vec{a}$ 的方向。则 $\tau_n$ 可以进一步表示为：
+
+$$\begin{equation} \label{RelativeDelay}
+  \tau_n = -\frac{1}{c}\left(\sin\theta\cos\varphi \cot p_{x_n} + \sin\theta\sin\varphi \cdot p_{y_n} + \cos\theta \cdot p_{z_n} \right)
+\end{equation}$$
+
+如果定义对于每个轴的方向余弦为
+
+$$\begin{align}
+  u_x &= \sin\theta\cos\varphi \\
+  u_y &= \sin\theta\sin\varphi \\
+  u_z &= \cos\theta
+\end{align}$$
+
+则有
+
+$$\begin{equation}
+  \vec{u} = -\vec{a}
+\end{equation}$$
+
+则 $\eqref{RelativeDelay}$ 可以写成
+
+$$\begin{equation}
+   \tau_n = -\frac{1}{c}\left(u_x p_{x_n} + u_y p_{y_n} + u_z p_{z_n} \right) = -\frac{\vec{u}^\mathrm{T}\vec{p}_n}{c}
+\end{equation}$$
+
+根据 $\eqref{DelayedSignal}$, $\vec{F}(\omega)$ 的第 $n$ 个分量为（利用 Fourier 变换的时移性质）
+
+$$\begin{equation}
+  F_n(\omega) = \int_{-\infty}^{\infty} e^{j \omega t} f(t - \tau_n) \mathrm{d} t = e^{j \omega \tau_n} F (\omega)
+\end{equation}$$
+
+其中
+
+$$\begin{equation}
+  \omega \tau_n = \frac{\omega}{c} \vec{a}^\mathrm{T}\vec{p}_n = -\frac{\omega}{c} \vec{u}^\mathrm{T}\vec{p}_n
+\end{equation}$$
+
+对于在局部均匀的介质（locally homogeneous medium）里传播的平面波，定义波数 $\vec{k}$ （在波传播的方向上单位长度内的周期数目）为
+
+$$\begin{equation} \lebel{DefinitionOfWavenumber}
+  \vec{k} = \frac{\omega}{c} \vec{a} = \frac{2\pi}{\lambda} \vec{a}
+\end{equation}$$
+
+其中，$\lambda$ 是对应于频率 $\omega$ 的波长。等效地，
+
+$$\begin{equation}
+  \vec{k} = -\frac{2\pi}{\lambda} \left[
+    \begin{array}{c}
+    \sin\theta\cos\varphi \\
+    \sin\theta\sin\varphi \\
+    \cos\theta
+    \end{array}
+  \right]
+  = -\frac{2\pi}{\lambda} \vec{u}
+\end{equation}$$
+
+且波数的幅度由波动方程限定
+
+$$\begin{equation}
+  \left| \vec{k} \right| = \frac{\omega}{c} = \frac{2\pi}{\lambda}
+\end{equation}$$
+
+所以，仅 $\vec{k}$ 的方向是变化的。比较 $\eqref{ExpressionOfDelayByDirection}$ 和 $\eqref{DefinitionOfWavenumber}$，可以看到
+
+$$\begin{equation}
+  \omega \tau_n = \vec{k}^\mathrm{T}\vec{p}_n
+\end{equation}$$
+
+定义
+
+$$\begin{equation}
+  \vec{v}_{\vec{k}}(\vec{k}) = \left[ \begin{array}{c}
+    e^{-j \vec{k}^\mathrm{T}\vec{p}_0} \\
+    e^{-j \vec{k}^\mathrm{T}\vec{p}_1} \\
+    \vdots \\
+    e^{-j \vec{k}^\mathrm{T}\vec{p}_{N-1}} \\
+  \end{array} \right]
+\end{equation}$$
+
+则 $\vec{F}(\omega)$ 可写为
+
+$$\begin{equation}
+  \vec{F}(\omega) = F(\omega) \vec{v}_{\vec{k}}(\vec{k})
+\end{equation}$$
+
+矢量 $\vec{v}_{\vec{k}}(\vec{k})$ 包含了阵列的所有空间特征，称为**{% label primary @阵列流形矢量（array manifold vector） %}**。在我们的讨论中，阵列流形矢量具有非常核心的作用。下标 $\vec{k}$ 表示参数属于 $\vec{k}$ 空间。这个下标的作用是把它和以后将在阵列流形矢量中使用的其他变量相区分。
