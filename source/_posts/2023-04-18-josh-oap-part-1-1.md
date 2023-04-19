@@ -75,7 +75,7 @@ y(t) = \int_{-\infty}^{\infty} \vec{h}^\mathrm{T} (t-\tau) \vec{f}\left(\tau,\ve
 
 其中
 
-$$\begin{equation}
+$$\begin{equation} \label{ImpulseResponse}
 \vec{h}(\tau) = \left[ \begin{array}{c}
   h_0(\tau) \\
   h_1(\tau) \\
@@ -85,7 +85,7 @@ $$\begin{equation}
 \right]
 \end{equation}$$
 
-也可以把式 $\eqref{VectorFormOfLinearArrayOutputInTimeDomain}$ 在变换域表示为
+也可以把式式$\eqref{VectorFormOfLinearArrayOutputInTimeDomain}$ 在变换域表示为
 
 $$\begin{equation}
 \begin{aligned}
@@ -104,7 +104,7 @@ $$\begin{equation} \label{SampleVectorInFreqDomain}
 \vec{F} \left(\omega,\vec{p}\right) = \int_{-\infty}^{\infty} \vec{f}\left(\tau,\vec{p}\right)  e^{-j\omega t} \mathrm{d} t
 \end{equation}$$
 
-在大多数情况下，去掉 $\eqref{SampleVectorInFreqDomain}$ 中左边的 $\vec{p}$, 直接使用 $\vec{F}(\omega)$ 。
+在大多数情况下，去掉式$\eqref{SampleVectorInFreqDomain}$ 中左边的 $\vec{p}$, 直接使用 $\vec{F}(\omega)$ 。
 
 &emsp;&emsp;下面考虑如[图 1-1-4](#fig.1-1-4) 所示的简单的波束形成操作。外部信号输入为传播方向为 $\vec{a}$, 时域频率（弧度）为 $\omega$ 的平面波，则在时域上每个阵元的输入信号可以用两种等效的方式进行表示。
 
@@ -161,13 +161,13 @@ $$\begin{equation}
   \vec{u} = -\vec{a}
 \end{equation}$$
 
-则 $\eqref{RelativeDelay}$ 可以写成
+则式$\eqref{RelativeDelay}$ 可以写成
 
 $$\begin{equation}
    \tau_n = -\frac{1}{c}\left(u_x p_{x_n} + u_y p_{y_n} + u_z p_{z_n} \right) = -\frac{\vec{u}^\mathrm{T}\vec{p}_n}{c}
 \end{equation}$$
 
-根据 $\eqref{DelayedSignal}$, $\vec{F}(\omega)$ 的第 $n$ 个分量为（利用 Fourier 变换的时移性质）
+根据式$\eqref{DelayedSignal}$, $\vec{F}(\omega)$ 的第 $n$ 个分量为（利用 Fourier 变换的时移性质）
 
 $$\begin{equation}
   F_n(\omega) = \int_{-\infty}^{\infty} e^{j \omega t} f(t - \tau_n) \mathrm{d} t = e^{j \omega \tau_n} F (\omega)
@@ -181,7 +181,7 @@ $$\begin{equation}
 
 对于在局部均匀的介质（locally homogeneous medium）里传播的平面波，定义波数 $\vec{k}$ （在波传播的方向上单位长度内的周期数目）为
 
-$$\begin{equation} \lebel{DefinitionOfWavenumber}
+$$\begin{equation} \label{DefinitionOfWavenumber}
   \vec{k} = \frac{\omega}{c} \vec{a} = \frac{2\pi}{\lambda} \vec{a}
 \end{equation}$$
 
@@ -200,11 +200,11 @@ $$\begin{equation}
 
 且波数的幅度由波动方程限定
 
-$$\begin{equation}
+$$\begin{equation} \label{WaveEquation}
   \left| \vec{k} \right| = \frac{\omega}{c} = \frac{2\pi}{\lambda}
 \end{equation}$$
 
-所以，仅 $\vec{k}$ 的方向是变化的。比较 $\eqref{ExpressionOfDelayByDirection}$ 和 $\eqref{DefinitionOfWavenumber}$，可以看到
+所以，仅 $\vec{k}$ 的方向是变化的。比较式$\eqref{ExpressionOfDelayByDirection}$ 和式$\eqref{DefinitionOfWavenumber}$，可以看到
 
 $$\begin{equation}
   \omega \tau_n = \vec{k}^\mathrm{T}\vec{p}_n
@@ -212,8 +212,8 @@ $$\begin{equation}
 
 定义
 
-$$\begin{equation}
-  \vec{v}_{\vec{k}}(\vec{k}) = \left[ \begin{array}{c}
+$$\begin{equation} \label{DefinitionOfArrayManifoldVector}
+  \vec{v}_{\vec{k}}\left(\vec{k}\right) = \left[ \begin{array}{c}
     e^{-j \vec{k}^\mathrm{T}\vec{p}_0} \\
     e^{-j \vec{k}^\mathrm{T}\vec{p}_1} \\
     \vdots \\
@@ -224,7 +224,104 @@ $$\begin{equation}
 则 $\vec{F}(\omega)$ 可写为
 
 $$\begin{equation}
-  \vec{F}(\omega) = F(\omega) \vec{v}_{\vec{k}}(\vec{k})
+  \vec{F}(\omega) = F(\omega) \vec{v}_{\vec{k}}\left(\vec{k}\right)
 \end{equation}$$
 
-矢量 $\vec{v}_{\vec{k}}(\vec{k})$ 包含了阵列的所有空间特征，称为**{% label primary @阵列流形矢量（array manifold vector） %}**。在我们的讨论中，阵列流形矢量具有非常核心的作用。下标 $\vec{k}$ 表示参数属于 $\vec{k}$ 空间。这个下标的作用是把它和以后将在阵列流形矢量中使用的其他变量相区分。
+矢量 $\vec{v}_{\vec{k}}\left(\vec{k}\right)$ 包含了阵列的所有空间特征，称为**{% label primary @阵列流形矢量（array manifold vector） %}**。在我们的讨论中，阵列流形矢量具有非常核心的作用。下标 $\vec{k}$ 表示参数属于 $\vec{k}$ 空间。这个下标的作用是把它和以后将在阵列流形矢量中使用的其他变量相区分。
+
+&emsp;&emsp;在这种情况下，把每个阵元的输入信号平移，使之在时间上对齐，然后把它们相加。这
+个操作过程如[图 1-1-5](#fig.1-1-5) 所示，其中包含了归一化因子 $1/N$, 使得输出为 $f(t)$。在这里，
+
+$$\begin{equation} \label{DelayAndSumBeamformer}
+  h_n(\tau) = \frac{1}{N} \delta(\tau + \tau_n)
+\end{equation}$$
+
+<a id="fig.1-1-5"></a>
+
+![图 1-1-5 延时-求和波束形成器](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-18-josh-oap-part-1-1/2023-04-18-josh-oap-part-1-1-050-DelayAndSumBeamformer.png!sign){width=600px}
+
+且
+
+$$\begin{equation}
+  y(t) = f(t)
+\end{equation}$$
+
+&emsp;&emsp;这个处理器称为**{% label primary @延时求和波束形成器（delay-and-sum beamformer） %}**或**{% label primary @常规波束形成器（conventional beamformer） %}**。在实际中会在每个通道中加上一个共同的延时，使得[图 1-1-5](#fig.1-1-5) 中的操作是物理可实现的。
+
+&emsp;&emsp;此外，还可以把式$\eqref{DelayAndSumBeamformer}$ 在频域内写成简洁的矩阵形式。如果 $\vec{k}_\mathrm{s}$ 是我们所感兴趣的平面波信号的波数，则
+
+$$\begin{equation}
+  \vec{H}^\mathrm{T} (\omega) = \frac{1}{N} \vec{v}_{\vec{k}}^\mathrm{H} \left( \vec{k}_\mathrm{s} \right)
+\end{equation}$$
+
+其中 $\vec{v}_{\vec{k}}\left(\vec{k}\right)$ 在式$\eqref{DefinitionOfArrayManifoldVector}$ 中定义。
+
+&emsp;&emsp;现在回到一般的问题，我们想要确定阵列对一个输入场 $\vec{f}(t, \vec{p})$ 的响应，这可以通过之前给出的卷积求和操作来实现，但更有用的方法是首先确定阵列对单位平面波（unit plane wave）的响应，响应为单位平面波时域（弧度）频率 $\omega$ 和波数 $\vec{k}$ 的函数。（利用叠加的复指数基函数对一个线性时不变系统进行分析的系统理论方法可以扩展到空时信号的情况。）
+
+这里的基函数形式为
+
+$$\begin{equation}
+  f_n \left( t, \vec{p}_n \right) = \exp \left[ j \left( \omega t - \vec{k}^\mathrm{T} \vec{p}_n\right) \right], \, n = 0, 1, \cdots, N-1
+\end{equation}$$
+
+或
+
+$$\begin{equation}
+  \vec{f} \left( t, \vec{p} \right) = e^{j\omega t} \vec{v}_{\vec{k}}\left(\vec{k}\right)
+\end{equation}$$
+
+其中 $\vec{v}_{\vec{k}}\left(\vec{k}\right)$ 在式$\eqref{DefinitionOfArrayManifoldVector}$ 中定义。
+
+&emsp;&emsp;$\eqref{VectorFormOfLinearArrayOutputInTimeDomain}$ 中的阵列处理器对于一个平面波的响应为
+
+$$\begin{equation} \label{ArrayResponseToUnitPlaneWaveInTimeDomain}
+  y \left( t, \vec{k} \right) = \vec{H}^\mathrm{T} (\omega) \vec{v}_{\vec{k}}\left(\vec{k}\right) e^{j\omega t}
+ \end{equation}$$
+
+其中 $\vec{H}^\mathrm{T} (\omega)$ 是式$\eqref{ImpulseResponse}$ 中 $\vec{h}(\tau)$ 的傅里叶变换。
+
+&emsp;&emsp;这里用了符号 $y \left( t, \vec{k} \right)$, 以强调输出和输入波数 $\vec{k}$ 的关系。时域上的相关性体现在输出是一个复指数，和输入平面波具有相同的频率。在频域内，$\eqref{ArrayResponseToUnitPlaneWaveInTimeDomain}$ 可以写成下面的形式：
+
+$$\begin{equation} \label{ArrayResponseToUnitPlaneWaveInFreqDomain}
+  Y \left( \omega, \vec{k} \right) = \vec{H}^\mathrm{T} (\omega) \vec{v}_{\vec{k}}\left(\vec{k}\right)
+ \end{equation}$$
+
+&emsp;&emsp;注意，$\omega$ 是对应输入频率的单一频率。阵列的空时处理完全可以由式$\eqref{ArrayResponseToUnitPlaneWaveInFreqDomain}$ 的右端描述。把这一项定义为
+
+$$\begin{equation} \label{FrequencyWavenumberResponse}
+  \boxed{\vec{\varUpsilon} \left( \omega, \vec{k} \right) \triangleq \vec{H}^\mathrm{T} (\omega) \vec{v}_{\vec{k}}\left(\vec{k}\right)}
+\end{equation}$$
+
+称之为阵列的**{% label primary @频率-波数响应函数（frequency-wavenumber response function） %}**。它描述了一个阵列对于波数为 $\vec{k}$、时域频率为 $\omega$ 的输入平面波的复增益，具有与线性、时不变系统的传递函数相同的解释（这里我们用了 $\vec{\varUpsilon} \left( \omega, \vec{k} \right)$, 是因为 $Y \left( \omega, \vec{k} \right)$ 在后面将要用于描述对任意输入的输出）。 $\vec{\varUpsilon} \left( \omega, \vec{k} \right)$ 是定义在整个 $\vec{k}$ 空间上的。$\eqref{FrequencyWavenumberResponse}$ 中的第二项 $\vec{v}_{\vec{k}}\left(\vec{k}\right)$ 是在式$\eqref{DefinitionOfArrayManifoldVector}$ 中定义的阵列流形矢量。
+
+&emsp;&emsp;频率-波数响应函数描述了阵列对任意一个平面波的响应。在大多数的实际物理应用中，时域频率 $\omega$ 和空域波数 $\vec{k}$ 通过平面波传播的波动方程形成了耦合关系。有时这是一个非常简单的关系，例如当一个平而波在均匀（且无限）的空间中传播时。在其他的情况下，可能是非常复杂的耦合关系，例如在水下声学和地震学中的分层介质模型中的情况。
+
+&emsp;&emsp;一个阵列的**{% label primary @*波束方向图（beam pattern） %}**定义的背景是平面波在局部均匀的介质中传播，约束的波动方程见式$\eqref{WaveEquation}$。如式$\eqref{WaveEquation}$ 所示，这约束了波数 $\vec{k}$ 的幅度。波束方向图是用入射方向表示的频率-波数响应函数，或者可以写成
+
+$$\begin{equation}
+  B(\omega:\theta,\varphi) = \left. \vec{\varUpsilon} \left( \omega, \vec{k} \right) \right|_{\vec{k}=\frac{2\pi}{\lambda}\vec{a}(\theta,\varphi)}
+\end{equation}$$
+
+其中 $\vec{a}(\theta,\varphi)$ 是一个单位矢量，在球坐标系中对应的角度为 $\theta$ 和 $\varphi$。可以看到，波束方向图是频率-波数响应在一个半径为 $2\pi /\lambda$ 的球上的值。
+
+阵列的波束方向图是确定阵列性能的关键要素。后续将会研究均匀加权线阵（uniformly weighted linear array）的波束方向图。
+
+在这里中，我们强调 $f\left( t,\vec{p}_n \right)$ 是带通信号的情况，即
+
+$$\begin{equation}
+  f\left( t,\vec{p}_n \right) = \sqrt{2} \Re\left\{ \tilde{f} \left( t,\vec{p}_n \right)  e^{j \omega_c t}\right\}, \, n = 0, \cdots, N-1
+\end{equation}$$
+
+其中，$\omega_c$ 是载波频率，$\tilde{f} \left( t,\vec{p}_n \right)$ 是复包络。假设复包络的带限区域为
+
+$$\begin{equation}
+  \left| \omega_L \right| \leqslant 2\pi B_s /2
+\end{equation}$$
+
+其中
+
+$$\begin{equation}
+  \omega_L \triangleq = \omega - \omega_c
+\end{equation}$$
+
+且 $\pi B_s$ 是一个常数，确定了复包络的最大带宽。
