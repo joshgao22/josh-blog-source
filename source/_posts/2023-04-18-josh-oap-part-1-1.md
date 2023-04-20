@@ -394,11 +394,15 @@ $$\begin{equation}
 
 &emsp;&emsp;定义一个复数权矢量为
 
+<a id="ComplexWeightVector"></a>
+
 $$\begin{equation} \label{ComplexWeightVector}
   \vec{w}^\mathrm{H} = [w_0^\ast, w_1^\ast, \cdots, w_{N-1}^\ast]
 \end{equation}$$
 
 则式 $\eqref{ArrayResponseToUnitPlaneWaveInTimeDomain}$ 成为
+
+<a id="FrequencyWavenumberResponseWithComplexWeigh"></a>
 
 $$\begin{equation}
   y\left( t,\vec{k} \right) = \vec{w}^\mathrm{H} \vec{v}_{\vec{k}}\left( \vec{k} \right) e^{j\omega t}
