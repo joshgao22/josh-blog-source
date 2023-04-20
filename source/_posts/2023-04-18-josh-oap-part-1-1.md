@@ -4,7 +4,7 @@ mathjax: true
 comments: true
 copyright: true
 toc:
-  enable: false
+  enable: true
   number: true
   wrap: true
   expand_all: true
@@ -20,6 +20,8 @@ tags:
   - 频率-波数响应
   - 波束方向图
 ---
+
+# 阵列信号处理的目的及基本坐标系
 
 &emsp;&emsp;假设在空时场（space-time field）的某个区域内有一个或多个信号，同时在某些区域内存在噪声和/或干扰。在一些阵列信号处理的应用场景中，这些区域是部分重叠的。阵列可以利用信号的空域特征，对空时场域内的信号进行滤波。这种滤波可以用一种与角度或波数的相关性（in terms of a dependence upon angle or wavenumber）进行描述。从频域看，这种滤波是通过使用复增益对阵列输出进行加权，根据信号的空域相关性对信号进行增强或抑制来实现的。通常我们对空时场进行空域滤波的目的是：使得从一个（或一组）特定角度到来的信号通过有效的组合得到增强，抑制从其他角度到来的噪声或干扰。
 
@@ -38,6 +40,8 @@ z &= r \cos\theta
 \end{equation}$$
 
 <!-- more -->
+
+# 阵列的基本模型
 
 &emsp;&emsp;本文分析一个阵列对外部信号场的响应。阵列由一组全向阵元组成，阵元的位置为 $\vec{p}_n$，如[图 1-1-2](#fig.1-1-2) 所示。阵元在位置 $\vec{p}_n : n = 0, 1, \cdots, N — 1$ 上对信号场进行空域采样。这产生了一组信号，表示为矢量 $\vec{f}\left(t, \vec{p}\right)$
 
@@ -110,6 +114,8 @@ $$\begin{equation} \label{SampleVectorInFreqDomain}
 \end{equation}$$
 
 在大多数情况下，可以去掉式 $\eqref{SampleVectorInFreqDomain}$ 中左边的 $\vec{p}$，直接使用 $\vec{F}(\omega)$ 。
+
+# 信号到达不同阵元的时延
 
 &emsp;&emsp;下面考虑如[图 1-1-4](#fig.1-1-4) 所示的简单的波束形成操作。外部信号输入为传播方向为 $\vec{a}$，时域频率（弧度）为 $\omega$ 的平面波，则在时域上每个阵元的输入信号可以用两种等效的方式进行表示。
 
@@ -262,6 +268,8 @@ $$\begin{equation}
 
 其中 $\vec{v}_{\vec{k}}\left(\vec{k}\right)$ 在式 $\eqref{DefinitionOfArrayManifoldVector}$ 中定义。
 
+# 单位平面波模型
+
 &emsp;&emsp;现在回到一般的问题，我们想要确定阵列对一个输入场 $\vec{f}(t, \vec{p})$ 的响应，这可以通过之前给出的卷积求和操作来实现，但更有用的方法是首先确定阵列对单位平面波（unit plane wave）的响应，响应为单位平面波时域（弧度）频率 $\omega$ 和波数 $\vec{k}$ 的函数。（利用叠加的复指数基函数对一个线性时不变系统进行分析的系统理论方法可以扩展到空时信号的情况。）
 
 这里的基函数形式为
@@ -311,6 +319,8 @@ $$\begin{equation}
 其中 $\vec{a}(\theta,\varphi)$ 是一个单位矢量，在球坐标系中对应的角度为 $\theta$ 和 $\varphi$。可以看到，**波束方向图是频率-波数响应在一个半径为 $2\pi /\lambda$ 的球上的值**。
 
 &emsp;&emsp;阵列的波束方向图是确定阵列性能的关键要素。后续将会研究均匀加权线阵（uniformly weighted linear array）的波束方向图。
+
+# 窄带假设
 
 &emsp;&emsp;在这里中，我们强调 $f\left( t,\vec{p}_n \right)$ 是带通信号的情况，即
 
@@ -421,3 +431,8 @@ $$\begin{equation}
 \end{equation}$$
 
 这里主要关注的是窄带模型，对于宽带信号，一种处理方法是利用离散傅里叶变换（DFT）把信号分解到更窄的频率柜 （frequency bin），每个频率柜内的信号是满足窄带条件的，因此所有的窄带结果可以直接得到应用。
+
+# 参考文献
+
+1. Van Trees, Harry L. *Optimum array processing: Part IV of detection, estimation, and modulation theory.* John Wiley & Sons, 2002.
+2. Van Trees, Harry L, 汤俊. *最优阵列处理技术.* 清华大学出版社. 2008.
