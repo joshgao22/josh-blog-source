@@ -28,7 +28,7 @@ date: 2023-04-20 00:14:31
 
 <a id="fig.1-2-1"></a>
 
-![图 1-2-1 放置在 $z$ 轴上的线阵](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-20-josh-opa-part-1-2/2023-04-20-josh-oap-part-1-2-010-LinearArrayAlongZAaxis.png!sign){width=600px}
+![图 1-2-1 放置在 $z$ 轴上的线阵](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-20-josh-oap-part-1-2/2023-04-20-josh-oap-part-1-2-010-LinearArrayAlongZAaxis.png!sign){width=600px}
 
 <!-- more -->
 
@@ -43,7 +43,7 @@ $$\begin{equation} \label{ElementLocation}
   , \, n = 0,1,\cdots,N-1
 \end{equation}$$
 
-为了确定阵列流形矢量 $\vec{v}_{\vec{k}}\left(\vec{k}\right)$，把式 $\eqref{ElementLocation}$ 代入到[阵列流形矢量的定义][]，得到
+为了确定阵列流形矢量 $\vec{v}_{\vec{k}}\left(\vec{k}\right)$，把式 $\eqref{ElementLocation}$ 代入到[阵列流形矢量的定义][]中，得到
 
 $$\begin{equation} \label{ManifoldVectorOfULA}
   \vec{v}_{\vec{k}}\left(k_z\right) = \left[\begin{array}{c}
@@ -66,7 +66,7 @@ $$\begin{equation}
   k_0 \triangleq \left| \vec{k} \right| = \frac{2\pi}{\lambda}
 \end{equation}$$
 
-注意，线阵在 $\varphi$ 方向是没有分辨能力的。将[复权矢量][] 和式 $\eqref{ManifoldVectorOfULA}$ 代入[用复权矢量表示的波数-频率响应函数][]，得到 ULA 在角度域的频率-波数响应函数
+注意，线阵在 $\varphi$ 方向是没有分辨能力的。将[复权矢量][]和式 $\eqref{ManifoldVectorOfULA}$ 代入[用复权矢量表示的波数-频率响应函数][]，得到 ULA 在角度域的频率-波数响应函数
 
 $$\begin{equation} \label{WFRFOfULAInAngleDomain}
   \begin{aligned}
@@ -137,7 +137,7 @@ $$\begin{equation}
   \left[ \vec{v}_u(u) \right] = e^{j\left( n - \frac{N-1}{2} \right) \frac{2\pi d}{\lambda} u}, \, n = 0,\cdots, N-1
 \end{equation}$$
 
-也可以用三种形式写出波束方向图。频率-波数函数和波束方向图的关键区别是波束方向图的参量受限于实际的物理角度 $\theta$。所以，
+也可以用三种形式写出波束方向图。频率-波数函数和波束方向图的关键区别是波束方向图的参量受限于实际的物理角度 $\theta$，所以，
 
 $$\begin{equation}
   B_\theta(\theta) = \vec{w}^\mathrm{H} \vec{v}_\theta(\theta) = e^{-j\left(\frac{N-1}{2} \right) \frac{2\pi d}{\lambda} \cos \theta} \sum_{n=0}^{N-1} w_n^\ast e^{j n \frac{2\pi d}{\lambda} \cos \theta}, \, 0 \leqslant \theta \leqslant \pi
@@ -163,12 +163,12 @@ $$\begin{equation}
 
 $$\begin{equation} \label{ManifoldVecOfULAWithConjugateSymmetry}
   \boxed{\vec{v}_\psi(\psi) = \left[ \begin{array}{c}
-    e^{-j\left(\frac{N-1}{2} \right)\psi} \\
-    e^{-j\left(\frac{N-3}{2} \right)\psi} \\
-    \vdots \\
-    e^{j\left(\frac{N-3}{2} \right)\psi} \\
-    e^{j\left(\frac{N-1}{2} \right)\psi} \\
-  \end{array} \right]}
+    e^{-j\left(\frac{N-1}{2} \right)\psi} &
+    e^{-j\left(\frac{N-3}{2} \right)\psi} &
+    \cdots &
+    e^{j\left(\frac{N-3}{2} \right)\psi} &
+    e^{j\left(\frac{N-1}{2} \right)\psi} &
+  \end{array} \right]^\mathrm{T}}
 \end{equation}$$
 
 可以看到 ULA 的阵列流形矢量具有**{% label primary @共扼对称性（conjugate symmetry） %}**。
@@ -176,7 +176,7 @@ $$\begin{equation} \label{ManifoldVecOfULAWithConjugateSymmetry}
 {% tabs 阵列流形矢量具有共扼对称性 %}
 <!-- tab $N$ 为偶数-->
 
-当 $N$ 为偶数时，如果定义一个 $N/2$ 维的矢量 $\vec{v}_{\psi_1}(\psi)$，对应与 $\vec{v}_\psi(\psi)$ 的前 $N/2$ 个元素，则有
+当 $N$ 为偶数时，如果定义一个 $N/2$ 维的矢量 $\vec{v}_{\psi_1}(\psi)$，对应 $\vec{v}_\psi(\psi)$ 的前 $N/2$ 个元素，则有
 
 $$\begin{equation}
   \vec{v}_\psi(\psi) = \left[ \begin{array}{c}
@@ -189,7 +189,7 @@ $$\begin{equation}
 
 <!-- tab $N$ 为奇数-->
 
-当 $N$ 为奇数时，如果定义一个 $(N-1)/2$ 维的矢量 $\vec{v}_{\psi_1}(\psi)$，对应与 $\vec{v}_\psi(\psi)$ 的前 $(N-1)/2$ 个元素，则有
+当 $N$ 为奇数时，如果定义一个 $(N-1)/2$ 维的矢量 $\vec{v}_{\psi_1}(\psi)$，对应 $\vec{v}_\psi(\psi)$ 的前 $(N-1)/2$ 个元素，则有
 
 $$\begin{equation}
   \vec{v}_\psi(\psi) = \left[ \begin{array}{c}
@@ -240,26 +240,26 @@ $$\begin{equation}
 
 $$\begin{equation}
   \vec{v}_\psi(\psi) = e^{-j\left(\frac{N-1}{2} \right)\psi} \left[ \begin{array}{c}
-    1 \\
-    e^{j\psi} \\
-    \vdots \\
-    e^{j(N-1)\psi} \\
-  \end{array} \right]
+    1 &
+    e^{j\psi} &
+    \cdots &
+    e^{j(N-1)\psi} &
+  \end{array} \right]^\mathrm{T}
 \end{equation}$$
 
 这个形式强调了 $\vec{v}_\psi(\psi)$ 的 Vandermonde 结构。
 
-# 从波束方向图导出权矢量
+# 从波束方向图获得权矢量
 
-&emsp;&emsp;下面讨论如何从特定的方向图 $B(\psi)_\psi$ 中获得权矢量 $\vec{w}$，我们从式 $\eqref{BeamPatternInDirectionCosineDomain}$ 中的关系开始
+&emsp;&emsp;下面讨论如何从特定的方向图 $B_\psi(\psi)$ 中获得权矢量 $\vec{w}$，我们从式 $\eqref{BeamPatternInDirectionCosineDomain}$ 中的关系开始
 
 $$\begin{equation} \label{ShortBeamPatternInDirectionCosineDomain}
   B_\psi(\psi) = \vec{w}^\mathrm{H} \vec{v}_\psi(\psi)
 \end{equation}$$
 
-假设 $B(\psi)_\psi$ 是已知的，我们想确定产生这个 $B(\psi)_\psi$ 的 $\vec{w}$。由于 $\vec{w}^\mathrm{H}$ 是一个 $1 \times N$ 维的矢量，因此如果知道 $B(\psi)_\psi$ 在 $N$ 个 $\psi$ 值上的值，就可以确定 $\vec{w}$。
+假设 $B_\psi(\psi)$ 是已知的，我们想确定产生这个 $B_\psi(\psi)$ 的 $\vec{w}$。由于 $\vec{w}^\mathrm{H}$ 是一个 $1 \times N$ 维的矢量，因此如果知道 $B_\psi(\psi)$ 在 $N$ 个 $\psi$ 值上的值，就可以确定 $\vec{w}$。
 
-&emsp;&emsp;我们对波束方向图在 $N$ 个 $\psi_i, i = 1,\cdots,N$ 上进行采样。$\psi_i$ 必须是不同的，但不一定是等距的，记采样点处的波束方向图的值为 $B(\psi_i)$。根据式 $\eqref{ShortBeamPatternInDirectionCosineDomain}$，有
+&emsp;&emsp;对波束方向图在 $N$ 个 $\psi_i$ 上进行采样，这里要求 $\psi_i$ 必须是不同的，但不一定是等距的，记采样点处的波束方向图的值为 $B(\psi_i)$。根据式 $\eqref{ShortBeamPatternInDirectionCosineDomain}$，有
 
 $$\begin{equation} \label{ElementOfShortBeamPatternInDirectionCosineDomain}
   \vec{w}^\mathrm{H} \vec{v}(\psi_i) = B(\psi_i), \, i = 1, \cdots, N
@@ -303,7 +303,7 @@ $$\begin{equation}
   \psi_1 = 0
 \end{equation}$$
 
-且 $\psi_2, \psi_3, \cdots, \psi_N$ 对应于零点的位置。假设预期的归一化波束方向图为：
+且 $\psi_2, \psi_3, \cdots, \psi_N$ 对应于零点的位置。假设期望方向的信号无失真通过，其他方向的信号全部抑制，则预期的归一化波束方向图为：
 
 $$\begin{matrix}
   \vec{B} = \left[ \begin{array}{c} 1 & 0 & \cdots & 0 \end{array} \right] = \vec{e}_1^\mathrm{T}
@@ -319,7 +319,7 @@ $$\begin{equation} \label{WeightVecCalculationWithAllZeroExceptMainAxis}
 
 在式 $\eqref{WeightVecCalculation}$ 和式 $\eqref{WeightVecCalculationWithAllZeroExceptMainAxis}$ 中有两点需要强调：
 
-1. 我们已经假设 $B_\psi(\psi)$ 在式 $\eqref{ShortBeamPatternInDirectionCosineDomain}$ 中进行了定义。换句话说，它是由一个 $N \times 1$ 维复数矢量 $\vec{w}$ 产生的。如果 $B_\psi(\psi)$ 是任意函数，且使用式 $\eqref{WeightVecCalculation}$，那么将产生一个方向图，和 $B(\psi_i), i = 1,\cdots,N$ 相匹配，但不一定和函数 $B_\psi(\psi)$ 相匹配。
+1. 上述讨论已经假设 $B_\psi(\psi)$ 在式 $\eqref{ShortBeamPatternInDirectionCosineDomain}$ 中进行了定义，是由一个 $N \times 1$ 维复矢量 $\vec{w}$ 产生的。如果 $B_\psi(\psi)$ 是任意函数，且使用式 $\eqref{WeightVecCalculation}$，那么将产生一个方向图，和 $B(\psi_i), i = 1,\cdots,N$ 相匹配，但不一定和函数 $B_\psi(\psi)$ 相匹配。
 
 2. 我们是在一个均匀线阵的背景下介绍这个结果的。但是，这个推导过程适用于任意结构的 $N$ 阵元阵列。
 
