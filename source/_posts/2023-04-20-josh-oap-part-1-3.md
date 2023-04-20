@@ -20,7 +20,7 @@ abbrlink: aa32ec76
 date: 2023-04-20 19:34:47
 ---
 
-&emsp;&emsp;现在把注意力集中到均匀加权的情况
+&emsp;&emsp;现在把注意力集中到均匀加权的情况，即
 
 $$\begin{equation}
   w_n = \frac{1}{N}, \, n = 0,1,\cdots,N-1
@@ -30,9 +30,7 @@ $$\begin{equation}
   \vec{w} = \frac{1}{N} \vec{1}
 \end{equation}$$
 
-其中 1 是 $N \times 1$ 维的单位矢量
-
-则在 $\psi$ 空间的频率-波数函数可以写成（利用等比级数的求和公式）
+其中 $\vec{1}$ 是 $N \times 1$ 维的单位矢量，则在 $\psi$ 空间的频率-波数函数可以写成（利用等比级数的求和公式）
 
 $$\begin{equation}
   \begin{aligned}
@@ -50,7 +48,13 @@ $$\begin{equation}
 
 <!-- more -->
 
-观察到，当 $N$ 是奇数时，$\vec{\varUpsilon}_\psi(\psi)$ 是周期函数，周期为 $2\pi$。如果 $N$ 为偶数，波瓣在 $\pm 2 \pi$、$\pm 6 \pi$ 处的值为负值，周期为 $4 \pi$。对任意 $N$ 值， $\left|\vec{\varUpsilon}_\psi(\psi)\right|$ 的周期为 $2 \pi$。当 $N = 11$  时， $\vec{\varUpsilon}_\psi(\psi)$ 和 $\psi$ 的关系在[图 1-3-1](#fig.1-3-1) 中给出。[图 1-3-2](#fig.1-3-2) 给出了 $\left|\vec{\varUpsilon}_\psi(\psi)\right|$，单位为 dB, 其中
+观察到，
+
+- 当 $N$ 是奇数时，$\vec{\varUpsilon}_\psi(\psi)$ 是周期函数，周期为 $2\pi$；
+- 当 $N$ 为偶数时，波瓣在 $\pm 2 \pi$、$\pm 6 \pi$ 处的值为负值，周期为 $4 \pi$；
+- 对任意的 $N$，$\left|\vec{\varUpsilon}_\psi(\psi)\right|$ 的周期为 $2 \pi$。
+
+当 $N = 11$  时， $\vec{\varUpsilon}_\psi(\psi)$ 和 $\psi$ 的关系在[图 1-3-1](#fig.1-3-1) 中给出。[图 1-3-2](#fig.1-3-2) 给出了 $\left|\vec{\varUpsilon}_\psi(\psi)\right|$，单位为 dB, 其中
 
 $$\begin{equation}
   \vec{\varUpsilon}_\mathrm{dB}(\psi) = 10 \log_{10} \left|\vec{\varUpsilon}_\psi(\psi)\right|^2
@@ -63,3 +67,15 @@ $$\begin{equation}
 <a id="fig.1-3-2"></a>
 
 ![图 1-3-1 用 dB 表示 $\left|\vec{\varUpsilon}(\psi)\right|$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-20-josh-oap-part-1-3/2023-04-20-josh-oap-part-1-3-020-FrequencyWavenumberResponseFunctionInDB.svg){width=700px}
+
+若不指定 $\vec{w}$ 的类型, 则 $\vec{\varUpsilon}_\psi(\psi)$ 是复数，所以相位也应该画出来。但是，均匀加权线阵具有对称性，因此得到的频率-波数响应是实函数。
+
+&emsp;&emsp;也可以用 $k_z$ 来表示频率-波数响应
+
+$$\begin{equation}
+  \vec{\varUpsilon}(\omega:k_z) = \frac{1}{N} \frac{\sin\left( N k_z \frac{d}{2} \right)}{\sin \left(k_z\frac{d}{2}\right)}
+\end{equation}$$
+
+这里 $\vec{\varUpsilon}(\omega:k_z)$ 是周期函数，周期为 $2\pi/d$。
+
+注意，响应函数仅依赖于波数分量 $k_z$, 是 $k_z$ 的周期函数，间隔为 $2\pi/d$，这是线性阵列的一维特性导致的，所以该阵列仅能分析在 $k_z$ 方向上投影的波数分量。
