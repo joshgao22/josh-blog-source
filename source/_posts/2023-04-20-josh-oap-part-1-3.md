@@ -12,6 +12,10 @@ toc:
 tags:
   - 阵列信号处理
   - 均匀加权线阵
+  - 3dB 带宽
+  - 第一零点波束宽度
+  - 旁瓣
+  - 栅瓣
 categories:
   - - Josh 的学习笔记
     - 最优阵列处理
@@ -218,7 +222,7 @@ $$\begin{equation}
 | $\psi$ | $\frac{4\pi}{N}$ | $\frac{4\pi}{N}$ |
 | $k_z$ | $\frac{4\pi}{dN}$ | $\frac{8\pi}{\lambda N}$ |
 
-# 旁瓣的位置及其衰减速率
+## 旁瓣的位置及其衰减速率
 
 &emsp;&emsp;旁瓣极大值的位置出现在当式 $\eqref{BeamPatternOfUWLAInDirectionCosineDomain}$ 中的分子逼近极大值的时候：
 
@@ -270,7 +274,7 @@ $$\begin{equation}
 
 {% endnote %}
 
-# 栅瓣（Grating lobes）
+## 栅瓣（Grating lobes）
 
 <a id="fig.1-3-6"></a>
 
