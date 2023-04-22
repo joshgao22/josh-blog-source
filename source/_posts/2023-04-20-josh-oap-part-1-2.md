@@ -68,7 +68,7 @@ $$\begin{equation}
 
 注意，线阵在 $\varphi$ 方向是没有分辨能力的。将[复权矢量][]和式 $\eqref{ManifoldVectorOfULA}$ 代入[用复权矢量表示的波数-频率响应函数][]，得到 ULA 在角度域的频率-波数响应函数
 
-$$\begin{equation} \label{WFRFOfULAInAngleDomain}
+$$\begin{equation} \label{FWRFOfULAInAngleDomain}
   \begin{aligned}
     \vec{\varUpsilon}(\omega,k_z) &= \vec{w}^\mathrm{H}\vec{v}_{\vec{k}}\left(k_z\right) \\
     &= \sum_{n=0}^{N-1} w_n^\ast e^{-j\left( n - \frac{N-1}{2} \right) k_z d}
@@ -87,9 +87,9 @@ $$\begin{equation}
   u_z = \cos\theta
 \end{equation}$$
 
-将式 $\eqref{DefinitionOfWavenumberDiffOfTwoElements}$ 代入式 $\eqref{WFRFOfULAInAngleDomain}$，得到**在 $\psi$ 空间的频率-波数函数（frequency-wavenumber function in $\psi$-space）**
+将式 $\eqref{DefinitionOfWavenumberDiffOfTwoElements}$ 代入式 $\eqref{FWRFOfULAInAngleDomain}$，得到**在 $\psi$ 空间的频率-波数函数（frequency-wavenumber function in $\psi$-space）**
 
-$$\begin{equation}  \label{WFRFOfULAInWavenumberDomain}
+$$\begin{equation}  \label{FWRFOfULAInWavenumberDomain}
   \vec{\varUpsilon}_\psi(\psi) = e^{-j \frac{N-1}{2} \psi } \sum_{n=0}^{N-1} w_n^\ast e^{j n\psi}
 \end{equation}$$
 
@@ -101,11 +101,11 @@ $$\begin{equation}
   z = e^{j \psi}
 \end{equation}$$
 
-$$\begin{equation} \label{WFRFOfULAInZDomain}
+$$\begin{equation} \label{FWRFOfULAInZDomain}
   \vec{\varUpsilon}_z(z) = z^{- \frac{N-1}{2}} \sum_{n=0}^{N-1} w_n^\ast z^{n}
 \end{equation}$$
 
-则式 $\eqref{WFRFOfULAInZDomain}$ 可以写成
+则式 $\eqref{FWRFOfULAInZDomain}$ 可以写成
 
 $$\begin{equation}
   \vec{\varUpsilon}_z(z) = z^{- \frac{N-1}{2}} \left(\sum_{n=0}^{N-1} w_n z^{-n}\right)^\ast
@@ -119,13 +119,13 @@ $$\begin{equation}
 
 和 $z$ 变换的形式相似，且
 
-$$\begin{equation} \label{WFRFOfULAInZDomainToWavenumberDomain}
+$$\begin{equation} \label{FWRFOfULAInZDomainToWavenumberDomain}
   \vec{\varUpsilon}_\psi(\psi) = \left. \vec{\varUpsilon}_z(z) \right|_{z=e^{j\psi}} = \left.\left(z^{- \frac{N-1}{2}} W^\ast(z)\right)\right|_{z=e^{j\psi}}
 \end{equation}$$
 
 是在 $\psi$ 空间的频率-波数响应。我们在后面将利用这个关系。
 
-&emsp;&emsp;在式 $\eqref{WFRFOfULAInAngleDomain}$ 、式 $\eqref{WFRFOfULAInWavenumberDomain}$ 和式 $\eqref{WFRFOfULAInZDomainToWavenumberDomain}$ 中用三种不同的方式写出了频率-波数函数，尽管这可能显得引入了过多的符号，但我们将发现在不同的情况下，这些不同的形式都是有用的。
+&emsp;&emsp;在式 $\eqref{FWRFOfULAInAngleDomain}$ 、式 $\eqref{FWRFOfULAInWavenumberDomain}$ 和式 $\eqref{FWRFOfULAInZDomainToWavenumberDomain}$ 中用三种不同的方式写出了频率-波数函数，尽管这可能显得引入了过多的符号，但我们将发现在不同的情况下，这些不同的形式都是有用的。
 
 &emsp;&emsp;在 $\theta$ 和 $u$ 空间定义出阵列流形也是有用的
 
