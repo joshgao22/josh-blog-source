@@ -171,12 +171,14 @@ $$\begin{equation} \label{LeftHalfPowerPointInAngleDomain}
 
 所以，对于 $0 \leqslant \theta \leqslant pi$，$\theta_\mathrm{L}, \theta_\mathrm{R} \geqslant 0$，在 $\theta$ 空间的半功率波束宽度为
 
-$$\begin{equation}
+$$\begin{equation} \label{HPBWOfUWLA}
   \theta_\mathrm{H} = \theta_\mathrm{R} - \theta_\mathrm{L} = \cos^{-1} \left[ \cos\theta_\mathrm{T} - 0.450 \frac{\lambda}{Nd} \right] - \cos^{-1} \left[ \cos\theta_\mathrm{T} + 0.450 \frac{\lambda}{Nd} \right]
 \end{equation}$$
 
 &emsp;&emsp;除了当 $\theta_\mathrm{T} = 0$ 或 $\pi$（端射，endfire，信号入射方向与阵元排布方向平行）的情况，$\theta_\mathrm{L}$ 定义为最接近 $\theta = 0$ 的半功率点。当波束从正侧向（$\theta_\mathrm{T} = \pi/2$）调向 $z$ 轴的正半轴（端射，$\theta_\mathrm{T} = 0$）时，波束变宽。在某点上，如式 $\eqref{LeftHalfPowerPointInAngleDomain}$
 中所示，$\theta_\mathrm{L}$ 等于 0。在该点以外，在波束的那一边再没有半功率点。 Elliott[^1] 把这个点称为扫描极限（scan limit）。
+
+&emsp;&emsp;Elliot [^1] 画出了式 $\eqref{HPBWOfUWLA}$ 和式 $\eqref{HPBWOfEndfireUWLA}$ 中给出的波束宽度，并在[图 1-4-4](#fig.1-4-4) 中给出。
 
 <a id="fig.1-4-4"></a>
 
@@ -195,6 +197,45 @@ $$\begin{equation} \label{HPBWWithSmallAngle}
 ![图 1-4-5 长度降低了 $\cos\bar\theta_\mathrm{T}$ 倍的等效阵列](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-22-josh-oap-part-1-4/2023-04-22-josh-oap-part-1-4-050-EffectiveArrayLength.png!sign){width=600px}
 
 &emsp;&emsp;对于 $Nd \geqslant 5\lambda$，在正侧向附近，式 $\eqref{HPBWWithSmallAngle}$ 的误差在 0.2% 以内，在扫描极限附近，误差在 4% 以内。
+
+&emsp;&emsp;当 $\theta_\mathrm{T} = 0$ 或 $\pi$ 时，最大响应轴的指向沿着阵列的轴线，此时称为一个端射阵列（endfire array）。一个标准 10 阵元端射阵列的波束方向图在[图 1-4-6](#fig.1-4-6) 中给出。在这种情况下，有
+
+$$\begin{equation} \label{HPBWOfEndfireUWLA}
+  \theta_\mathrm{H} = 2 cos^{-1} \left[ 1 - 0.450 \frac{\lambda}{Nd} \right], \quad \theta_\mathrm{T} = 0 \text{或} \pi
+\end{equation}$$
+
+<a id="fig.1-4-6"></a>
+
+![图 1-4-6 一个标准 10 阵元线阵。采用均匀幅度加权时在端射时的波束方向图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-22-josh-oap-part-1-4/2023-04-22-josh-oap-part-1-4-060-BeamPatternOfStandard10ElementUWLAAtEndfire.svg){width=800px}
+
+可以把式 $\eqref{HPBWOfEndfireUWLA}$ 写成
+
+$$\begin{equation}
+  1 - \cos \left( \frac{\theta_\mathrm{H}}{2} \right) = 0.450 \frac{\lambda}{Nd}
+\end{equation}$$
+
+或
+
+$$\begin{equation} \label{SineOfHPBWOfEndfireUWLA}
+  \sin \left( \frac{\theta_\mathrm{H}}{4} \right) = \sqrt{\frac{0.450}{2}\cdot \frac{\lambda}{Nd}}
+\end{equation}$$
+
+对于 $Nd \gg \lambda$，$\theta_\mathrm{H}$ 很小，则式 $\eqref{SineOfHPBWOfEndfireUWLA}$ 成为
+
+$$\begin{equation} \label{ApproximationOfHPBWOfEndfireUWLA}
+  \theta_\mathrm{H} = 2 \sqrt{0.890 \frac{\lambda}{Nd}}
+\end{equation}$$
+
+对于 $Nd \gg 5\lambda$，式 $\eqref{ApproximationOfHPBWOfEndfireUWLA}$ 的误差小于 1%。
+
+&emsp;&emsp;类似的，方向图的第一零点的位置为
+
+$$\begin{equation}
+  \theta_\mathrm{null} = \sqrt{2 \frac{\lambda}{Nd}}
+\end{equation}$$
+
+&emsp;&emsp;所以，一个线阵在端射位置的分辨率随 $Nd/\lambda$ 的平方根的倒数变化，而在正侧向的时
+候是线性的关系。
 
 # 参考文献
 
