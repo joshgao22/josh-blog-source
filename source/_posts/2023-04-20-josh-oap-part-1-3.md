@@ -95,13 +95,17 @@ $$\begin{equation}
 
 &emsp;&emsp;均匀加权线阵的波束方向图为
 
-$$\begin{align}
-  &\theta 空间: && B_\theta(\theta) = \frac{1}{N} \frac{\sin\left(\frac{N}{2} \cdot \frac{2\pi}{\lambda} \cos \theta \cdot d \right)}{\sin \left( \frac{1}{2} \cdot \frac{2\pi}{\lambda} \cos\theta \cdot d\right)}, \quad 0 \leqslant \theta \leqslant \pi \\
+$$\begin{equation}
+  B_\theta(\theta) = \frac{1}{N} \frac{\sin\left(\frac{N}{2} \cdot \frac{2\pi}{\lambda} \cos \theta \cdot d \right)}{\sin \left( \frac{1}{2} \cdot \frac{2\pi}{\lambda} \cos\theta \cdot d\right)}, \quad 0 \leqslant \theta \leqslant \pi \\
+\end{equation}$$
 
-  &u 空间: && B_u(u) = \frac{1}{N} \frac{\sin\left(\frac{ \pi Nd}{\lambda} u \right)}{\sin \left( \frac{N d}{\lambda} u\right)}, \quad -1 \leqslant u \leqslant 1 \label{BeamPatternOfUWLAInDirectionCosineDomain} \\
+$$\begin{equation}
+  B_u(u) = \frac{1}{N} \frac{\sin\left(\frac{ \pi Nd}{\lambda} u \right)}{\sin \left( \frac{N d}{\lambda} u\right)}, \quad -1 \leqslant u \leqslant 1 \label{BeamPatternOfUWLAInDirectionCosineDomain}
+\end{equation}$$
 
-  &\psi 空间:  &&B_\psi(\psi) = \frac{1}{N} \frac{\sin\left(N\frac{\psi}{2}\right)}{\sin \left( \frac{\psi}{2} \right)}, \quad -\frac{2\pi d}{\lambda} \leqslant \psi \leqslant \frac{2\pi d}{\lambda} \label{BeamPatternOfUWLAInWaveNumberDomain}
-\end{align}$$
+$$\begin{equation}
+  B_\psi(\psi) = \frac{1}{N} \frac{\sin\left(N\frac{\psi}{2}\right)}{\sin \left( \frac{\psi}{2} \right)}, \quad -\frac{2\pi d}{\lambda} \leqslant \psi \leqslant \frac{2\pi d}{\lambda} \label{BeamPatternOfUWLAInWaveNumberDomain}
+\end{equation}$$
 
 其中定义域分别为 $0 \leqslant \theta \leqslant \pi$、$-1 \leqslant u \leqslant 1$ 和 $-\displaystyle\frac{2\pi d}{\lambda} \leqslant \psi \leqslant \frac{2\pi d}{\lambda}$，称为**{% label primary @可视区域（visible region） %}**。
 
@@ -141,7 +145,7 @@ $$\begin{align}
 
 ## 半功率波束宽度
 
-为了说明前两个参数，考虑在[图 1-3-5](#fig.1-3-5) 中给出的原点附近的波束方向图。
+&emsp;&emsp;为了说明前两个参数，考虑在[图 1-3-5](#fig.1-3-5) 中给出的原点附近的波束方向图。
 
 <a id="fig.1-3-5"></a>
 
@@ -155,11 +159,13 @@ $$\begin{equation}
 
 即有
 
-$$\begin{equation} \label{DefinitionOfHPBW}
+<a id="ApproximationOfHPBW"></a>
+
+$$\begin{equation} \label{ApproximationOfHPBW}
  \Delta u_1 = 0.891 \frac{\lambda}{N d}
 \end{equation}$$
 
-我们把这个间隔称为**{% label primary @半功率波束宽度（half-power beamwidth，HPBW） %}**。当 $N$ 增加时，式 $\eqref{DefinitionOfHPBW}$ 中的常系数会稍稍减小。对于 $N > 30$，$0.886 \lambda/Nd$ 是一个更好的近似表达式。
+我们把这个间隔称为**{% label primary @半功率波束宽度（half-power beamwidth，HPBW） %}**。当 $N$ 增加时，式 $\eqref{ApproximationOfHPBW}$ 中的常系数会稍稍减小。对于 $N > 30$，$0.886 \lambda/Nd$ 是一个更好的近似表达式。
 
 &emsp;&emsp;[表 1-3-1](#table.1-3-1) 中列出了不同空间内 HPBW 的表达式。
 
@@ -328,3 +334,8 @@ $$\begin{equation}
 在时间序列分析中，当对时域波形欠采样时，会出现混迭问题。栅瓣的问题和时域混迭问题是等同的。
 
 {% endnote %}
+
+# 参考文献
+
+1. Van Trees, Harry L. *Optimum array processing: Part IV of detection, estimation, and modulation theory.* John Wiley & Sons, 2002.
+2. Van Trees, Harry L, 汤俊. *最优阵列处理技术.* 清华大学出版社. 2008.

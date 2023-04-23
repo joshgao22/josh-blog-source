@@ -33,7 +33,7 @@ date: 2023-04-22 18:17:52
 
 <a id="fig.1-4-1"></a>
 
-![图 1-4-1 利用延时实现阵列调向](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-22-josh-oap-part-1-4/2023-04-22-josh-oap-part-1-4-010-ArraySteeringWithDelays.png!sign){width=800px}
+![图 1-4-1 利用延时实现阵列调向](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-22-josh-oap-part-1-4/2023-04-22-josh-oap-part-1-4-010-ArraySteeringWithDelays.png!sign){width=700px}
 
 &emsp;&emsp;[1.2 节][]开头的简单例子说明了把阵列调向某个特定方向的主要思想，调向在波数空间的影响是很直接的。考虑[图 1-4-1](#fig.1-4-1) 中的处理器，输入到调向环节的基函数为
 
@@ -92,18 +92,109 @@ $$\begin{equation}
 
 &emsp;&emsp;线性阵列的常规波束方向图为
 
-$$\begin{align}
-  &\psi 空间：&&\quad B_{\psi\mathrm{c}}\left( \psi : \psi_\mathrm{T} \right) = \frac{1}{N} \vec{v}_\psi^\mathrm{H}  \left(\psi_\mathrm{T}\right) \vec{v}_\psi\left(\psi\right) \\
-  &u 空间：&&\quad B_{u\mathrm{c}}\left( u : u_\mathrm{T} \right) = \frac{1}{N} \vec{v}_u^\mathrm{H}  \left(u_\mathrm{T}\right) \vec{v}_u\left(u\right) \\
-\end{align}$$
+$$\begin{equation}
+  B_{\psi\mathrm{c}}\left( \psi : \psi_\mathrm{T} \right) = \frac{1}{N} \vec{v}_\psi^\mathrm{H}  \left(\psi_\mathrm{T}\right) \vec{v}_\psi\left(\psi\right)
+\end{equation}$$
+
+$$\begin{equation}
+  B_{u\mathrm{c}}\left( u : u_\mathrm{T} \right) = \frac{1}{N} \vec{v}_u^\mathrm{H}  \left(u_\mathrm{T}\right) \vec{v}_u\left(u\right)
+\end{equation}$$
 
 对于均匀线性阵列，有
 
-$$\begin{align}
-  &\psi 空间：&&\quad B_{\psi\mathrm{c}}\left( \psi : \psi_\mathrm{T} \right) = \frac{1}{N} \frac{\sin\left( N \frac{\psi-\psi_\mathrm{T}}{2} \right)}{\sin\left(\frac{\psi-\psi_\mathrm{T}}{2} \right)} \\
-  &u 空间：&&\quad B_{u\mathrm{c}}\left( u : u_\mathrm{T} \right) = \frac{1}{N} \vec{v}_u^\mathrm{H}  \left(u_\mathrm{T}\right) \vec{v}_u\left(u\right) \\
-\end{align}$$
+$$\begin{equation}
+  B_{\psi\mathrm{c}}\left( \psi : \psi_\mathrm{T} \right) = \frac{1}{N} \frac{\sin\left( N \frac{\psi-\psi_\mathrm{T}}{2} \right)}{\sin\left(\frac{\psi-\psi_\mathrm{T}}{2} \right)} \label{SteeredBeamPatternInWavenumberDomain}
+\end{equation}$$
+
+$$\begin{equation}
+  B_{u\mathrm{c}}\left( u : u_\mathrm{T} \right) = \frac{1}{N} \frac{\sin\left[ \frac{\pi Nd}{\lambda} (u - u_\mathrm{T}) \right]}{\sin\left[ \frac{\pi d}{\lambda} (u - u_\mathrm{T}) \right]} \label{SteeredBeamPatternInDirectionCosineDomain}
+\end{equation}$$
+
+式 $\eqref{SteeredBeamPatternInWavenumberDomain}$ 或式 $\eqref{SteeredBeamPatternInDirectionCosineDomain}$ 均对应方向图的平移，其形状并没有改变。这种没有畸变的平移性质是在 $\psi$ 空间或 $u$ 空间处理的众多优点之一。
+
+&emsp;&emsp;当我们对阵列调向，并使得主响应轴对准 $\bar{\theta}_0$ 时，其中 $\bar{\theta}_0$ 是从正侧向（broadside）测得的角度，波束方向图发生平移，使得中心峰值位于 $u_0 = \sin\bar{\theta}_0$。这个平移也使得栅瓣发生移动。
+
+&emsp;&emsp;[图 1-4-2](#fig.1-4-2) 说明了调向对波束方向图的影响。[图 1-4-2(a)](#fig.1-4-2) 给出了 $d=2\lambda/3$ 和 $\bar\theta = 30^\circ$ 时的波束方向图。我们看到，在这种调向的情况下，栅瓣位于可视区域的边缘。
+
+<a id="fig.1-4-2"></a>
+
+![图 1-4-2 阵列调向对栅瓣的影响：$N=10$，(a) $d=2\lambda/3, \bar\theta = 30^\circ$；(b) $d=\lambda/2, \bar\theta = 90^\circ$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-22-josh-oap-part-1-4/2023-04-22-josh-oap-part-1-4-020-%20EffectOfSteeringOnTheGratingLobes.svg){width=1000px}
+
+&emsp;&emsp;[图 1-4-2(b)](#fig.1-4-2) $d=\lambda/2$ 和 $\bar\theta = 90^\circ$ 的波束方向图。栅瓣同样位于可视区域的边缘。
+
+&emsp;&emsp;通常，为了避免栅瓣进入可视区域，需要
+
+$$\begin{equation}
+  \frac{d}{\lambda} \leqslant \frac{1}{1 + \left| \sin\bar\theta_{\max} \right|}
+\end{equation}$$
+
+其中， $\bar\theta_{\max}$ 是阵列将要调向的最大角度。这个结果是令 $\bar\theta_\mathrm{T} = \bar\theta_{\max}$, 计算第一个栅瓣的位置和 $\frac{d}{\lambda}$ 的关系而得到的。所以，如果阵列需要的调向为 $-90^\circ \leqslant \bar\theta \leqslant 90^\circ$ 需要
+
+$$\begin{equation}
+  d \leqslant \frac{\lambda}{2}
+\end{equation}$$
+
+研究在 $\psi$ 空间或 $u$ 空间的特性是很有用的。但是，必须要注意信号实际是从 $(\theta, \varphi)$ 空间产生的，我们需要理解在这个空间的特性，这一点很重要。
+
+&emsp;&emsp;在 $\theta$ 空间（即角度空间），有
+
+$$\begin{equation}
+  B_{\theta\mathrm{c}}\left( \theta : \theta_\mathrm{T} \right) = \frac{1}{N} \frac{\sin\left[ \frac{\pi Nd}{\lambda} (\cos\theta - \cos\theta_\mathrm{T}) \right]}{\sin\left[ \frac{\pi d}{\lambda} (\cos\theta - \cos\theta_\mathrm{T}) \right]} \label{SteeredBeamPatternInAngleDomain}
+\end{equation}$$
+
+我们在 $\theta$ 空间画出 $B_{\theta\mathrm{c}}$，由于和 $\theta$ 的关系，方向图的形状将随之发生改变。[图 1-4-3](#fig.1-4-3) 给出了 $\theta_\mathrm{T}$ 和 $d=\lambda/2$ 的波束方向图。把这个方向图和[图 1-3-3][] 中的方向图进行比较，
+可以看到主波束的波束宽度有所增加。
+
+<a id="fig.1-4-3"></a>
+
+![图 1-4-3 10 阵元均匀阵列 ($d = \lambda/2$) 扫描到 30°（和正侧向夹角为 60°）时的波束方向图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-22-josh-oap-part-1-4/2023-04-22-josh-oap-part-1-4-030-BeamPatternFor10ElementUniformArrayScannedTo30Degree.svg){width=800px}
+
+&emsp;&emsp;为了研究在 $\theta$ 空间的半功率带宽情况，我们采用式 $\eqref{SteeredBeamPatternInAngleDomain}$ 和 [$N \geqslant 10$ 时半功率带宽的估算式][]。在 $u$ 空间的左右半功率点分别为
+
+$$\begin{equation}
+  u_\mathrm{L} = u_\mathrm{T} - 0.450 \frac{\lambda}{Nd}
+\end{equation}$$
+
+$$\begin{equation}
+  u_\mathrm{R} = u_\mathrm{T} + 0.450 \frac{\lambda}{Nd}
+\end{equation}$$
+
+或在 $\theta$ 空间（$\theta_\mathrm{L}$ 对应 $u_\mathrm{R}$，$\theta_\mathrm{R}$ 对应 $u_\mathrm{L}$）有
+
+$$\begin{equation}
+  \cos\theta_\mathrm{R} = \theta_\mathrm{T} - 0.450 \frac{\lambda}{Nd}
+\end{equation}$$
+
+$$\begin{equation} \label{LeftHalfPowerPointInAngleDomain}
+  \cos\theta_\mathrm{L} = \theta_\mathrm{T} + 0.450 \frac{\lambda}{Nd}
+\end{equation}$$
+
+所以，对于 $0 \leqslant \theta \leqslant pi$，$\theta_\mathrm{L}, \theta_\mathrm{R} \geqslant 0$，在 $\theta$ 空间的半功率波束宽度为
+
+$$\begin{equation}
+  \theta_\mathrm{H} = \theta_\mathrm{R} - \theta_\mathrm{L} = \cos^{-1} \left[ \cos\theta_\mathrm{T} - 0.450 \frac{\lambda}{Nd} \right] - \cos^{-1} \left[ \cos\theta_\mathrm{T} + 0.450 \frac{\lambda}{Nd} \right]
+\end{equation}$$
+
+&emsp;&emsp;除了当 $\theta_\mathrm{T} = 0$ 或 $\pi$（端射，endfire，信号入射方向与阵元排布方向平行）的情况，$\theta_\mathrm{L}$ 定义为最接近 $\theta = 0$ 的半功率点。当波束从正侧向（$\theta_\mathrm{T} = \pi/2$）调向 $z$ 轴的正半轴（端射，$\theta_\mathrm{T} = 0$）时，波束变宽。在某点上，如式 $\eqref{LeftHalfPowerPointInAngleDomain}$
+中所示，$\theta_\mathrm{L}$ 等于 0。在该点以外，在波束的那一边再没有半功率点。 Elliott[^1] 把这个点称为扫描极限（scan limit）。
+
+![图 1-4-3 HPBW 和阵列调向角的关系：标准线阵，采用均匀加权](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-22-josh-oap-part-1-4/2023-04-22-josh-oap-part-1-4-040-HPBWVersusSteeringAngleStandardUWLA.svg){width=1000px}
+
+&emsp;&emsp;当波束调向到正侧向的附近（$\bar{\theta}_\mathrm{T}$ 的值很小）且 $Nd \gg \lambda$ 时，$\theta_\mathrm{H}$ 很小，利用小角度展开形式得到
+
+$$\begin{equation}
+  \theta_\mathrm{H} \approx 0.891 \frac{\lambda}{Nd} \sec \bar\theta_\mathrm{T}
+\end{equation}$$
+
+# 参考文献
+
+1. Van Trees, Harry L. *Optimum array processing: Part IV of detection, estimation, and modulation theory.* John Wiley & Sons, 2002.
+2. Van Trees, Harry L, 汤俊. *最优阵列处理技术.* 清华大学出版社. 2008.
 
 [1.1 节]: https://josh-gao.top/posts/8b61f5a7.html
 [1.2 节]: https://josh-gao.top/posts/de20fd09.html
 [1.3 节]: https://josh-gao.top/posts/aa32ec76.html
+[图 1-3-3]: https://josh-gao.top/posts/aa32ec76.html#fig.1-3-3
+[$N \geqslant 10$ 时半功率带宽的估算式]: https://josh-gao.top/posts/aa32ec76.html#ApproximationOfHPBW
+
+[^1]: R. S. Elliott. *Antenna Theory and Design.* Prentice-Hall, Englewood Cliffs, New Jersey, 1981.
