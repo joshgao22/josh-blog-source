@@ -178,13 +178,23 @@ $$\begin{equation}
 &emsp;&emsp;除了当 $\theta_\mathrm{T} = 0$ 或 $\pi$（端射，endfire，信号入射方向与阵元排布方向平行）的情况，$\theta_\mathrm{L}$ 定义为最接近 $\theta = 0$ 的半功率点。当波束从正侧向（$\theta_\mathrm{T} = \pi/2$）调向 $z$ 轴的正半轴（端射，$\theta_\mathrm{T} = 0$）时，波束变宽。在某点上，如式 $\eqref{LeftHalfPowerPointInAngleDomain}$
 中所示，$\theta_\mathrm{L}$ 等于 0。在该点以外，在波束的那一边再没有半功率点。 Elliott[^1] 把这个点称为扫描极限（scan limit）。
 
-![图 1-4-3 HPBW 和阵列调向角的关系：标准线阵，采用均匀加权](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-22-josh-oap-part-1-4/2023-04-22-josh-oap-part-1-4-040-HPBWVersusSteeringAngleStandardUWLA.svg){width=1000px}
+<a id="fig.1-4-4"></a>
+
+![图 1-4-4 HPBW 和阵列调向角的关系：标准线阵，采用均匀加权](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-22-josh-oap-part-1-4/2023-04-22-josh-oap-part-1-4-040-HPBWVersusSteeringAngleStandardUWLA.svg){width=1000px}
 
 &emsp;&emsp;当波束调向到正侧向的附近（$\bar{\theta}_\mathrm{T}$ 的值很小）且 $Nd \gg \lambda$ 时，$\theta_\mathrm{H}$ 很小，利用小角度展开形式得到
 
-$$\begin{equation}
+$$\begin{equation} \label{HPBWWithSmallAngle}
   \theta_\mathrm{H} \approx 0.891 \frac{\lambda}{Nd} \sec \bar\theta_\mathrm{T}
 \end{equation}$$
+
+式 $\eqref{HPBWWithSmallAngle}$ 的意义在[图 1-4-5](#fig.1-4-5) 中比较明显。有效的阵列长度缩减了 $\cos\bar\theta_\mathrm{T}$ 倍。
+
+<a id="fig.1-4-5"></a>
+
+![图 1-4-5 长度降低了 $\cos\bar\theta_\mathrm{T}$ 倍的等效阵列](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-22-josh-oap-part-1-4/2023-04-22-josh-oap-part-1-4-050-EffectiveArrayLength.png!sign){width=600px}
+
+&emsp;&emsp;对于 $Nd \geqslant 5\lambda$，在正侧向附近，式 $\eqref{HPBWWithSmallAngle}$ 的误差在 0.2% 以内，在扫描极限附近，误差在 4% 以内。
 
 # 参考文献
 
