@@ -51,7 +51,9 @@ $$\begin{equation}
   \vec{k} = \vec{k}_\mathrm{T}
 \end{equation}$$
 
-输出是对齐的。我们把 $\vec{k}_\mathrm{T}$ 称为**{% label primary @所调方向（steering direction） %}**或在 $k$ 空间的**{% label primary @主响应轴（main response axis） %}**。可以使用一个 $N \times N$ 的对角调向矩阵来完成这个操作
+输出是对齐的。我们把 $\vec{k}_\mathrm{T}$ 称为**{% label primary @所调方向（steering direction） %}**或在 $k$ 空间的**{% label primary @主响应轴（main response axis） %}**。可以使用一个 $N \times N$ 的对角调向矩阵（diagonal steering matrix）来完成这个操作
+
+<a id="DiagonalSteeringMatrix"></a>
 
 $$\begin{equation}
   \vec{I}_\mathrm{s}\left(\vec{k}_\mathrm{T}\right) = \left[ \begin{matrix}

@@ -143,11 +143,13 @@ $$\begin{equation}
   B_\theta(\theta) = \vec{w}^\mathrm{H} \vec{v}_\theta(\theta) = e^{-j\left(\frac{N-1}{2} \right) \frac{2\pi d}{\lambda} \cos \theta} \sum_{n=0}^{N-1} w_n^\ast e^{j n \frac{2\pi d}{\lambda} \cos \theta}, \, 0 \leqslant \theta \leqslant \pi
 \end{equation}$$
 
+<a id="BeamPatternInDirectionCosineDomain"></a>
+
 $$\begin{equation}
   B_u(u) = \vec{w}^\mathrm{H} \vec{v}_u(u) = e^{-j\left(\frac{N-1}{2} \right) \frac{2\pi d}{\lambda} u} \sum_{n=0}^{N-1} w_n^\ast e^{j n \frac{2\pi d}{\lambda} u}, \, -1 \leqslant u \leqslant 1
 \end{equation}$$
 
-$$\begin{equation} \label{BeamPatternInDirectionCosineDomain}
+$$\begin{equation} \label{BeamPatternInWavenumberDomain}
   B_\psi(\psi) = \vec{w}^\mathrm{H} \vec{v}_\psi(\psi) = e^{-j\left(\frac{N-1}{2} \right) \psi} \sum_{n=0}^{N-1} w_n^\ast e^{j n \psi}, \, -\frac{2\pi d}{\lambda} \leqslant \psi \leqslant \frac{2\pi d}{\lambda}
 \end{equation}$$
 
@@ -251,17 +253,17 @@ $$\begin{equation}
 
 # 从波束方向图获得权矢量
 
-&emsp;&emsp;下面讨论如何从特定的方向图 $B_\psi(\psi)$ 中获得权矢量 $\vec{w}$，我们从式 $\eqref{BeamPatternInDirectionCosineDomain}$ 中的关系开始
+&emsp;&emsp;下面讨论如何从特定的方向图 $B_\psi(\psi)$ 中获得权矢量 $\vec{w}$，我们从式 $\eqref{BeamPatternInWavenumberDomain}$ 中的关系开始
 
-$$\begin{equation} \label{ShortBeamPatternInDirectionCosineDomain}
+$$\begin{equation} \label{ShortBeamPatternInWavenumberDomain}
   B_\psi(\psi) = \vec{w}^\mathrm{H} \vec{v}_\psi(\psi)
 \end{equation}$$
 
 假设 $B_\psi(\psi)$ 是已知的，我们想确定产生这个 $B_\psi(\psi)$ 的 $\vec{w}$。由于 $\vec{w}^\mathrm{H}$ 是一个 $1 \times N$ 维的矢量，因此如果知道 $B_\psi(\psi)$ 在 $N$ 个 $\psi$ 值上的值，就可以确定 $\vec{w}$。
 
-&emsp;&emsp;对波束方向图在 $N$ 个 $\psi_i$ 上进行采样，这里要求 $\psi_i$ 必须是不同的，但不一定是等距的，记采样点处的波束方向图的值为 $B(\psi_i)$。根据式 $\eqref{ShortBeamPatternInDirectionCosineDomain}$，有
+&emsp;&emsp;对波束方向图在 $N$ 个 $\psi_i$ 上进行采样，这里要求 $\psi_i$ 必须是不同的，但不一定是等距的，记采样点处的波束方向图的值为 $B(\psi_i)$。根据式 $\eqref{ShortBeamPatternInWavenumberDomain}$，有
 
-$$\begin{equation} \label{ElementOfShortBeamPatternInDirectionCosineDomain}
+$$\begin{equation} \label{ElementOfShortBeamPatternInWavenumberDomain}
   \vec{w}^\mathrm{H} \vec{v}(\psi_i) = B(\psi_i), \, i = 1, \cdots, N
 \end{equation}$$
 
@@ -277,7 +279,7 @@ $$\begin{equation}
   \vec{B} \triangleq \left[ \begin{array}{c}B(\psi_1) & \cdots & B(\psi_N)\end{array}\right]
 \end{equation}$$
 
-则式 $\eqref{ElementOfShortBeamPatternInDirectionCosineDomain}$ 可以写成
+则式 $\eqref{ElementOfShortBeamPatternInWavenumberDomain}$ 可以写成
 
 $$\begin{matrix}
   \vec{w}^\mathrm{H} \vec{V}(\psi) = \vec{B}
@@ -319,7 +321,7 @@ $$\begin{equation} \label{WeightVecCalculationWithAllZeroExceptMainAxis}
 
 在式 $\eqref{WeightVecCalculation}$ 和式 $\eqref{WeightVecCalculationWithAllZeroExceptMainAxis}$ 中有两点需要强调：
 
-1. 上述讨论已经假设 $B_\psi(\psi)$ 在式 $\eqref{ShortBeamPatternInDirectionCosineDomain}$ 中进行了定义，是由一个 $N \times 1$ 维复矢量 $\vec{w}$ 产生的。如果 $B_\psi(\psi)$ 是任意函数，且使用式 $\eqref{WeightVecCalculation}$，那么将产生一个方向图，和 $B(\psi_i), i = 1,\cdots,N$ 相匹配，但不一定和函数 $B_\psi(\psi)$ 相匹配。
+1. 上述讨论已经假设 $B_\psi(\psi)$ 在式 $\eqref{ShortBeamPatternInWavenumberDomain}$ 中进行了定义，是由一个 $N \times 1$ 维复矢量 $\vec{w}$ 产生的。如果 $B_\psi(\psi)$ 是任意函数，且使用式 $\eqref{WeightVecCalculation}$，那么将产生一个方向图，和 $B(\psi_i), i = 1,\cdots,N$ 相匹配，但不一定和函数 $B_\psi(\psi)$ 相匹配。
 
 2. 我们是在一个均匀线阵的背景下介绍这个结果的。但是，这个推导过程适用于任意结构的 $N$ 阵元阵列。
 
