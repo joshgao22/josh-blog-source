@@ -13,6 +13,10 @@ tags:
   - 阵列信号处理
   - 阵列调向
   - 主响应轴
+  - 端射
+  - 侧射
+  - 扫描极限
+  - 可视区域
 categories:
   - - Josh 的学习笔记
     - 最优阵列处理
@@ -25,7 +29,7 @@ date: 2023-04-22 18:17:52
 
 &emsp;&emsp;另外一个方法是引入时间延时（或在窄带的情况下，引入相移）来实现对一个阵列的**{% label primary @主响应轴 (main response axis，MRA)  %}**进行调向。随着高速信号处理器的发展，电子调向（electronic steering）技术正在被更广泛地应用在阵列处理中，其不仅仅突破了机械调向的限制，还具有迅速改变响应函数的灵活能力。此外，在有些阵列中，在一个方向上采用机械调向，在其他的方向上采用电子调向。
 
-&emsp;&emsp;首先考虑任意结构阵列，然后讨论均匀加权阵列的结果。
+&emsp;&emsp;本文首先考虑任意结构阵列，然后讨论均匀加权阵列的结果。
 
 <!-- more -->
 
@@ -70,9 +74,13 @@ $$\begin{equation}
   \vec{\varUpsilon} \left(\left. \omega, \vec{k} \right| \vec{k}_\mathrm{T} \right) = \vec{\varUpsilon} \left( \omega, \vec{k} - \vec{k}_\mathrm{T} \right)
 \end{equation}$$
 
-&emsp;&emsp;阵列的响应函数仅是简单地平移到 $\vec{k}_\mathrm{T}$ 的位置，这是利用波数空间来解释阵列响应函数的好处之一。如果在波数空间考虑波束方向图，也会得到一个简单的平移关系。
+{% note info %}
 
-# 均匀幅度加权的情形
+阵列的响应函数仅是简单地平移到 $\vec{k}_\mathrm{T}$ 的位置，这是利用波数空间来解释阵列响应函数的好处之一。如果在波数空间考虑波束方向图，也会得到一个简单的平移关系。
+
+{% endnote %}
+
+# 均匀幅度加权的情况
 
 &emsp;&emsp;当采用均匀幅度加权时，在[图 1-4-1](#fig.1-4-1) 中的两步的过程是不必要的。令
 
@@ -80,15 +88,15 @@ $$\begin{equation}
   \vec{w} = \frac{1}{N} \vec{v}_{\vec{k}}\left(\vec{k}_\mathrm{T}\right)
 \end{equation}$$
 
-和
+则有
 
 $$\begin{equation}
   B_\mathrm{c} \left( \vec{k}, \vec{k}_\mathrm{T} \right) = \frac{1}{N} \vec{v}_{\vec{k}}^\mathrm{H}  \left(\vec{k}_\mathrm{T}\right) \vec{v}_{\vec{k}}\left(\vec{k}\right)
 \end{equation}$$
 
-我们称 $B_c \left( \vec{k}, \vec{k}_\mathrm{T} \right)$ 为**{% label primary @常规波束方向图（conventional beam pattern） %}**。我们将发现常规波束方向图是后面要讨论的很多最优处理内容的基础。
+称 $B_c \left( \vec{k}, \vec{k}_\mathrm{T} \right)$ 为**{% label primary @常规波束方向图（conventional beam pattern） %}**。我们将发现常规波束方向图是后面要讨论的很多最优处理内容的基础。
 
-# 线性阵列的调向
+# 均匀线性阵列的调向
 
 &emsp;&emsp;线性阵列的常规波束方向图为
 
@@ -100,7 +108,7 @@ $$\begin{equation}
   B_{u\mathrm{c}}\left( u : u_\mathrm{T} \right) = \frac{1}{N} \vec{v}_u^\mathrm{H}  \left(u_\mathrm{T}\right) \vec{v}_u\left(u\right)
 \end{equation}$$
 
-对于均匀线性阵列，有
+对于均匀线性阵列（阵元间距相同），有
 
 $$\begin{equation}
   B_{\psi\mathrm{c}}\left( \psi : \psi_\mathrm{T} \right) = \frac{1}{N} \frac{\sin\left( N \frac{\psi-\psi_\mathrm{T}}{2} \right)}{\sin\left(\frac{\psi-\psi_\mathrm{T}}{2} \right)} \label{SteeredBeamPatternInWavenumberDomain}
@@ -112,29 +120,31 @@ $$\begin{equation}
 
 式 $\eqref{SteeredBeamPatternInWavenumberDomain}$ 或式 $\eqref{SteeredBeamPatternInDirectionCosineDomain}$ 均对应方向图的平移，其形状并没有改变。这种没有畸变的平移性质是在 $\psi$ 空间或 $u$ 空间处理的众多优点之一。
 
-&emsp;&emsp;当我们对阵列调向，并使得主响应轴对准 $\bar{\theta}_0$ 时，其中 $\bar{\theta}_0$ 是从正侧向（broadside）测得的角度，波束方向图发生平移，使得中心峰值位于 $u_0 = \sin\bar{\theta}_0$。这个平移也使得栅瓣发生移动。
+&emsp;&emsp;当我们对阵列调向，并使得主响应轴对准 $\bar{\theta}_0$ 时（其中 $\bar{\theta}_0$ 是从正侧向（broadside）测得的角度），波束方向图将发生平移，使得中心峰值位于 $u_0 = \sin\bar{\theta}_0$。同时，这个平移也**使栅瓣发生移动**。
 
-&emsp;&emsp;[图 1-4-2](#fig.1-4-2) 说明了调向对波束方向图的影响。[图 1-4-2(a)](#fig.1-4-2) 给出了 $d=2\lambda/3$ 和 $\bar\theta = 30^\circ$ 时的波束方向图。我们看到，在这种调向的情况下，栅瓣位于可视区域的边缘。
+&emsp;&emsp;[图 1-4-2](#fig.1-4-2) 说明了调向对波束方向图的影响。[图 1-4-2(a)](#fig.1-4-2) 给出了 $d=2\lambda/3$ 和 $\bar\theta = 30^\circ$ 时的波束方向图。我们看到，在这种调向的情况下，栅瓣位于可视区域的边缘。[图 1-4-2(b)](#fig.1-4-2) 给出了 $d=\lambda/2$ 和 $\bar\theta = 90^\circ$ 时的波束方向图，栅瓣同样位于可视区域的边缘。
 
 <a id="fig.1-4-2"></a>
 
 ![图 1-4-2 阵列调向对栅瓣的影响：$N=10$，(a) $d=2\lambda/3, \bar\theta = 30^\circ$；(b) $d=\lambda/2, \bar\theta = 90^\circ$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-22-josh-oap-part-1-4/2023-04-22-josh-oap-part-1-4-020-%20EffectOfSteeringOnTheGratingLobes.svg){width=1000px}
 
-&emsp;&emsp;[图 1-4-2(b)](#fig.1-4-2) $d=\lambda/2$ 和 $\bar\theta = 90^\circ$ 的波束方向图。栅瓣同样位于可视区域的边缘。
-
-&emsp;&emsp;通常，为了避免栅瓣进入可视区域，需要
+&emsp;&emsp;通常，为了避免栅瓣进入可视区域，需要有
 
 $$\begin{equation}
   \frac{d}{\lambda} \leqslant \frac{1}{1 + \left| \sin\bar\theta_{\max} \right|}
 \end{equation}$$
 
-其中， $\bar\theta_{\max}$ 是阵列将要调向的最大角度。这个结果是令 $\bar\theta_\mathrm{T} = \bar\theta_{\max}$, 计算第一个栅瓣的位置和 $\frac{d}{\lambda}$ 的关系而得到的。所以，如果阵列需要的调向为 $-90^\circ \leqslant \bar\theta \leqslant 90^\circ$ 需要
+其中， $\bar\theta_{\max}$ 是阵列将要调向的最大角度。这个结果可以令 $\bar\theta_\mathrm{T} = \bar\theta_{\max}$，计算第一个栅瓣的位置和 $\frac{d}{\lambda}$ 的关系而得到。所以，如果阵列需要的所调方向为 $-90^\circ \leqslant \bar\theta \leqslant 90^\circ$，则有
 
 $$\begin{equation}
   d \leqslant \frac{\lambda}{2}
 \end{equation}$$
 
-研究在 $\psi$ 空间或 $u$ 空间的特性是很有用的。但是，必须要注意信号实际是从 $(\theta, \varphi)$ 空间产生的，我们需要理解在这个空间的特性，这一点很重要。
+{% note warning %}
+
+虽然研究在 $\psi$ 空间或 $u$ 空间的特性是很有用的，但必须要注意信号实际是从 $(\theta, \varphi)$ 空间产生的，我们需要理解在这个空间的特性，这一点很重要。
+
+{% endnote %}
 
 &emsp;&emsp;在 $\theta$ 空间（即角度空间），有
 
@@ -142,14 +152,14 @@ $$\begin{equation}
   B_{\theta\mathrm{c}}\left( \theta : \theta_\mathrm{T} \right) = \frac{1}{N} \frac{\sin\left[ \frac{\pi Nd}{\lambda} (\cos\theta - \cos\theta_\mathrm{T}) \right]}{\sin\left[ \frac{\pi d}{\lambda} (\cos\theta - \cos\theta_\mathrm{T}) \right]} \label{SteeredBeamPatternInAngleDomain}
 \end{equation}$$
 
-我们在 $\theta$ 空间画出 $B_{\theta\mathrm{c}}$，由于和 $\theta$ 的关系，方向图的形状将随之发生改变。[图 1-4-3](#fig.1-4-3) 给出了 $\theta_\mathrm{T}$ 和 $d=\lambda/2$ 的波束方向图。把这个方向图和[图 1-3-3][] 中的方向图进行比较，
+我们在 $\theta$ 空间画出 $B_{\theta\mathrm{c}}$，由于和 $\theta$ 的关系，方向图的形状将随之发生改变。[图 1-4-3](#fig.1-4-3) 给出了 $\theta_\mathrm{T} = 30^\circ$ 和 $d=\lambda/2$ 的波束方向图。把这个方向图和[图 1-3-3][] 中的方向图进行比较，
 可以看到主波束的波束宽度有所增加。
 
 <a id="fig.1-4-3"></a>
 
-![图 1-4-3 10 阵元均匀阵列 ($d = \lambda/2$) 扫描到 30°（和正侧向夹角为 60°）时的波束方向图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-22-josh-oap-part-1-4/2023-04-22-josh-oap-part-1-4-030-BeamPatternFor10ElementUniformArrayScannedTo30Degree.svg){width=800px}
+![图 1-4-3 10 阵元均匀阵列（$d = \lambda/2$）扫描到 30°（和正侧向夹角为 60°）时的波束方向图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-22-josh-oap-part-1-4/2023-04-22-josh-oap-part-1-4-030-BeamPatternFor10ElementUniformArrayScannedTo30Degree.svg){width=800px}
 
-&emsp;&emsp;为了研究在 $\theta$ 空间的半功率带宽情况，我们采用式 $\eqref{SteeredBeamPatternInAngleDomain}$ 和 [$N \geqslant 10$ 时半功率带宽的估算式][]。在 $u$ 空间的左右半功率点分别为
+&emsp;&emsp;为了研究在 $\theta$ 空间的半功率带宽情况，我们利用式 $\eqref{SteeredBeamPatternInAngleDomain}$ 和 [$N \geqslant 10$ 时半功率带宽的估算式][]，可以得到在 $u$ 空间的左右半功率点分别为
 
 $$\begin{equation}
   u_\mathrm{L} = u_\mathrm{T} - 0.450 \frac{\lambda}{Nd}
@@ -162,21 +172,21 @@ $$\begin{equation}
 或在 $\theta$ 空间（$\theta_\mathrm{L}$ 对应 $u_\mathrm{R}$，$\theta_\mathrm{R}$ 对应 $u_\mathrm{L}$）有
 
 $$\begin{equation}
-  \cos\theta_\mathrm{R} = \theta_\mathrm{T} - 0.450 \frac{\lambda}{Nd}
+  \cos\theta_\mathrm{R} = \cos\theta_\mathrm{T} - 0.450 \frac{\lambda}{Nd}
 \end{equation}$$
 
 $$\begin{equation} \label{LeftHalfPowerPointInAngleDomain}
-  \cos\theta_\mathrm{L} = \theta_\mathrm{T} + 0.450 \frac{\lambda}{Nd}
+  \cos\theta_\mathrm{L} = \cos\theta_\mathrm{T} + 0.450 \frac{\lambda}{Nd}
 \end{equation}$$
 
-所以，对于 $0 \leqslant \theta \leqslant pi$，$\theta_\mathrm{L}, \theta_\mathrm{R} \geqslant 0$，在 $\theta$ 空间的半功率波束宽度为
+所以，对于 $0 \leqslant \theta \leqslant \pi$，$\theta_\mathrm{L}, \theta_\mathrm{R} \geqslant 0$，在 $\theta$ 空间的半功率波束宽度为
 
 $$\begin{equation} \label{HPBWOfUWLA}
   \theta_\mathrm{H} = \theta_\mathrm{R} - \theta_\mathrm{L} = \cos^{-1} \left[ \cos\theta_\mathrm{T} - 0.450 \frac{\lambda}{Nd} \right] - \cos^{-1} \left[ \cos\theta_\mathrm{T} + 0.450 \frac{\lambda}{Nd} \right]
 \end{equation}$$
 
-&emsp;&emsp;除了当 $\theta_\mathrm{T} = 0$ 或 $\pi$（端射，endfire，信号入射方向与阵元排布方向平行）的情况，$\theta_\mathrm{L}$ 定义为最接近 $\theta = 0$ 的半功率点。当波束从正侧向（$\theta_\mathrm{T} = \pi/2$）调向 $z$ 轴的正半轴（端射，$\theta_\mathrm{T} = 0$）时，波束变宽。在某点上，如式 $\eqref{LeftHalfPowerPointInAngleDomain}$
-中所示，$\theta_\mathrm{L}$ 等于 0。在该点以外，在波束的那一边再没有半功率点。 Elliott[^1] 把这个点称为扫描极限（scan limit）。
+&emsp;&emsp;除了当 $\theta_\mathrm{T} = 0$ 或 $\pi$（端射，endfire，信号入射方向与阵元排布方向平行）的情况，定义 $\theta_\mathrm{L}$ 为最接近 $\theta = 0$ 的半功率点。当波束从正侧向（$\theta_\mathrm{T} = \pi/2$）调向 $z$ 轴的正半轴（端射，$\theta_\mathrm{T} = 0$）时，波束变宽。在某点上，如式 $\eqref{LeftHalfPowerPointInAngleDomain}$
+中所示，$\theta_\mathrm{L}$ 等于 0。在该点以外，在波束的那一边再也没有半功率点。 Elliott[^1] 把这个点称为扫描极限（scan limit）。
 
 &emsp;&emsp;Elliot [^1] 画出了式 $\eqref{HPBWOfUWLA}$ 和式 $\eqref{HPBWOfEndfireUWLA}$ 中给出的波束宽度，并在[图 1-4-4](#fig.1-4-4) 中给出。
 
@@ -201,7 +211,7 @@ $$\begin{equation} \label{HPBWWithSmallAngle}
 &emsp;&emsp;当 $\theta_\mathrm{T} = 0$ 或 $\pi$ 时，最大响应轴的指向沿着阵列的轴线，此时称为一个端射阵列（endfire array）。一个标准 10 阵元端射阵列的波束方向图在[图 1-4-6](#fig.1-4-6) 中给出。在这种情况下，有
 
 $$\begin{equation} \label{HPBWOfEndfireUWLA}
-  \theta_\mathrm{H} = 2 cos^{-1} \left[ 1 - 0.450 \frac{\lambda}{Nd} \right], \quad \theta_\mathrm{T} = 0 \text{或} \pi
+  \theta_\mathrm{H} = 2 \cos^{-1} \left[ 1 - 0.450 \frac{\lambda}{Nd} \right], \quad \theta_\mathrm{T} = 0 \text{或} \pi
 \end{equation}$$
 
 <a id="fig.1-4-6"></a>
@@ -234,8 +244,7 @@ $$\begin{equation}
   \theta_\mathrm{null} = \sqrt{2 \frac{\lambda}{Nd}}
 \end{equation}$$
 
-&emsp;&emsp;所以，一个线阵在端射位置的分辨率随 $Nd/\lambda$ 的平方根的倒数变化，而在正侧向的时
-候是线性的关系。
+&emsp;&emsp;所以，一个线阵在端射位置的分辨率随 $Nd/\lambda$ 的平方根的倒数变化，而在正侧向的时候是线性的关系。
 
 # 参考文献
 
