@@ -53,7 +53,7 @@ $$\begin{equation} \label{DefinitionOfDirectivity}
 &emsp;&emsp;对于一个接收天线，分母代表的是阵列（或孔径）对全向噪声（在一个球内均匀分布的噪声）的输出噪声功率。分子代表的是对应从 $(\theta_\mathrm{T},\varphi_\mathrm{T})$ 方向入射的
 信号的功率。所以，$D$ 可以解释为是对全向噪声的阵列增益。
 
-&emsp;&emsp;如果假设权值做了归一化，使得 $P_n(\theta_\mathrm{T},\varphi_\mathrm{T}) = 1$, 则式 $\eqref{DefinitionOfDirectivity}$ 可以写成
+&emsp;&emsp;如果假设权值做了归一化，使得 $P_n(\theta_\mathrm{T},\varphi_\mathrm{T}) = 1$，则式 $\eqref{DefinitionOfDirectivity}$ 可以写成
 
 $$\begin{equation} \label{NormalizedDefinitionOfDirectivity}
   D = \left\{ \frac{1}{4\pi} \int_0^\pi \int_0^{2\pi} \sin \theta \cdot P(\theta,\varphi) \,\mathrm{d} \varphi \,\mathrm{d} \theta  \right\}^{-1}
@@ -79,7 +79,7 @@ $$\begin{equation} \label{NormalizedDefinitionOfDirectivityInDirectionCosineSpac
 
 通常，这个表达式必须用数值的方法计算。
 
-&emsp;&emsp;利用 [$u$ 空间的波束方向图的表达式][], 式 $\eqref{NormalizedDefinitionOfDirectivityInDirectionCosineSpaceOfLA}$ 中的表达式可以利用阵列的权值写成
+&emsp;&emsp;利用 [$u$ 空间的波束方向图的表达式][]，式 $\eqref{NormalizedDefinitionOfDirectivityInDirectionCosineSpaceOfLA}$ 中的表达式可以利用阵列的权值写成
 
 $$\begin{equation}
   D = \left\{ \frac{1}{2} \int_{-1}^1 \sum_{n=0}^{N-1}w_n^\ast e^{jn\left( \frac{2\pi d}{\lambda} \right) \left( u - u_\mathrm{T} \right)} \sum_{m=0}^{N-1} w_m e^{-jm\left( \frac{2\pi d}{\lambda} \right) \left( u - u_\mathrm{T} \right)} \,\mathrm{d} u  \right\}^{-1}
@@ -144,6 +144,52 @@ $$\begin{equation}
 是矢量 $\vec{w}$ 的 2-模。
 
 &emsp;&emsp;所以一个标准线阵的方向性是权值矢量幅度平方的倒数。方向性不依赖于阵列的指向。当阵列指向从阵列的正侧向移开时，波束变宽，但是 $\varphi$ 的积分范围减小了
+
+&emsp;&emsp;对于 $d \ne \lambda/2$，利用式 $\eqref{ResultOfDirectivityInDirectionCosineSpaceOfLA}$，则方向性将和阵列的指向有关。
+
+&emsp;&emsp;对于均匀加权的标准线阵（UWLA），$w_n = 1/N$，所以
+
+$$\begin{equation}
+  \sum_{n=0}^{N-1} \left| w_n \right|^2 = \frac{1}{N}
+\end{equation}$$
+
+所以
+
+$$\begin{equation}
+  D = N
+\end{equation}$$
+
+&emsp;&emsp;均匀加权使得标准线阵的方向性最大。为了说明这一点，施加约束条件
+
+$$\begin{equation} \label{ConstraintOfLagrangeMultiplier}
+  \sum_{n=0}^{N-1} w_n = 1
+\end{equation}$$
+
+这保证了波束方向图在 $u_\mathrm{T}$ 的值为 1，并求 $\displaystyle\sum_{n=0}^{N-1} \left| w_n \right|^2$ 的最小值，这里利用 Lagrange 乘子法，另
+
+$$\begin{equation}
+  F = \sum_{n=0}^{N-1} \left| w_n \right|^2 + \lambda \left( \sum_{n=0}^{N-1} w_m - 1 \right)
+\end{equation}$$
+
+其中 $\lambda$ 是 Lagrange 乘子。对 $w_n$ 求导，并令结果等于零，得到
+
+$$\begin{equation}
+  w_n^\ast = -\lambda
+\end{equation}$$
+
+也即
+
+$$\begin{equation} \label{ResultOfLagrangeMultiplier}
+  w_n = -\lambda^\ast
+\end{equation}$$
+
+把式 $\eqref{ResultOfLagrangeMultiplier}$ 代入到式 $\eqref{ConstraintOfLagrangeMultiplier}$，得到 $\lambda = -\frac{1}{N}$，则有
+
+$$\begin{equation}
+  w_n = \frac{1}{N}
+\end{equation}$$
+
+此即为我们想要得到的结果。
 
 [$u$ 空间的波束方向图的表达式]: https://josh-gao.top/posts/de20fd09.html#BeamPatternInDirectionCosineDomain
 [对角调向矩阵]: https://josh-gao.top/posts/c2604c43.html#DiagonalSteeringMatrix
