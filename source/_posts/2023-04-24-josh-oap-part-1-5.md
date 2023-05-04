@@ -93,7 +93,7 @@ $$\begin{equation} \label{ResultOfDirectivityInDirectionCosineSpaceOfLA}
 
 定义几个矩阵以得到一个简洁的表达式。定义 $\overrightarrow{\mathrm{sinc}}$ 矩阵的第 $n,m$ 个元素为
 
-$$\begin{equation}
+$$\begin{equation} \label{ElementOfSincMatrix}
   \left[ \overrightarrow{\mathrm{sinc}} \right]_{nm} \triangleq \mathrm{sinc} \left( \frac{2\pi d}{\lambda} (n-m)\right)
 \end{equation}$$
 
@@ -219,7 +219,7 @@ $$\begin{equation}
 
 其中的第二项是权值的函数。对于任意的非均匀加权（$w_n \ne N^{-1}$），$DI$ 将会减小。
 
-# 对空域白噪声的阵列增益（$A_\omega$）
+# 对空域白噪声的阵列增益（$A_w$）
 
 &emsp;&emsp;阵列处理的一个目标是通过相干地累加信号和不相干地累加噪声来改善信**{% label primary @信号噪声比（signal-to-noise ratio，SNR） %}**。改善的程度是用阵列增益来度量的。这是阵列性能的一个重要度量，我们将在后面深入地讨论这个问题。直到介绍了谱协方差矩阵（这是一个用于描述噪声过程的空域特性的统计性概念），我们才给出阵列增益的一般性定义。但在这里，我们给出阵列增益的一个应用范围受限的定义。
 
@@ -328,16 +328,16 @@ $$\begin{equation} \label{OutputSNRAtCertainFreq}
 
 其中，下标“$\mathrm{o}$”代表输出。
 
-&emsp;&emsp;阵列增益 $A_\omega$ 反映了由于采用阵列而带来的 SNR 的改进。其定义为阵列的输出 SNR 和一个阵元上的输入 SNR 的比值。下标“$w$”表示空域不相关的噪声输入。噪声的时域频谱不一定是平坦的。利用式 $\eqref{InputSNRAtCertainFreq}$ 和式 $\eqref{OutputSNRAtCertainFreq}$，有
+&emsp;&emsp;阵列增益 $A_w$ 反映了由于采用阵列而带来的 SNR 的改进。其定义为阵列的输出 SNR 和一个阵元上的输入 SNR 的比值。下标“$w$”表示空域不相关的噪声输入。噪声的时域频谱不一定是平坦的。利用式 $\eqref{InputSNRAtCertainFreq}$ 和式 $\eqref{OutputSNRAtCertainFreq}$，有
 
 $$\begin{equation}
-  A_\omega = \frac{\mathrm{SNR_o}(\omega)}{\mathrm{SNR_{in}}(\omega)} = \frac{1}{\displaystyle \sum_{n=0}^{N-1} \left| \omega_n \right|^2}
+  A_w = \frac{\mathrm{SNR_o}(\omega)}{\mathrm{SNR_{in}}(\omega)} = \frac{1}{\displaystyle \sum_{n=0}^{N-1} \left| \omega_n \right|^2}
 \end{equation}$$
 
 或
 
 $$\begin{equation} \label{DefinitionOfArrayGain}
-  A_\omega = \left( \sum_{n=0}^{N-1} \frac{1}{\left| \omega_n \right|^2}  \right) ^{-1} = \left\| \vec{w} \right\| ^{-2}
+  A_w = \left( \sum_{n=0}^{N-1} \frac{1}{\left| \omega_n \right|^2}  \right) ^{-1} = \left\| \vec{w} \right\| ^{-2}
 \end{equation}$$
 
 对于式 $\eqref{DefinitionOfArrayGain}$，可以观察到下面三个有用的结果：
@@ -351,6 +351,8 @@ $$\begin{equation} \label{DefinitionOfArrayGain}
    这个结果就适用于任意的阵列结构。
 
 2. 对于一个标准线阵（阵元间距为 $d=\lambda/2$），白噪声阵列增益等于式 $\eqref{SimplifiedResultOfDirectivityInDirectionCosineSpaceOfLA}$ 中的阵列方向性。
+
+3. 对于一个非均匀线阵 $d \ne \lambda/2$，$D$ 将不等于 $A_w$。一个全向噪声输入的噪声谱矩阵由式 $\eqref{ElementOfSincMatrix}$ 给出，则 $D$ 是对于一个全向噪声输入的阵列增益 $A_\mathrm{iso}$ 。
 
 [$u$ 空间的波束方向图的表达式]: https://josh-gao.top/posts/de20fd09.html#BeamPatternInDirectionCosineDomain
 [对角调向矩阵]: https://josh-gao.top/posts/c2604c43.html#DiagonalSteeringMatrix
