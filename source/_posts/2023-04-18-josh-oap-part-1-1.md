@@ -78,6 +78,8 @@ y(t) = \sum_{n=0}^{N-1} \int_{-\infty}^{\infty} h_n (t-\tau)f_n\left(\tau,\vec{p
 
 这个结果可以用矢量符号表示为（即将标量结果向矢量模型进行直接扩展，a straightforward extension of scalar results to the vector model）
 
+<a id="VectorFormOfLinearArrayOutputInTimeDomain"></a>
+
 $$\begin{equation} \label{VectorFormOfLinearArrayOutputInTimeDomain}
 y(t) = \int_{-\infty}^{\infty} \vec{h}^\mathrm{T} (t-\tau) \vec{f}\left(\tau,\vec{p}\right) \mathrm{d} \tau
 \end{equation}$$
@@ -425,6 +427,8 @@ $$\begin{equation}
 \end{equation}$$
 
 式 $\eqref{ComplexWeightVector}$ 中的定义等价于
+
+<a id="NarrowBandComplexWeightVector"></a>
 
 $$\begin{equation}
   \vec{w}^\mathrm{H} = \vec{H}^\mathrm{T}(\omega_c)

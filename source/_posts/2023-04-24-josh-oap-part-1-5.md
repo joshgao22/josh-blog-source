@@ -125,11 +125,11 @@ $$\begin{equation}
 
 &emsp;&emsp;标准线阵（standard linear array）是我们所感兴趣的一个特殊情况。如果 $d = \lambda/2$，则式 $\eqref{ResultOfDirectivityInDirectionCosineSpaceOfLA}$ 简化为
 
-$$\begin{equation} \label{SimplifiedResultOfDirectivityInDirectionCosineSpaceOfLA}
+$$\begin{equation} \label{IntermediateResultOfDirectivityInDirectionCosineSpaceOfLA}
   D = \left\{ \sum_{n=0}^{N-1} \sum_{m=0}^{N-1} w_m w_n^\ast e^{j \pi (m-n) u_\mathrm{T} } \mathrm{sinc} \left( \pi (n-m)\right)  \right\}^{-1}
 \end{equation}$$
 
-当 $m = n$ 时，$\mathrm{sinc}$ 函数等于 1，当 $m \ne n$ 时，$\mathrm{sinc}$ 函数等于 0。所以式 $\eqref{SimplifiedResultOfDirectivityInDirectionCosineSpaceOfLA}$ 简化为
+当 $m = n$ 时，$\mathrm{sinc}$ 函数等于 1，当 $m \ne n$ 时，$\mathrm{sinc}$ 函数等于 0。所以式 $\eqref{IntermediateResultOfDirectivityInDirectionCosineSpaceOfLA}$ 简化为
 
 $$\begin{equation}
   D = \left\{ \sum_{n=0}^{N-1} \left| w_n \right|^2 \right\} = \left( \vec{w}^\mathrm{H}\vec{w} \right)^{-2} = \left\{ \left\| \vec{w} \right \|^2 \right\}^{-1}
@@ -137,7 +137,7 @@ $$\begin{equation}
 
 其中
 
-$$\begin{equation}
+$$\begin{equation} \label{SimplifiedResultOfDirectivityInDirectionCosineSpaceOfLA}
   \left\| \vec{w} \right \| = \left( \vec{w}^\mathrm{H}\vec{w} \right)^{\frac{1}{2}}
 \end{equation}$$
 
@@ -191,7 +191,171 @@ $$\begin{equation}
 
 此即为我们想要得到的结果。
 
+{% note info %}
+
+对于非均匀加权的情况，阵列的方向性总是减小的。它是以半波长度量的阵列长度的函数，加上一个由于非均匀加权而产生的部分。
+
+{% endnote %}
+
+&emsp;&emsp;一个标准均匀加权线阵的方向性可以和 HPBW，或者和第一零点波束宽度相联系起来。根据[各个空间的第一零点波束宽度表][], 有
+
+$$\begin{equation} \label{DirectivityOfStandardUWLA}
+  D = \frac{4}{BW_{NN}}
+\end{equation}$$
+
+其中，$BW_{NN}$ 是在 $u$ 空间的值。注意式 $\eqref{DirectivityOfStandardUWLA}$ 适用于一个均匀加权的阵列。对于其他的加权形式，式 $\eqref{DirectivityOfStandardUWLA}$ 可能是不成立的。
+
+&emsp;&emsp;我们经常用 dB 来表示方向性，并称之为**{% label primary @方向性指数（directivity index） %}**：
+
+$$\begin{equation}
+  DI = 10 \log_{10} D
+\end{equation}$$
+
+可以把 $DI$ 写成
+
+$$\begin{equation}
+  DI = 10 \log_{10} N + 10 \log_{10}(g(\vec{w}))
+\end{equation}$$
+
+其中的第二项是权值的函数。对于任意的非均匀加权（$w_n \ne N^{-1}$），$DI$ 将会减小。
+
+# 对空域白噪声的阵列增益（$A_\omega$）
+
+&emsp;&emsp;阵列处理的一个目标是通过相干地累加信号和不相干地累加噪声来改善信**{% label primary @信号噪声比（signal-to-noise ratio，SNR） %}**。改善的程度是用阵列增益来度量的。这是阵列性能的一个重要度量，我们将在后面深入地讨论这个问题。直到介绍了谱协方差矩阵（这是一个用于描述噪声过程的空域特性的统计性概念），我们才给出阵列增益的一般性定义。但在这里，我们给出阵列增益的一个应用范围受限的定义。
+
+&emsp;&emsp;假设每个阵元的输入由一个从主响应轴入射的平面波加上一个噪声过程组成，各阵元的噪声过程是不相关的（空域白噪声）。所以，有
+
+$$\begin{equation}
+  x_n (t) = f(t - \tau_n) + n_n(t), \quad n = 0,\cdots,N-1
+\end{equation}$$
+
+在每个阵元，在频率 $w$ 上信号谱和噪声谱的比值为
+
+$$\begin{equation} \label{InputSNRAtCertainFreq}
+  \mathrm{SNR}_\mathrm{in} (\omega) = \frac{S_f(\omega)}{S_n (\omega)}
+\end{equation}$$
+
+其中的下标 “$\mathrm{in}$” 表示输入，假设每个传感器的噪声谱是相等的。
+
+&emsp;&emsp;为了确定由信号和噪声产生的输出，我们需要一个用于描述输出谱的表达式，该式用波束形成器的权值和输入谱矩阵表示。根据[阵列输出的向量形式][]的表达式, 有
+
+$$\begin{equation} \label{ArrayOutput}
+y(t) = \int_{-\infty}^{\infty} \vec{h}^\mathrm{T} (\tau) \vec{x}\left(t - \tau\right) \mathrm{d} \tau
+\end{equation}$$
+
+假设 $x(t)$ 是零均值宽平稳的。输出 $y(t)$ 的相关函数为
+
+$$\begin{equation} \label{CorrelationOfArrayOutput}
+  R_{y}(\tau) = E[y(t)y^\ast(t-\tau)]
+\end{equation}$$
+
+$y(t)$ 的谱为
+
+$$\begin{equation} \label{SpectrumOfArrayOutput}
+  S_y (\omega) = \int_{-\infty}^{\infty} e^{-j\omega \tau} R_{y}(\tau) \, \mathrm{d} \tau
+\end{equation}$$
+
+根据式 $\eqref{ArrayOutput}$、$\eqref{CorrelationOfArrayOutput}$ 和 $\eqref{SpectrumOfArrayOutput}$，有
+
+$$\begin{equation}
+  S_y (\omega) = \int_{-\infty}^{\infty} e^{-j\omega\tau} \, \mathrm{d} \tau \int_{-\infty}^{\infty} \vec{h}^\mathrm{T} (\alpha) \, \mathrm{d} \alpha \int_{-\infty}^{\infty} E \left[  \vec{x} (t-\alpha) \vec{x}^\mathrm{H} (t-\tau-\beta)\right] \vec{h}^\ast(\beta) \, \mathrm{d} \beta
+\end{equation}$$
+
+也即
+
+$$\begin{equation}
+  S_y (\omega) = \int_{-\infty}^{\infty} \vec{h}^\mathrm{T} (\alpha) e^{-j\omega\alpha}  \, \mathrm{d} \alpha \int_{-\infty}^{\infty} e^{-jk\omega z} \vec{R}_x (z) \, \mathrm{d} z \int_{-\infty}^{\infty} e^{j\omega \beta} \vec{h}^\ast(\beta) \, \mathrm{d} \beta
+\end{equation}$$
+
+可以进一步简化为
+
+$$\begin{equation} \label{SimplifiedSpectrumOfArrayOutput}
+  S_y (\omega) = \vec{H}^\mathrm{T} (\omega) \vec{S}_x(\omega) \vec{H} ^\ast (\omega)
+\end{equation}$$
+
+对于窄带波束形成器，在式 $\eqref{SimplifiedSpectrumOfArrayOutput}$ 中利用[窄带假设下的复加权的表达式][]，可得到想要的结果：
+
+$$\begin{equation}
+  S_y (\omega) = \vec{w}^\mathrm{H} \vec{S}_x(\omega) \vec{w}
+\end{equation}$$
+
+为了计算由于信号而产生的输出，对 $\vec{w}$ 施加约束条件，
+
+$$\begin{equation} \label{DistortionlessConstraint}
+  \vec{w}^\mathrm{H} \vec{v}_{\vec{k}} \left( \vec{k}_\mathrm{s} \right) = 1
+\end{equation}$$
+
+在式 $\eqref{DistortionlessConstraint}$ 中的约束条件意味着从 $\vec{k}_\mathrm{s}$ 入射的任意信号将无畸变地通过波束形成器。我们把式 $\eqref{DistortionlessConstraint}$ 中的约束条件称为**{% label primary @无畸变约束（ distortionless constraint） %}**。在后续的讨论中这个条件经常使用。
+
+&emsp;&emsp;可以把输入信号谱写成
+
+$$\begin{equation} \label{SpectrumOfArrayInput}
+  \vec{S}_{\vec{f}}(\omega) = \vec{v}_{\vec{k}} \left( \vec{k}_\mathrm{s} \right) S_f(\omega) \vec{v}_{\vec{k}}^\mathrm{H} \left( \vec{k}_\mathrm{s} \right)
+\end{equation}$$
+
+将式 $\eqref{SpectrumOfArrayInput}$ 代入利用式 $\eqref{SimplifiedSpectrumOfArrayOutput}$，得到的输出信号谱为
+
+$$\begin{equation}
+\begin{aligned}
+  S_{y_\mathrm{s}} &= \vec{w}^\mathrm{H} \vec{v}_{\vec{k}} \left( \vec{k}_\mathrm{s} \right) S_f (\omega) \vec{v}_{\vec{k}}^\mathrm{H} \left( \vec{k}_\mathrm{s} \right) \vec{w} \\
+  &= S_f(\omega)
+\end{aligned}
+\end{equation}$$
+
+由于噪声而产生的输出谱为
+
+$$\begin{equation}
+  S_{y_\mathrm{n}} = \vec{w}^\mathrm{H} \vec{S_{\vec{n}}} (\omega) \vec{w}
+\end{equation}$$
+
+其中 $\vec{S_{\vec{n}}} (\omega)$ 是输入噪声过程的谱矩阵。对于空域白噪声，且各传感器的噪声谱相同的特殊情况，有
+
+$$\begin{equation}
+  S_{y_\mathrm{n}} = S_n (\omega) \vec{I}
+\end{equation}$$
+
+和
+
+$$\begin{equation}
+  S_{y_n} = \left\| \vec{w} \right\|^2 S_n(w) = \sum_{n=0}^{N-1} \left| \omega_n \right|^2 S_n(\omega)
+\end{equation}$$
+
+所以
+
+$$\begin{equation} \label{OutputSNRAtCertainFreq}
+  \mathrm{SNR_o}(\omega) = \frac{1}{\displaystyle\sum_{n=0}^{N-1} \left| \omega_n \right|^2} \frac{S_f(\omega)}{S_n(\omega)}
+\end{equation}$$
+
+其中，下标“$\mathrm{o}$”代表输出。
+
+&emsp;&emsp;阵列增益 $A_\omega$ 反映了由于采用阵列而带来的 SNR 的改进。其定义为阵列的输出 SNR 和一个阵元上的输入 SNR 的比值。下标“$w$”表示空域不相关的噪声输入。噪声的时域频谱不一定是平坦的。利用式 $\eqref{InputSNRAtCertainFreq}$ 和式 $\eqref{OutputSNRAtCertainFreq}$，有
+
+$$\begin{equation}
+  A_\omega = \frac{\mathrm{SNR_o}(\omega)}{\mathrm{SNR_{in}}(\omega)} = \frac{1}{\displaystyle \sum_{n=0}^{N-1} \left| \omega_n \right|^2}
+\end{equation}$$
+
+或
+
+$$\begin{equation} \label{DefinitionOfArrayGain}
+  A_\omega = \left( \sum_{n=0}^{N-1} \frac{1}{\left| \omega_n \right|^2}  \right) ^{-1} = \left\| \vec{w} \right\| ^{-2}
+\end{equation}$$
+
+对于式 $\eqref{DefinitionOfArrayGain}$，可以观察到下面三个有用的结果：
+
+1. 只要满足
+
+   $$\begin{equation}
+    \left| \vec{w}^\mathrm{H}\vec{v}_{\vec{k}} \left( \vec{k}_\mathrm{s} \right) \right|^2 = 1
+   \end{equation}$$
+
+   这个结果就适用于任意的阵列结构。
+
+2. 对于一个标准线阵（阵元间距为 $d=\lambda/2$），白噪声阵列增益等于式 $\eqref{SimplifiedResultOfDirectivityInDirectionCosineSpaceOfLA}$ 中的阵列方向性。
+
 [$u$ 空间的波束方向图的表达式]: https://josh-gao.top/posts/de20fd09.html#BeamPatternInDirectionCosineDomain
 [对角调向矩阵]: https://josh-gao.top/posts/c2604c43.html#DiagonalSteeringMatrix
+[各个空间的第一零点波束宽度表]: https://josh-gao.top/posts/aa32ec76.html#table.1-3-2
+[阵列输出的向量形式]: https://josh-gao.top/posts/8b61f5a7.html#VectorFormOfLinearArrayOutputInTimeDomain
+[窄带假设下的复加权的表达式]: https://josh-gao.top/posts/8b61f5a7.html#NarrowBandComplexWeightVector
 
 [^1]: 在大多数情况下，我们去掉下标 “$s$”，因为假设 $\vec{w}$ 是包含调向的。

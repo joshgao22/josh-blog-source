@@ -223,7 +223,7 @@ $$\begin{equation}
 
 {% endnote %}
 
-&emsp;&emsp;[表 1-3-1](#table.1-3-1)中列出了在各个不同空间表示出的 $BW_{NN}$。
+&emsp;&emsp;[表 1-3-2](#table.1-3-2)中列出了在各个不同空间表示出的 $BW_{NN}$。
 
 <a id="table.1-3-2"></a>
 
