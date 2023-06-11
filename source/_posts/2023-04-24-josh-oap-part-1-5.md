@@ -100,25 +100,25 @@ $$\begin{equation} \label{ElementOfSincMatrix}
 [对角调向矩阵][] 在 $u$ 空间的表示形式为
 
 $$\begin{equation}
-  \vec{I}_{\mathrm{s}u} = \mathrm{diag}\left( 1, e^{j \frac{2\pi d}{\lambda}u_\mathrm{T}} , e^{j \frac{2\pi d}{\lambda} 2u_\mathrm{T}}, \cdots, , e^{j \frac{2\pi d}{\lambda}(N-1)u_\mathrm{T}} \right)
+  \boldsymbol{I}_{\mathrm{s}u} = \mathrm{diag}\left( 1, e^{j \frac{2\pi d}{\lambda}u_\mathrm{T}} , e^{j \frac{2\pi d}{\lambda} 2u_\mathrm{T}}, \cdots, , e^{j \frac{2\pi d}{\lambda}(N-1)u_\mathrm{T}} \right)
 \end{equation}$$
 
 则
 
 $$\begin{equation}
-  D = \vec{I}_{\mathrm{s}u} \vec{w}^\mathrm{H} \left[ \overrightarrow{\mathrm{sinc}} \right] \vec{w} \vec{I}_{\mathrm{s}u}^\mathrm{H}
+  D = \boldsymbol{I}_{\mathrm{s}u} \boldsymbol{w}^\mathrm{H} \left[ \overrightarrow{\mathrm{sinc}} \right] \boldsymbol{w} \boldsymbol{I}_{\mathrm{s}u}^\mathrm{H}
 \end{equation}$$
 
 通常，调向运算在权值矢量中包含[^1]
 
 $$\begin{equation}
-  \vec{w}_\mathrm{s} = \vec{w}\vec{I}_{\mathrm{s}u}^\mathrm{H}
+  \boldsymbol{w}_\mathrm{s} = \boldsymbol{w}\boldsymbol{I}_{\mathrm{s}u}^\mathrm{H}
 \end{equation}$$
 
 则
 
 $$\begin{equation}
-  D = \vec{w}_\mathrm{s}^\mathrm{H} \left[ \overrightarrow{\mathrm{sinc}} \right] \vec{w}_\mathrm{s}
+  D = \boldsymbol{w}_\mathrm{s}^\mathrm{H} \left[ \overrightarrow{\mathrm{sinc}} \right] \boldsymbol{w}_\mathrm{s}
 \end{equation}$$
 
 ## 标准线阵的情况
@@ -132,16 +132,16 @@ $$\begin{equation} \label{IntermediateResultOfDirectivityInDirectionCosineSpaceO
 当 $m = n$ 时，$\mathrm{sinc}$ 函数等于 1，当 $m \ne n$ 时，$\mathrm{sinc}$ 函数等于 0。所以式 $\eqref{IntermediateResultOfDirectivityInDirectionCosineSpaceOfLA}$ 简化为
 
 $$\begin{equation}
-  D = \left\{ \sum_{n=0}^{N-1} \left| w_n \right|^2 \right\} = \left( \vec{w}^\mathrm{H}\vec{w} \right)^{-2} = \left\{ \left\| \vec{w} \right \|^2 \right\}^{-1}
+  D = \left\{ \sum_{n=0}^{N-1} \left| w_n \right|^2 \right\} = \left( \boldsymbol{w}^\mathrm{H}\boldsymbol{w} \right)^{-2} = \left\{ \left\| \boldsymbol{w} \right \|^2 \right\}^{-1}
 \end{equation}$$
 
 其中
 
 $$\begin{equation} \label{SimplifiedResultOfDirectivityInDirectionCosineSpaceOfLA}
-  \left\| \vec{w} \right \| = \left( \vec{w}^\mathrm{H}\vec{w} \right)^{\frac{1}{2}}
+  \left\| \boldsymbol{w} \right \| = \left( \boldsymbol{w}^\mathrm{H}\boldsymbol{w} \right)^{\frac{1}{2}}
 \end{equation}$$
 
-是矢量 $\vec{w}$ 的 2-模。
+是矢量 $\boldsymbol{w}$ 的 2-模。
 
 &emsp;&emsp;所以一个标准线阵的方向性是权值矢量幅度平方的倒数。方向性不依赖于阵列的指向。当阵列指向从阵列的正侧向移开时，波束变宽，但是 $\varphi$ 的积分范围减小了
 
@@ -214,7 +214,7 @@ $$\begin{equation}
 可以把 $DI$ 写成
 
 $$\begin{equation}
-  DI = 10 \log_{10} N + 10 \log_{10}(g(\vec{w}))
+  DI = 10 \log_{10} N + 10 \log_{10}(g(\boldsymbol{w}))
 \end{equation}$$
 
 其中的第二项是权值的函数。对于任意的非均匀加权（$w_n \ne N^{-1}$），$DI$ 将会减小。
@@ -240,7 +240,7 @@ $$\begin{equation} \label{InputSNRAtCertainFreq}
 &emsp;&emsp;为了确定由信号和噪声产生的输出，我们需要一个用于描述输出谱的表达式，该式用波束形成器的权值和输入谱矩阵表示。根据[阵列输出的向量形式][]的表达式, 有
 
 $$\begin{equation} \label{ArrayOutput}
-y(t) = \int_{-\infty}^{\infty} \vec{h}^\mathrm{T} (\tau) \vec{x}\left(t - \tau\right) \mathrm{d} \tau
+y(t) = \int_{-\infty}^{\infty} \boldsymbol{h}^\mathrm{T} (\tau) \boldsymbol{x}\left(t - \tau\right) \mathrm{d} \tau
 \end{equation}$$
 
 假设 $x(t)$ 是零均值宽平稳的。输出 $y(t)$ 的相关函数为
@@ -258,46 +258,46 @@ $$\begin{equation} \label{SpectrumOfArrayOutput}
 根据式 $\eqref{ArrayOutput}$、$\eqref{CorrelationOfArrayOutput}$ 和 $\eqref{SpectrumOfArrayOutput}$，有
 
 $$\begin{equation}
-  S_y (\omega) = \int_{-\infty}^{\infty} e^{-j\omega\tau} \, \mathrm{d} \tau \int_{-\infty}^{\infty} \vec{h}^\mathrm{T} (\alpha) \, \mathrm{d} \alpha \int_{-\infty}^{\infty} E \left[  \vec{x} (t-\alpha) \vec{x}^\mathrm{H} (t-\tau-\beta)\right] \vec{h}^\ast(\beta) \, \mathrm{d} \beta
+  S_y (\omega) = \int_{-\infty}^{\infty} e^{-j\omega\tau} \, \mathrm{d} \tau \int_{-\infty}^{\infty} \boldsymbol{h}^\mathrm{T} (\alpha) \, \mathrm{d} \alpha \int_{-\infty}^{\infty} E \left[  \boldsymbol{x} (t-\alpha) \boldsymbol{x}^\mathrm{H} (t-\tau-\beta)\right] \boldsymbol{h}^\ast(\beta) \, \mathrm{d} \beta
 \end{equation}$$
 
 也即
 
 $$\begin{equation}
-  S_y (\omega) = \int_{-\infty}^{\infty} \vec{h}^\mathrm{T} (\alpha) e^{-j\omega\alpha}  \, \mathrm{d} \alpha \int_{-\infty}^{\infty} e^{-jk\omega z} \vec{R}_x (z) \, \mathrm{d} z \int_{-\infty}^{\infty} e^{j\omega \beta} \vec{h}^\ast(\beta) \, \mathrm{d} \beta
+  S_y (\omega) = \int_{-\infty}^{\infty} \boldsymbol{h}^\mathrm{T} (\alpha) e^{-j\omega\alpha}  \, \mathrm{d} \alpha \int_{-\infty}^{\infty} e^{-jk\omega z} \boldsymbol{R}_x (z) \, \mathrm{d} z \int_{-\infty}^{\infty} e^{j\omega \beta} \boldsymbol{h}^\ast(\beta) \, \mathrm{d} \beta
 \end{equation}$$
 
 可以进一步简化为
 
 $$\begin{equation} \label{SimplifiedSpectrumOfArrayOutput}
-  S_y (\omega) = \vec{H}^\mathrm{T} (\omega) \vec{S}_x(\omega) \vec{H} ^\ast (\omega)
+  S_y (\omega) = \boldsymbol{H}^\mathrm{T} (\omega) \boldsymbol{S}_x(\omega) \boldsymbol{H} ^\ast (\omega)
 \end{equation}$$
 
 对于窄带波束形成器，在式 $\eqref{SimplifiedSpectrumOfArrayOutput}$ 中利用[窄带假设下的复加权的表达式][]，可得到想要的结果：
 
 $$\begin{equation}
-  S_y (\omega) = \vec{w}^\mathrm{H} \vec{S}_x(\omega) \vec{w}
+  S_y (\omega) = \boldsymbol{w}^\mathrm{H} \boldsymbol{S}_x(\omega) \boldsymbol{w}
 \end{equation}$$
 
-为了计算由于信号而产生的输出，对 $\vec{w}$ 施加约束条件，
+为了计算由于信号而产生的输出，对 $\boldsymbol{w}$ 施加约束条件，
 
 $$\begin{equation} \label{DistortionlessConstraint}
-  \vec{w}^\mathrm{H} \vec{v}_{\vec{k}} \left( \vec{k}_\mathrm{s} \right) = 1
+  \boldsymbol{w}^\mathrm{H} \boldsymbol{v}_{\boldsymbol{k}} \left( \boldsymbol{k}_\mathrm{s} \right) = 1
 \end{equation}$$
 
-在式 $\eqref{DistortionlessConstraint}$ 中的约束条件意味着从 $\vec{k}_\mathrm{s}$ 入射的任意信号将无畸变地通过波束形成器。我们把式 $\eqref{DistortionlessConstraint}$ 中的约束条件称为**{% label primary @无畸变约束（ distortionless constraint） %}**。在后续的讨论中这个条件经常使用。
+在式 $\eqref{DistortionlessConstraint}$ 中的约束条件意味着从 $\boldsymbol{k}_\mathrm{s}$ 入射的任意信号将无畸变地通过波束形成器。我们把式 $\eqref{DistortionlessConstraint}$ 中的约束条件称为**{% label primary @无畸变约束（ distortionless constraint） %}**。在后续的讨论中这个条件经常使用。
 
 &emsp;&emsp;可以把输入信号谱写成
 
 $$\begin{equation} \label{SpectrumOfArrayInput}
-  \vec{S}_{\vec{f}}(\omega) = \vec{v}_{\vec{k}} \left( \vec{k}_\mathrm{s} \right) S_f(\omega) \vec{v}_{\vec{k}}^\mathrm{H} \left( \vec{k}_\mathrm{s} \right)
+  \boldsymbol{S}_{\boldsymbol{f}}(\omega) = \boldsymbol{v}_{\boldsymbol{k}} \left( \boldsymbol{k}_\mathrm{s} \right) S_f(\omega) \boldsymbol{v}_{\boldsymbol{k}}^\mathrm{H} \left( \boldsymbol{k}_\mathrm{s} \right)
 \end{equation}$$
 
 将式 $\eqref{SpectrumOfArrayInput}$ 代入利用式 $\eqref{SimplifiedSpectrumOfArrayOutput}$，得到的输出信号谱为
 
 $$\begin{equation}
 \begin{aligned}
-  S_{y_\mathrm{s}} &= \vec{w}^\mathrm{H} \vec{v}_{\vec{k}} \left( \vec{k}_\mathrm{s} \right) S_f (\omega) \vec{v}_{\vec{k}}^\mathrm{H} \left( \vec{k}_\mathrm{s} \right) \vec{w} \\
+  S_{y_\mathrm{s}} &= \boldsymbol{w}^\mathrm{H} \boldsymbol{v}_{\boldsymbol{k}} \left( \boldsymbol{k}_\mathrm{s} \right) S_f (\omega) \boldsymbol{v}_{\boldsymbol{k}}^\mathrm{H} \left( \boldsymbol{k}_\mathrm{s} \right) \boldsymbol{w} \\
   &= S_f(\omega)
 \end{aligned}
 \end{equation}$$
@@ -305,19 +305,19 @@ $$\begin{equation}
 由于噪声而产生的输出谱为
 
 $$\begin{equation}
-  S_{y_\mathrm{n}} = \vec{w}^\mathrm{H} \vec{S_{\vec{n}}} (\omega) \vec{w}
+  S_{y_\mathrm{n}} = \boldsymbol{w}^\mathrm{H} \boldsymbol{S_{\boldsymbol{n}}} (\omega) \boldsymbol{w}
 \end{equation}$$
 
-其中 $\vec{S_{\vec{n}}} (\omega)$ 是输入噪声过程的谱矩阵。对于空域白噪声，且各传感器的噪声谱相同的特殊情况，有
+其中 $\boldsymbol{S_{\boldsymbol{n}}} (\omega)$ 是输入噪声过程的谱矩阵。对于空域白噪声，且各传感器的噪声谱相同的特殊情况，有
 
 $$\begin{equation}
-  S_{y_\mathrm{n}} = S_n (\omega) \vec{I}
+  S_{y_\mathrm{n}} = S_n (\omega) \boldsymbol{I}
 \end{equation}$$
 
 和
 
 $$\begin{equation}
-  S_{y_n} = \left\| \vec{w} \right\|^2 S_n(w) = \sum_{n=0}^{N-1} \left| \omega_n \right|^2 S_n(\omega)
+  S_{y_n} = \left\| \boldsymbol{w} \right\|^2 S_n(w) = \sum_{n=0}^{N-1} \left| \omega_n \right|^2 S_n(\omega)
 \end{equation}$$
 
 所以
@@ -337,7 +337,7 @@ $$\begin{equation}
 或
 
 $$\begin{equation} \label{DefinitionOfArrayGain}
-  A_w = \left( \sum_{n=0}^{N-1} \frac{1}{\left| \omega_n \right|^2}  \right) ^{-1} = \left\| \vec{w} \right\| ^{-2}
+  A_w = \left( \sum_{n=0}^{N-1} \frac{1}{\left| \omega_n \right|^2}  \right) ^{-1} = \left\| \boldsymbol{w} \right\| ^{-2}
 \end{equation}$$
 
 对于式 $\eqref{DefinitionOfArrayGain}$，可以观察到下面三个有用的结果：
@@ -345,7 +345,7 @@ $$\begin{equation} \label{DefinitionOfArrayGain}
 1. 只要满足
 
    $$\begin{equation}
-    \left| \vec{w}^\mathrm{H}\vec{v}_{\vec{k}} \left( \vec{k}_\mathrm{s} \right) \right|^2 = 1
+    \left| \boldsymbol{w}^\mathrm{H}\boldsymbol{v}_{\boldsymbol{k}} \left( \boldsymbol{k}_\mathrm{s} \right) \right|^2 = 1
    \end{equation}$$
 
    这个结果就适用于任意的阵列结构。
@@ -360,4 +360,4 @@ $$\begin{equation} \label{DefinitionOfArrayGain}
 [阵列输出的向量形式]: https://josh-gao.top/posts/8b61f5a7.html#VectorFormOfLinearArrayOutputInTimeDomain
 [窄带假设下的复加权的表达式]: https://josh-gao.top/posts/8b61f5a7.html#NarrowBandComplexWeightVector
 
-[^1]: 在大多数情况下，我们去掉下标 “$s$”，因为假设 $\vec{w}$ 是包含调向的。
+[^1]: 在大多数情况下，我们去掉下标 “$s$”，因为假设 $\boldsymbol{w}$ 是包含调向的。

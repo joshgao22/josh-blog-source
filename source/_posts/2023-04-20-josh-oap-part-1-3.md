@@ -34,14 +34,14 @@ $$\begin{equation}
 \end{equation}$$
 
 $$\begin{equation}
-  \vec{w} = \frac{1}{N} \vec{1}
+  \boldsymbol{w} = \frac{1}{N} \boldsymbol{1}
 \end{equation}$$
 
-其中 $\vec{1}$ 是 $N \times 1$ 维的单位矢量，则在 $\psi$ 空间的频率-波数响应函数可以写成（利用等比级数的求和公式）
+其中 $\boldsymbol{1}$ 是 $N \times 1$ 维的单位矢量，则在 $\psi$ 空间的频率-波数响应函数可以写成（利用等比级数的求和公式）
 
 $$\begin{equation}
   \begin{aligned}
-    \vec{\varUpsilon}_\psi(\psi) &= \frac{1}{N} \sum_{n=0}^{N-1}  e^{j \left(n - \frac{N-1}{2}\right)\psi} \\
+    \boldsymbol{\varUpsilon}_\psi(\psi) &= \frac{1}{N} \sum_{n=0}^{N-1}  e^{j \left(n - \frac{N-1}{2}\right)\psi} \\
     &= \frac{1}{N} e^{-j \left(\frac{N-1}{2}\right)\psi} \sum_{n=0}^{N-1} e^{j n \psi} \\
     &= \frac{1}{N} e^{-j \left(\frac{N-1}{2}\right)\psi} \left[ \frac{1-e^{jN\psi}}{1-e^{j\psi}} \right]
   \end{aligned}
@@ -50,40 +50,40 @@ $$\begin{equation}
 或（利用欧拉公式）
 
 $$\begin{equation}
-  \vec{\varUpsilon}_\psi(\psi) = \frac{1}{N} \frac{\sin\left( N \frac{\psi}{2} \right)}{\sin\frac{\psi}{2}}
+  \boldsymbol{\varUpsilon}_\psi(\psi) = \frac{1}{N} \frac{\sin\left( N \frac{\psi}{2} \right)}{\sin\frac{\psi}{2}}
 \end{equation}$$
 
 <!-- more -->
 
 可以观察到：
 
-- 当 $N$ 是奇数时，$\vec{\varUpsilon}_\psi(\psi)$ 是周期函数，周期为 $2\pi$；
+- 当 $N$ 是奇数时，$\boldsymbol{\varUpsilon}_\psi(\psi)$ 是周期函数，周期为 $2\pi$；
 - 当 $N$ 为偶数时，波瓣在 $\pm 2 \pi$、$\pm 6 \pi$ 处的值为负值，周期为 $4 \pi$；
-- 对任意的 $N$，$\left|\vec{\varUpsilon}_\psi(\psi)\right|$ 的周期为 $2 \pi$。
+- 对任意的 $N$，$\left|\boldsymbol{\varUpsilon}_\psi(\psi)\right|$ 的周期为 $2 \pi$。
 
-当 $N = 11$  时， $\vec{\varUpsilon}_\psi(\psi)$ 和 $\psi$ 的关系在[图 1-3-1](#fig.1-3-1) 中给出。[图 1-3-2](#fig.1-3-2) 给出了 $\left|\vec{\varUpsilon}_\psi(\psi)\right|$，单位为 dB，其中
+当 $N = 11$  时， $\boldsymbol{\varUpsilon}_\psi(\psi)$ 和 $\psi$ 的关系在[图 1-3-1](#fig.1-3-1) 中给出。[图 1-3-2](#fig.1-3-2) 给出了 $\left|\boldsymbol{\varUpsilon}_\psi(\psi)\right|$，单位为 dB，其中
 
 $$\begin{equation}
-  \vec{\varUpsilon}_\mathrm{dB}(\psi) = 10 \log_{10} \left|\vec{\varUpsilon}(\psi)\right|^2
+  \boldsymbol{\varUpsilon}_\mathrm{dB}(\psi) = 10 \log_{10} \left|\boldsymbol{\varUpsilon}(\psi)\right|^2
 \end{equation}$$
 
 <a id="fig.1-3-1"></a>
 
-![图 1-3-1 $\vec{\varUpsilon}(\psi): \psi = \frac{2\pi}{\lambda} d \cos\theta, N=11$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-20-josh-oap-part-1-3/2023-04-20-josh-oap-part-1-3-010-FrequencyWavenumberResponseFunction.svg){width=1000px}
+![图 1-3-1 $\boldsymbol{\varUpsilon}(\psi): \psi = \frac{2\pi}{\lambda} d \cos\theta, N=11$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-20-josh-oap-part-1-3/2023-04-20-josh-oap-part-1-3-010-FrequencyWavenumberResponseFunction.svg){width=1000px}
 
 <a id="fig.1-3-2"></a>
 
-![图 1-3-2 用 dB 表示 $\left|\vec{\varUpsilon}(\psi)\right|$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-20-josh-oap-part-1-3/2023-04-20-josh-oap-part-1-3-020-FrequencyWavenumberResponseFunctionInDB.svg){width=1000px}
+![图 1-3-2 用 dB 表示 $\left|\boldsymbol{\varUpsilon}(\psi)\right|$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-20-josh-oap-part-1-3/2023-04-20-josh-oap-part-1-3-020-FrequencyWavenumberResponseFunctionInDB.svg){width=1000px}
 
-若不指定 $\vec{w}$ 的类型，则 $\vec{\varUpsilon}_\psi(\psi)$ 是复数，所以相位也应该画出来。但是，均匀加权线阵具有对称性，因此得到的频率-波数响应是实函数。
+若不指定 $\boldsymbol{w}$ 的类型，则 $\boldsymbol{\varUpsilon}_\psi(\psi)$ 是复数，所以相位也应该画出来。但是，均匀加权线阵具有对称性，因此得到的频率-波数响应是实函数。
 
 &emsp;&emsp;也可以用 $k_z$ 来表示频率-波数响应
 
 $$\begin{equation}
-  \vec{\varUpsilon}(\omega:k_z) = \frac{1}{N} \frac{\sin\left( N k_z \frac{d}{2} \right)}{\sin \left(k_z\frac{d}{2}\right)}
+  \boldsymbol{\varUpsilon}(\omega:k_z) = \frac{1}{N} \frac{\sin\left( N k_z \frac{d}{2} \right)}{\sin \left(k_z\frac{d}{2}\right)}
 \end{equation}$$
 
-这里 $\vec{\varUpsilon}(\omega:k_z)$ 是周期函数，周期为 $2\pi/d$。
+这里 $\boldsymbol{\varUpsilon}(\omega:k_z)$ 是周期函数，周期为 $2\pi/d$。
 
 {% note warning %}
 
@@ -123,7 +123,7 @@ $$\begin{equation}
 
 <a id="fig.1-3-4"></a>
 
-![图 1-3-4 $d = \lambda/2, N=10$，线阵的 $\left|\vec{\varUpsilon}_\psi(\psi)\right|$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-20-josh-oap-part-1-3/2023-04-20-josh-oap-part-1-3-040-AbsOfFWRFForALinearArray.svg){width=1000px}
+![图 1-3-4 $d = \lambda/2, N=10$，线阵的 $\left|\boldsymbol{\varUpsilon}_\psi(\psi)\right|$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-20-josh-oap-part-1-3/2023-04-20-josh-oap-part-1-3-040-AbsOfFWRFForALinearArray.svg){width=1000px}
 
 {% note info %}
 
@@ -295,7 +295,7 @@ $$\begin{equation}
 
 ![图 1-3-6 阵元间距对波束方向图的影响：(a) $d=\lambda/4$；(b) $d=\lambda/2$；(c) $d=\lambda$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-20-josh-oap-part-1-3/2023-04-20-josh-oap-part-1-3-060-%20EffectOfElementSpacingOnBeamPattern.svg){width=1000px}
 
-&emsp;&emsp;在[图 1-3-6](#fig.1-3-6) 中，针对多种 $d/\lambda$ 的值，画出了 $\left| \vec{\varUpsilon}_u(u) \right|$。图中说明了“栅瓣”这个重要的概念，即和主波束一样高的波瓣。栅瓣发生在当波束方向图 $B_\psi(\psi)$（式 $\eqref{BeamPatternOfUWLAInWaveNumberDomain}$）中的分子和分母均为零的时候。栅瓣出现的间隔为
+&emsp;&emsp;在[图 1-3-6](#fig.1-3-6) 中，针对多种 $d/\lambda$ 的值，画出了 $\left| \boldsymbol{\varUpsilon}_u(u) \right|$。图中说明了“栅瓣”这个重要的概念，即和主波束一样高的波瓣。栅瓣发生在当波束方向图 $B_\psi(\psi)$（式 $\eqref{BeamPatternOfUWLAInWaveNumberDomain}$）中的分子和分母均为零的时候。栅瓣出现的间隔为
 
 $$\begin{equation}
   \frac{\psi}{2} = m \cdot \pi
@@ -315,7 +315,7 @@ $$\begin{equation}
 
 &emsp;&emsp;如果阵列的间距大于 $\lambda$，则栅瓣的峰值出现在信号传播区域以内，即在 $\left| u \right| \leqslant 1$ 的区域以内。这里就会出现峰值响应模糊的问题，只有当我们对信号的入射方向有先验信息的时候，才可能解决这个问题。
 
-&emsp;&emsp;下一节将讨论阵列调向的问题，阵列调向使得在 $u$ 空间的频率-波数响应函数 $\left| \vec{\varUpsilon}_u(u) \right|$ 发生平移，这种平移导致栅瓣进入了可视区域以内。我们发现，如果阵列需要的调向范围为 $0^\circ \leqslant \theta \leqslant 180^\circ$ 则需要
+&emsp;&emsp;下一节将讨论阵列调向的问题，阵列调向使得在 $u$ 空间的频率-波数响应函数 $\left| \boldsymbol{\varUpsilon}_u(u) \right|$ 发生平移，这种平移导致栅瓣进入了可视区域以内。我们发现，如果阵列需要的调向范围为 $0^\circ \leqslant \theta \leqslant 180^\circ$ 则需要
 
 $$\begin{equation}
   \frac{d}{\lambda} \leqslant \frac{1}{2}

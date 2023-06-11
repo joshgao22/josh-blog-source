@@ -42,43 +42,43 @@ date: 2023-04-22 18:17:52
 &emsp;&emsp;[1.2 节][]开头的简单例子说明了把阵列调向某个特定方向的主要思想，调向在波数空间的影响是很直接的。考虑[图 1-4-1](#fig.1-4-1) 中的处理器，输入到调向环节的基函数为
 
 $$\begin{equation}
-  f\left( t, \vec{p}\right) = e^{j\omega t} \vec{v}_{\vec{k}}\left(\vec{k}\right)
+  f\left( t, \boldsymbol{p}\right) = e^{j\omega t} \boldsymbol{v}_{\boldsymbol{k}}\left(\boldsymbol{k}\right)
 \end{equation}$$
 
 我们希望当波数等于“目标”的波数时，即
 
 $$\begin{equation}
-  \vec{k} = \vec{k}_\mathrm{T}
+  \boldsymbol{k} = \boldsymbol{k}_\mathrm{T}
 \end{equation}$$
 
-输出是对齐的。我们把 $\vec{k}_\mathrm{T}$ 称为**{% label primary @所调方向（steering direction） %}**或在 $k$ 空间的**{% label primary @主响应轴（main response axis） %}**。可以使用一个 $N \times N$ 的对角调向矩阵（diagonal steering matrix）来完成这个操作
+输出是对齐的。我们把 $\boldsymbol{k}_\mathrm{T}$ 称为**{% label primary @所调方向（steering direction） %}**或在 $k$ 空间的**{% label primary @主响应轴（main response axis） %}**。可以使用一个 $N \times N$ 的对角调向矩阵（diagonal steering matrix）来完成这个操作
 
 <a id="DiagonalSteeringMatrix"></a>
 
 $$\begin{equation}
-  \vec{I}_\mathrm{s}\left(\vec{k}_\mathrm{T}\right) = \left[ \begin{matrix}
-    e^{j \vec{k}^\mathrm{T}_\mathrm{T}\vec{p}_1} & 0 & \cdots & 0 \\
-    0 & e^{j \vec{k}^\mathrm{T}_\mathrm{T}\vec{p}_2} & \cdots & 0 \\
+  \boldsymbol{I}_\mathrm{s}\left(\boldsymbol{k}_\mathrm{T}\right) = \left[ \begin{matrix}
+    e^{j \boldsymbol{k}^\mathrm{T}_\mathrm{T}\boldsymbol{p}_1} & 0 & \cdots & 0 \\
+    0 & e^{j \boldsymbol{k}^\mathrm{T}_\mathrm{T}\boldsymbol{p}_2} & \cdots & 0 \\
     \vdots & \vdots &  & \vdots \\
-    0 & 0 & \cdots & e^{j \vec{k}^\mathrm{T}_\mathrm{T}\vec{p}_N}
+    0 & 0 & \cdots & e^{j \boldsymbol{k}^\mathrm{T}_\mathrm{T}\boldsymbol{p}_N}
   \end{matrix} \right]
 \end{equation}$$
 
 得到的输出为
 
 $$\begin{equation}
-  f_\mathrm{s}\left( t, \vec{p}\right) = e^{j\omega t} \vec{v}_{\vec{k}}\left(\vec{k} - \vec{k}_\mathrm{T}\right)
+  f_\mathrm{s}\left( t, \boldsymbol{p}\right) = e^{j\omega t} \boldsymbol{v}_{\boldsymbol{k}}\left(\boldsymbol{k} - \boldsymbol{k}_\mathrm{T}\right)
 \end{equation}$$
 
 总的频率-波数响应为
 
 $$\begin{equation}
-  \vec{\varUpsilon} \left(\left. \omega, \vec{k} \right| \vec{k}_\mathrm{T} \right) = \vec{\varUpsilon} \left( \omega, \vec{k} - \vec{k}_\mathrm{T} \right)
+  \boldsymbol{\varUpsilon} \left(\left. \omega, \boldsymbol{k} \right| \boldsymbol{k}_\mathrm{T} \right) = \boldsymbol{\varUpsilon} \left( \omega, \boldsymbol{k} - \boldsymbol{k}_\mathrm{T} \right)
 \end{equation}$$
 
 {% note info %}
 
-阵列的响应函数仅是简单地平移到 $\vec{k}_\mathrm{T}$ 的位置，这是利用波数空间来解释阵列响应函数的好处之一。如果在波数空间考虑波束方向图，也会得到一个简单的平移关系。
+阵列的响应函数仅是简单地平移到 $\boldsymbol{k}_\mathrm{T}$ 的位置，这是利用波数空间来解释阵列响应函数的好处之一。如果在波数空间考虑波束方向图，也会得到一个简单的平移关系。
 
 {% endnote %}
 
@@ -87,27 +87,27 @@ $$\begin{equation}
 &emsp;&emsp;当采用均匀幅度加权时，在[图 1-4-1](#fig.1-4-1) 中的两步的过程是不必要的。令
 
 $$\begin{equation}
-  \vec{w} = \frac{1}{N} \vec{v}_{\vec{k}}\left(\vec{k}_\mathrm{T}\right)
+  \boldsymbol{w} = \frac{1}{N} \boldsymbol{v}_{\boldsymbol{k}}\left(\boldsymbol{k}_\mathrm{T}\right)
 \end{equation}$$
 
 则有
 
 $$\begin{equation}
-  B_\mathrm{c} \left( \vec{k}, \vec{k}_\mathrm{T} \right) = \frac{1}{N} \vec{v}_{\vec{k}}^\mathrm{H}  \left(\vec{k}_\mathrm{T}\right) \vec{v}_{\vec{k}}\left(\vec{k}\right)
+  B_\mathrm{c} \left( \boldsymbol{k}, \boldsymbol{k}_\mathrm{T} \right) = \frac{1}{N} \boldsymbol{v}_{\boldsymbol{k}}^\mathrm{H}  \left(\boldsymbol{k}_\mathrm{T}\right) \boldsymbol{v}_{\boldsymbol{k}}\left(\boldsymbol{k}\right)
 \end{equation}$$
 
-称 $B_c \left( \vec{k}, \vec{k}_\mathrm{T} \right)$ 为**{% label primary @常规波束方向图（conventional beam pattern） %}**。我们将发现常规波束方向图是后面要讨论的很多最优处理内容的基础。
+称 $B_c \left( \boldsymbol{k}, \boldsymbol{k}_\mathrm{T} \right)$ 为**{% label primary @常规波束方向图（conventional beam pattern） %}**。我们将发现常规波束方向图是后面要讨论的很多最优处理内容的基础。
 
 # 均匀线性阵列的调向
 
 &emsp;&emsp;线性阵列的常规波束方向图为
 
 $$\begin{equation}
-  B_{\psi\mathrm{c}}\left( \psi : \psi_\mathrm{T} \right) = \frac{1}{N} \vec{v}_\psi^\mathrm{H}  \left(\psi_\mathrm{T}\right) \vec{v}_\psi\left(\psi\right)
+  B_{\psi\mathrm{c}}\left( \psi : \psi_\mathrm{T} \right) = \frac{1}{N} \boldsymbol{v}_\psi^\mathrm{H}  \left(\psi_\mathrm{T}\right) \boldsymbol{v}_\psi\left(\psi\right)
 \end{equation}$$
 
 $$\begin{equation}
-  B_{u\mathrm{c}}\left( u : u_\mathrm{T} \right) = \frac{1}{N} \vec{v}_u^\mathrm{H}  \left(u_\mathrm{T}\right) \vec{v}_u\left(u\right)
+  B_{u\mathrm{c}}\left( u : u_\mathrm{T} \right) = \frac{1}{N} \boldsymbol{v}_u^\mathrm{H}  \left(u_\mathrm{T}\right) \boldsymbol{v}_u\left(u\right)
 \end{equation}$$
 
 对于均匀线性阵列（阵元间距相同），有
