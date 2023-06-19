@@ -43,7 +43,7 @@ z &= r \cos\theta
 
 # 阵列的基本模型
 
-&emsp;&emsp;本文分析一个阵列对外部信号场的响应。阵列由一组全向阵元组成，阵元的位置为 $\boldsymbol{p}_n$，如[图 1-1-2](#fig.1-1-2) 所示。阵元在位置 $\boldsymbol{p}_n : n = 0, 1, \cdots, N — 1$ 上对信号场进行空域采样。这产生了一组信号，表示为矢量 $\boldsymbol{f}\left(t, \boldsymbol{p}\right)$
+&emsp;&emsp;下面分析一个阵列对外部信号场的响应。阵列由一组全向阵元组成，阵元的位置为 $\left\{ \boldsymbol{p}_n \right\}_{n=0}^{N-1}$，如[图 1-1-2](#fig.1-1-2) 所示。阵列在各阵元处对信号场进行采样，产生一组信号，记为矢量 $\boldsymbol{f}\left(t, \boldsymbol{p}\right)$
 
 $$\begin{equation}
 \boldsymbol{f}(t, \boldsymbol{p}) = \left[
@@ -58,7 +58,7 @@ $$\begin{equation}
 
 {% note warning %}
 
-请注意，这里并没有指定阵列的几何排布，因此下面的分析是适用于所有阵列的。
+注意，这里并没有规定阵列的几何排布，因此下面的分析适用于所有阵列结构。
 
 {% endnote %}
 
@@ -66,7 +66,7 @@ $$\begin{equation}
 
 ![图 1-1-2 $N$ 阵元阵列](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-18-josh-oap-part-1-1/2023-04-18-josh-oap-part-1-1-020-NElementArray.png!sign){width=600px}
 
-&emsp;&emsp;对每个阵元的输出用一个线性时不变滤波器进行处理，该滤波器的冲激响应为 $h_n(\tau)$，并对所有输出求和，得到阵列的输出 $y(t)$，如[图 1-1-3](#fig.1-1-3) 所示。假设观察间隔足够长（可以考虑为无限长），则输出 $y(t)$ 可以写成卷积积分的形式：
+&emsp;&emsp;将每个阵元的输出（即采样结果）通过冲激响应为 $h_n(\tau)$ 的线性时不变滤波器，求和可得阵列的输出 $y(t)$，如[图 1-1-3](#fig.1-1-3) 所示。假设观察间隔足够长（可以考虑为无限长），则阵列输出 $y(t)$ 可以写成卷积积分的形式：
 
 $$\begin{equation}
 y(t) = \sum_{n=0}^{N-1} \int_{-\infty}^{\infty} h_n (t-\tau)f_n\left(\tau,\boldsymbol{p}_n\right) \mathrm{d} \tau
@@ -76,7 +76,7 @@ y(t) = \sum_{n=0}^{N-1} \int_{-\infty}^{\infty} h_n (t-\tau)f_n\left(\tau,\bolds
 
 ![图 1-1-3 线性处理阵列](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-18-josh-oap-part-1-1/2023-04-18-josh-oap-part-1-1-030-ArrayWithLinearProcessing.png!sign){width=600px}
 
-这个结果可以用矢量符号表示为（即将标量结果向矢量模型进行直接扩展，a straightforward extension of scalar results to the vector model）
+可以用矢量符号表示为（即将标量结果向矢量模型进行直接扩展，a straightforward extension of scalar results to the vector model）
 
 <a id="VectorFormOfLinearArrayOutputInTimeDomain"></a>
 
@@ -96,7 +96,7 @@ $$\begin{equation} \label{ImpulseResponse}
 \right]
 \end{equation}$$
 
-也可以把式 $\eqref{VectorFormOfLinearArrayOutputInTimeDomain}$ 在变换域表示为
+也可以把式 $\eqref{VectorFormOfLinearArrayOutputInTimeDomain}$ 给出的阵列输出在变换域表示为
 
 $$\begin{equation}
 \begin{aligned}
@@ -119,7 +119,7 @@ $$\begin{equation} \label{SampleVectorInFreqDomain}
 
 # 信号到达不同阵元的时延
 
-&emsp;&emsp;下面考虑如[图 1-1-4](#fig.1-1-4) 所示的简单的波束形成操作。外部信号输入为传播方向为 $\boldsymbol{a}$，时域频率（弧度）为 $\omega$ 的平面波，则在时域上每个阵元的输入信号可以用两种等效的方式进行表示。
+&emsp;&emsp;下面考虑如[图 1-1-4](#fig.1-1-4) 所示的简单的波束形成操作。假设外部信号是方向为 $\boldsymbol{a}$、时域频率（弧度）为 $\omega$ 的平面波，则在时域上每个阵元的输入信号可以用两种等效的方式进行表示。
 
 <a id="fig.1-1-4"></a>
 
@@ -138,13 +138,13 @@ $$\begin{equation} \label{DelayedSignal}
   \right]
 \end{equation}$$
 
-其中时延可表示为（距离除以速度得到时间）
+其中时延（距离除以速度得到时间）
 
 $$\begin{equation} \label{ExpressionOfDelayByDirection}
   \tau_n = \frac{\boldsymbol{a}^\mathrm{T}\boldsymbol{p}_n}{c}
 \end{equation}$$
 
-其中 $c$ 是信号在介质中的传播速度，$\boldsymbol{a}$ 是一个单位矢量，可以表示为
+其中 $c$ 是信号在介质中的传播速度，$\boldsymbol{a}$ 是一个单位矢量，表示为
 
 $$\begin{equation}
   \boldsymbol{a} = \left[ \begin{array}{c}
@@ -157,7 +157,7 @@ $$\begin{equation}
 上式中的负号是考虑了 $\boldsymbol{a}$ 的方向。则 $\tau_n$ 可以进一步表示为：
 
 $$\begin{equation} \label{RelativeDelay}
-  \tau_n = -\frac{1}{c}\left(\sin\theta\cos\varphi \cot p_{x_n} + \sin\theta\sin\varphi \cdot p_{y_n} + \cos\theta \cdot p_{z_n} \right)
+  \tau_n = -\frac{1}{c}\left(\sin\theta\cos\varphi \cdot p_{x_n} + \sin\theta\sin\varphi \cdot p_{y_n} + \cos\theta \cdot p_{z_n} \right)
 \end{equation}$$
 
 如果定义对于每个轴的方向余弦（direction cosine）为
@@ -174,7 +174,7 @@ $$\begin{equation}
   \boldsymbol{u} = -\boldsymbol{a}
 \end{equation}$$
 
-则式 $\eqref{RelativeDelay}$ 可以写成
+则式 $\eqref{RelativeDelay}$ 给出的相对时延可以写成
 
 $$\begin{equation} \label{RelativeDelayWithDirectionCosine}
    \tau_n = -\frac{1}{c}\left(u_x p_{x_n} + u_y p_{y_n} + u_z p_{z_n} \right) = -\frac{\boldsymbol{u}^\mathrm{T}\boldsymbol{p}_n}{c}
@@ -195,13 +195,7 @@ $$\begin{equation}
 对于在局部均匀的介质（locally homogeneous medium）里传播的平面波，定义波数 $\boldsymbol{k}$ （在波传播的方向上单位长度内的周期数目）为
 
 $$\begin{equation} \label{DefinitionOfWavenumber}
-  \boldsymbol{k} = \frac{\omega}{c} \boldsymbol{a} = \frac{2\pi}{\lambda} \boldsymbol{a}
-\end{equation}$$
-
-其中，$\lambda$ 是对应于频率 $\omega$ 的波长。等效地，
-
-$$\begin{equation}
-  \boldsymbol{k} = -\frac{2\pi}{\lambda} \left[
+  \boldsymbol{k} = \frac{\omega}{c} \boldsymbol{a} = \frac{2\pi}{\lambda} \boldsymbol{a} = -\frac{2\pi}{\lambda} \left[
     \begin{array}{c}
     \sin\theta\cos\varphi \\
     \sin\theta\sin\varphi \\
@@ -211,13 +205,13 @@ $$\begin{equation}
   = -\frac{2\pi}{\lambda} \boldsymbol{u}
 \end{equation}$$
 
-且波数的幅度由波动方程限定
+其中，$\lambda$ 是对应于频率 $\omega$ 的波长，且波数的幅度由波动方程限定
 
 $$\begin{equation} \label{WaveEquation}
   \left| \boldsymbol{k} \right| = \frac{\omega}{c} = \frac{2\pi}{\lambda}
 \end{equation}$$
 
-所以，仅 $\boldsymbol{k}$ 的方向是变化的。比较式 $\eqref{ExpressionOfDelayByDirection}$ 和式 $\eqref{DefinitionOfWavenumber}$，可以看到
+所以，仅 $\boldsymbol{k}$ 的方向是变化的。比较式 $\eqref{ExpressionOfDelayByDirection}$ 和式 $\eqref{DefinitionOfWavenumber}$，有
 
 $$\begin{equation}
   \omega \tau_n = \boldsymbol{k}^\mathrm{T}\boldsymbol{p}_n
@@ -242,17 +236,17 @@ $$\begin{equation}
   \boldsymbol{F}(\omega) = F(\omega) \boldsymbol{v}_{\boldsymbol{k}}\left(\boldsymbol{k}\right)
 \end{equation}$$
 
-矢量 $\boldsymbol{v}_{\boldsymbol{k}}\left(\boldsymbol{k}\right)$ 包含了阵列的所有空间特征，称为**{% label primary @阵列流形矢量（array manifold vector） %}**。在我们的讨论中，阵列流形矢量具有非常核心的作用。下标 $\boldsymbol{k}$ 表示参数属于 $\boldsymbol{k}$ 空间。这个下标的作用是把它和以后将在阵列流形矢量中使用的其他变量相区分。
-
-&emsp;&emsp;在这种情况下，把每个阵元的输入信号平移，使之在时间上对齐，然后把它们相加。这个操作过程如[图 1-1-5](#fig.1-1-5) 所示，其中包含了归一化因子 $1/N$，使得输出为 $f(t)$。在这里，
-
-$$\begin{equation} \label{DelayAndSumBeamformer}
-  h_n(\tau) = \frac{1}{N} \delta(\tau + \tau_n)
-\end{equation}$$
+矢量 $\boldsymbol{v}_{\boldsymbol{k}}\left(\boldsymbol{k}\right)$ 包含了阵列的所有空间特征，称为**{% label primary @阵列流形矢量（array manifold vector） %}**，在阵列信号处理理论中具有非常核心的作用。下标 $\boldsymbol{k}$ 表示参数属于 $\boldsymbol{k}$ 空间。这个下标的作用是把它和以后将在阵列流形矢量中使用的其他变量相区分。
 
 <a id="fig.1-1-5"></a>
 
 ![图 1-1-5 延时-求和波束形成器](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-18-josh-oap-part-1-1/2023-04-18-josh-oap-part-1-1-050-DelayAndSumBeamformer.png!sign){width=600px}
+
+&emsp;&emsp;如[图 1-1-5](#fig.1-1-5) 所示，把每个阵元的输入信号进行时移、相加、归一化，使得输出为 $f(t)$，其中
+
+$$\begin{equation} \label{DelayAndSumBeamformer}
+  h_n(\tau) = \frac{1}{N} \delta(\tau + \tau_n)
+\end{equation}$$
 
 且
 
@@ -260,7 +254,7 @@ $$\begin{equation}
   y(t) = f(t)
 \end{equation}$$
 
-&emsp;&emsp;这个处理器称为**{% label primary @延时求和波束形成器（delay-and-sum beamformer） %}**或**{% label primary @常规波束形成器（conventional beamformer） %}**。在实际中会在每个通道中加上一个共同的延时，使得[图 1-1-5](#fig.1-1-5) 中的操作是物理可实现的。
+上述处理器称为**{% label primary @延时求和波束形成器（delay-and-sum beamformer） %}**或**{% label primary @常规波束形成器（conventional beamformer） %}**。在实际中会在每个通道中加上一个共同的延时，使得[图 1-1-5](#fig.1-1-5) 中的操作是物理可实现的。
 
 &emsp;&emsp;此外，还可以把式 $\eqref{DelayAndSumBeamformer}$ 在频域内写成简洁的矩阵形式。如果 $\boldsymbol{k}_\mathrm{s}$ 是我们所感兴趣的平面波信号的波数，则
 
@@ -268,13 +262,11 @@ $$\begin{equation}
   \boldsymbol{H}^\mathrm{T} (\omega) = \frac{1}{N} \boldsymbol{v}_{\boldsymbol{k}}^\mathrm{H} \left( \boldsymbol{k}_\mathrm{s} \right)
 \end{equation}$$
 
-其中 $\boldsymbol{v}_{\boldsymbol{k}}\left(\boldsymbol{k}\right)$ 在式 $\eqref{DefinitionOfArrayManifoldVector}$ 中定义。
-
 # 单位平面波模型
 
-&emsp;&emsp;现在回到一般的问题，我们想要确定阵列对一个输入场 $\boldsymbol{f}(t, \boldsymbol{p})$ 的响应，这可以通过之前给出的卷积求和操作来实现，但更有用的方法是首先确定阵列对单位平面波（unit plane wave）的响应，响应为单位平面波时域（弧度）频率 $\omega$ 和波数 $\boldsymbol{k}$ 的函数。（利用叠加的复指数基函数对一个线性时不变系统进行分析的系统理论方法可以扩展到空时信号的情况。）
+&emsp;&emsp;现在回更到一般的问题，要确定阵列对一个输入场 $\boldsymbol{f}(t, \boldsymbol{p})$ 的响应，可以通过之前给出的卷积求和操作来实现，但更有用的方法是首先确定阵列对单位平面波（unit plane wave）的响应，响应为单位平面波时域（弧度）频率 $\omega$ 和波数 $\boldsymbol{k}$ 的函数。（利用叠加的复指数基函数对一个线性时不变系统进行分析的系统理论方法可以扩展到空时信号的情况。）
 
-这里的基函数形式为
+&emsp;&emsp;取基函数
 
 $$\begin{equation}
   f_n\left( t, \boldsymbol{p}_n \right) = \exp \left[ j \left( \omega t - \boldsymbol{k}^\mathrm{T} \boldsymbol{p}_n\right) \right], \, n = 0, 1, \cdots, N-1
@@ -286,8 +278,6 @@ $$\begin{equation}
   \boldsymbol{f} \left( t, \boldsymbol{p} \right) = e^{j\omega t} \boldsymbol{v}_{\boldsymbol{k}}\left(\boldsymbol{k}\right)
 \end{equation}$$
 
-其中 $\boldsymbol{v}_{\boldsymbol{k}}\left(\boldsymbol{k}\right)$ 在式 $\eqref{DefinitionOfArrayManifoldVector}$ 中定义。
-
 &emsp;&emsp;式 $\eqref{VectorFormOfLinearArrayOutputInTimeDomain}$ 中的阵列处理器对于一个平面波的响应为
 
 $$\begin{equation} \label{ArrayResponseToUnitPlaneWaveInTimeDomain}
@@ -296,7 +286,7 @@ $$\begin{equation} \label{ArrayResponseToUnitPlaneWaveInTimeDomain}
 
 其中 $\boldsymbol{H} (\omega)$ 是式 $\eqref{ImpulseResponse}$ 中 $\boldsymbol{h}(\tau)$ 的傅里叶变换。
 
-&emsp;&emsp;这里用了符号 $y \left( t, \boldsymbol{k} \right)$，以强调输出和输入波数 $\boldsymbol{k}$ 的关系。时域上的相关性体现在输出是一个复指数，和输入平面波具有相同的频率。在频域内，$\eqref{ArrayResponseToUnitPlaneWaveInTimeDomain}$ 可以写成下面的形式：
+&emsp;&emsp;这里使用 $y \left( t, \boldsymbol{k} \right)$ 来强调输出和输入波数 $\boldsymbol{k}$ 的关系。时域上的相关性体现在输出是一个复指数，和输入平面波具有相同的频率。在频域内，$\eqref{ArrayResponseToUnitPlaneWaveInTimeDomain}$ 可以写成下面的形式：
 
 $$\begin{equation} \label{ArrayResponseToUnitPlaneWaveInFreqDomain}
   Y \left( \omega, \boldsymbol{k} \right) = \boldsymbol{H}^\mathrm{T} (\omega) \boldsymbol{v}_{\boldsymbol{k}}\left(\boldsymbol{k}\right)
@@ -324,7 +314,7 @@ $$\begin{equation}
 
 # 窄带假设
 
-&emsp;&emsp;在这里中，我们强调 $f\left( t,\boldsymbol{p}_n \right)$ 是带通信号的情况，即
+&emsp;&emsp;下面讨论 $f\left( t,\boldsymbol{p}_n \right)$ 是带通信号的情况，即
 
 $$\begin{equation} \label{BandpassConstraint}
   f\left( t,\boldsymbol{p}_n \right) = \sqrt{2} \Re\left\{ \tilde{f} \left( t,\boldsymbol{p}_n \right)  e^{j \omega_c t}\right\}, \, n = 0, \cdots, N-1
