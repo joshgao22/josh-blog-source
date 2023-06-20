@@ -75,6 +75,51 @@ $$\begin{equation}
 
 ![图 1-3-2 用 dB 表示 $\left|\boldsymbol{\varUpsilon}(\psi)\right|$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-20-josh-oap-part-1-3/2023-04-20-josh-oap-part-1-3-020-FrequencyWavenumberResponseFunctionInDB.svg){width=1000px}
 
+{% note primary MATLAB Code %}
+
+``` matlab fig2_1516.m
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Figure 2.15 & 2.16
+% Beampattern of uniformly weighted linear array
+% Xiaomin Lu
+% Updated 1/5/99
+% Last updated  by K. Bell 7/22/01, 10/4/01
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+clear all
+close all
+
+N = 11;				% 11 elements
+% Note, Eq. (2.92) is in fact the standard Dirichlet function
+% beam = diric(psi, N);
+% if you don't have the signal processing toolbox, this does the same thing
+psi = (-5:1/400:5)*pi;
+beam = zeros(1,length(psi(:)));
+y=sin(.5*psi);
+i=find(abs(y)>1e-12);            % set where x is not divisible by 2 pi
+j=1:length(psi(:));
+j(i)=[];                         % complement set
+beam(i)=sin((N/2)*psi(i))./(N*y(i));
+beam(j)=sign(cos(psi(j)*((N+1)/2)));
+
+plot(psi/pi, beam)
+grid
+xlabel('$\psi/\pi$','Interpreter','latex')
+ylabel('Frequency wavenumber response function')
+axis([-5 5 -0.4 1])
+set(gcf,'Position',[0 0 1000 600])
+figure
+beam = 20*log10(abs(beam));
+plot(psi/pi,beam);
+xlabel('$\psi/\pi$','Interpreter','latex')
+ylabel('Frequency wavenumber response function (dB)')
+axis([-5 5 -25 0])
+grid
+set(gcf,'Position',[0 0 1000 600])
+```
+
+{% endnote %}
+
 若不指定 $\boldsymbol{w}$ 的类型，则 $\boldsymbol{\varUpsilon}_\psi(\psi)$ 是复数，所以相位也应该画出来。但是，均匀加权线阵具有对称性，因此得到的频率-波数响应是实函数。
 
 &emsp;&emsp;也可以用 $k_z$ 来表示频率-波数响应
@@ -121,9 +166,137 @@ $$\begin{equation}
 
 ![图 1-3-3 在极坐标系中画出 $B_\theta(\theta)$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-20-josh-oap-part-1-3/2023-04-20-josh-oap-part-1-3-030-PloarPlotOfBeamPatternInAngleSpace.svg){width=800px}
 
+{% note primary MATLAB Code %}
+
+``` matlab fig2_17.m
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Figure 2.17
+% Polar plot of B (Theta)
+% Lillian Xu 1/5/99
+% Updated by K. Bell 6/25/01
+% Functions called: polardb
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+clear all
+close all
+
+N = 11;                                 % Elements in array
+d = 0.5;                                % spacing wrt wavelength
+beamwidth = 2/(N*d);                    % null-to-null (LL BW is half this)
+D=d*(-(N-1)/2:1:(N-1)/2);               % element locations
+ang = pi*(-1:0.001:1);
+u   = cos(ang);
+n2=size(u,2);
+AS  = exp(-1i*2*pi*cos(90/180*pi)*D');  % BP points to 90 (broadside)
+Au  = exp(-1i*2*pi*D'*u);
+B   = real(AS'*Au)/N;
+G   = 20*log10((abs(B)));
+
+h=polardb(ang,G,-40);
+```
+
+{% endnote %}
+
 <a id="fig.1-3-4"></a>
 
 ![图 1-3-4 $d = \lambda/2, N=10$，线阵的 $\left|\boldsymbol{\varUpsilon}_\psi(\psi)\right|$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-20-josh-oap-part-1-3/2023-04-20-josh-oap-part-1-3-040-AbsOfFWRFForALinearArray.svg){width=1000px}
+
+{% note primary MATLAB Code %}
+
+``` matlab fig2_18.m
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Figure 2.18
+% beam patterns in different spaces
+% Lillian Xiaolan Xu
+% Last updated 09/07/2000
+% updated by K. Bell 7/22/01, 10/4/01
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+clear all
+close all
+
+N = 10;
+n = (-(N-1)/2:(N-1)/2).';
+psi = pi*(-3:0.001:3);
+w = 1/N*[ones(N,1)];
+d = 1/2;
+vv = exp(1i*2*d*n*psi);
+B = (abs(w'*vv));
+
+u1=-1;
+u2=3;
+y1=0;
+y2=1;
+
+subplot(4,1,1)
+plot(-psi/d,B);
+hold on
+axis([u1*pi/d u2*pi/d y1 y2])
+set(gca,'XTick',[-pi/d 0 pi/d 2*pi/d 3*pi/d])
+set(gca,'YTick',[0 0.5 1])
+set(gca,'XTickLabel',{'$-\pi/d$';'$0$';'$\pi/d$';'$2\pi/d$';'$3\pi/d$'}, ...
+  'TickLabelInterpreter','latex')
+
+grid on
+point=0.8;
+point_up=0.84;
+point_down=0.76;
+plot([-pi/d pi/d],[point point],'--')
+plot([-1*pi/d -0.9*pi/d],[point point_up])
+plot([-1*pi/d -0.9*pi/d],[point point_down])
+plot([0.9*pi/d pi/d],[point_up point])
+plot([0.9*pi/d pi/d],[point_down point])
+text(-0.3*pi/d,1.2,'Visible region')
+
+plot([pi/d 3*pi/d],[point point],'--')
+plot([pi/d 1.1*pi/d],[point point_up])
+plot([pi/d 1.1*pi/d],[point point_down])
+plot([2.9*pi/d 3*pi/d],[point_up point])
+plot([2.9*pi/d 3*pi/d],[point_down point])
+text(1.7*pi/d,1.2,'Virtual region')
+legend({'$k_z$-space'},'Interpreter','latex')
+
+subplot(4,1,2)
+plot(psi,B);
+hold on
+axis([u1*pi u2*pi y1 y2])
+set(gca,'XTick',[-pi 0 pi 2*pi 3*pi])
+set(gca,'YTick',[0 0.5 1])
+set(gca,'XTickLabel',{'$-\pi$';'$0$';'$\pi$';'$2\pi$';'$3\pi$'}, ...
+  'TickLabelInterpreter','latex')
+
+grid on
+legend({'$\psi$-space'},'Interpreter','latex')
+
+subplot(4,1,3)
+plot(psi/pi,B);
+hold on
+axis([u1 u2 y1 y2])
+set(gca,'XTick',[-1 0 1 2 3])
+set(gca,'YTick',[0 0.5 1])
+grid on
+legend({'$u$-space'},'Interpreter','latex')
+
+theta = -180:0.1:360;
+vv = exp(1i*2*d*n*pi*cos(theta/180*pi));
+B = (abs(w'*vv));
+subplot(4,1,4)
+plot(theta,B);
+hold on
+axis([-180 180 y1 y2])
+set(gca,'XTick',[-180 -90 0 90 180])
+set(gca,'YTick',[0 0.5 1])
+set(gca,'XTickLabel',{'$180^\circ$';'$90^\circ$';'$0^\circ$';'$-90^\circ$'; ...
+  '$-180^\circ$'},'TickLabelInterpreter','latex')
+
+grid on
+legend({'$\theta$-space'},'Interpreter','latex')
+
+set(gcf,'Position',[0 0 800 800])
+```
+
+{% endnote %}
 
 {% note info %}
 
@@ -150,6 +323,76 @@ $$\begin{equation}
 <a id="fig.1-3-5"></a>
 
 ![图 1-3-5 波束方向图的主波束](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-20-josh-oap-part-1-3/2023-04-20-josh-oap-part-1-3-050-MainLobeOfBeamPattern.svg){width=700px}
+
+{% note primary MATLAB Code %}
+
+``` matlab fig2_19.m
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Figure 2.19
+% Main lobe of beam pattern
+% Kristine Bell
+% Last updated 6/4/01, 10/4/01
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% bp_sect - plots conventional bp with sector
+
+clear all
+% close all
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Uniform Linear Array
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+N = 10;                                 % Elements in array
+d = 0.5;                                % spacing wrt wavelength
+beamwidth = 2/(N*d);                    % null-to-null (LL BW is half this)
+D=d*(-(N-1)/2:1:(N-1)/2);               % element locations
+u   = -0.45:0.01:0.45;
+AS  = exp(-1i*2*pi*D'*0);               % BP points to 0
+Au  = exp(-1i*2*pi*D'*u);
+B   = real(AS'*Au)/N;                   % BP
+
+h=plot(u,B,'-');
+set(h,'LineWidth',1.5)
+hold on
+% HPBW
+I=find(B>=0.707);
+plot([u(min(I)-1) u(max(I)+1)],[B(min(I)-1) B(max(I)+1)],'-')
+plot(u(min(I)-1)*[1 1],B(min(I)-1)*[1 1]+0.03*[-1 1],'-')
+plot(u(max(I)+1)*[1 1],B(max(I)+1)*[1 1]+0.03*[-1 1],'-')
+plot([0.03 0.13],[0.72 0.845],'-')
+text(0.155,0.84,'$\Delta u_1 = $HPBW','Interpreter','latex');
+
+% BW-NN
+plot([-0.2 0.2],[-0.3 -0.3],'-')
+plot(-0.2*[1 1],-0.3*[1 1]+0.03*[-1 1],'-')
+plot(0.2*[1 1],-0.3*[1 1]+0.03*[-1 1],'-')
+text(-0.05,-0.35,'$\Delta u_2 = BW_{NN}$','Interpreter','latex');
+
+% axes
+plot([-1 1 ],[0 0],'-')
+plot([0 0],[-0 1.1],'-')
+
+% tick marks
+plot(-0.4*[1 1],0.03*[-1 1])
+plot(-0.2*[1 1],0.03*[-1 1])
+plot(0.2*[1 1],0.03*[-1 1])
+plot(0.4*[1 1],0.03*[-1 1])
+
+yy = -0.1;
+%tick labels
+text(-0.45,yy,'$-2\frac{\lambda}{ND}$','Interpreter','latex');
+text(-0.21,yy,'$-\frac{\lambda}{ND}$','Interpreter','latex');
+text(-0.005,yy,'0','Interpreter','latex');
+text(0.18,yy,'$\frac{\lambda}{ND}$','Interpreter','latex');
+text(0.38,yy,'$2\frac{\lambda}{ND}$','Interpreter','latex');
+
+text(0.01,1.1,'$B(u)$','Interpreter','latex')
+hold off
+axis([-0.42 0.42 -0.4 1.2])
+
+set(gca,'Visible','off')
+```
+
+{% endnote %}
 
 &emsp;&emsp;3dB 波束宽度是波束宽度的一个度量。定义为对应 $\left| B_u(u) \right|^2 = 0.5$ 或 $\left| B_u(u) \right| = 1/\sqrt{2}$ 的点。可以通过令波束方向图 $B_u(u)$（式 $\eqref{BeamPatternOfUWLAInDirectionCosineDomain}$）等于 $1/\sqrt{2}$，来求出 $u$ 空间的半功率点。对于 $N\geqslant 10$，通过解下面的方程可以得到一个很好的近似：
 
@@ -294,6 +537,55 @@ $$\begin{equation}
 <a id="fig.1-3-6"></a>
 
 ![图 1-3-6 阵元间距对波束方向图的影响：(a) $d=\lambda/4$；(b) $d=\lambda/2$；(c) $d=\lambda$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-20-josh-oap-part-1-3/2023-04-20-josh-oap-part-1-3-060-%20EffectOfElementSpacingOnBeamPattern.svg){width=1000px}
+
+{% note primary MATLAB Code %}
+
+``` matlab fig2_20.m
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Figure 2.20
+% Effect of element spacing on beam pattern
+% Xin Zhang
+% Lillian Xu updated 09/2000
+% updated by K. Bell 7/22/2001, 10/4/01
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+clear all
+close all
+
+N = 10;
+n = (-(N-1)/2:(N-1)/2).';
+psi = pi*(-3:0.001:3);
+w = 1/N*[ones(N,1)];
+d = [1/4 1/2 1];
+
+figure
+for k =1:length(d)
+  vv = exp(1i*2*d(k)*n*psi);
+  B(k,:) = 20*log10(abs(w'*vv));
+  subplot(3,1,k)
+  plot(psi/pi,B(k,:));
+  hold on
+  plot([-1 -1],[-25 0],'--');
+  plot([1 1],[-25 0],'--');
+  axis([-3 3 -25 5])
+  set(gca,'YTick',[-25 -20 -15 -10 -5 0])
+  grid on
+  xlabel('$u$','Interpreter','latex')
+  if k == 1
+    plot([-1 1],[2.5 2.5])
+    plot([-1 -0.9],[2.5 0.5])
+    plot([-1 -0.9],[2.5 4.5])
+    plot([0.9 1],[0.5 2.5])
+    plot([0.9 1],[4.5 2.5])
+    text(-0.4,7,'Visible region')
+  end
+  hold off
+end
+
+set(gcf,'Position',[0 0 800 600])
+```
+
+{% endnote %}
 
 &emsp;&emsp;在[图 1-3-6](#fig.1-3-6) 中，针对多种 $d/\lambda$ 的值，画出了 $\left| \boldsymbol{\varUpsilon}_u(u) \right|$。图中说明了“栅瓣”这个重要的概念，即和主波束一样高的波瓣。栅瓣发生在当波束方向图 $B_\psi(\psi)$（式 $\eqref{BeamPatternOfUWLAInWaveNumberDomain}$）中的分子和分母均为零的时候。栅瓣出现的间隔为
 

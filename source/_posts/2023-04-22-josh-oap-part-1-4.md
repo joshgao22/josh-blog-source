@@ -130,6 +130,48 @@ $$\begin{equation}
 
 ![图 1-4-2 阵列调向对栅瓣的影响：$N=10$，(a) $d=2\lambda/3, \bar\theta = 30^\circ$；(b) $d=\lambda/2, \bar\theta = 90^\circ$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-22-josh-oap-part-1-4/2023-04-22-josh-oap-part-1-4-020-%20EffectOfSteeringOnTheGratingLobes.svg){width=1000px}
 
+{% note primary MATLAB Code%}
+
+``` matlab fig2_22.m
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Figure 2.22
+% Effect of element spacing on beam pattern
+% Lillian Xu
+% Last updated by K. Bell 7/22/01, 10/4/01
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+clear all
+close all
+
+N=10;
+n=(-(N-1)/2:(N-1)/2)';
+w=ones(N,1)/N;
+u=-3:0.01:3;
+
+d=[2/3 1/2];
+theta=[30 90];
+figure
+s = ['(a)';'(b)'];
+for m=1:2
+  beam=(w.*exp(1i*2*pi*n*d(m)*sin(theta(m)/180*pi)))' ...
+    *exp(1i*2*pi*n*d(m)*u);
+  subplot(2,1,m);
+  plot(u,20*log10(abs(beam)));
+  hold on
+  axis([-3 3 -25 5])
+  ylabel('Beam pattern (dB)')
+  xlabel('$u$','Interpreter','latex')
+  text(0,-32,s(m,:),'HorizontalAlignment','center')
+  % title(['N=',num2str(N),', d=',num2str(d(m),2),' lambda, theta-Bar=', ...
+  %   num2str(theta(m)),' degrees'])
+  grid on
+end
+
+set(gcf,'Position',[0 0 800 600])
+```
+
+{% endnote %}
+
 &emsp;&emsp;通常，为了避免栅瓣进入可视区域，需要有
 
 $$\begin{equation}
@@ -160,6 +202,38 @@ $$\begin{equation}
 <a id="fig.1-4-3"></a>
 
 ![图 1-4-3 10 阵元均匀阵列（$d = \lambda/2$）扫描到 30°（和正侧向夹角为 60°）时的波束方向图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-22-josh-oap-part-1-4/2023-04-22-josh-oap-part-1-4-030-BeamPatternFor10ElementUniformArrayScannedTo30Degree.svg){width=800px}
+
+{% note primary MATLAB Code %}
+
+``` matlab fig2_23.m
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Figure 2.23
+% Beam pattern for 10-element uniform array (d=lambda/2)
+% scanned to 30 degrees (60 degrees from broadside)
+% Xin Zhang 1/20/99
+% Last updated by K. Bell 6/25/01
+% Functions called: polardb
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+clear all
+close all
+
+N = 10;
+n = (-(N-1)/2:(N-1)/2).';
+theta = pi*(-1:0.001:1);
+u = cos(theta);
+d = 1/2;
+vv = exp(1i*2*pi*d*n*u);
+theta_T = 30/180*pi;
+w = 1/N*ones(N,1).*exp(1i*n*pi*cos(theta_T));
+B = w'*vv;
+B = 10*log10(abs(B).^2);
+figure
+h=polardb(theta,B,-40);
+hold off
+```
+
+{% endnote %}
 
 &emsp;&emsp;为了研究在 $\theta$ 空间的半功率带宽情况，我们利用式 $\eqref{SteeredBeamPatternInAngleDomain}$ 和 [$N \geqslant 10$ 时半功率带宽的估算式][]，可以得到在 $u$ 空间的左右半功率点分别为
 
@@ -196,6 +270,61 @@ $$\begin{equation} \label{HPBWOfUWLA}
 
 ![图 1-4-4 HPBW 和阵列调向角的关系：标准线阵，采用均匀加权](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-22-josh-oap-part-1-4/2023-04-22-josh-oap-part-1-4-040-HPBWVersusSteeringAngleStandardUWLA.svg){width=1000px}
 
+{% note primary MATLAB Code %}
+
+``` matlab fig2_24.m
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Figure 2.24
+% HPBW versus steering angle
+% Lillian Xu
+% Modified by Xin Zhang
+% Last updated by L. Xu 11/30/00, K. Bell 7/22/01, 10/4/01, 10/17/01
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+clear all;
+close all;
+
+Nd_set=[1000:-5:700 700:-0.5:200 200:-0.05:20 15:-0.005:1];
+theta_deg=[2.5 5 10 20 30 45 90];
+%theta_deg=[2.5 5 10 20 30 45 60 90];
+theta_set=theta_deg*pi/180;
+figure
+for num=1:size(theta_set,2)
+  theta=theta_set(num);
+  bw=0;
+  for num1=1:size(Nd_set,2)
+    Nd=Nd_set(num1);
+    r=cos(theta)+0.443/Nd;
+    if abs(r)<=1
+        bw(num1)=acos(r)-acos(cos(theta)-0.443/Nd);
+    end
+  end
+  loglog(Nd_set(1:size(bw,2)),abs(bw*180/pi));
+  hold on
+  rightpoint=abs(bw(1)*180/pi);
+  text(1040,rightpoint,[num2str(theta_deg(num)),'$^\circ$'],Interpreter='latex'); % used to be 7
+end
+axis([1 1000 0.04 100])
+xlabel('$Nd/\lambda$','Interpreter','latex')
+ylabel('3-dB beamwidth in degrees')
+
+scanlimit=-acos(1-2*0.443./Nd_set);
+loglog(Nd_set,abs(scanlimit*180/pi),'--')
+
+Endfire = 2*acos(1-0.433./Nd_set);
+loglog(Nd_set,abs(Endfire*180/pi))
+rightpoint=abs(Endfire(1)*180/pi);
+text(1040,rightpoint,'$\theta=0^\circ$',Interpreter='latex'); % used to be 7
+%title('HPBW versus steering angle: standard linear array with uniform weighting')
+text(12,35,'Endfire')
+text(12,14.4,'Scan limit')
+text(12,1.8,'Broadside')
+grid on;
+set(gcf,'Position',[0 0 800 500])
+```
+
+{% endnote %}
+
 &emsp;&emsp;当波束调向到正侧向的附近（$\bar{\theta}_\mathrm{T}$ 的值很小）且 $Nd \gg \lambda$ 时，$\theta_\mathrm{H}$ 很小，利用小角度展开形式得到
 
 $$\begin{equation} \label{HPBWWithSmallAngle}
@@ -219,6 +348,38 @@ $$\begin{equation} \label{HPBWOfEndfireUWLA}
 <a id="fig.1-4-6"></a>
 
 ![图 1-4-6 一个标准 10 阵元线阵。采用均匀幅度加权时在端射时的波束方向图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-22-josh-oap-part-1-4/2023-04-22-josh-oap-part-1-4-060-BeamPatternOfStandard10ElementUWLAAtEndfire.svg){width=800px}
+
+{% note primary MATLAB Code %}
+
+``` matlab fig2_26.m
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Figure 2.26
+% Beam pattern of a standard 10-element linear array
+% with uniform amplitude weighting at end-fire
+% Xin Zhang 1/20/99
+% Last updated by K. Bell 6/25/01
+% Functions called: polardb
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+clear all
+close all
+
+N = 10;
+n = (-(N-1)/2:(N-1)/2).';
+theta = pi*(-1:0.001:1);
+u = cos(theta);
+d = 1/2;
+vv = exp(1i*2*pi*d*n*u);
+theta_T = 0/180*pi;
+w = 1/N*ones(N,1).*exp(1i*n*pi*cos(theta_T));
+B = w'*vv;
+B = 10*log10(abs(B).^2);
+figure
+h=polardb(theta,B,-40);
+hold off
+```
+
+{% endnote %}
 
 可以把式 $\eqref{HPBWOfEndfireUWLA}$ 写成
 
