@@ -300,7 +300,6 @@ plot(u,20*log10(abs(G_cos4)),'-.')
 hold off
 axis([0 1 -80 0])
 h=legend({'$m=2$','$m=3$','$m=4$'},'Interpreter','latex');
-set(h,'Fontsize',12)
 xlabel('$u$','Interpreter','latex')
 ylabel('Beam pattern (dB)')
 ```
@@ -441,28 +440,21 @@ $$\begin{equation}
 
 其分子和分母部分可分别写为
 
-$$\begin{equation}
-  \begin{aligned}
-    &\alpha_N &&\xlongequal{B(\psi) = \boldsymbol{w}^\mathrm{H}\boldsymbol{v}_\psi(\psi)} \int_{-\psi_0}^{\psi_0}\boldsymbol{w}^\mathrm{H}\boldsymbol{v}_\psi(\psi) \boldsymbol{v}_\psi^\mathrm{H}(\psi)\boldsymbol{w}\,\mathrm{d}\psi \\
-    & &&= \boldsymbol{w}^\mathrm{H} \left[ \int_{-\psi_0}^{\psi_0} \boldsymbol{v}_\psi(\psi) \boldsymbol{v}_\psi^\mathrm{H}(\psi) \,\mathrm{d}\psi \right]\boldsymbol{w} \\
-    & &&= \boldsymbol{w}^\mathrm{H}\boldsymbol{A}\boldsymbol{w} \\
+$$\begin{align}
+  &\alpha_N &&\xlongequal{B(\psi) = \boldsymbol{w}^\mathrm{H}\boldsymbol{v}_\psi(\psi)} \int_{-\psi_0}^{\psi_0}\boldsymbol{w}^\mathrm{H}\boldsymbol{v}_\psi(\psi) \boldsymbol{v}_\psi^\mathrm{H}(\psi)\boldsymbol{w}\,\mathrm{d}\psi \notag \\
+  & &&= \boldsymbol{w}^\mathrm{H} \left[ \int_{-\psi_0}^{\psi_0} \boldsymbol{v}_\psi(\psi) \boldsymbol{v}_\psi^\mathrm{H}(\psi) \,\mathrm{d}\psi \right]\boldsymbol{w} \notag \\
+  & &&= \boldsymbol{w}^\mathrm{H}\boldsymbol{A}\boldsymbol{w} \\
 
-    &\alpha_D &&\xlongequal{B(\psi) = \boldsymbol{w}^\mathrm{H}\boldsymbol{v}_\psi(\psi)}  \int_{-\pi}^{\pi}\boldsymbol{w}^\mathrm{H}\boldsymbol{v}_\psi(\psi) \boldsymbol{v} \\
-    & &&= \boldsymbol{w}^\mathrm{H}\boldsymbol{A}\boldsymbol{w}
-  \end{aligned}
-\end{equation}$$
-
-$$\begin{equation}
-\end{equation}$$
+  &\alpha_D &&\xlongequal{B(\psi) = \boldsymbol{w}^\mathrm{H}\boldsymbol{v}_\psi(\psi)}  \int_{-\pi}^{\pi}\boldsymbol{w}^\mathrm{H}\boldsymbol{v}_\psi(\psi) \boldsymbol{v} \notag \\
+  & &&= \boldsymbol{w}^\mathrm{H}\boldsymbol{A}\boldsymbol{w}
+\end{align}$$
 
 其中
 
-$$\begin{equation}
-  \begin{aligned}
-    \boldsymbol{A} &\triangleq \int_{-\psi_0}^{\psi_0} \boldsymbol{v}_\psi(\psi) \boldsymbol{v}_\psi^\mathrm{H}(\psi) \,\mathrm{d}\psi \\
-    \boldsymbol{B} &\triangleq \int_{-\pi}^{\pi} \boldsymbol{v}_\psi(\psi) \boldsymbol{v}_\psi^\mathrm{H}(\psi) \,\mathrm{d}\psi = 2\pi \boldsymbol{I}
-  \end{aligned}
-\end{equation}$$
+$$\begin{align}
+  \boldsymbol{A} &\triangleq \int_{-\psi_0}^{\psi_0} \boldsymbol{v}_\psi(\psi) \boldsymbol{v}_\psi^\mathrm{H}(\psi) \,\mathrm{d}\psi \\
+  \boldsymbol{B} &\triangleq \int_{-\pi}^{\pi} \boldsymbol{v}_\psi(\psi) \boldsymbol{v}_\psi^\mathrm{H}(\psi) \,\mathrm{d}\psi = 2\pi \boldsymbol{I}
+\end{align}$$
 
 $$\begin{equation}
   [\boldsymbol{A}]_{mn} = \int_{-\psi_0}^{\psi_0} e^{jm\psi} e^{-jn\psi} \,\mathrm{d}\psi = \frac{2\sin ((m-n)\psi_0)}{m-n} = 2\psi_0 \,\mathrm{sinc}((m-n)\psi_0)
@@ -473,6 +465,335 @@ $$\begin{equation}
 $$\begin{equation}
   \alpha = \frac{\boldsymbol{w}^\mathrm{H}\boldsymbol{A}\boldsymbol{w}}{2\pi \boldsymbol{w}^\mathrm{H}\boldsymbol{w}}
 \end{equation}$$
+
+为了使 $\alpha$ 最大，求取矩阵 $\boldsymbol{A}$ 的特征值和特征矢量
+
+$$\begin{equation}
+  2\pi \lambda \boldsymbol{w} = \boldsymbol{A} \boldsymbol{w}
+\end{equation}$$
+
+并选择对应于最大特征值 $\lambda$ 的特征矢量，将 $[\boldsymbol{A}]_{mn}$ 代入得到
+
+$$\begin{equation}
+  \label{DPSS}
+  \sum_{n=1}^N \frac{\sin ((m-n)\psi_0)}{m-n} w_n = \pi \lambda \omega_m,\quad m = 1,2,\cdots,N
+\end{equation}$$
+
+利用式 $\eqref{DPSS}$ 计算出的权值（或序列）称为**{% label primary @离散长球序列（Discrete Prolate Spheroidal Sequences, DPSS %}**，对应的波束方向图称为**{% label primary @离散长球函数（Discrete Prolate Spheroidal Functions）%}**。离散长球序列也称为**{% label primary @Slepian 序列 %}**。
+
+&emsp;&emsp;[图 2.1.5](#fig.2-1-5) 给出了几个代表性的离散长球序列（归一化到 $w_6$），[图 2.1.6](#fig.2-1-6) 给出了对应的波束方向图：
+
+- 当 $\psi_0$ 接近于零的时候, $w_0$ 趋近于均匀加权，因为此时使方向性最大；
+- 对于 $\psi_0 = 0.2\pi$，大多数的能量集中在主波束，波束宽度略增大，旁瓣在 $-20\text{dB}$ 以下；
+- 对于$\psi_0 = 0.4\pi$，旁瓣为 $-53\text{dB}$, 但波束更宽。
+
+DPSS 加权的波束方向图参数为:
+
+| $\psi_0$ | HPBW | $BW_{NN}$ | 第一旁瓣高度 | $D_N$ |
+| :--: | :--: | :--: | :--: | :--: |
+| $0.1\pi$ | $\displaystyle\frac{0.02}{N}$ | $\displaystyle\frac{1.40\pi}{N}$ | $-15.6 \text{dB}$ | $0.981$ |
+| $0.2\pi$ | $\displaystyle\frac{2.20}{N}$ | $\displaystyle\frac{1.79\pi}{N}$ | $-24.7 \text{dB}$ | $0.869$ |
+| $0.4\pi$ | $\displaystyle\frac{2.86}{N}$ | $\displaystyle\frac{2.97\pi}{N}$ | $-52.2 \text{dB}$ | $0.665$ |
+
+<a id="fig.2-1-5"></a>
+
+![图 2-1-5 离散长球序列: $\psi_0=0.1\pi,0.2\pi,0.4\pi$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-06-19-josh-oap-part-2-1/2023-06-19-josh-oap-part-2-1-050-DiscreteProlateSpheroidalSequences.svg){width=700px}
+
+<a id="fig.2-1-6"></a>
+
+![图 2-1-6 DPSS 加权的波束方向图和 $\psi_0$ 的关系: $N = 11$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-06-19-josh-oap-part-2-1/2023-06-19-josh-oap-part-2-1-060-BeamPatternForDPSSWeighting.svg){width=700px}
+
+{% note primary MATLAB Code %}
+
+``` matlab fig3_05_06_13.m
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Figure 3.5
+% DPSS psi0=0.1pi,0.2pi, and 0.4pi
+% Figure 3.6
+% Beampattern of a standard 11-element linear array as a function
+% Figure 3.13
+% Zero plots for DPSS(0.1pi,0.2pi,0.4pi) weightings
+%
+% Lillian Xiaolan Xu
+% Updated 4/14/99
+% Lillian Xu 04/16/2001, K. Bell 7/22/01, 9/30/01
+% Functions called: DPSS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+close all
+clear all
+N=11;
+
+us=0;                           % should change us between 0 and 0.2
+u=-1:0.001:1;
+n=conj(-(N-1)/2:(N-1)/2)';
+vs=exp(1i*n.*pi.*us);
+
+%------------------------ DPSS Weighting
+psi0=[0.1 0.2 0.4]*pi;
+w1=DPSS(psi0(1),N);
+w2=DPSS(psi0(2),N);
+w3=DPSS(psi0(3),N);
+
+z1=roots(w1);
+z2=roots(w2);
+z3=roots(w3);
+
+w1=w1/max(w1);
+w2=w2/max(w2);
+w3=w3/max(w3);
+
+m=-5:5;
+figure
+h1 = plot(m,w1);
+hold on;
+h2 = plot(m,w1,'o');
+h3 = plot(m,w2,'--');
+h4 = plot(m,w2,'o');
+h5 = plot(m,w3,'-.');
+h6 = plot(m,w3,'o');
+hold off
+h=legend([h1 h3 h5],{'$\psi_0=0.1\pi$','$\psi_0=0.2\pi$', ...
+  '$\psi_0=0.4\pi$'},Interpreter="latex");
+%title('DPSS for 11 elements');
+xticks(-5:5);
+xlabel('Sensors');
+ylabel('Weighting');
+grid on
+
+%-----------------------------------------------------------%
+% ---------------- Zero Plot.
+figure
+%%%%%%%%%%%%      plot 1
+
+subplot(1,2,1);
+plot(real(z1),imag(z1),'o');
+axis([-1.2 1.2 -1.2 1.2])
+axis('square')
+grid on;
+title('$\psi_0=0.1\pi$','Interpreter','latex');
+xlabel('Real')
+ylabel('Imaginary')
+theta=2*pi*(0:0.01:1);
+hold on
+plot(cos(theta),sin(theta),'--');
+hold off
+
+%%%%%%%%%%%%  plot 2
+
+
+subplot(1,2,2);
+plot(real(z3),imag(z3),'o');
+grid on;
+axis([-1.2 1.2 -1.2 1.2])
+axis('square')
+title('$\psi_0=0.4\pi$','Interpreter','latex');
+xlabel('Real')
+ylabel('Imaginary')
+theta=2*pi*(0:0.01:1);
+hold on
+plot(cos(theta),sin(theta),'--');
+hold off
+
+w1=w1./sum(w1);
+w2=w2./sum(w2);
+w3=w3./sum(w3);
+
+b=0;
+for m=1:N
+  b=b+w1(m)*exp(1i*(-(N+1)/2+m)*pi*u);
+end
+bdb1=20*log10(abs(b));
+b1=real(b);
+b=0;
+for m=1:N
+  b=b+w2(m)*exp(1i*(-(N+1)/2+m)*pi*u);
+end
+bdb2=20*log10(abs(b));
+b2=real(b);
+b=0;
+for m=1:N
+  b=b+w3(m)*exp(1i*(-(N+1)/2+m)*pi*u);
+end
+bdb3=20*log10(abs(b));
+b3=real(b);
+
+figure
+plot(u,bdb1,u,bdb2,'--',u,bdb3,'-.');
+hold on
+h=legend({'$\psi_0=0.1\pi$','$\psi_0=0.2\pi$','$\psi_0=0.4\pi$'}, ...
+  Interpreter="latex");
+axis([-1 1 -80 0])
+grid on
+xlabel('$u$','Interpreter','latex')
+ylabel('Beam pattern (dB)')
+```
+
+{% endnote %}
+
+# 9. Kaiser 加权
+
+&emsp;&emsp;Kaiser 利用 Bessel 函数提出了一个相对简单的长球序列的近似方法，在谱分析、滤波器设计和其他领域中,这种加权得到了广泛的应用。Kaiser 加权函数为
+
+$$\begin{equation}
+  w(\tilde{n}) = I_0 \left( \beta \sqrt{1 - \left[ \frac{2\tilde{n}}{N} \right] ^2 } \right), \quad -\frac{N-1}{2} \leqslant \tilde{n} \leqslant \frac{N-1}{2}
+\end{equation}$$
+
+其中 $I_0(x)$ 是零阶修正 Bessel 函数，参数 $\beta$ 决定了波束方向图在旁瓣峰值高度和主波束宽度之间的性能折中程度。
+
+&emsp;&emsp;[图 2.1.7(a)](#fig.2-1-7) 给出了 $N=11$ 情况下 $\beta=3$ 和 $\beta=6$ 时的权值（归一化到 $w_6$），[图 2.1.7(b)](#fig.2-1-7) 给出了对应的波束方向图。注意到当 $\beta$ 减小时,权函数接近于均匀加权。当 $N = 11$ 时 Kaiser 加权的波束方向图参数为：
+
+| $\beta$ | HPBW | $BW_{NN}$ | 第一旁瓣高度 | $D_N$ |
+| :--: | :--: | :--: | :--: | :--: |
+| $3$ | $\displaystyle\frac{2.18}{N}$ | $\displaystyle\frac{1.75\pi}{N}$ | $-23.7 \text{dB}$ | $0.882$ |
+| $6$ | $\displaystyle\frac{2.80}{N}$ | $\displaystyle\frac{2.76\pi}{N}$ | $-44.4 \text{dB}$ | $0.683$ |
+
+<a id="fig.2-1-7"></a>
+
+![图 2-1-7 Kaiser 加权: (a) $\beta=3$ 和 $6$ 时的权值；(b) $\beta=3$ 和 $6$ 时的波束方向图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-06-19-josh-oap-part-2-1/2023-06-19-josh-oap-part-2-1-070-KaiserWeighting.svg){width=700px}
+
+{% note primary MATLAB Code %}
+
+``` matlab fig3_07.m
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Figure 3.7
+% Kaiser weighting
+% (a)weighting for beta = 3 and 6
+% (b)Beam patterns for beta = 3 and 6
+% Xin Zhang updated 3/17/99
+% Lillian Xiaolan Xu updated 09/20/2000
+% Lillian Xiaolan Xu updated 04/16/2001, K. Bell 7/20/01, 9/30/01
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+clear all;
+close all;
+
+N = 11;
+Zl = (N-1)/2;
+beta1 = 3;
+beta2 = 6;
+
+for n = -(N-1)/2:(N-1)/2
+  x = 1-(2*n/N)^2;
+  wn1(n+1+(N-1)/2,1) = besseli(0,beta1*sqrt(x));
+end
+
+for n = -(N-1)/2:(N-1)/2
+  x = 1-(2*n/N)^2;
+  wn2(n+1+(N-1)/2,1) = besseli(0,beta2*sqrt(x));
+end
+
+nn = -Zl/2:1/2:Zl/2;
+
+u=(-1:0.001:1);
+amf=(-(N-1)/2:(N-1)/2)';
+Vo=exp(1i*amf*pi*u);
+w1=wn1/sum(wn1);
+w2=wn2/sum(wn2);
+Beam1=20*log10(abs(w1'*Vo));
+Beam2=20*log10(abs(w2'*Vo));
+
+bes1 = besseli(0,beta1);
+bes2 = besseli(0,beta2);
+wn1 = wn1/bes1;
+wn2 = wn2/bes2;
+
+figure
+subplot(2,1,1)
+plot(nn,wn1,'-',nn,wn2,'--')
+xlabel('$z/\lambda$','Interpreter','latex')
+ylabel('Weights')
+%title('Kaiser Window for 11 elements')
+hold on;
+plot(nn,wn1,'o')
+plot(nn,wn2,'o')
+axis([-2.5 2.5 -0.02 1.02])
+hold off;
+legend({'$\beta = 3$','$\beta = 6$'},Interpreter="latex");
+text(-0.0625,-0.28,'(a)')
+subplot(2,1,2)
+plot(u,Beam1,'-',u,Beam2,'--')
+h=legend({'$\beta = 3$','$\beta = 6$'},Interpreter="latex");
+axis([-1 1 -60 0])
+text(-0.025,-75,'(b)')
+xlabel('$u$','Interpreter','latex')
+ylabel('Beam pattern (dB)')
+
+set(gcf,'Position',[0 0 600 600])
+```
+
+{% endnote %}
+
+&emsp;&emsp;[图 2.1.8](#fig.2-1-8) 给出了固定 $\beta=3$，$N=11,21$ 和 $41$ 时的波束方向图，三种情况具有相同的最大旁瓣。当 $N$ 改变时，最大旁瓣对应的 $u$ 值发生改变。
+
+<a id="fig.2-1-8"></a>
+
+![图 2-1-8 Kaiser 加权的波束方向图：$\beta = 3$，$N=11,21$ 和 $41$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-06-19-josh-oap-part-2-1/2023-06-19-josh-oap-part-2-1-080-BeamPatternsForKaiserWeighting.svg){width=700px}
+
+{% note primary MATLAB Code %}
+
+``` matlab fig3_08.m
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Figure 3.8
+% Beam patterns for Kaiser weighting
+% beta = 3, N = 11, 21, and 41
+% Xin Zhang
+% Last updated 04/16/2001 Lillian Xu, K. Bell 7/20/01,9/30/01
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+clear all;
+close all;
+
+N1 = 11;
+N2 = 21;
+N3 = 41;
+beta = 3;
+
+bes = besseli(0,beta);
+for n = -(N1-1)/2:(N1-1)/2
+  x = 1-(2*n/N1)^2;
+  wn1(n+1+(N1-1)/2) = besseli(0,beta*sqrt(x));
+end
+wn1 = wn1'/bes;
+
+for n = -(N2-1)/2:(N2-1)/2
+  x = 1-(2*n/N2)^2;
+  wn2(n+1+(N2-1)/2) = besseli(0,beta*sqrt(x));
+end
+wn2 = wn2'/bes;
+
+for n = -(N3-1)/2:(N3-1)/2
+  x = 1-(2*n/N3)^2;
+  wn3(n+1+(N3-1)/2) = besseli(0,beta*sqrt(x));
+end
+wn3 = wn3'/bes;
+
+u=(-1:0.001:1);
+amf1=(-(N1-1)/2:(N1-1)/2)';
+Vo1=exp(1i*amf1*pi*u);
+amf2=(-(N2-1)/2:(N2-1)/2)';
+Vo2=exp(1i*amf2*pi*u);
+amf3=(-(N3-1)/2:(N3-1)/2)';
+Vo3=exp(1i*amf3*pi*u);
+wn1=wn1/sum(wn1);
+wn2=wn2/sum(wn2);
+wn3=wn3/sum(wn3);
+Beam1=20*log10(abs(wn1'*Vo1));
+Beam2=20*log10(abs(wn2'*Vo2));
+Beam3=20*log10(abs(wn3'*Vo3));
+plot(u,Beam3,'-',u,Beam2,'--',u,Beam1,'-.')
+h=legend({'$N = 41$','$N = 21$','$N = 11$'},Interpreter="latex");
+axis([-1 1 -50 0])
+xlabel('$u$','Interpreter','latex')
+ylabel('Beam pattern (dB)')
+```
+
+{% endnote %}
+
+# 参考文献
+
+1. Van Trees, Harry L. _Optimum array processing: Part IV of detection, estimation, and modulation theory._ John Wiley & Sons, 2002.
+2. Van Trees, Harry L, 汤俊. _最优阵列处理技术._ 清华大学出版社. 2008.
 
 [^1]: 参数 $D_N$ 是阵列的归一化方向性。它是相对于一个均匀加权阵列的方向性进行归一化的。对于标准线阵, $D_N$ 也是归一化的白噪声增益。
 
