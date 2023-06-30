@@ -476,7 +476,44 @@ $$\begin{equation}
   T_\mathrm{se} = [A_w] ^{-1} = \left\| \boldsymbol{w} \right\|^2
 \end{equation}$$
 
-所以当白噪声增益增加时，敏感度减小。对于 $N$ 元阵列，白噪声增益最大为 $N$, 对应均匀加权的情况。所以，任意一个具有非均匀加权的阵列对参数的变化将比均匀加权阵列更敏感。
+所以当白噪声增益增加时，敏感度减小。对于 $N$ 元阵列，白噪声增益最大为 $N$, 对应均匀加权的情况。所以，任意一个具有非均匀加权的阵列对参数的变化将比均匀加权阵列更敏感。第二项均匀地提高了旁瓣区域的期望值，在整个 $\boldsymbol{k}$ 空间产生了主要的影响。在很多阵列设计的问题中，我们希望能在一个干扰信号的方向放置一个完全零点（perfect null），使得 $|B(\boldsymbol{k})|^2 = 0$，如果 $(\sigma_\varphi^2, \sigma_\lambda^2, \sigma_g^2)$ 中的任何一个变量不为零，则不可能得到一个完全零点。
+
+&emsp;&emsp;方向图期望值的下限依赖于敏感度函数 $T_\mathrm{se}$ 和扰动的方差，限制了方向图零点的深度[^2]。
+
+> &emsp;&emsp;下面举例分析。假设
+>
+> $$
+> \sigma_T^2 \triangleq \sigma_g^2 + \sigma_\varphi^2 + \sigma_\lambda^2 = 0.01
+> $$
+>
+> 则 $A_w$ 必须大于或等于 $100$，才能在方向图上得到 $-40\text{dB}$ 的零陷。这需要均匀加权阵列至少具有 $100$ 个阵元，非均匀加权的阵列将需要更多阵元。
+
+&emsp;&emsp;当设计最优阵列时，我们经常采用**{% label primary @敏感度约束 %}**
+
+$$\begin{equation}
+  T_\mathrm{se} = \left\| \boldsymbol{w} \right\|^2 \leqslant T_\mathrm{o}
+\end{equation}$$
+
+其中 $T_\mathrm{o}$ 是一个使得阵列的性能对扰动更加稳健的常数。上述约束也可以表述为**{% label primary @白噪声增益约束 %}**
+
+$$\begin{equation}
+  A_w = (\left\| \boldsymbol{w} \right\|^2) ^{-1} \geqslant T_\mathrm{o}^{-1}
+\end{equation}$$
+
+# 总结
+
+&emsp;&emsp;本文给出了三个重要的阵列性能度量指标。我们看到权值矢量 $\boldsymbol{w}$ 的模在所有的三个度量指标中都出现了
+
+1. 对于标准线阵，方向性 $D = \left\| \boldsymbol{w} \right\|^{-2} \leqslant N$；
+2. 对于任意阵列结构，白噪声阵列增益 $A_w = \left\| \boldsymbol{w} \right\|^{-2}$；
+3. 对于任意阵列结构，敏感度函数 $T_\mathrm{se} = A_w^{-1} = \left\| \boldsymbol{w} \right\|^2$。
+
+可见 $\left\| \boldsymbol{w} \right\|^2$ 在很多讨论中都起着非常核心的作用。
+
+# 参考文献
+
+1. Van Trees, Harry L. _Optimum array processing: Part IV of detection, estimation, and modulation theory._*_ John Wiley & Sons, 2002.
+2. Van Trees, Harry L, 汤俊. _最优阵列处理技术._*_ 清华大学出版社. 2008.
 
 [$u$ 空间的波束方向图的表达式]: https://josh-gao.top/posts/de20fd09.html#BeamPatternInDirectionCosineDomain
 [对角调向矩阵]: https://josh-gao.top/posts/c2604c43.html#DiagonalSteeringMatrix
@@ -485,3 +522,5 @@ $$\begin{equation}
 [窄带假设下的复加权的表达式]: https://josh-gao.top/posts/8b61f5a7.html#NarrowBandComplexWeightVector
 
 [^1]: 在大多数情况下，我们去掉下标 “$s$”，因为假设 $\boldsymbol{w}$ 是包含调向的。
+
+[^2]: 在数学上，零点意味 $B(\boldsymbol{k}) = 0$，但是实际方向图具有非零的值，该值和 $B(\boldsymbol{k}_\mathrm{T})$ 的值的比值称为**{% label primary @零点深度 %}**。
