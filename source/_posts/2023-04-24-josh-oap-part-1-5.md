@@ -253,7 +253,7 @@ $$\begin{aligned}
 
 也即
 
-$$\begin{equation} \label{SimplifiedSpectrumOfArrayOutput}
+$$\begin{equation}
   S_y (\omega) = \boldsymbol{H}^\mathrm{T} (\omega) \boldsymbol{S}_x(\omega) \boldsymbol{H} ^\ast (\omega)
 \end{equation}$$
 
@@ -408,7 +408,7 @@ $$\begin{align}
   &= \sum_{i=0}^{N-1} g_i^n \exp (j\varphi_i^n - j \boldsymbol{k}^\mathrm{T} \boldsymbol{p}_i^n)
 \end{align}$$
 
-实际的波束方向图是一个随机函数，其幅度平方的期望值可以写成
+实际波束方向图是一个随机函数，其幅度平方的期望值可以写成
 
 $$\begin{aligned}
   \overline{\left| B (\boldsymbol{k}) \right| ^2} & \triangleq && E \left\{ \left| B (\boldsymbol{k}) \right| ^2 \right\} \notag \\
@@ -452,7 +452,7 @@ $$\begin{align}
 
 其中 $\sigma_\varphi^2$、$\sigma_\lambda^2$ 和 $\sigma_g^2$ 表示对应的随机变量的方差。
 
-&emsp;&emsp;从实际的波束方向图表达式可以看出，随机变化引入了两种影响。第一项使波束方向图在 $\boldsymbol{k}$ 空间均匀衰减，这种均匀性是随机变量独立于 $\boldsymbol{k}$ 的假设造成的，意味着波束方向图具有统计偏差，使得主响应轴方向的波束方向图的期望值小于 $1$。第二项更为关键，定义**{% label primary @敏感度函数 %}**为
+&emsp;&emsp;从实际波束方向图的表达式可以看出，随机变化引入了两种影响。第一项使波束方向图在 $\boldsymbol{k}$ 空间均匀衰减，这种均匀性是随机变量独立于 $\boldsymbol{k}$ 的假设造成的，意味着波束方向图具有统计偏差，使得主响应轴方向的波束方向图的期望值小于 $1$。第二项更为关键，定义**{% label primary @敏感度函数 %}**为
 
 $$\begin{equation}
   T_\mathrm{se} = \sum_{i=0}^{N-1} \left| w_i^n \right| ^2 = \sum_{i=0}^{N-1} (g_i^n)^2
@@ -512,8 +512,8 @@ $$\begin{equation}
 
 # 参考文献
 
-1. Van Trees, Harry L. _Optimum array processing: Part IV of detection, estimation, and modulation theory._*_ John Wiley & Sons, 2002.
-2. Van Trees, Harry L, 汤俊. _最优阵列处理技术._*_ 清华大学出版社. 2008.
+1. Van Trees, Harry L. _Optimum array processing: Part IV of detection, estimation, and modulation theory._ John Wiley & Sons, 2002.
+2. Van Trees, Harry L, 汤俊. _最优阵列处理技术._ 清华大学出版社. 2008.
 
 [$u$ 空间的波束方向图的表达式]: https://josh-gao.top/posts/de20fd09.html#BeamPatternInDirectionCosineDomain
 [对角调向矩阵]: https://josh-gao.top/posts/c2604c43.html#DiagonalSteeringMatrix
