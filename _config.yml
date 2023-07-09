@@ -202,7 +202,7 @@ neat_js:
 related_posts:
   enabled: true
   filter_threshold: 0.13
-  related_count: 3
+  related_count: 5
   weight:
     title: 0.1
     description: 0
