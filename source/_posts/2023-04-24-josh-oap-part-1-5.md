@@ -301,30 +301,26 @@ $$\begin{equation}
 则输出噪声谱
 
 $$\begin{equation}
-  S_{y_n} = \left\| \boldsymbol{w} \right\|^2 S_n(w) = \sum_{n=0}^{N-1} \left| \omega_n \right|^2 S_n(\omega)
+  S_{y_n} = \left\| \boldsymbol{w} \right\|^2 S_n(w) = \sum_{n=0}^{N-1} \left| w_n \right|^2 S_n(\omega)
 \end{equation}$$
 
 所以
 
 $$\begin{equation}
-  \mathrm{SNR_o}(\omega) = \frac{1}{\displaystyle\sum_{n=0}^{N-1} \left| \omega_n \right|^2} \frac{S_f(\omega)}{S_n(\omega)}
+  \mathrm{SNR_o}(\omega) = \frac{1}{\displaystyle\sum_{n=0}^{N-1} \left| w_n \right|^2} \frac{S_f(\omega)}{S_n(\omega)}
 \end{equation}$$
 
 其中，下标“$\mathrm{o}$”代表输出。
 
-&emsp;&emsp;阵列增益 $A_w$ 反映了阵列带来的 SNR 改进，定义为阵列的输出 SNR 和一个阵元上的输入 SNR 的比值。
+&emsp;&emsp;阵列增益 $A_w$ 反映了阵列带来的 SNR 改善程度，定义为阵列输出 SNR 和一个阵元上输入 SNR 的比值。
 
 $$\begin{equation}
-  A_w = \frac{\mathrm{SNR_o}(\omega)}{\mathrm{SNR_{in}}(\omega)} = \frac{1}{\displaystyle \sum_{n=0}^{N-1} \left| \omega_n \right|^2}
+  A_w = \frac{\mathrm{SNR_o}(\omega)}{\mathrm{SNR_{in}}(\omega)} = \frac{1}{\displaystyle \sum_{n=0}^{N-1} \left| w \right|^2} = \left( \sum_{n=0}^{N-1} \frac{1}{\left| w_n \right|^2}  \right) ^{-1} = \left\| \boldsymbol{w} \right\| ^{-2}
 \end{equation}$$
 
-或
+下标“$w$”表示空域不相关的噪声输入，**噪声的时域频谱不一定是平坦的**。
 
-$$\begin{equation}
-  A_w = \left( \sum_{n=0}^{N-1} \frac{1}{\left| \omega_n \right|^2}  \right) ^{-1} = \left\| \boldsymbol{w} \right\| ^{-2}
-\end{equation}$$
-
-下标“$w$”表示空域不相关的噪声输入，噪声的时域频谱不一定是平坦的。观察阵列增益的定义式可以得到以下三个有用的结果：
+&emsp;&emsp;观察阵列增益的定义式可以得到以下三个有用的结果：
 
 1. 只要满足
 
