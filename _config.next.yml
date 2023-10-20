@@ -50,10 +50,10 @@ darkmode: true
 # ---------------------------------------------------------------
 
 favicon:
-  small: /images/favicon-16x16-j.png
-  medium: /images/favicon-32x32-j.png
-  apple_touch_icon: /images/apple-touch-icon-j.png
-  safari_pinned_tab: /images/favicon-j.svg
+  small: /images/meta/favicon-16x16-j.png
+  medium: /images/meta/favicon-32x32-j.png
+  apple_touch_icon: /images/meta/apple-touch-icon-j.png
+  safari_pinned_tab: /images/meta/favicon-j.svg
   #android_manifest: /manifest.json
 
 # Custom Logo (Warning: Do not support scheme Mist)
@@ -140,7 +140,7 @@ sidebar:
 # Sidebar Avatar
 avatar:
   # Replace the default image and set the url here.
-  url: /images/favicon-j.svg
+  url: /images/meta/favicon-j.svg
   # If true, the avatar will be displayed in circle.
   rounded: true
   # If true, the avatar will be rotated with the cursor.
@@ -232,7 +232,7 @@ footer:
     # The full num of gongan beian.
     gongan_num: 京公网安备11010802039063号
     # The icon for gongan beian. See: http://www.beian.gov.cn/portal/download
-    gongan_icon_url: https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/MIsc/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png
+    gongan_icon_url: /images/misc/备案图标.png
 
 
 # ---------------------------------------------------------------
@@ -407,7 +407,7 @@ bookmark:
 
 # `Follow me on GitHub` banner in the top-right corner.
 github_banner:
-  enable: true
+  enable: false
   permalink: https://github.com/JoshGao-bit
 
 
@@ -621,8 +621,8 @@ quicklink:
 # Use Animate.css to animate everything.
 # For more information: https://animate.style
 motion:
-  enable: true
-  async: false
+  enable: false
+  async: true
   transition:
     # All available transition variants: https://theme-next.js.org/animate/
     menu_item: fadeInDown
@@ -669,7 +669,7 @@ comments:
   # Setting `true` means remembering the comment system selected by the visitor.
   storage: true
   # Lazyload all comment systems.
-  lazyload: false
+  lazyload: true
   # Modify texts or order for any naves, here are some examples.
   nav:
     #disqus:
