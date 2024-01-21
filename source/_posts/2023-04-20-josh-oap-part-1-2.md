@@ -28,7 +28,7 @@ date: 2023-04-20 00:14:31
 
 <a id="fig.1-2-1"></a>
 
-![图 1-2-1 放置在 $z$ 轴上的线阵](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-20-josh-oap-part-1-2/2023-04-20-josh-oap-part-1-2-010-LinearArrayAlongZAaxis.png!sign){width=600px}
+![图 1-2-1 放置在 $z$ 轴上的线阵](../images/post/2023-04-20-josh-oap-part-1-2/2023-04-20-josh-oap-part-1-2-010-LinearArrayAlongZAaxis.png){width=600px}
 
 <!-- more -->
 

@@ -40,7 +40,7 @@ date: 2023-04-15 23:33:09
 
 ## 1.2. 数字滤波器的技术指标
 
-![数字滤波器的技术指标](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-010-DigtalFilterBenchmark.png!sign){width=600px}
+![数字滤波器的技术指标](../images/post/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-010-DigtalFilterBenchmark.png){width=600px}
 
 1. 通带截止频率（passband edge frequency）：$\omega_p$。
 
@@ -56,7 +56,7 @@ date: 2023-04-15 23:33:09
 
 ## 2.1. 巴特沃斯（Butterworth）模拟原型滤波器
 
-![巴特沃斯（Butterworth）模拟原型滤波器](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-020-ButterworthAnalogFilter.png!sign){width=500px}
+![巴特沃斯（Butterworth）模拟原型滤波器](../images/post/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-020-ButterworthAnalogFilter.png){width=500px}
 
 ### 2.1.1. 幅度平方频率响应
 
@@ -292,7 +292,7 @@ $$\begin{align}
 &奇对称\qquad h\left(n\right)=-h\left(N-1-n\right)
 \end{align}$$
 
-![线性相位条件](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-030-LinearPhaseCondition.png!sign){width=700px}
+![线性相位条件](../images/post/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-030-LinearPhaseCondition.png){width=700px}
 
 ## 3.2. 线性相位 FIR 系统的频域特点（$h\left(n\right)$ 中心偶对称，$N$ 为奇数时）
 
@@ -329,10 +329,10 @@ H\left(e^{j\omega}\right)=e^{-j\omega\left(\frac{N-1}{2}\right)}\sum_{n=0}^{\fra
 
 |  | $h\left(n\right)$ | $N$ | 单位脉冲响应 |符幅频率响应 | 相位特性 | 特点 |
 | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
-| 情况 1 | 中<br>心<br>偶<br>对<br>称 | 奇数 | ![情况1-h](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-040-Case1h.png!sign){width=150px} ![情况1-a](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-050-Case1a.png!sign){width=150px} | $\displaystyle A\left(\omega\right)=\sum_{n=0}^{\frac{N-1}{2}}{a\left(n\right)\cos{\left(\omega n\right)}}$ ![情况1-A](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-060-Case1A.png!sign){width=200px} | $\displaystyle\varphi\left(\omega\right)=-\frac{N-1}{2}\omega$ ![情况1-相位](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-070-Case1phi.png!sign){width=1200px} | 可实现<br>低通<br>高通<br>带通<br>带阻 |
-| 情况 2 | 中<br>心<br>偶<br>对<br>称 | 偶数 | ![情况2-h](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-080-Case2h.png!sign){width=200px} ![情况2-b](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-090-Case2b.png!sign){width=150px} | $\displaystyle B\left(\omega\right)=\sum_{n=0}^{\frac{N}{2}}{b\left(n\right)\cos{\left[\omega\left(n-\frac{1}{2}\right)\right]}}$ ![情况2-B](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-100-Case2B.png!sign){width=200px} | 同上 | 可实现<br>低通<br>带通 |
-| 情况 3 | 中心奇对称 | 奇数 | ![情况3-h](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-110-Case3h.png!sign){width=200px} ![情况3-c](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-120-Case3c.png!sign){width=150px} | $\displaystyle C\left(\omega\right)=\sum_{n=0}^{\frac{N-1}{2}}{c\left(n\right)\sin{\left(\omega n\right)}}$ ![情况3-C](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-130-Case3C.png!sign){width=200px} | $\displaystyle\varphi\left(\omega\right)=\frac{\pi}{2}-\frac{N-1}{2}\omega$ ![情况3-相位](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-140-Case3phi.png!sign){width=120px} | 可实现<br>带通 |
-| 情况 4 | 中心奇对称 | 偶数 | ![情况4-h](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-150-Case4h.png!sign){width=200px} ![情况4-h](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-160-Case4d.png!sign){width=150px} | $\displaystyle D\left(\omega\right)=\sum_{n=0}^{\frac{N}{2}}{d\left(n\right)\sin{\left[\omega\left(n-\frac{1}{2}\right)\right]}}$ ![情况4-h](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-170-Case4D.png!sign){width=200px} | 同上 | 可实现<br>高通<br>带阻 |
+| 情况 1 | 中<br>心<br>偶<br>对<br>称 | 奇数 | ![情况1-h](../images/post/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-040-Case1h.png){width=150px} ![情况1-a](../images/post/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-050-Case1a.png){width=150px} | $\displaystyle A\left(\omega\right)=\sum_{n=0}^{\frac{N-1}{2}}{a\left(n\right)\cos{\left(\omega n\right)}}$ ![情况1-A](../images/post/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-060-Case1A.png){width=200px} | $\displaystyle\varphi\left(\omega\right)=-\frac{N-1}{2}\omega$ ![情况1-相位](../images/post/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-070-Case1phi.png){width=1200px} | 可实现<br>低通<br>高通<br>带通<br>带阻 |
+| 情况 2 | 中<br>心<br>偶<br>对<br>称 | 偶数 | ![情况2-h](../images/post/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-080-Case2h.png){width=200px} ![情况2-b](../images/post/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-090-Case2b.png){width=150px} | $\displaystyle B\left(\omega\right)=\sum_{n=0}^{\frac{N}{2}}{b\left(n\right)\cos{\left[\omega\left(n-\frac{1}{2}\right)\right]}}$ ![情况2-B](../images/post/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-100-Case2B.png){width=200px} | 同上 | 可实现<br>低通<br>带通 |
+| 情况 3 | 中心奇对称 | 奇数 | ![情况3-h](../images/post/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-110-Case3h.png){width=200px} ![情况3-c](../images/post/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-120-Case3c.png){width=150px} | $\displaystyle C\left(\omega\right)=\sum_{n=0}^{\frac{N-1}{2}}{c\left(n\right)\sin{\left(\omega n\right)}}$ ![情况3-C](../images/post/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-130-Case3C.png){width=200px} | $\displaystyle\varphi\left(\omega\right)=\frac{\pi}{2}-\frac{N-1}{2}\omega$ ![情况3-相位](../images/post/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-140-Case3phi.png){width=120px} | 可实现<br>带通 |
+| 情况 4 | 中心奇对称 | 偶数 | ![情况4-h](../images/post/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-150-Case4h.png){width=200px} ![情况4-h](../images/post/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-160-Case4d.png){width=150px} | $\displaystyle D\left(\omega\right)=\sum_{n=0}^{\frac{N}{2}}{d\left(n\right)\sin{\left[\omega\left(n-\frac{1}{2}\right)\right]}}$ ![情况4-h](../images/post/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-170-Case4D.png){width=200px} | 同上 | 可实现<br>高通<br>带阻 |
 
 ## 3.3. 线性相位 FIR 滤波器的零点位置
 
@@ -359,7 +359,7 @@ H^\ast\left(z\right)=\left[\sum_{n=0}^{N-1}{h\left(n\right)z^{-n}}\right]^\ast=\
 即在实轴上又在单位圆上 | $z=+1$ 或 $z=-1$ | $z_2,z_3$
 不在实轴上但在单位圆上 | 一组共轭对 | $z_4$
 在实轴上但不在单位圆上 | 一组互为倒数的实数对 | $z_5$
-![线性相位 FIR 滤波器的零点位置](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-180-ZeroPointOfLinearPhaseFIR.png!sign){width=300px}  | |
+![线性相位 FIR 滤波器的零点位置](../images/post/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-180-ZeroPointOfLinearPhaseFIR.png){width=300px}  | |
 
 # 4. FIR 数字滤波器的设计
 
@@ -399,7 +399,7 @@ H^\ast\left(z\right)=\left[\sum_{n=0}^{N-1}{h\left(n\right)z^{-n}}\right]^\ast=\
 
 ### 4.1.2. 窗函数法设计高通、带通、带阻滤波器
 
-![窗函数法设计高通、带通、带阻滤波器](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-190-WindowingMethod.png!sign){width=900px}
+![窗函数法设计高通、带通、带阻滤波器](../images/post/2023-04-15-josh-dsp-part-7/2023-04-15-josh-dsp-part-7-190-WindowingMethod.png){width=900px}
 
 | 滤波器类型 | 理想滤波器的<br>频率响应 | 理想滤波器的<br>单位抽样响应 |
 | :--: | :--------: | :--------------: |

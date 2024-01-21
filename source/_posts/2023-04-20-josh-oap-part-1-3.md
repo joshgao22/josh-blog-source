@@ -69,11 +69,11 @@ $$\begin{equation}
 
 <a id="fig.1-3-1"></a>
 
-![图 1-3-1 $\boldsymbol{\varUpsilon}(\psi): \psi = \frac{2\pi}{\lambda} d \cos\theta, N=11$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-20-josh-oap-part-1-3/2023-04-20-josh-oap-part-1-3-010-FrequencyWavenumberResponseFunction.svg){width=1000px}
+![图 1-3-1 $\boldsymbol{\varUpsilon}(\psi): \psi = \frac{2\pi}{\lambda} d \cos\theta, N=11$](../images/post/2023-04-20-josh-oap-part-1-3/2023-04-20-josh-oap-part-1-3-010-FrequencyWavenumberResponseFunction.svg){width=1000px}
 
 <a id="fig.1-3-2"></a>
 
-![图 1-3-2 用 dB 表示 $\left|\boldsymbol{\varUpsilon}(\psi)\right|$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-20-josh-oap-part-1-3/2023-04-20-josh-oap-part-1-3-020-FrequencyWavenumberResponseFunctionInDB.svg){width=1000px}
+![图 1-3-2 用 dB 表示 $\left|\boldsymbol{\varUpsilon}(\psi)\right|$](../images/post/2023-04-20-josh-oap-part-1-3/2023-04-20-josh-oap-part-1-3-020-FrequencyWavenumberResponseFunctionInDB.svg){width=1000px}
 
 {% note primary MATLAB Code %}
 
@@ -164,7 +164,7 @@ $$\begin{equation}
 
 <a id="fig.1-3-3"></a>
 
-![图 1-3-3 在极坐标系中画出 $B_\theta(\theta)$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-20-josh-oap-part-1-3/2023-04-20-josh-oap-part-1-3-030-PloarPlotOfBeamPatternInAngleSpace.svg){width=800px}
+![图 1-3-3 在极坐标系中画出 $B_\theta(\theta)$](../images/post/2023-04-20-josh-oap-part-1-3/2023-04-20-josh-oap-part-1-3-030-PloarPlotOfBeamPatternInAngleSpace.svg){width=800px}
 
 {% note primary MATLAB Code %}
 
@@ -200,7 +200,7 @@ h=polardb(ang,G,-40);
 
 <a id="fig.1-3-4"></a>
 
-![图 1-3-4 $d = \lambda/2, N=10$，线阵的 $\left|\boldsymbol{\varUpsilon}_\psi(\psi)\right|$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-20-josh-oap-part-1-3/2023-04-20-josh-oap-part-1-3-040-AbsOfFWRFForALinearArray.svg){width=1000px}
+![图 1-3-4 $d = \lambda/2, N=10$，线阵的 $\left|\boldsymbol{\varUpsilon}_\psi(\psi)\right|$](../images/post/2023-04-20-josh-oap-part-1-3/2023-04-20-josh-oap-part-1-3-040-AbsOfFWRFForALinearArray.svg){width=1000px}
 
 {% note primary MATLAB Code %}
 
@@ -322,7 +322,7 @@ set(gcf,'Position',[0 0 800 800])
 
 <a id="fig.1-3-5"></a>
 
-![图 1-3-5 波束方向图的主波束](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-20-josh-oap-part-1-3/2023-04-20-josh-oap-part-1-3-050-MainLobeOfBeamPattern.svg){width=700px}
+![图 1-3-5 波束方向图的主波束](../images/post/2023-04-20-josh-oap-part-1-3/2023-04-20-josh-oap-part-1-3-050-MainLobeOfBeamPattern.svg){width=700px}
 
 {% note primary MATLAB Code %}
 
@@ -536,7 +536,7 @@ $$\begin{equation}
 
 <a id="fig.1-3-6"></a>
 
-![图 1-3-6 阵元间距对波束方向图的影响：(a) $d=\lambda/4$；(b) $d=\lambda/2$；(c) $d=\lambda$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-20-josh-oap-part-1-3/2023-04-20-josh-oap-part-1-3-060-%20EffectOfElementSpacingOnBeamPattern.svg){width=1000px}
+![图 1-3-6 阵元间距对波束方向图的影响：(a) $d=\lambda/4$；(b) $d=\lambda/2$；(c) $d=\lambda$](../images/post/2023-04-20-josh-oap-part-1-3/2023-04-20-josh-oap-part-1-3-060-%20EffectOfElementSpacingOnBeamPattern.svg){width=1000px}
 
 {% note primary MATLAB Code %}
 

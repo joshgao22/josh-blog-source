@@ -109,7 +109,7 @@ $$\begin{equation}
 
 <a id="fig.2-1-1"></a>
 
-![图 2-1-1 均匀加权和 Cosine 加权的波束方向图: $N = 11$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-06-19-josh-oap-part-2-1/2023-06-19-josh-oap-part-2-1-010-BeamPatternForUniformAndCosineWeighting.svg){width=700px}
+![图 2-1-1 均匀加权和 Cosine 加权的波束方向图: $N = 11$](../images/post/2023-06-19-josh-oap-part-2-1/2023-06-19-josh-oap-part-2-1-010-BeamPatternForUniformAndCosineWeighting.svg){width=700px}
 
 {% note primary MATLAB Code %}
 
@@ -181,7 +181,7 @@ $$\begin{equation}
 
 <a id="fig.2-1-2"></a>
 
-![图 2-1-2 升 Cosine 加权的波束方向图: $N = 11$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-06-19-josh-oap-part-2-1/2023-06-19-josh-oap-part-2-1-020-BeamPatternForRaisedCosineWeighting.svg){width=700px}
+![图 2-1-2 升 Cosine 加权的波束方向图: $N = 11$](../images/post/2023-06-19-josh-oap-part-2-1/2023-06-19-josh-oap-part-2-1-020-BeamPatternForRaisedCosineWeighting.svg){width=700px}
 
 {% note primary MATLAB Code %}
 
@@ -255,7 +255,7 @@ $$\begin{equation}
 
 <a id="fig.2-1-3"></a>
 
-![图 2-1-3 Cosine$^m$ 加权的波束方向图: $N = 11$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-06-19-josh-oap-part-2-1/2023-06-19-josh-oap-part-2-1-030-BeamPatternForCosineMWeighting.svg){width=700px}
+![图 2-1-3 Cosine$^m$ 加权的波束方向图: $N = 11$](../images/post/2023-06-19-josh-oap-part-2-1/2023-06-19-josh-oap-part-2-1-030-BeamPatternForCosineMWeighting.svg){width=700px}
 
 {% note primary MATLAB Code %}
 
@@ -343,7 +343,7 @@ $$\begin{equation}
 
 <a id="fig.2-1-4"></a>
 
-![图 2-1-4 Hann 加权、Hamming 加权和 Blackman-Harris 加权的波束方向图: $N = 11$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-06-19-josh-oap-part-2-1/2023-06-19-josh-oap-part-2-1-040-BeamPatternForHannHammingAndBlackmanHarrisWeighting.svg){width=700px}
+![图 2-1-4 Hann 加权、Hamming 加权和 Blackman-Harris 加权的波束方向图: $N = 11$](../images/post/2023-06-19-josh-oap-part-2-1/2023-06-19-josh-oap-part-2-1-040-BeamPatternForHannHammingAndBlackmanHarrisWeighting.svg){width=700px}
 
 {% note primary MATLAB Code %}
 
@@ -497,11 +497,11 @@ DPSS 加权的波束方向图参数为:
 
 <a id="fig.2-1-5"></a>
 
-![图 2-1-5 离散长球序列: $\psi_0=0.1\pi,0.2\pi,0.4\pi$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-06-19-josh-oap-part-2-1/2023-06-19-josh-oap-part-2-1-050-DiscreteProlateSpheroidalSequences.svg){width=700px}
+![图 2-1-5 离散长球序列: $\psi_0=0.1\pi,0.2\pi,0.4\pi$](../images/post/2023-06-19-josh-oap-part-2-1/2023-06-19-josh-oap-part-2-1-050-DiscreteProlateSpheroidalSequences.svg){width=700px}
 
 <a id="fig.2-1-6"></a>
 
-![图 2-1-6 DPSS 加权的波束方向图和 $\psi_0$ 的关系: $N = 11$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-06-19-josh-oap-part-2-1/2023-06-19-josh-oap-part-2-1-060-BeamPatternForDPSSWeighting.svg){width=700px}
+![图 2-1-6 DPSS 加权的波束方向图和 $\psi_0$ 的关系: $N = 11$](../images/post/2023-06-19-josh-oap-part-2-1/2023-06-19-josh-oap-part-2-1-060-BeamPatternForDPSSWeighting.svg){width=700px}
 
 {% note primary MATLAB Code %}
 
@@ -650,7 +650,7 @@ $$\begin{equation}
 
 <a id="fig.2-1-7"></a>
 
-![图 2-1-7 Kaiser 加权: (a) $\beta=3$ 和 $6$ 时的权值；(b) $\beta=3$ 和 $6$ 时的波束方向图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-06-19-josh-oap-part-2-1/2023-06-19-josh-oap-part-2-1-070-KaiserWeighting.svg){width=700px}
+![图 2-1-7 Kaiser 加权: (a) $\beta=3$ 和 $6$ 时的权值；(b) $\beta=3$ 和 $6$ 时的波束方向图](../images/post/2023-06-19-josh-oap-part-2-1/2023-06-19-josh-oap-part-2-1-070-KaiserWeighting.svg){width=700px}
 
 {% note primary MATLAB Code %}
 
@@ -728,7 +728,7 @@ set(gcf,'Position',[0 0 600 600])
 
 <a id="fig.2-1-8"></a>
 
-![图 2-1-8 Kaiser 加权的波束方向图：$\beta = 3$，$N=11,21$ 和 $41$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-06-19-josh-oap-part-2-1/2023-06-19-josh-oap-part-2-1-080-BeamPatternsForKaiserWeighting.svg){width=700px}
+![图 2-1-8 Kaiser 加权的波束方向图：$\beta = 3$，$N=11,21$ 和 $41$](../images/post/2023-06-19-josh-oap-part-2-1/2023-06-19-josh-oap-part-2-1-080-BeamPatternsForKaiserWeighting.svg){width=700px}
 
 {% note primary MATLAB Code %}
 

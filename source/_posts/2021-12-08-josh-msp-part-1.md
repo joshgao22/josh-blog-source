@@ -76,7 +76,7 @@ X_s\left( j\Omega \right) =\frac{1}{2\pi}X_c\left( j\Omega \right) \ast \frac{2\
 
 <a id="图1.1"></a>
 
-![图1.1 采样信号与模拟信号的关系](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2021-12-08-josh-msp-part-1/2021-12-08-josh-msp-part-1-010-RelationshipBetweenSampledSignalandAnalogSignal.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/14/dissolve/20/gravity/southeast/dx/5/dy/5){width=500px}
+![图1.1 采样信号与模拟信号的关系](../images/post/2021-12-08-josh-msp-part-1/2021-12-08-josh-msp-part-1-010-RelationshipBetweenSampledSignalandAnalogSignal.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/14/dissolve/20/gravity/southeast/dx/5/dy/5){width=500px}
 
 **定理 1.1 (Nyquist-Shannon 采样定理)** 设 $x\left(t\right)$ 是带限信号，频带范围为 $\left(-\Omega_M,\Omega_M\right)$。如果采样率满足
 
@@ -134,7 +134,7 @@ y_D\left( nT_2 \right) =x\left( nDT_1 \right)
 
 <a id="图1.2"></a>
 
-![图1.2 抽取](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2021-12-08-josh-msp-part-1/2021-12-08-josh-msp-part-1-020-DecimationDemostration.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/14/dissolve/20/gravity/southeast/dx/5/dy/5){width=500px}
+![图1.2 抽取](../images/post/2021-12-08-josh-msp-part-1/2021-12-08-josh-msp-part-1-020-DecimationDemostration.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/14/dissolve/20/gravity/southeast/dx/5/dy/5){width=500px}
 
 &emsp;&emsp;上述关系也可以简记为
 

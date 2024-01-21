@@ -67,7 +67,7 @@ plot(t,[x y])
 legend('Original Signal','Signal with AWGN')
 ```
 
-![ ](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-27-matlab-awgn/2020-11-27-matlab-awgn-010-AddAWGNToSawtoothSignalExample-01.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/14/dissolve/20/gravity/southeast/dx/5/dy/5)
+![ ](../images/post/2020-11-27-matlab-awgn/2020-11-27-matlab-awgn-010-AddAWGNToSawtoothSignalExample-01.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/14/dissolve/20/gravity/southeast/dx/5/dy/5)
 
 ## AWGN 信道中的常规 QAM 调制<span id="Examples-02"></span>
 
@@ -108,7 +108,7 @@ grid
 hold off
 ```
 
-![ ](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-27-matlab-awgn/2020-11-27-matlab-awgn-020-GeneralQAMModulationInAnAWGNChannelExample-01.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/fontsize/15/dissolve/60/gravity/southeast/dx/5/dy/5)
+![ ](../images/post/2020-11-27-matlab-awgn/2020-11-27-matlab-awgn-020-GeneralQAMModulationInAnAWGNChannelExample-01.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/fontsize/15/dissolve/60/gravity/southeast/dx/5/dy/5)
 
 使用 `genqamdemod` 函数解调接收到的信号。计算误符号数和误符号率。
 

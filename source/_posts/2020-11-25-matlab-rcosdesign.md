@@ -26,28 +26,30 @@ date: 2020-11-25 22:32:42
 
 # 说明
 
-`b = rcosdesign(beta,span,sps)` 返回系数 `b`，该系数对应于具有由 `beta` 指定的衰减因子的平方根升余弦 FIR 滤波器。滤波器有 `span` 个符号，每个符号包含 `sps` 个样本。 滤波器的阶次，也即 `sps * span` 必须是偶数。滤波器的能量为 1。[举例](#Examples-01)
+`b = rcosdesign(beta,span,sps)` 返回滚降因子为 `beta` 的根升余弦 FIR 滤波器的系数 `b`。滤波器被截断至 `span` 个符号，并且每个符号周期包含 `sps` 个样本。滤波器的阶数，即 `sps * span`，必须是偶数。滤波器的能量为 1。[举例](#Examples-01)
 
-`b = rcosdesign(beta,span,sps,shape)` 根据 `shape` 返回不同的滤波器。当 `shape` 为 `sqrt` 时，将返回根升余弦滤波器；当 `shape` 为 `normal` 时，将返回升余弦 FIR 滤波器。[举例](#Examples-02)
+`b = rcosdesign(beta,span,sps,shape)` 根据 `shape` 返回不同的滤波器。当 `shape` 为 `sqrt` 时，返回根升余弦滤波器；当 `shape` 为 `normal` 时，返回升余弦 FIR 滤波器。[举例](#Examples-02)
 
 # 示例
 
 ## 设计根升余弦滤波器<a name="Examples-01"></a>
 
-将滚降系数设为 `0.25`，波器的符号数设为 `6`，每个符号 `4` 个采样点。验证 `sqrt` 是 `shape` 参数的默认值。
+将滚降系数设为 `0.25`，滤波器的符号数设为 `6`，每个符号 `4` 个采样点。验证 `sqrt` 是参数 `shape` 的默认值。
 
 ``` matlab
 h = rcosdesign(0.25,6,4);
 mx = max(abs(h-rcosdesign(0.25,6,4,'sqrt')))
 ```
 
-> <font face="Consolas">mx = 0</font><br>
+> `mx = 0`
 
 ``` matlab
 fvtool(h,'Analysis','impulse')
 ```
 
-![ ](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-25-matlab-rcosdesign/2020-11-25-matlab-rcosdesign-010-DesignASquareRootRaisedCosineFilterExample-01.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/14/dissolve/20/gravity/southeast/dx/5/dy/5)
+<!-- ![ ](../images/post/2020-11-25-matlab-rcosdesign/2020-11-25-matlab-rcosdesign-010-DesignASquareRootRaisedCosineFilterExample-01.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/14/dissolve/20/gravity/southeast/dx/5/dy/5) -->
+
+![ ](../images/post/2020-11-25-matlab-rcosdesign/2020-11-25-matlab-rcosdesign-010-DesignASquareRootRaisedCosineFilterExample-01.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/14/dissolve/20/gravity/southeast/dx/5/dy/5)
 
 ## 升余弦和根升余弦滤波器的脉冲响应<a name="Examples-02"></a>
 
@@ -64,7 +66,7 @@ h1 = rcosdesign(rf,span,sps,'normal');
 fvtool(h1,'impulse')
 ```
 
-![ ](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-25-matlab-rcosdesign/2020-11-25-matlab-rcosdesign-020-ImpulseResponsesOfNormalAndSquareRootRaisedCosineFiltersExample-01.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/14/dissolve/20/gravity/southeast/dx/5/dy/5)
+![ ](../images/post/2020-11-25-matlab-rcosdesign/2020-11-25-matlab-rcosdesign-020-ImpulseResponsesOfNormalAndSquareRootRaisedCosineFiltersExample-01.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/14/dissolve/20/gravity/southeast/dx/5/dy/5)
 
 **升余弦滤波器在 `sps` 的整数倍处具有零值点**。因此，它满足无码间串扰（ISI）的 Nyquist 准则。但是，根升余弦滤波器没有这样的特性：
 
@@ -73,7 +75,7 @@ h2 = rcosdesign(rf,span,sps,'sqrt');
 fvtool(h2,'impulse')
 ```
 
-![ ](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-25-matlab-rcosdesign/2020-11-25-matlab-rcosdesign-030-ImpulseResponsesOfNormalAndSquareRootRaisedCosineFiltersExample-02.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/14/dissolve/20/gravity/southeast/dx/5/dy/5)
+![ ](../images/post/2020-11-25-matlab-rcosdesign/2020-11-25-matlab-rcosdesign-030-ImpulseResponsesOfNormalAndSquareRootRaisedCosineFiltersExample-02.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/14/dissolve/20/gravity/southeast/dx/5/dy/5)
 
 将根升余弦滤波器与自身进行卷积。在最大值处截断脉冲响应，使其长度与 `h1` 相同。使用最大值将响应归一化。然后，将卷积后的根升余弦滤波器与升余弦滤波器进行比较。
 
@@ -90,7 +92,7 @@ ylabel('Normalized amplitude')
 legend('h1','h2 * h2')
 ```
 
-![ ](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-25-matlab-rcosdesign/2020-11-25-matlab-rcosdesign-040-ImpulseResponsesOfNormalAndSquareRootRaisedCosineFiltersExample-03.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/14/dissolve/20/gravity/southeast/dx/5/dy/5)
+![ ](../images/post/2020-11-25-matlab-rcosdesign/2020-11-25-matlab-rcosdesign-040-ImpulseResponsesOfNormalAndSquareRootRaisedCosineFiltersExample-03.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/14/dissolve/20/gravity/southeast/dx/5/dy/5)
 
 卷积响应的长度是有限的，因此根升余弦滤波器与自身进行卷积得到的结果会与升余弦滤波器不一致。增加 `span` 可以在响应之间获得更紧密的一致性，并更好地符合 Nyquist 准则。
 

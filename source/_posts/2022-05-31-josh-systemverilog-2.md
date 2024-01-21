@@ -157,7 +157,7 @@ bit [7:0] b_unpack[3];   // 非合并数组
 
 <span id="图2.1"></span>
 <div align="center">
-  <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2022-05-31-josh-systemverilog-2/2022-05-31-josh-systemverilog-2-010-UnpackedArrayStorage.png" width=600px alt="图 2.1 非合并数组的存放"/>
+  <img src="../images/post/2022-05-31-josh-systemverilog-2/2022-05-31-josh-systemverilog-2-010-UnpackedArrayStorage.png" width=600px alt="图 2.1 非合并数组的存放"/>
 </div>
 
 仿真器通常使用两个或两个以上连续的字来存放 `logic` 和 `integer` 等四状态类型，这**比存放双状态变量多占用一倍的空间**。
@@ -342,7 +342,7 @@ $displayh(bytes,,        // 显示所有的 32 比特
 
 <span id="图2.2"></span>
 <div align="center">
-  <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2022-05-31-josh-systemverilog-2/2022-05-31-josh-systemverilog-2-020-PackedArrayLayout.png" width=600px alt="图 2.2 合井数组存放示意图"/>
+  <img src="../images/post/2022-05-31-josh-systemverilog-2/2022-05-31-josh-systemverilog-2-020-PackedArrayLayout.png" width=600px alt="图 2.2 合井数组存放示意图"/>
 </div>
 
 合并和非合并数组可以混合使用。可以使用数组来表示存储单元，这些单元可以按比特、字节或长字的方式进行存取。在[例 2.16](#例2.16) 中，`barray` 是一个具有 3 个合并元素的非合并数组。
@@ -363,7 +363,7 @@ nibbles = barray[0];           // 复制合并数组的元素值
 
 <span id="图2.3"></span>
 <div align="center">
-  <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2022-05-31-josh-systemverilog-2/2022-05-31-josh-systemverilog-2-030-PackedArrayBitLayout.png" width=600px alt="图 2.3 合并数组存放示意图"/>
+  <img src="../images/post/2022-05-31-josh-systemverilog-2/2022-05-31-josh-systemverilog-2-030-PackedArrayBitLayout.png" width=600px alt="图 2.3 合并数组存放示意图"/>
 </div>
 
 - 使用一个下标，可以得到一个字的数据，如 `barray[2]`；
@@ -503,7 +503,7 @@ SystemVerilog 提供了关联数组 (associative array) 类型，用来保存稀
 
 <span id="图2.4"></span>
 <div align="center">
-  <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2022-05-31-josh-systemverilog-2/2022-05-31-josh-systemverilog-2-040-AssociativeArray.png" width=600px alt="图 2.4  关联数组"/>
+  <img src="../images/post/2022-05-31-josh-systemverilog-2/2022-05-31-josh-systemverilog-2-040-AssociativeArray.png" width=600px alt="图 2.4  关联数组"/>
 </div>
 
 仿真器可以采用树或哈希表的形式来存放关联数组，但有一定的额外开销。当保存索引值比较分散的数组时，例如使用 32 位地址或 64 位数据作为索引的数据包，这种额外开销显然是可以接受的。

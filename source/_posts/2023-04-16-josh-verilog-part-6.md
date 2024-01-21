@@ -45,13 +45,13 @@ description: 状态机是逻辑设计的重要内容，其设计水平直接反�
 
 <a id="fig.6-1"></a>
 
-![图 6-1 某学生在校生活状态转移图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-16-josh-verilog-part-6/2023-04-16-josh-verilog-part-6-010-SchoolLifeStateTransitionDiagramOfStudentA.png!sign){width=600}
+![图 6-1 某学生在校生活状态转移图](../images/post/2023-04-16-josh-verilog-part-6/2023-04-16-josh-verilog-part-6-010-SchoolLifeStateTransitionDiagramOfStudentA.png){width=600}
 
 如果你认为这张图描述的学生生活过于单调而怀疑状态机描述方法的能力，就再看另一位生活丰富多彩的同学的在校生活，他/她的在校生活方式可以用[图 6-2](#fig.6-2) 表示。
 
 <a id="fig.6-2"></a>
 
-![图 6-2 另一位学生在校生活状态转移图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-16-josh-verilog-part-6/2023-04-16-josh-verilog-part-6-020-SchoolLifeStateTransitionDiagramOfStudentB.png!sign){width=600}
+![图 6-2 另一位学生在校生活状态转移图](../images/post/2023-04-16-josh-verilog-part-6/2023-04-16-josh-verilog-part-6-020-SchoolLifeStateTransitionDiagramOfStudentB.png){width=600}
 
 {% note info %}
 
@@ -285,7 +285,7 @@ ERROR       状态的输出为：    {o1, o2, err} = 3'b111。
 
 <a id="fig.6-3"></a>
 
-![图 6-3 例子的状态转移图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-16-josh-verilog-part-6/2023-04-16-josh-verilog-part-6-030-StateTransitionDiagramOfExample.png!sign){width=600}
+![图 6-3 例子的状态转移图](../images/post/2023-04-16-josh-verilog-part-6/2023-04-16-josh-verilog-part-6-030-StateTransitionDiagramOfExample.png){width=600}
 
 ### 2.3.1. 一段式状态机描述方法（应该避免的写法）
 
@@ -360,7 +360,7 @@ endmodule
 
 <a id="fig.6-4"></a>
 
-![图 6-4 一段式 FSM 描述结构](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-16-josh-verilog-part-6/2023-04-16-josh-verilog-part-6-040-OneStageFSM.png!sign){width=900}
+![图 6-4 一段式 FSM 描述结构](../images/post/2023-04-16-josh-verilog-part-6/2023-04-16-josh-verilog-part-6-040-OneStageFSM.png){width=900}
 
 一段式描述方法将状态转移判断的组合逻辑和状态寄存器转移的时序逻辑混写在同一个 always 模块中，**不符合将时序和组合逻辑分开描述的 Coding Style（代码风格）**，而且在描述当前状态时要考虑下个状态的输出，整个代码不清晰，不利于维护修改，并且不利于附加约束，不利于综合器和布局布线器对设计的优化。
 
@@ -466,7 +466,7 @@ endmodule
 
 <a id="fig.6-5"></a>
 
-![图 6-5 两段式FSM描述结构图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-16-josh-verilog-part-6/2023-04-16-josh-verilog-part-6-050-TwoStageFSM.png!sign){width=900px}
+![图 6-5 两段式FSM描述结构图](../images/post/2023-04-16-josh-verilog-part-6/2023-04-16-josh-verilog-part-6-050-TwoStageFSM.png){width=900px}
 
 本例中，同步时序描述状态转移的 `always` 模块代码如下：
 
@@ -644,7 +644,7 @@ endmodule
 
 <a id="fig.6-6"></a>
 
-![图 6-6 三段式FSM描述结构图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-16-josh-verilog-part-6/2023-04-16-josh-verilog-part-6-060-ThreeStageFSM.png!sign){width=1000px}
+![图 6-6 三段式FSM描述结构图](../images/post/2023-04-16-josh-verilog-part-6/2023-04-16-josh-verilog-part-6-060-ThreeStageFSM.png){width=1000px}
 
 对比上节两段式 FSM 的描述，可以清晰发现三段式与两段式 FSM 描述的最大区别在于**两段式采用了组合逻辑输出**，而**三段式巧妙地根据下一状态的判断，用同步时序逻辑寄存 FSM 的输出**。本例中就是下面一段代码，
 
@@ -705,7 +705,7 @@ case(NS)
 
 <a id="fig.6-7"></a>
 
-![图 6-7 三段式建模结构与一段式建模结构的关系图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-16-josh-verilog-part-6/2023-04-16-josh-verilog-part-6-070-ComparisonOfOneAndThreeStageFSM.png!sign){width=1000px}
+![图 6-7 三段式建模结构与一段式建模结构的关系图](../images/post/2023-04-16-josh-verilog-part-6/2023-04-16-josh-verilog-part-6-070-ComparisonOfOneAndThreeStageFSM.png){width=1000px}
 
 #### 2.3.4.4. 两段式建模和三段式建模的关系
 

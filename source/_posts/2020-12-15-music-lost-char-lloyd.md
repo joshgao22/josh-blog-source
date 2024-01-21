@@ -25,13 +25,13 @@ date: 2020-12-15 11:35:17
 
 | | "Lost" |
 |:--:|:------------:|
-| Cover | <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/Album%20Cover/Cher%20Lloyd/Cher%20Lloyd-Lost-Cover.jpg" width=300px/> |
+| Cover | <img src="../images/post/Album%20Cover/Cher%20Lloyd/Cher%20Lloyd-Lost-Cover.jpg" width=300px/> |
 | Singer | Cher Lloyd |
 | Album Type | Single
 | Released | 24 April 2020 |
 | Length | 2:55 |
 | Label | Universal, Polydor |
-| Songwriter(s) | Raphaella, Casey Smith, Patrick Jordan-Patrikios, Boy Matthews, Youthonix, Cher Lloyd | 
+| Songwriter(s) | Raphaella, Casey Smith, Patrick Jordan-Patrikios, Boy Matthews, Youthonix, Cher Lloyd |
 | Producer(s) | Hitimpulse |
 
 <!-- more -->

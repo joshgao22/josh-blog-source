@@ -55,7 +55,7 @@ EDA 行业的先行者们发明了 Verilog 硬件描述语言，其最根本的�
 
 <a id="fig.2-1"></a>
 
-![图 2-1 HelloVlog 模块](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-28-josh-verilog-part-2/2020-11-28-josh-verilog-part-2-010-JoshVerilog.png!sign){width=800px}
+![图 2-1 HelloVlog 模块](../images/post/2020-11-28-josh-verilog-part-2/2020-11-28-josh-verilog-part-2-010-JoshVerilog.png){width=800px}
 
 该电路首先在两个 2 位的输入数据 `A_in[1:0]` 的和 `B_in[1:0]` 之间，由 `sel` 信号做二选一。后面是一个 2-4 译码电路，将输入的信号 `result[1:0]`解析成 `eq0`、`eql`、`eq2` 和 `eq3` 这4个信号，它们同时只有一个为 1。
 
@@ -627,7 +627,7 @@ reg A_xor_wire
 
 <a id="fig.2-2"></a>
 
-![图 2-2 异或门](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-28-josh-verilog-part-2/2020-11-28-josh-verilog-part-2-020-XORGate.png!sign){width=700px}
+![图 2-2 异或门](../images/post/2020-11-28-josh-verilog-part-2/2020-11-28-josh-verilog-part-2-020-XORGate.png){width=700px}
 
 下面从语义上的角度探讨两种描述方式的不同。
 
@@ -641,7 +641,7 @@ reg A_xor_wire
 
 <a id="fig.2-3"></a>
 
-![图 2-3 D 触发器模型](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-11-28-josh-verilog-part-2/2020-11-28-josh-verilog-part-2-030-DFlipFlop.png!sign){width=300px}
+![图 2-3 D 触发器模型](../images/post/2020-11-28-josh-verilog-part-2/2020-11-28-josh-verilog-part-2-030-DFlipFlop.png){width=300px}
 
 在上述[实例代码](#HelloVlogCode)中相应的描述如下：
 

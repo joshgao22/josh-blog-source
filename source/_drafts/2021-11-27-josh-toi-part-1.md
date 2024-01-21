@@ -50,7 +50,7 @@ date: 2021-11-27 19:20:36
 应用概率论、随机过程、数理统计等方法来研究信息的传输、提取和处理系统中的一般规律。
 
 <div align="center">
-  <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2021-11-27-josh-toi-part-1/2021-11-27-josh-toi-part-1-010-SystemModel.png" width=600px alt="图1-1 信息传输系统的模型"/>
+  <img src="../images/post/2021-11-27-josh-toi-part-1/2021-11-27-josh-toi-part-1-010-SystemModel.png" width=600px alt="图1-1 信息传输系统的模型"/>
 </div>
 
 ## 研究目的

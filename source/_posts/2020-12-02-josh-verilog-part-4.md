@@ -365,13 +365,13 @@ RTL 描述中时序逻辑和组合逻辑的连接关系和拓扑结构决定了�
 
     <a id="fig.4-1"></a>
 
-    ![图 4-1 某双沿加法电路与等价倍频时钟单沿加法电路结构示意图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-010-RegisterCircuitModeling-01.png!sign){width=900px}
+    ![图 4-1 某双沿加法电路与等价倍频时钟单沿加法电路结构示意图](../images/post/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-010-RegisterCircuitModeling-01.png){width=900px}
 
     RTL 仿真波形如[图 4-2](#fig.4-2) 所示。
 
     <a id="fig.4-2"></a>
 
-    ![图 4-2 某双沿加法电路与等价倍频时钟单沿加法电路仿真波型图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-020-RegisterCircuitModeling-02.png!sign){width=900px}
+    ![图 4-2 某双沿加法电路与等价倍频时钟单沿加法电路仿真波型图](../images/post/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-020-RegisterCircuitModeling-02.png){width=900px}
 
     通过这个例子可以看出 ，某些使用双沿操作的电路等价于使用倍频时钟的单沿电路，也就是说，这些电路使用了时钟的双沿触发寄存器，则**相当于提高了设计频率，提高了设计要求的时序难度**。对于这些电路，在附加时序约束和进行时序分析时一定要考虑充分。
 
@@ -423,7 +423,7 @@ RTL 描述中时序逻辑和组合逻辑的连接关系和拓扑结构决定了�
 
     <a id="fig.4-3"></a>
 
-    ![图 4-3 某组合逻辑译码电路的结构示意图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-030-CombinatorialLogictModeling.png!sign){width=700px}
+    ![图 4-3 某组合逻辑译码电路的结构示意图](../images/post/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-030-CombinatorialLogictModeling.png){width=700px}
 
 2. `assign` 等语句描述的组合逻辑电路
 
@@ -946,7 +946,7 @@ endmodule
 
     <a id="fig.4-4"></a>
 
-    ![图 4-4 同步复位实现结构示意图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-040-SynchronousReset-01.png!sign){width=600px}
+    ![图 4-4 同步复位实现结构示意图](../images/post/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-040-SynchronousReset-01.png){width=600px}
 
 #### 3.9.1.2. 同步复位的优点
 
@@ -976,7 +976,7 @@ endmodule
 
     <a id="fig.4-5"></a>
 
-    ![图 4-5 同步复位实现结构示意图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-050-SynchronousReset-02.png!sign){width=800px}
+    ![图 4-5 同步复位实现结构示意图](../images/post/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-050-SynchronousReset-02.png){width=800px}
 
 ### 3.9.2. 异步复位
 
@@ -1018,7 +1018,7 @@ endmodule
 
 <a id="fig.4-6"></a>
 
-![图 4-6 异步复位实现结构示意图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-060-AsynchronousReset-01.png!sign){width=500px}
+![图 4-6 异步复位实现结构示意图](../images/post/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-060-AsynchronousReset-01.png){width=500px}
 
 #### 3.9.2.2. 异步复位的优点
 
@@ -1082,7 +1082,7 @@ endmodule
 
 <a id="fig.4-7"></a>
 
-![图 4-7 异步复位同步化](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-070-AsynchronousReset-02.png!sign){width=500px}
+![图 4-7 异步复位同步化](../images/post/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-070-AsynchronousReset-02.png){width=500px}
 
 ## 3.10. 用 `case` 和 `if ... else` 建模<a id="toc.3.10"></a>
 
@@ -1182,29 +1182,29 @@ endmodule
 
 <a id="fig.4-8"></a>
 
-![图 4-8 多 `if` 语句 Design Compiler 综合结构视图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-080-MultipleIf.png!sign){width=800px}
+![图 4-8 多 `if` 语句 Design Compiler 综合结构视图](../images/post/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-080-MultipleIf.png){width=800px}
 
 <a id="fig.4-9"></a>
 
-![图 4-9 单 `if` 语句和 `casex` 语句建模使用 Design Compiler 综合结构视图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-090-SingleIf.png!sign){width=800px}
+![图 4-9 单 `if` 语句和 `casex` 语句建模使用 Design Compiler 综合结构视图](../images/post/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-090-SingleIf.png){width=800px}
 
 但是由于综合工具的综合优化策略不同，即使对于相同的代码，其综合结果也不尽相同。为了加深理解，使用业界最流行的 PLD 综合工具 Synplify Pro 和 Precision RTL 对多 `if` 语句（`if ... if ... if ...`）、单 `if` 语句（`if ... else if ... else if ...`）和 `casex` 语句分别综合，其中多 `if` 语句的 Synplify Pro 综合结果对应的 RTL 视图和工艺结构视图分别如[图 4-10](#fig.4-10)、[图 4-11](#fig.4-11) 所示；多 `if` 语句的 Precision RTL 综合结果对应的 RTL 视图和工艺结构视图分别如[图 4-12](#fig.4-12)、[图 4-13](#fig.4-13) 所示。简单分析即可发现，这 3 种语句的 Synplify Pro 和 Precision RTL 综合结果基本一致，都没有明显的优先级结构。这是因为 Synplify Pro 和 Precision RTL 这两种综合工具为了节约硬件资源，根据其优化算法．优化掉了冗余的优先级判断结构。
 
 <a id="fig.4-10"></a>
 
-![图 4-10 多 `if` 语句的 Synplify Pro 综合结果 RTL 视图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-100-MultipleIfSynplifyProRTLView.png!sign){width=600px}
+![图 4-10 多 `if` 语句的 Synplify Pro 综合结果 RTL 视图](../images/post/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-100-MultipleIfSynplifyProRTLView.png){width=600px}
 
 <a id="fig.4-11"></a>
 
-![图 4-11 多 `if` 语句的 Synplify Pro 综合结果工艺结构视图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-110-MultipleIfSynplifyProTechView.png!sign){width=800px}
+![图 4-11 多 `if` 语句的 Synplify Pro 综合结果工艺结构视图](../images/post/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-110-MultipleIfSynplifyProTechView.png){width=800px}
 
 <a id="fig.4-12"></a>
 
-![图 4-12 多 `if` 语句的 Precision RTL 综合结果 RTL 视图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-120-MultipleIfPrecisionRTLRTLView.png!sign){width=800px}
+![图 4-12 多 `if` 语句的 Precision RTL 综合结果 RTL 视图](../images/post/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-120-MultipleIfPrecisionRTLRTLView.png){width=800px}
 
 <a id="fig.4-13"></a>
 
-![图 4-13 多 `if` 语句的 Precision RTL 综合结果工艺结构视图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-130-MultipleIfPrecisionRTLTechView.png!sign){width=800px}
+![图 4-13 多 `if` 语句的 Precision RTL 综合结果工艺结构视图](../images/post/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-130-MultipleIfPrecisionRTLTechView.png){width=800px}
 
 所以，从语法上讲，多 `if` 语句（`if ... if ... if ...`）可以建模具有优先级的条件判断结构，而单 `if` 语句（`if ... else if ... else if ...`）和 `case` 语句用于建模不带优先级的条件判断。但是随着综合工具优化能力的不断增强，新型的综合工具，大多时候会自动优化掉优先级结构，以减少芯片面积，提高时序性能。条件结构的综合结果是否带有优先级不但取决于综合工具的类型和版本．还和目标器件或目标库有直接关系。
 
@@ -1237,11 +1237,11 @@ endmodule
 
 <a id="fig.4-14"></a>
 
-![图 4-14 多 `if` 语句无默认输出时 Synplify Pro 综合结果 RTL 视图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-140-MultipleIfSynplifyProRTLView.png!sign){width=800px}
+![图 4-14 多 `if` 语句无默认输出时 Synplify Pro 综合结果 RTL 视图](../images/post/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-140-MultipleIfSynplifyProRTLView.png){width=800px}
 
 <a id="fig.4-15"></a>
 
-![图 4-14 多 `if` 语句无默认输出时 Synplify Pro 综合结果工艺结构视图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-150-MultipleIfSynplifyProTechView.png!sign){width=800px}
+![图 4-14 多 `if` 语句无默认输出时 Synplify Pro 综合结果工艺结构视图](../images/post/2020-12-02-josh-verilog-part-4/2020-12-02-josh-verilog-part-4-150-MultipleIfSynplifyProTechView.png){width=800px}
 
 如果生成的 Latch 并非设计者意愿，则会造成与设计意图的偏离甚至是错误。而使用完整的 `if. .. else` 或 `case`（全译码或加有 `default` 关键字）语句，则可以有效地避免无意之中生成的 Latch 。在 [Part 3——描述方式和设计层次的 3.4 高级编程语句][]中也有防止产生不必要 Latch 的相关描述，可以参考。
 

@@ -37,7 +37,7 @@ date: 2023-04-22 18:17:52
 
 <a id="fig.1-4-1"></a>
 
-![图 1-4-1 利用延时实现阵列调向](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-22-josh-oap-part-1-4/2023-04-22-josh-oap-part-1-4-010-ArraySteeringWithDelays.png!sign){width=700px}
+![图 1-4-1 利用延时实现阵列调向](../images/post/2023-04-22-josh-oap-part-1-4/2023-04-22-josh-oap-part-1-4-010-ArraySteeringWithDelays.png){width=700px}
 
 &emsp;&emsp;[1.2 节][]开头的简单例子说明了把阵列调向某个特定方向的主要思想，调向在波数空间的影响是很直接的。考虑[图 1-4-1](#fig.1-4-1) 中的处理器，输入到调向环节的基函数为
 
@@ -128,7 +128,7 @@ $$\begin{equation}
 
 <a id="fig.1-4-2"></a>
 
-![图 1-4-2 阵列调向对栅瓣的影响：$N=10$，(a) $d=2\lambda/3, \bar\theta = 30^\circ$；(b) $d=\lambda/2, \bar\theta = 90^\circ$](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-22-josh-oap-part-1-4/2023-04-22-josh-oap-part-1-4-020-%20EffectOfSteeringOnTheGratingLobes.svg){width=1000px}
+![图 1-4-2 阵列调向对栅瓣的影响：$N=10$，(a) $d=2\lambda/3, \bar\theta = 30^\circ$；(b) $d=\lambda/2, \bar\theta = 90^\circ$](../images/post/2023-04-22-josh-oap-part-1-4/2023-04-22-josh-oap-part-1-4-020-%20EffectOfSteeringOnTheGratingLobes.svg){width=1000px}
 
 {% note primary MATLAB Code%}
 
@@ -201,7 +201,7 @@ $$\begin{equation}
 
 <a id="fig.1-4-3"></a>
 
-![图 1-4-3 10 阵元均匀阵列（$d = \lambda/2$）扫描到 30°（和正侧向夹角为 60°）时的波束方向图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-22-josh-oap-part-1-4/2023-04-22-josh-oap-part-1-4-030-BeamPatternFor10ElementUniformArrayScannedTo30Degree.svg){width=800px}
+![图 1-4-3 10 阵元均匀阵列（$d = \lambda/2$）扫描到 30°（和正侧向夹角为 60°）时的波束方向图](../images/post/2023-04-22-josh-oap-part-1-4/2023-04-22-josh-oap-part-1-4-030-BeamPatternFor10ElementUniformArrayScannedTo30Degree.svg){width=800px}
 
 {% note primary MATLAB Code %}
 
@@ -268,7 +268,7 @@ $$\begin{equation} \label{HPBWOfUWLA}
 
 <a id="fig.1-4-4"></a>
 
-![图 1-4-4 HPBW 和阵列调向角的关系：标准线阵，采用均匀加权](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-22-josh-oap-part-1-4/2023-04-22-josh-oap-part-1-4-040-HPBWVersusSteeringAngleStandardUWLA.svg){width=1000px}
+![图 1-4-4 HPBW 和阵列调向角的关系：标准线阵，采用均匀加权](../images/post/2023-04-22-josh-oap-part-1-4/2023-04-22-josh-oap-part-1-4-040-HPBWVersusSteeringAngleStandardUWLA.svg){width=1000px}
 
 {% note primary MATLAB Code %}
 
@@ -335,7 +335,7 @@ $$\begin{equation} \label{HPBWWithSmallAngle}
 
 <a id="fig.1-4-5"></a>
 
-![图 1-4-5 长度降低了 $\cos\bar\theta_\mathrm{T}$ 倍的等效阵列](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-22-josh-oap-part-1-4/2023-04-22-josh-oap-part-1-4-050-EffectiveArrayLength.png!sign){width=600px}
+![图 1-4-5 长度降低了 $\cos\bar\theta_\mathrm{T}$ 倍的等效阵列](../images/post/2023-04-22-josh-oap-part-1-4/2023-04-22-josh-oap-part-1-4-050-EffectiveArrayLength.png){width=600px}
 
 &emsp;&emsp;对于 $Nd \geqslant 5\lambda$，在正侧向附近，式 $\eqref{HPBWWithSmallAngle}$ 的误差在 0.2% 以内，在扫描极限附近，误差在 4% 以内。
 
@@ -347,7 +347,7 @@ $$\begin{equation} \label{HPBWOfEndfireUWLA}
 
 <a id="fig.1-4-6"></a>
 
-![图 1-4-6 一个标准 10 阵元线阵。采用均匀幅度加权时在端射时的波束方向图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-22-josh-oap-part-1-4/2023-04-22-josh-oap-part-1-4-060-BeamPatternOfStandard10ElementUWLAAtEndfire.svg){width=800px}
+![图 1-4-6 一个标准 10 阵元线阵。采用均匀幅度加权时在端射时的波束方向图](../images/post/2023-04-22-josh-oap-part-1-4/2023-04-22-josh-oap-part-1-4-060-BeamPatternOfStandard10ElementUWLAAtEndfire.svg){width=800px}
 
 {% note primary MATLAB Code %}
 

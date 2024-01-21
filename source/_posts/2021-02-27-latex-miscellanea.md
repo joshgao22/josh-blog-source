@@ -41,7 +41,7 @@ date: 2021-02-27 15:58:53
 ```
 
 <div align="center">
-  <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2021-02-27-latex-multicolum/2021-02-27-latex-multicolum-010-AllOneColumn.png" width=600px alt="全文单栏效果图"/>
+  <img src="../images/post/2021-02-27-latex-multicolum/2021-02-27-latex-multicolum-010-AllOneColumn.png" width=600px alt="全文单栏效果图"/>
 </div>
 
 ### 全文双栏
@@ -53,7 +53,7 @@ date: 2021-02-27 15:58:53
 ```
 
 <div align="center">
-  <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2021-02-27-latex-multicolum/2021-02-27-latex-multicolum-020-AllTwoColumn.png" width=600px alt="全文双栏效果图"/>
+  <img src="../images/post/2021-02-27-latex-multicolum/2021-02-27-latex-multicolum-020-AllTwoColumn.png" width=600px alt="全文双栏效果图"/>
 </div>
 
 ### 部分双栏
@@ -71,15 +71,15 @@ date: 2021-02-27 15:58:53
 
 \begin{multicols}{2}
     通过对TC-OFDM信号系统仿真分析和传统弱信号捕获算法对比，提出了一种新    型的差分相干累加弱信号捕获算法；该算法采用一种差分相干累加损耗的补偿方法，能够有效提高捕获相对峰值，从而实现对弱信号的有效捕获。
-    
-    实验结果表明，在低信噪比的条件下，该算法能够提高TC-OFDM定位接收机捕获弱信号能力 1-2dB，从而提高弱信号的捕获概率。 
+
+    实验结果表明，在低信噪比的条件下，该算法能够提高TC-OFDM定位接收机捕获弱信号能力 1-2dB，从而提高弱信号的捕获概率。
 \end{multicols}
 
 \end{document}
 ```
 
 <div align="center">
-  <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2021-02-27-latex-multicolum/2021-02-27-latex-multicolum-030-PartTwoColumn.png" width=600px alt="部分双栏效果图"/>
+  <img src="../images/post/2021-02-27-latex-multicolum/2021-02-27-latex-multicolum-030-PartTwoColumn.png" width=600px alt="部分双栏效果图"/>
 </div>
 
 ### 参考

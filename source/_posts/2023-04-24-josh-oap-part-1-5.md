@@ -346,7 +346,7 @@ $$
 
 <a id="fig.1-5-1"></a>
 
-![图 1-5-1 具有阵元位置误差的阵列](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-24-josh-oap-part-1-5/2023-04-24-josh-oap-part-1-5-010-ArrayWithPositionErrors.png!sign){width=700px}
+![图 1-5-1 具有阵元位置误差的阵列](../images/post/2023-04-24-josh-oap-part-1-5/2023-04-24-josh-oap-part-1-5-010-ArrayWithPositionErrors.png){width=700px}
 
 &emsp;&emsp;后面会分析最优处理器对于增益和相位误差、传感器定位不准确等因素的敏感度。这里总结一下[图 1-5-1](#fig.1-5-1) 中阵列的典型结果，设计的目标是使得在没有阵列扰动的情况下，从正侧向入射到阵列的信号无畸变地通过，即有
 

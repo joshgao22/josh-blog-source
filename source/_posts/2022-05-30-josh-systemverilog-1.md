@@ -90,7 +90,7 @@ Testbench 的用途在于**确定 DUT 的正确性**。包含下列步骤：
 
 <span id="图1.1"></span>
 <div align="center">
-  <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-010-DirectedTestProgressOverTime.png" width=500px alt="图 1.1 定向测试随时间的进展"/>
+  <img src="../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-010-DirectedTestProgressOverTime.png" width=500px alt="图 1.1 定向测试随时间的进展"/>
 </div>
 
 如果没有足够的时间和资源来完成定向测试该怎么办？如[图 1.1](#图1.1)，当在时间往前推进时，覆盖率 (coverage) 可能维持不变。如果设计复杂度翻倍，那么测试就需要增加一倍的时间或者人力，而这种情况是我们所不愿意看到的。因此为了达到 100% 覆盖率的目标，需要一种可以更快找出 bug 的方法。
@@ -99,7 +99,7 @@ Testbench 的用途在于**确定 DUT 的正确性**。包含下列步骤：
 
 <span id="图1.2"></span>
 <div align="center">
-  <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-020-DirectedTestCoverage.png" width=800px alt="图 1.2 定向测试的覆盖率"/>
+  <img src="../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-020-DirectedTestCoverage.png" width=800px alt="图 1.2 定向测试的覆盖率"/>
 </div>
 
 # 4. 方法学基础
@@ -118,7 +118,7 @@ Testbench 的用途在于**确定 DUT 的正确性**。包含下列步骤：
 
 <span id="图1.3"></span>
 <div align="center">
-  <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-030-ConstraineRandomTestProgressOverTimeVSDirectedTesting.png" width=500px alt="图 1.3 约束下的随机测试与定向测试随时间的进度比较"/>
+  <img src="../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-030-ConstraineRandomTestProgressOverTimeVSDirectedTesting.png" width=500px alt="图 1.3 约束下的随机测试与定向测试随时间的进度比较"/>
 </div>
 
 随机测试的前期准备工作看起来似乎令人不满意，但是其回报却很高。每个随机测试都可以共享这个通用的 testbench，不像每个定向测试都要从零开始编写。每个随机测试都会包含一部分代码，将激励约束到特定的方向上并触发期望的异常，比如创建一个协议违例。其结果是，约束下的随机 testbench 找起 bug 来会比很多定向测试快很多。随着 bug 出现率的下降，应该创建新的随机约束去探索新的区域。最后的几个 bug 可能只能通过定向测试来发现，但是绝大部分的 bug 都应该会在随机测试中出现。
@@ -135,7 +135,7 @@ Testbench 的用途在于**确定 DUT 的正确性**。包含下列步骤：
 
 <span id="图1.4"></span>
 <div align="center">
-  <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-040-ConstrainedRandomTestCoverage.png" width=800px alt="图 1.4 约束下的随机测试覆盖率"/>
+  <img src="../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-040-ConstrainedRandomTestCoverage.png" width=800px alt="图 1.4 约束下的随机测试覆盖率"/>
 </div>
 
 [图 1.5](#图1.5) 所示为达到完全覆盖的技术路线：
@@ -146,7 +146,7 @@ Testbench 的用途在于**确定 DUT 的正确性**。包含下列步骤：
 
 <span id="图1.5"></span>
 <div align="center">
-  <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-050-CoverageConvergence.png" width=500px alt="图 1.5 覆盖率收敛"/>
+  <img src="../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-050-CoverageConvergence.png" width=500px alt="图 1.5 覆盖率收敛"/>
 </div>
 
 # 6. 我们的随机化对象是什么<a name="06"></a>
@@ -214,7 +214,7 @@ Testbench 应该以多快的速度发送激励呢？使用**约束下的随机�
 
 <span id="图1.6"></span>
 <div align="center">
-  <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-060-TestProgressWithAndWithoutFeedback.png" width=500px alt="图 1.6 带反馈和不带反馈的测试进展"/>
+  <img src="../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-060-TestProgressWithAndWithoutFeedback.png" width=500px alt="图 1.6 带反馈和不带反馈的测试进展"/>
 </div>
 
 Testbench 有没有可能为我们做到这一点呢？假设现在需要使用 testbench 在每个周期为处理器产生一个总线事件，并为总线事件做出终止判断（成功、校验错误、重试）。在没有使用 HVL 的时候，通常会编写一个很长的定向测试集，然后花费了很多天的工夫编排终止判断代码，并让它们在合适的周期里给出判断。经过了大量的手动分析以后才得出成功的结论达到 100 ％的覆盖率。但之后可能由于处理器的时序有了一点微小的改变，不得不重新分析测试并改变激励。
@@ -231,14 +231,14 @@ Testbench 有没有可能为我们做到这一点呢？假设现在需要使用 
 
 <span id="图1.7"></span>
 <div align="center">
-  <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-070-TheTestbenchDesignEnvironment.png" width=450px alt="图 1.7 Testbench 与设计环境"/>
+  <img src="../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-070-TheTestbenchDesignEnvironment.png" width=450px alt="图 1.7 Testbench 与设计环境"/>
 </div>
 
 Testbench 模块里都包含了什么呢？有很多的 BFM (Bus Functional Models, 总线功能模型)，可以把它们看成是 testbench 构件 (components) ——从 DUT 的角度看，它们和真实的构件没什么两样，但它们其实只是 testbench 的组成部分，并非 RTL 设计。如果实际应用中设备被连接到 AMBA、USB、PCI 和 SPI 总线上，那么就必须**在 testbench 中建立能够产生激励并校验响应的等效构件**，如[图 1.8](#图1.8) 所示。这些构件并不是带有细节的可综合模型，而是遵循协议并且执行速度更快的高层次事件处理器。如果把设计原型在 FPGA 上实现或者是进行硬件仿真，那么这些 BFM 就需要是可综合的。
 
 <span id="图1.8"></span>
 <div align="center">
-  <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-080-TestbenchComponents.png" width=450px alt="图 1.8 Testbench 构件"/>
+  <img src="../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-080-TestbenchComponents.png" width=450px alt="图 1.8 Testbench 构件"/>
 </div>
 
 # 9. 分层 testbench
@@ -335,7 +335,7 @@ endmodule
 
 <span id="图1.9"></span>
 <div align="center">
-  <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-090-SignalAndCommandLlayers.png" width=500px alt="图 1.9 信号和命令层"/>
+  <img src="../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-090-SignalAndCommandLlayers.png" width=500px alt="图 1.9 信号和命令层"/>
 </div>
 
 在底部的**信号层** (*signal*)，包含 DUT 和把 DUT 连接到 testbench 的信号。
@@ -348,7 +348,7 @@ endmodule
 
 <span id="图1.10"></span>
 <div align="center">
-  <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-100-TestbenchWithFunctionalLlayerAdded.png" width=500px alt="图 1.10 加上功能层的 testbench"/>
+  <img src="../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-100-TestbenchWithFunctionalLlayerAdded.png" width=500px alt="图 1.10 加上功能层的 testbench"/>
 </div>
 
 ## 9.4. 场景层
@@ -357,7 +357,7 @@ endmodule
 
 <span id="图1.11"></span>
 <div align="center">
-  <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-110-TestbenchWithScenarioLayerAdded.png" width=500px alt="图 1.11 加上场景层的 testbench"/>
+  <img src="../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-110-TestbenchWithScenarioLayerAdded.png" width=500px alt="图 1.11 加上场景层的 testbench"/>
 </div>
 
 在 testbench **环境** (*environment*) 中的这些块 ([图 1.11](#图1.11) 虚线框内) 是在刚开始开发的时候画出来的。随着项目的进展，它们可能会有一些变化，也可能会加入一些功能，但是这些块对于每个独立的测试都是不应改变的。可以通过在代码中留下“hook”来做到这一点，这样即使这些块的行为需要在测试时改变，也不必重新编写代码。“hook”可以使用工厂模式 (factory patterns) 和回调函数 (callbacks) 来创建。
@@ -368,7 +368,7 @@ endmodule
 
 <span id="图1.12"></span>
 <div align="center">
-  <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-120-FullTestbenchWithAllLayers.png" width=500px alt="图 1.12 带着所有层次的完整 testbench"/>
+  <img src="../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-120-FullTestbenchWithAllLayers.png" width=500px alt="图 1.12 带着所有层次的完整 testbench"/>
 </div>
 
 这个顶层的测试 (test) 就像一个指挥官：他不演奏任何乐器，但引领着其他人的表演。测试包含了用于创建激励的约束。
@@ -394,7 +394,7 @@ Testbench 中是否需要所有的层次呢？答案要视 DUT 而定。设计�
 
 <span id="图1.13"></span>
 <div align="center">
-  <img src="https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-130-ConnectionsForTheDriver.png" width=120px alt="图 1.13 带着所有层次的完整 testbench"/>
+  <img src="../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-130-ConnectionsForTheDriver.png" width=120px alt="图 1.13 带着所有层次的完整 testbench"/>
 </div>
 
 <span id="例1.4"></span>

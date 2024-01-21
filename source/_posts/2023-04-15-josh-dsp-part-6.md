@@ -31,9 +31,9 @@ categories:
 
 | 基本运算单元 | 方框图 | 流图 |
 | :--: | :----: | :----: |
-单位延时 | ![单位延时方框图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-010-UnitDelayBlock.png!sign){width=150px}  | ![单位延时流图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-020-UnitDelayFlow.png!sign){width=150px}
-常数乘法器 | ![常数乘法器方框图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-030-MultiplierBlock.png!sign){width=150px} | ![常数乘法器流图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-040-MultiplierFlow.png!sign){width=150px}
-加法器 | ![加法器方框图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-050-AdderBlock.png!sign){width=150px} | ![加法器流图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-060-AdderFlow.png!sign){width=150px}
+单位延时 | ![单位延时方框图](../images/post/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-010-UnitDelayBlock.png){width=150px}  | ![单位延时流图](../images/post/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-020-UnitDelayFlow.png){width=150px}
+常数乘法器 | ![常数乘法器方框图](../images/post/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-030-MultiplierBlock.png){width=150px} | ![常数乘法器流图](../images/post/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-040-MultiplierFlow.png){width=150px}
+加法器 | ![加法器方框图](../images/post/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-050-AdderBlock.png){width=150px} | ![加法器流图](../images/post/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-060-AdderFlow.png){width=150px}
 
 <!-- more -->
 
@@ -62,7 +62,7 @@ H\left( z \right) =\frac{Y\left( z \right)}{X\left( z \right)}=\frac{\displaysty
 
 则系统框图可表示为
 
-![直接Ⅰ型系统框图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-070-Direct1SystemBlock.png!sign){width=500px}
+![直接Ⅰ型系统框图](../images/post/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-070-Direct1SystemBlock.png){width=500px}
 
 由此可得系统的两级输入输出的微分方程
 
@@ -76,7 +76,7 @@ H_2\left(z\right)=\left(1-\sum_{k=1}^{N}{a_kz^{-k}}\right)^{-1}=\frac{Y\left(z\r
 
 由微分方程可得直接Ⅰ型 IIR 滤波器的流图
 
-![直接Ⅰ型 IIR 滤波器的流图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-080-Direct1IIRFlow.png!sign){width=500px}
+![直接Ⅰ型 IIR 滤波器的流图](../images/post/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-080-Direct1IIRFlow.png){width=500px}
 
 ## 2.2. 直接Ⅱ型（典范型）
 
@@ -88,7 +88,7 @@ H\left( z \right) =\frac{Y\left( z \right)}{X\left( z \right)}=\frac{\displaysty
 
 将系统框图变为
 
-![直接Ⅱ型系统框图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-090-Direct2SystemBlock.png!sign){width=500px}
+![直接Ⅱ型系统框图](../images/post/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-090-Direct2SystemBlock.png){width=500px}
 
 由此可得系统的两级输入输出的微分方程
 
@@ -102,7 +102,7 @@ H_1\left(z\right)=\sum_{k=0}^{M}{b_kz^{-k}}=\frac{Y\left(z\right)}{W\left(z\righ
 
 由微分方程可得直接Ⅱ型 IIR 滤波器的流图
 
-![直接Ⅱ型 IIR 滤波器的流图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-100-Direct2IIRFlow.png!sign){width=400px}
+![直接Ⅱ型 IIR 滤波器的流图](../images/post/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-100-Direct2IIRFlow.png){width=400px}
 
 - 直接型 IIR 滤波器的结构特点
 
@@ -151,11 +151,11 @@ H\left(z\right)=A\prod_{k=1}^{L}\left[\frac{1+\beta_{1k}z^{-1}+\beta_{2k}z^{-2}}
 
 则系统框图可表示为
 
-![级联型 IIR 滤波器的系统框图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-110-CascadingIIRBlock.png!sign){width=700px}
+![级联型 IIR 滤波器的系统框图](../images/post/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-110-CascadingIIRBlock.png){width=700px}
 
 进一步可得级联型 IIR 滤波器的流图
 
-![级联型 IIR 滤波器的流图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-120-CascadingIIRFlow.png!sign){width=700px}
+![级联型 IIR 滤波器的流图](../images/post/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-120-CascadingIIRFlow.png){width=700px}
 
 - 级联型 IIR 滤波器的结构特点
 
@@ -179,7 +179,7 @@ H\left(z\right)=G_0+\sum_{k=1}^{N_1}\frac{A_k}{1-g_kz^{-1}}+\sum_{k=1}^{N_2}\fra
 
 可得 $M=N$ 时并联型 IIR 滤波器的系统框图和流图
 
-![并联型 IIR 滤波器的系统框图和流图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-130-ParallelIIRBlockFlow.png!sign){width=1000px}
+![并联型 IIR 滤波器的系统框图和流图](../images/post/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-130-ParallelIIRBlockFlow.png){width=1000px}
 
 - 并联型IIR滤波器的结构特点
 
@@ -218,7 +218,7 @@ y\left(n\right)=\sum_{k=0}^{N=1}h\left(k\right)x\left(n-k\right)=h\left(n\right)
 
 可得直接型 FIR 滤波器的流图
 
-![直接型 FIR 滤波器的流图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-140-Direct1FIRFlow.png!sign){width=600px}
+![直接型 FIR 滤波器的流图](../images/post/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-140-Direct1FIRFlow.png){width=600px}
 
 ## 3.2. 级联型
 
@@ -230,7 +230,7 @@ H\left(z\right)=\sum_{n=0}^{N-1}{h\left(n\right)z^{-n}}=\sum_{k=1}^{\left\lfloor
 
 可得级联型 FIR 滤波器的流图
 
-![级联型 FIR 滤波器的流图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-150-CascadingFIRFlow.png!sign){width=600px}
+![级联型 FIR 滤波器的流图](../images/post/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-150-CascadingFIRFlow.png){width=600px}
 
 - 级联型FIR滤波器的结构特点：
 
@@ -250,7 +250,7 @@ H\left( z \right) =\underset{H_c\left( z \right)}{\underbrace{\left( 1-z^{-N} \r
 
 ### 3.3.1. 梳状滤波器 $H_c\left(z\right)$
 
-![梳状滤波器](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-160-CombFilter.png!sign){width=800px}
+![梳状滤波器](../images/post/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-160-CombFilter.png){width=800px}
 
 &emsp;&emsp;子 FIR 系统 $H_c\left(z\right)=1-z^{-N}$ 是一个由 $N$ 节延迟单元组成的梳状滤波器，在单位圆上有 $N$ 个等分零点。可将梳状滤波器的频率响应写为
 
@@ -273,7 +273,7 @@ $$\begin{equation}
 
 &emsp;&emsp;将梳状滤波器和谐振柜级联可得到频率取样型 FIR 滤波器的结构
 
-![频率取样型 FIR 滤波器的结构](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-170-FrequencySampling.png!sign){width=600px}
+![频率取样型 FIR 滤波器的结构](../images/post/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-170-FrequencySampling.png){width=600px}
 
 - 频率取样型 FIR 滤波器的结构特点：
 
@@ -330,7 +330,7 @@ k&=1,2,\cdots,\frac{N}{2},&k为偶数
 \end{cases}
 \end{equation}$$
 
-![修正频率取样型](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-180-ModifiedFrequencySampling.png!sign){width=800px}
+![修正频率取样型](../images/post/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-180-ModifiedFrequencySampling.png){width=800px}
 
 &emsp;&emsp;当 $N$ 为偶数时，除了共轭根，还有一对实数根，分别位于 $k=0,\dfrac{N}{2}$ 两点，则此时系统函数为
 
@@ -352,7 +352,7 @@ H_0\left(z\right)=\frac{H\left(0\right)}{1-rz^{-1}},\ \ H_\frac{N}{2}\left(z\rig
 
 则修正频率取样型 FIR 滤波器的结构为
 
-![修正频率取样型 FIR 滤波器的结构](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-190-ModifiedFrequencySamplingFIRStructure.png!sign){width=600px}
+![修正频率取样型 FIR 滤波器的结构](../images/post/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-190-ModifiedFrequencySamplingFIRStructure.png){width=600px}
 
 - 修正频率取样型 FIR 滤波器的结构特点：
 
@@ -389,7 +389,7 @@ H\left(z\right)=\sum_{n=0}^{N-1}{h\left(n\right)z^{-n}}=\sum_{n=0}^{\frac{N}{2}-
 
 **当序列 $h\left(n\right)$ 偶对称时，取“$+$”号；当序列奇对称时，取“$-$”号**。则线性相位型 FIR 滤波器的结构为
 
-![线性相位型 FIR 滤波器的结构](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-200-LinearPhaseFIRStructure.png!sign){width=900px}
+![线性相位型 FIR 滤波器的结构](../images/post/2023-04-15-josh-dsp-part-6/2023-04-15-josh-dsp-part-6-200-LinearPhaseFIRStructure.png){width=900px}
 
 ## 3.5. 快速卷积型（略）
 

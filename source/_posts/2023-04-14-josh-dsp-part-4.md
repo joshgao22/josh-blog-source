@@ -114,11 +114,11 @@ X\left(k+\frac{N}{2}\right)&=X_1\left(k+\frac{N}{2}\right)+W_N^{\left(k+\frac{N}
 
 ## 3.2 蝶形运算流图符号
 
-![基-2 按时间抽取的 FFT 算法的鲽形图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-14-josh-dsp-part-4/2023-04-14-josh-dsp-part-4-010-Radix2DITFFTButterfly.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/80/dissolve/20/gravity/southeast/dx/5/dy/5){width=1000px}
+![基-2 按时间抽取的 FFT 算法的鲽形图](../images/post/2023-04-14-josh-dsp-part-4/2023-04-14-josh-dsp-part-4-010-Radix2DITFFTButterfly.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/80/dissolve/20/gravity/southeast/dx/5/dy/5){width=1000px}
 
 ## 3.3 8 点基-2 DIT-FFT 推导
 
-![8 点 radix-2 DIT-FFT 推导](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-14-josh-dsp-part-4/2023-04-14-josh-dsp-part-4-020-Radix2DITFFTDerivation.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/40/dissolve/20/gravity/southeast/dx/5/dy/5){width=1000px}
+![8 点 radix-2 DIT-FFT 推导](../images/post/2023-04-14-josh-dsp-part-4/2023-04-14-josh-dsp-part-4-020-Radix2DITFFTDerivation.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/40/dissolve/20/gravity/southeast/dx/5/dy/5){width=1000px}
 
 &emsp;&emsp;对于 8 点的序列，进行两次分解后每部分序列只含有两个点，可以直接计算 DFT。为了得到自然顺序输出的 DFT 序列，将第二级分解以后的结果作为输入。下面推导每级分解后序列的结果表示。
 
@@ -156,7 +156,7 @@ $$\begin{align}
 
 将上述各式的旋转因子统一为 $W_{\frac{N}{2}}^k=W_N^{2k}$，则一个 8 点的 DFT 可以分解为四个 $\dfrac{N}{4}$ 点的 DFT ，先做 $\dfrac{N}{4}$ 点的 DFT，再用相应的两个 $\dfrac{N}{4}$ 点 DFT 的结果合成 $\dfrac{N}{2}$ 点的 DFT，从而得到 $X_1\left(k\right)、X_2\left(k\right)$，最后组合成为 $N$ 点的 DFT。上述过程的运算流图如下左图，实际绘制按照如下右图即可。
 
-![8 点 radix-2 DIT-FFT 的蝶形图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-14-josh-dsp-part-4/2023-04-14-josh-dsp-part-4-030-8PointRadix2DITFFTButterfly.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/80/dissolve/20/gravity/southeast/dx/5/dy/5){width=1000px}
+![8 点 radix-2 DIT-FFT 的蝶形图](../images/post/2023-04-14-josh-dsp-part-4/2023-04-14-josh-dsp-part-4-030-8PointRadix2DITFFTButterfly.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/80/dissolve/20/gravity/southeast/dx/5/dy/5){width=1000px}
 
 ## 3.4 算法特点
 
@@ -255,15 +255,15 @@ X\left(2r\right)=\sum_{n=0}^{\frac{N}{2}-1}{x_1\left(n\right)W_{\frac{N}{2}}^{rn
 
 ## 4.2 蝶形运算流图符号
 
-![基-2 按频率抽取的 FFT 算法的蝶形图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-14-josh-dsp-part-4/2023-04-14-josh-dsp-part-4-040-Radix2DIFFFTButterfly.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/80/dissolve/20/gravity/southeast/dx/5/dy/5){width=1000px}
+![基-2 按频率抽取的 FFT 算法的蝶形图](../images/post/2023-04-14-josh-dsp-part-4/2023-04-14-josh-dsp-part-4-040-Radix2DIFFFTButterfly.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/80/dissolve/20/gravity/southeast/dx/5/dy/5){width=1000px}
 
 ## 4.3 8 点基-2 DIF-FFT 推导简述
 
-![8 点 radix-2 DIF-FFT 推导](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-14-josh-dsp-part-4/2023-04-14-josh-dsp-part-4-050-Radix2DIFFFTDerivation.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/40/dissolve/20/gravity/southeast/dx/5/dy/5){width=1000px}
+![8 点 radix-2 DIF-FFT 推导](../images/post/2023-04-14-josh-dsp-part-4/2023-04-14-josh-dsp-part-4-050-Radix2DIFFFTDerivation.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/40/dissolve/20/gravity/southeast/dx/5/dy/5){width=1000px}
 
 运算流图如下左图，实际绘制按照如下右图即可。
 
-![8 点 radix-2 DIF-FFT 的蝶形图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-14-josh-dsp-part-4/2023-04-14-josh-dsp-part-4-060-8PointRadix2DIFFFTButterfly.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/80/dissolve/20/gravity/southeast/dx/5/dy/5){width=1000px}
+![8 点 radix-2 DIF-FFT 的蝶形图](../images/post/2023-04-14-josh-dsp-part-4/2023-04-14-josh-dsp-part-4-060-8PointRadix2DIFFFTButterfly.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/80/dissolve/20/gravity/southeast/dx/5/dy/5){width=1000px}
 
 **对于任何流图，只要保持各节点所连的支路及其传输系数不变，则不论节点位置怎么排列，所得流图总是等效的，最后所得 DFT 结果也是正确的**，只是数据的提取和存放次序不同而已。
 
@@ -288,7 +288,7 @@ $$\begin{align}
 
 # 5. 基-2 DIT-FFT 和 基-2 DIF-FFT 的比较
 
-![radix-2 DIT-FFT 和 radix-2 DIF-FFT 的比较](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-14-josh-dsp-part-4/2023-04-14-josh-dsp-part-4-070-Radix2DIFFFTRadix2DIFFFTComparison.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/40/dissolve/20/gravity/southeast/dx/5/dy/5){width=1000px}
+![radix-2 DIT-FFT 和 radix-2 DIF-FFT 的比较](../images/post/2023-04-14-josh-dsp-part-4/2023-04-14-josh-dsp-part-4-070-Radix2DIFFFTRadix2DIFFFTComparison.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/40/dissolve/20/gravity/southeast/dx/5/dy/5){width=1000px}
 
 # 6. 分裂基 FFT 算法（split-radix FFT Method）
 
@@ -379,11 +379,11 @@ X\left(4r+3\right)=\displaystyle\sum_{n=0}^{\frac{N}{4}-1}{x_4^2\left(n\right)W_
 
 ## 6.2 L 蝶形运算流图符号
 
-![L 蝶形运算流图符号](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-14-josh-dsp-part-4/2023-04-14-josh-dsp-part-4-080-Radix24LButterfly.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/80/dissolve/20/gravity/southeast/dx/5/dy/5){width=1000px}
+![L 蝶形运算流图符号](../images/post/2023-04-14-josh-dsp-part-4/2023-04-14-josh-dsp-part-4-080-Radix24LButterfly.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/80/dissolve/20/gravity/southeast/dx/5/dy/5){width=1000px}
 
 ## 6.3 8 点 radix-2/4 FFT举例
 
-![8 点 radix-2/4 FFT举例](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-14-josh-dsp-part-4/2023-04-14-josh-dsp-part-4-090-8PointRadix24LButterfly.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/80/dissolve/20/gravity/southeast/dx/5/dy/5){width=600px}
+![8 点 radix-2/4 FFT举例](../images/post/2023-04-14-josh-dsp-part-4/2023-04-14-josh-dsp-part-4-090-8PointRadix24LButterfly.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/80/dissolve/20/gravity/southeast/dx/5/dy/5){width=600px}
 
 ## 6.4 运算量分析
 
@@ -441,7 +441,7 @@ X_2\left(k\right)=-{jX}_{op}\left(k\right)=-\frac{j}{2}\left[X\left(k\right)-X^\
 \end{equation}$$
 
 蝶形图如下：
-![用一个 N点 DFT 同时计算两个 N 点实序列的 DFT的蝶形图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-14-josh-dsp-part-4/2023-04-14-josh-dsp-part-4-100-ComputeNPointComplxDFT.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/40/dissolve/20/gravity/southeast/dx/5/dy/5){width=500px}
+![用一个 N点 DFT 同时计算两个 N 点实序列的 DFT的蝶形图](../images/post/2023-04-14-josh-dsp-part-4/2023-04-14-josh-dsp-part-4-100-ComputeNPointComplxDFT.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/40/dissolve/20/gravity/southeast/dx/5/dy/5){width=500px}
 
 ## 7.2 用一个 $N$ 点 DFT 计算一个 $2N$ 点实序列的 DFT
 
@@ -495,7 +495,7 @@ X\left(k+N\right)=X_1\left(k\right)-W_{2N}^kX_2\left(k\right),\ \ k=0,1,\cdots,N
 
 蝶形图如下：
 
-![用一个 N 点 DFT 计算一个 2N 点实序列的 DFT的蝶形图](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-14-josh-dsp-part-4/2023-04-14-josh-dsp-part-4-110-Compute2NPointRealDFT.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/40/dissolve/20/gravity/southeast/dx/5/dy/5){width=500px}
+![用一个 N 点 DFT 计算一个 2N 点实序列的 DFT的蝶形图](../images/post/2023-04-14-josh-dsp-part-4/2023-04-14-josh-dsp-part-4-110-Compute2NPointRealDFT.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/40/dissolve/20/gravity/southeast/dx/5/dy/5){width=500px}
 
 # 参考文献
 

@@ -264,7 +264,7 @@ X_e\left(e^{j\omega}\right)=\frac{1}{2}\left[X\left(e^{j\omega}\right)+X^\ast\le
 
 # 9. 傅里叶变换、拉氏变换和 $z$ 变换的关系
 
-![傅里叶变换、拉氏变换和 $z$ 变换的关系](https://josh-blog-1257563604.cos.ap-beijing.myqcloud.com/img/2023-04-14-josh-dsp-part-1/2023-04-14-josh-dsp-part-1-010-RelationshipBetweenTransform.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/80/dissolve/20/gravity/southeast/dx/5/dy/5){width=600px}
+![傅里叶变换、拉氏变换和 $z$ 变换的关系](../images/post/2023-04-14-josh-dsp-part-1/2023-04-14-josh-dsp-part-1-010-RelationshipBetweenTransform.png?imageMogr2/thumbnail/!100p|watermark/2/text/QEpvc2ggR2Fv/font/YWhyb25iZC50dGY=/fontsize/80/dissolve/20/gravity/southeast/dx/5/dy/5){width=600px}
 
 # 10. 参考文献
 
