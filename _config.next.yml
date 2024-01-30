@@ -154,7 +154,7 @@ site_state: true
 # Key is the link label showing to end users.
 # Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.
 social:
-  GitHub: https://github.com/JoshGao-bit || fab fa-github
+  GitHub: https://github.com/joshgao22 || fab fa-github
   E-Mail: mailto:josh_gao@foxmail.com || fa fa-envelope
   #Weibo: https://weibo.com/yourname || fab fa-weibo
   #Google: https://plus.google.com/yourname || fab fa-google
@@ -298,7 +298,7 @@ related_posts:
 # Easily browse and edit blog source code online.
 post_edit:
   enable: false
-  url: https://github.com/JoshGao-bit/JoshGao-bit.github.io/tree/src/source/ # Link for view source
+  url: https://github.com/joshgao22/joshgao22.github.io/tree/src/source/ # Link for view source
   #url: https://github.com/user-name/repo-name/edit/branch-name/subdirectory-name/ # Link for fork & edit
 
 # Show previous post and next post in post footer if exists
@@ -408,7 +408,7 @@ bookmark:
 # `Follow me on GitHub` banner in the top-right corner.
 github_banner:
   enable: false
-  permalink: https://github.com/JoshGao-bit
+  permalink: https://github.com/joshgao22
 
 
 # ---------------------------------------------------------------
@@ -714,11 +714,11 @@ livere_uid: # <your_uid>
 # For more information: https://gitalk.github.io
 gitalk:
   enable: true
-  github_id: JoshGao-bit                                  # GitHub repo owner
+  github_id: joshgao22                                    # GitHub repo owner
   repo: Josh-Blog-Comment                                 # Repository name to store issues
   client_id: eb4dc2ea750519598663                         # GitHub Application Client ID
   client_secret: 4fe0fb49aeb8fac49c609796b214a99a6df044cf # GitHub Application Client Secret
-  admin_user: JoshGao-bit                                 # GitHub repo owner and collaborators, only these guys can initialize gitHub issues
+  admin_user: joshgao22                                   # GitHub repo owner and collaborators, only these guys can initialize gitHub issues
   distraction_free_mode: true # Facebook-like distraction free mode
   # When the official proxy is not available, you can change it to your own proxy address
   proxy: https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token # This is official proxy address

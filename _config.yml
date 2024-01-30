@@ -119,7 +119,7 @@ deploy:
     repo: git@e.coding.net:josh-gao/josh-blog/josh-blog.git
     branch: master
   - type: git
-    repo: https://github.com/joshgao22/JoshGao-bit.github.io.git
+    repo: https://github.com/joshgao22/joshgao22.github.io.git
     branch: master
 
 # MathJax [Redundant]
