@@ -96,16 +96,16 @@ date: 2024-01-30 17:12:58
 假设有 $K$ 个信源，位于 $\boldsymbol{\theta}\triangleq[\theta_1,\cdots,\theta_K]$，设快拍数为 $N$，则到达 $M$ 元阵列的接收快拍可表示为 $M$ 维矢量
 
 $$
-\boldsymbol{y}(n) = \boldsymbol{A}(\boldsymbol{\theta}) \boldsymbol{s}(n)+\boldsymbol{e}(n),\quad n=1,\cdots,N
+\mathbf{y}(n) = \mathbf{A}(\boldsymbol{\theta}) \mathbf{s}(n)+\mathbf{e}(n),\quad n=1,\cdots,N
 $$
 
 其中
 
-* 阵列流形/导向矩阵：$\boldsymbol{A}(\boldsymbol{\theta})\triangleq[\boldsymbol{a}(\theta_1),\cdots,\boldsymbol{a}(\theta_K)]$，$\{\boldsymbol{a}(\theta_k)\in\mathbb{C}^{M\times 1}\}_{k=1}^K$，由阵列几何结构和信源的相对位置关系决定
+* 阵列流形/导向矩阵：$\mathbf{A}(\boldsymbol{\theta})\triangleq[\mathbf{a}(\theta_1),\cdots,\mathbf{a}(\theta_K)]$，$\{\mathbf{a}(\theta_k)\in\mathbb{C}^{M\times 1}\}_{k=1}^K$，由阵列几何结构和信源的相对位置关系决定
 
-* 信源：$\boldsymbol{s}(n)\triangleq[\boldsymbol{s}_1(n),\cdots,\boldsymbol{s}_K(n)]$
+* 信源：$\mathbf{s}(n)\triangleq[s_1(n),\cdots,s_K(n)]^\mathrm{T}$
 
-* 噪声：$\boldsymbol{e}(n)\triangleq[\boldsymbol{e}_1(n),\cdots,\boldsymbol{e}_M(n)]$
+* 噪声：$\mathbf{e}(n)\triangleq[e_1(n),\cdots,e_M(n)]^\mathrm{T}$
 
 由于实际信号数量未知，因此 $K$ 可以看做是扫描格点的数量，这也是稀疏算法可以在 DOA 估计中应用的原因。
 
@@ -113,30 +113,30 @@ $$
 
 > IAA-APES 是一种基于加权最小二乘（Weighted Least Square, WLS）的数据相关非参数化算法。
 
-将每个格点的功率记在对角阵的对角线元素中：$\boldsymbol{P}\in\mathbb{C}^{K\times K}$
+将每个格点的功率记在对角阵的对角线元素中：$\mathbf{P}\in\mathbb{C}^{K\times K}$
 
 $$
 P_k = \frac{1}{N}\sum_{n=1}^N | s_k(n)|^2, \quad k = 1,\cdots,K
 $$
 
-则干扰（对于当前方向 $\theta_k$ 而言，其他方向的信号也算作干扰）和噪声协方差矩阵 $\boldsymbol{Q}(\theta_k)\in\mathbb{C}^{M\times M}$
+则干扰（对于当前方向 $\theta_k$ 而言，其他方向的信号也算作干扰）和噪声协方差矩阵 $\mathbf{Q}(\theta_k)\in\mathbb{C}^{M\times M}$
 
 $$
 \begin{align*}
-  \boldsymbol{Q}(\theta_k) &= \mathbb{E}[\boldsymbol{y}(n)\boldsymbol{y}^{\mathrm{H}}(n)] - \mathbb{E}\left[\left(\boldsymbol{a}\left(\theta_k\right)\boldsymbol{s}(n)\right)(\boldsymbol{a}(\theta_k)\boldsymbol{s}(n))^{\mathrm{H}}\right]\\
-  &= \mathbb{E}\left[\boldsymbol{A}\left(\theta\right)\boldsymbol{s}(n)\boldsymbol{s}^{\mathrm{H}}(n)\boldsymbol{A}^\mathrm{H}(\theta)\right] - \mathbb{E}\left[\boldsymbol{a}\left(\theta_k\right)\boldsymbol{s}(n)\boldsymbol{s}^{\mathrm{H}}(n)\boldsymbol{a}^{\mathrm{H}}(\theta_k)\right]\\
-  &=\boldsymbol{A}(\boldsymbol{\theta}) \boldsymbol{P} \boldsymbol{A}^{\mathrm{H}}(\boldsymbol{\theta}) - P_k \boldsymbol{a}\left(\theta_k\right) \boldsymbol{a}^{\mathrm{H}}\left(\theta_k\right) \\
-  &\triangleq \boldsymbol{R} - P_k \boldsymbol{a}\left(\theta_k\right) \boldsymbol{a}^{\mathrm{H}}\left(\theta_k\right)
+  \mathbf{Q}(\theta_k) &= \mathbb{E}[\mathbf{y}(n)\mathbf{y}^{\mathrm{H}}(n)] - \mathbb{E}\left[\left(\mathbf{a}\left(\theta_k\right)\mathbf{s}(n)\right)(\mathbf{a}(\theta_k)\mathbf{s}(n))^{\mathrm{H}}\right]\\
+  &= \mathbb{E}\left[\mathbf{A}\left(\theta\right)\mathbf{s}(n)\mathbf{s}^{\mathrm{H}}(n)\mathbf{A}^\mathrm{H}(\theta)\right] - \mathbb{E}\left[\mathbf{a}\left(\theta_k\right)\mathbf{s}(n)\mathbf{s}^{\mathrm{H}}(n)\mathbf{a}^{\mathrm{H}}(\theta_k)\right]\\
+  &=\mathbf{A}(\boldsymbol{\theta}) \mathbf{P} \mathbf{A}^{\mathrm{H}}(\boldsymbol{\theta}) - P_k \mathbf{a}\left(\theta_k\right) \mathbf{a}^{\mathrm{H}}\left(\theta_k\right) \\
+  &\triangleq \mathbf{R} - P_k \mathbf{a}\left(\theta_k\right) \mathbf{a}^{\mathrm{H}}\left(\theta_k\right)
 \end{align*}
 $$
 
 则 WLS 的代价函数为
 
 $$
-\sum_{n=1}^N \left\| \boldsymbol{y}(n) - s_k(n) \boldsymbol{a}(\theta_k) \right\|^2_{\boldsymbol{Q^{-1}(\theta_k)}}
+\sum_{n=1}^N \left\| \mathbf{y}(n) - s_k(n) \mathbf{a}(\theta_k) \right\|^2_{\mathbf{Q}^{-1}(\theta_k)}
 $$
 
-其中 $\left\| \boldsymbol{x} \right\|^2_{\boldsymbol{Q}^{-1}(\theta_k)}\triangleq\boldsymbol{x}^{\mathrm{H}}\boldsymbol{Q}^{-1}(\theta_k)\boldsymbol{x}$。
+其中 $\left\| \mathbf{x} \right\|^2_{\mathbf{Q}^{-1}(\theta_k)}\triangleq\mathbf{x}^{\mathrm{H}}\mathbf{Q}^{-1}(\theta_k)\mathbf{x}$。
 
 > ![ChatGPT 问答](../images/post/2024-01-30-paper-yardibiSourceLocalizationSensing2010/2024-01-30-paper-yardibiSourceLocalizationSensing2010-030-ChatGPT1.png){width=700px}
 >
@@ -146,8 +146,8 @@ $$
 
 $$
 \begin{align*}
-\hat{s}_k(n) &= \frac{\boldsymbol{a}^{\mathrm{H}}(\theta_k) \boldsymbol{Q}^{-1}(\theta_k) \boldsymbol{y}(n)}{\boldsymbol{a}^{\mathrm{H}}(\theta_k) \boldsymbol{Q}^{-1}(\theta_k) \boldsymbol{a}(\theta_k)} \\
-  &= \frac{\boldsymbol{a}^{\mathrm{H}}(\theta_k) \boldsymbol{R}^{-1} \boldsymbol{y}(n)}{\boldsymbol{a}^{\mathrm{H}}(\theta_k) \boldsymbol{R}^{-1} \boldsymbol{a}(\theta_k)} \\
+\hat{s}_k(n) &= \frac{\mathbf{a}^{\mathrm{H}}(\theta_k) \mathbf{Q}^{-1}(\theta_k) \mathbf{y}(n)}{\mathbf{a}^{\mathrm{H}}(\theta_k) \mathbf{Q}^{-1}(\theta_k) \mathbf{a}(\theta_k)} \\
+  &= \frac{\mathbf{a}^{\mathrm{H}}(\theta_k) \mathbf{R}^{-1} \mathbf{y}(n)}{\mathbf{a}^{\mathrm{H}}(\theta_k) \mathbf{R}^{-1} \mathbf{a}(\theta_k)} \\
 \end{align*}, \quad n = 1,\cdots,N
 $$
 
@@ -155,23 +155,23 @@ $$
 
 ![IAA-APES 算法](../images/post/2024-01-30-paper-yardibiSourceLocalizationSensing2010/2024-01-30-paper-yardibiSourceLocalizationSensing2010-050-IAA-APES.png){width=600px}
 
-* IAA-APES 由上表给出，由于 IAA-APES 需要 $\boldsymbol{R}$，且 $\boldsymbol{R}$ 依赖于未知信号功率，因此必须用迭代来实现。
+* IAA-APES 由上表给出，由于 IAA-APES 需要 $\mathbf{R}$，且 $\mathbf{R}$ 依赖于未知信号功率，因此必须用迭代来实现。
 
-* $\boldsymbol{P}$ 和 $\boldsymbol{R}$ 由信号的估计得出，而非直接由快拍得出。
+* $\mathbf{P}$ 和 $\mathbf{R}$ 由信号的估计得出，而非直接由快拍得出。
 
 * 初始 $P_k$ 由 DAS 获得，并进行归一化
 
   $$
   \begin{align*}
-    \hat{P}_k &= \displaystyle\frac{1}{(\boldsymbol{a}^{\mathrm{H}}(\theta_k)\boldsymbol{a}(\theta_k))^2 N} \sum_{n=1}^{N}\left| \boldsymbol{a}^{\mathrm{H}}(\theta_k) \boldsymbol{y}(n) \right|^2
+    \hat{P}_k &= \displaystyle\frac{1}{(\mathbf{a}^{\mathrm{H}}(\theta_k)\mathbf{a}(\theta_k))^2 N} \sum_{n=1}^{N}\left| \mathbf{a}^{\mathrm{H}}(\theta_k) \mathbf{y}(n) \right|^2
     \\
-    &=\displaystyle\frac{1}{(\boldsymbol{a}^{\mathrm{H}}(\theta_k)\boldsymbol{a}(\theta_k))^2 N} \sum_{n=1}^{N}\left| \boldsymbol{a}^{\mathrm{H}}(\theta_k) \boldsymbol{a}(\theta_k) \boldsymbol{s}(n) \right|^2 \\
+    &=\displaystyle\frac{1}{(\mathbf{a}^{\mathrm{H}}(\theta_k)\mathbf{a}(\theta_k))^2 N} \sum_{n=1}^{N}\left| \mathbf{a}^{\mathrm{H}}(\theta_k) \mathbf{a}(\theta_k) \mathbf{s}(n) \right|^2 \\
   \end{align*}
   $$
 
 * 经验结论：IAA-APES 的性能在 15 次迭代后就提升不大了。
 
-* 由于 $\boldsymbol{P}$ 具有对角结构，所以对少量快拍和相干源都适用。
+* 由于 $\mathbf{P}$ 具有对角结构，所以对少量快拍和相干源都适用。
 
 ### IAA-APES\&BIC
 
@@ -183,15 +183,15 @@ $$
 
 其中
 
-* $\text{BIC}_i(\eta) = 2MN \ln \left( \displaystyle\sum_{n=1}^N \left\| \boldsymbol{y}(n) - \sum_{j \in \{ \mathcal{I} \cup i \}} \boldsymbol{a}(\theta_j) \hat{\boldsymbol{s}}_j (n) \right\|_2^2 \right) + 3\eta \ln (2MN)$
+* $\text{BIC}_i(\eta) = 2MN \ln \left( \displaystyle\sum_{n=1}^N \left\| \mathbf{y}(n) - \sum_{j \in \{ \mathcal{I} \cup i \}} \mathbf{a}(\theta_j) \hat{\mathbf{s}}_j (n) \right\|_2^2 \right) + 3\eta \ln (2MN)$
 
-  * 也即，将使得接收快拍 $\boldsymbol{y}(n)$ 和估计信号 $\displaystyle\sum_{j \in \{ \mathcal{I} \cup i \}} \boldsymbol{a}(\theta_j) \hat{\boldsymbol{s}}_j (n)$ 的距离最小的 index 作为峰值的 index
+  * 也即，将使得接收快拍 $\mathbf{y}(n)$ 和估计信号 $\displaystyle\sum_{j \in \{ \mathcal{I} \cup i \}} \mathbf{a}(\theta_j) \hat{\mathbf{s}}_j (n)$ 的距离最小的 index 作为峰值的 index
 
 * $\eta = |\mathcal{I}| + 1$，$|\mathcal{I}|$ 表示集合 $\mathcal{I}$ 的大小
 
 * $i$ 表示当前峰的 index
 
-* $\{\hat{\boldsymbol{s}}_j (n)\}_{n=1}^N$ 是 IEE-APES 在 $\theta_j,j\in\{\mathcal{I}\cup i\}$ 方向的波形估计
+* $\{\hat{\mathbf{s}}_j (n)\}_{n=1}^N$ 是 IEE-APES 在 $\theta_j,j\in\{\mathcal{I}\cup i\}$ 方向的波形估计
 
 * 第二项不影响峰值选择（选多少个峰），但是影响峰值数量的选择（留多少个峰）
 
