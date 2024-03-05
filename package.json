@@ -12,7 +12,7 @@
     "version": "7.1.1"
   },
   "dependencies": {
-    "@next-theme/plugins": "^8.19.1",
+    "@next-theme/plugins": "^8.19.2",
     "hexo": "^7.1.1",
     "hexo-abbrlink": "^2.2.1",
     "hexo-deployer-git": "^4.0.0",
