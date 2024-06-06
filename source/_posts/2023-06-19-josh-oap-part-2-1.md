@@ -1,5 +1,5 @@
 ---
-title: 'Josh''s Notes: 最优阵列处理（Part 2.1 —— 谱加权）'
+title: "Josh's Note — 最优阵列处理<br>Part 2.1 谱加权"
 mathjax: true
 comments: true
 copyright: true

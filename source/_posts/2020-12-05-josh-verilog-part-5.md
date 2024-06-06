@@ -1,5 +1,5 @@
 ---
-title: "Josh's Notes: Verilog（Part 5 — RTL 设计与编码指导）"
+title: "Josh's Note — Verilog<br>Part 5 RTL 设计与编码指导"
 mathjax: true
 comments: true
 copyright: true

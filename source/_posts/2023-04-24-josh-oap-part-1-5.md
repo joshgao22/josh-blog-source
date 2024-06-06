@@ -1,5 +1,5 @@
 ---
-title: 'Josh''s Notes: 最优阵列处理（Part 1.5 —— 阵列性能度量指标）'
+title: "Josh's Note — 最优阵列处理<br>Part 1.5 阵列性能度量指标"
 mathjax: true
 comments: true
 copyright: true

@@ -1,5 +1,5 @@
 ---
-title: "Josh's Notes: Verilog（Part 3 — 描述方式和设计层次）"
+title: "Josh's Note — Verilog<br>Part 3 描述方式和设计层次"
 date: 2020-11-30 00:57:49
 tags:
   - Verilog

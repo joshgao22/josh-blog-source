@@ -1,5 +1,5 @@
 ---
-title: "Josh's Notes: Verilog（Part 2 — Verilog 语言基础）"
+title: "Josh's Note — Verilog<br>Part 2 Verilog 语言基础"
 date: 2020-11-28 11:42:50
 tags:
   - Verilog

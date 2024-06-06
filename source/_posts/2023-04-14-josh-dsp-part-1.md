@@ -1,5 +1,5 @@
 ---
-title: "Josh's Review: 数字信号处理（Part 1 — 离散时间信号和系统分析基础）"
+title: "Josh's Review — 数字信号处理<br>Part 1 离散时间信号和系统分析基础"
 mathjax: true
 comments: true
 copyright: true

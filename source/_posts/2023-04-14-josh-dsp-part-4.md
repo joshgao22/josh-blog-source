@@ -1,5 +1,5 @@
 ---
-title: "Josh's Review: 数字信号处理（Part 4 — 快速傅里叶变换 FFT）"
+title: "Josh's Review — 数字信号处理<br>Part 4 快速傅里叶变换 FFT"
 mathjax: true
 comments: true
 copyright: true

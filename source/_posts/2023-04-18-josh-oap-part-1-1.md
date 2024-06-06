@@ -1,5 +1,5 @@
 ---
-title: 'Josh''s Notes: 最优阵列处理（Part 1.1 —— 频率-波数响应和波束方向图）'
+title: "Josh's Note — 最优阵列处理<br>Part 1.1 频率-波数响应和波束方向图"
 mathjax: true
 comments: true
 copyright: true

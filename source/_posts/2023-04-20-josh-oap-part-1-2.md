@@ -1,5 +1,5 @@
 ---
-title: 'Josh''s Notes: 最优阵列处理（Part 1.2 —— 均匀线阵模型）'
+title: "Josh's Note — 最优阵列处理<br>Part 1.2 均匀线阵模型"
 mathjax: true
 comments: true
 copyright: true

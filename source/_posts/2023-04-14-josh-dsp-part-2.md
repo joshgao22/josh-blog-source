@@ -1,5 +1,5 @@
 ---
-title: "Josh's Review: 数字信号处理（Part 2 — 离散傅里叶级数 DFS）"
+title: "Josh's Review — 数字信号处理<br>Part 2 离散傅里叶级数 DFS"
 mathjax: true
 comments: true
 copyright: true

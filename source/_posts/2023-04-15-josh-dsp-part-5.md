@@ -1,5 +1,5 @@
 ---
-title: "Josh's Review: 数字信号处理（Part 5 — 部分 FFT 蝶形图）"
+title: "Josh's Review — 数字信号处理<br>Part 5 部分 FFT 蝶形图"
 mathjax: true
 comments: true
 copyright: true

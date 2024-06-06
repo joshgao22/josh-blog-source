@@ -1,5 +1,5 @@
 ---
-title: "Josh's Notes: Verilog（Part 6 —— 如何写好状态机）"
+title: "Josh's Note — Verilog<br>Part 6 如何写好状态机"
 mathjax: false
 comments: true
 copyright: true

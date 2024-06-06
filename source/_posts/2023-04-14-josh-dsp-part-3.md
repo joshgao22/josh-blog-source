@@ -1,5 +1,5 @@
 ---
-title: "Josh's Review: 数字信号处理（Part 3 — 离散傅里叶变换 DFT）"
+title: "Josh's Review — 数字信号处理<br>Part 3 离散傅里叶变换 DFT"
 mathjax: true
 comments: true
 copyright: true

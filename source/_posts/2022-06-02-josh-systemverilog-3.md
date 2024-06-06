@@ -1,5 +1,5 @@
 ---
-title: "Josh's Notes: SystemVerilog 验证（Part 3 — 过程语句和子程序）"
+title: "Josh's Note — SystemVerilog 验证<br>Part 3 过程语句和子程序"
 mathjax: true
 comments: true
 copyright: true

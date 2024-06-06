@@ -1,5 +1,5 @@
 ---
-title: "Josh's Review: 数字信号处理（Part 6 — 数字滤波器的基本结构）"
+title: "Josh's Review — 数字信号处理<br>Part 6 数字滤波器的基本结构"
 mathjax: true
 comments: true
 copyright: true
