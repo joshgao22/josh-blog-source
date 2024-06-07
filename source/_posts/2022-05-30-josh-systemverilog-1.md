@@ -24,7 +24,7 @@ categories:
 
 验证工程师能学到的最重要的原则是“Bugs are good”，不要因为害怕 bug 而不敢 debug，每次找到 bug 都应该及时告警并记录下来。任何一个项目中都不可能没有 bug，所以在流片之前每发现一个 bug 都意味着用户手中的产品少一个 bug。我们应该尽可能细致深入地去检验设计，找出所有可能存在的 bug，尽管有时候这些 bug 可能很容易修复。
 
-本文需要 Verilog 语言基础，面向对 SystemVerilog HVL (Hard­ware Verification Language, 硬件验证语言) 感兴趣的读者。与 HDL (Hardware Desription Language, 硬件描述语言) 相比，HVL 具有一些特别的性质：
+本文需要 Verilog 语言基础，面向对 SystemVerilog HVL (Hard­ware Verification Language, 硬件验证语言) 感兴趣的读者。与 HDL (Hardware Description Language, 硬件描述语言) 相比，HVL 具有一些特别的性质：
 
   1. **约束下的随机激励生成** (*Constrained-random stimulus generation*)。
   2. **功能覆盖率** (*Functional coverage*)。
@@ -86,21 +86,19 @@ Testbench 的用途在于**确定 DUT 的正确性**。包含下列步骤：
 
 这种渐进的方法比较容易取得稳步的进展，因而很受那些喜欢看到项目持续向前推进管理者的欢迎。由于创建每个激励向量时并不需要什么基础，所以定向测试的结果也会很快得到。只要给予足够的时间和人力，定向测试对于大部分设计验证来讲都是可以胜任的。
 
-[图 1.1](#图1.1) 显示了定向测试如何逐步覆盖验证计划中的每个特性。每个测试都针对一个特别的设计元素集合。**如果有足够的时间**，可以写出 100% 覆盖整个验证计划所需要的全部测试。
+[图 1](#图1) 显示了定向测试如何逐步覆盖验证计划中的每个特性。每个测试都针对一个特别的设计元素集合。**如果有足够的时间**，可以写出 100% 覆盖整个验证计划所需要的全部测试。
 
-<span id="图1.1"></span>
-<div align="center">
-  <img src="../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-010-DirectedTestProgressOverTime.png" width=500px alt="图 1.1 定向测试随时间的进展"/>
-</div>
+<a id="图1"></a>
 
-如果没有足够的时间和资源来完成定向测试该怎么办？如[图 1.1](#图1.1)，当在时间往前推进时，覆盖率 (coverage) 可能维持不变。如果设计复杂度翻倍，那么测试就需要增加一倍的时间或者人力，而这种情况是我们所不愿意看到的。因此为了达到 100% 覆盖率的目标，需要一种可以更快找出 bug 的方法。
+![图 1 定向测试随时间的进展](../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-010-DirectedTestProgressOverTime.png){width=500px}
 
-[图 1.2](#图1.2) 所示为整个设计空间和各种特性被定向测试案例覆盖的情形。在设计空间里有很多特性 (feature)，其中有些存在 bug，需要编写各种测试 (test) 去覆盖所有的特性并找出 bug。
+如果没有足够的时间和资源来完成定向测试该怎么办？如[图 1](#图1)，当在时间往前推进时，覆盖率 (coverage) 可能维持不变。如果设计复杂度翻倍，那么测试就需要增加一倍的时间或者人力，而这种情况是我们所不愿意看到的。因此为了达到 100% 覆盖率的目标，需要一种可以更快找出 bug 的方法。
 
-<span id="图1.2"></span>
-<div align="center">
-  <img src="../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-020-DirectedTestCoverage.png" width=800px alt="图 1.2 定向测试的覆盖率"/>
-</div>
+[图 2](#图2) 所示为整个设计空间和各种特性被定向测试案例覆盖的情形。在设计空间里有很多特性 (feature)，其中有些存在 bug，需要编写各种测试 (test) 去覆盖所有的特性并找出 bug。
+
+<a id="图2"></a>
+
+![图 2 定向测试的覆盖率](../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-020-DirectedTestCoverage.png){width=800px}
 
 # 4. 方法学基础
 
@@ -114,12 +112,11 @@ Testbench 的用途在于**确定 DUT 的正确性**。包含下列步骤：
 
 这些原则是相关联的。随机激励对于测试复杂设计十分关键。**定向测试可以找出设计中预期的 bug，而随机测试则能够找出预料不到的 bug**。当使用随机激励时，需要用功能覆盖率来评估验证的进展情况。一旦开始使用自动生成的激励，就需要一种能够**自动预测结果**的方式——通常是记分板或者参考模型。建立包括自预测在内的 testbench 基础设施，是一件工作量很大的事情。分层 testbench (layered testbench) 能够把问题分解为容易处理的小块，这样有助于控制复杂度。事件处理器 (transactors) 能够为构建这些小块提供有用的模式。在适当的规划下，可以建立一个 testbench 所需的基础设施，它们能在所有测试中通用并且不需要经常修改，只需要在某些地方放置“hook”，以便测试能够在这些地方执行调整激励或注入错误等特定操作。相反，针对单一测试的个性化代码必须与 testbench 分开，这样可以避免增加基础设施的复杂度。
 
-建立这种风格的 testbench 所需的时间要比传统的定向 testbench 多得多——尤其是自检的部分。其结果是，可能需要很长的准备时间才能进行第一次可运行的测试。这会给项目管理带来阵痛，所以需要在测试时间表上把这部分考虑进去。从[图 1.3](#图1.3) 中可以看到，第一个随机测试运行前有比较长的初始延迟。
+建立这种风格的 testbench 所需的时间要比传统的定向 testbench 多得多——尤其是自检的部分。其结果是，可能需要很长的准备时间才能进行第一次可运行的测试。这会给项目管理带来阵痛，所以需要在测试时间表上把这部分考虑进去。从[图 3](#图3) 中可以看到，第一个随机测试运行前有比较长的初始延迟。
 
-<span id="图1.3"></span>
-<div align="center">
-  <img src="../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-030-ConstraineRandomTestProgressOverTimeVSDirectedTesting.png" width=500px alt="图 1.3 约束下的随机测试与定向测试随时间的进度比较"/>
-</div>
+<a id="图3"></a>
+
+![图 3 约束下的随机测试与定向测试随时间的进度比较](../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-030-ConstraineRandomTestProgressOverTimeVSDirectedTesting.png){width=500px}
 
 随机测试的前期准备工作看起来似乎令人不满意，但是其回报却很高。每个随机测试都可以共享这个通用的 testbench，不像每个定向测试都要从零开始编写。每个随机测试都会包含一部分代码，将激励约束到特定的方向上并触发期望的异常，比如创建一个协议违例。其结果是，约束下的随机 testbench 找起 bug 来会比很多定向测试快很多。随着 bug 出现率的下降，应该创建新的随机约束去探索新的区域。最后的几个 bug 可能只能通过定向测试来发现，但是绝大部分的 bug 都应该会在随机测试中出现。
 
@@ -127,27 +124,25 @@ Testbench 的用途在于**确定 DUT 的正确性**。包含下列步骤：
 
 虽然我们希望仿真器能产生随机激励，但同时又**不希望这些激励数值完全随机**。使用 SystemVerilog 语言可以描述激励的格式 (例如，地址是 32 位；操作码是 ADD 、 SUB 或 STORE；长度 < 32 字节)，然后让仿真器产生满足约束的数值。这些数值会被发送到设计中去，同时也会被发送到一个负责预测仿真结果的高层模块中去。设计的实际输出最终需要和预测输出做对比。
 
-[图 1.4](#图1.4) 所示为约束下的随机测试在整个设计空间中的覆盖率。
+[图 4](#图4) 所示为约束下的随机测试在整个设计空间中的覆盖率。
 
 - 值得注意的是，**一个随机测试的覆盖范围往往比一个定向测试大**。多出来的覆盖部分可能会与其他测试发生交叠，或者探测到事先没有预料到的新区域 (new area)。
 - 在这些新区域中发现 bug 是一件幸运的事情。如果这些对新区域的测试不合法，则需要编写更多的约束去阻止随机测试产生非法的功能。
 - 对于那些约束下的随机测试覆盖不到的地方，可能还需要编写一些定向测试。
 
-<span id="图1.4"></span>
-<div align="center">
-  <img src="../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-040-ConstrainedRandomTestCoverage.png" width=800px alt="图 1.4 约束下的随机测试覆盖率"/>
-</div>
+<a id="图4"></a>
 
-[图 1.5](#图1.5) 所示为达到完全覆盖的技术路线：
+![图 4 约束下的随机测试覆盖率](../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-040-ConstrainedRandomTestCoverage.png){width=800px}
+
+[图 5](#图5) 所示为达到完全覆盖的技术路线：
 
 1. 从左上角的基本的约束下的随机测试 (constrained random test) 开始，使用不同的种子 (seed) 运行。
-2. 当我们查看功能覆盖率 (functional covrage) 报告时，注意找出覆盖率中的间隙 (hole)，即覆盖盲区。
-3. 针对这些盲区进行最小程度代码修改 (mininal code midification)，可能是使用新的约束 (constraint)，也可能是把错误或延迟加入到 DUT 中。这个外部循环会花掉我们大部分的时间，只有对少数使用随机测试达不到的特性才编写定向测试。
+2. 当我们查看功能覆盖率 (functional coverage) 报告时，注意找出覆盖率中的间隙 (hole)，即覆盖盲区。
+3. 针对这些盲区进行最小程度代码修改 (minimal code modification)，可能是使用新的约束 (constraint)，也可能是把错误或延迟加入到 DUT 中。这个外部循环会花掉我们大部分的时间，只有对少数使用随机测试达不到的特性才编写定向测试。
 
-<span id="图1.5"></span>
-<div align="center">
-  <img src="../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-050-CoverageConvergence.png" width=500px alt="图 1.5 覆盖率收敛"/>
-</div>
+<a id="图5"></a>
+
+![图 5 覆盖率收敛](../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-050-CoverageConvergence.png){width=500px}
 
 # 6. 我们的随机化对象是什么<a name="06"></a>
 
@@ -210,12 +205,11 @@ Testbench 应该以多快的速度发送激励呢？使用**约束下的随机�
 
 ## 7.1. 从功能覆盖率到激励的反馈
 
-随机测试需要使用反馈 (feedback)。最初的测试会被运行很多次，使用不同的种子，创建很多互异的输入序列。但是到了最后，即使使用新的种子，所产生的激励也很可能无法在设计空间中探测到新区域。**随着功能覆盖率逐渐接近极限，需要改变测试，以期能找出新的方法去达到那些尚未被覆盖的区域**。这被称为“覆盖率驱动的验证”，如[图 1.6](#图1.6) 所示。
+随机测试需要使用反馈 (feedback)。最初的测试会被运行很多次，使用不同的种子，创建很多互异的输入序列。但是到了最后，即使使用新的种子，所产生的激励也很可能无法在设计空间中探测到新区域。**随着功能覆盖率逐渐接近极限，需要改变测试，以期能找出新的方法去达到那些尚未被覆盖的区域**。这被称为“覆盖率驱动的验证”，如[图 6](#图6) 所示。
 
-<span id="图1.6"></span>
-<div align="center">
-  <img src="../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-060-TestProgressWithAndWithoutFeedback.png" width=500px alt="图 1.6 带反馈和不带反馈的测试进展"/>
-</div>
+<a id="图6"></a>
+
+![图 6 带反馈和不带反馈的测试进展](../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-060-TestProgressWithAndWithoutFeedback.png){width=500px}
 
 Testbench 有没有可能为我们做到这一点呢？假设现在需要使用 testbench 在每个周期为处理器产生一个总线事件，并为总线事件做出终止判断（成功、校验错误、重试）。在没有使用 HVL 的时候，通常会编写一个很长的定向测试集，然后花费了很多天的工夫编排终止判断代码，并让它们在合适的周期里给出判断。经过了大量的手动分析以后才得出成功的结论达到 100 ％的覆盖率。但之后可能由于处理器的时序有了一点微小的改变，不得不重新分析测试并改变激励。
 
@@ -227,19 +221,17 @@ Testbench 有没有可能为我们做到这一点呢？假设现在需要使用 
 
 # 8. Testbench 的构建
 
-在仿真时，**testbench 会把整个 DUT 包围起来**，就像一个硬件测试器连接到一个物理芯片上一样，如[图 1.7](#图1.7) 所示。testbench 和测试仪器都会产生激励并捕捉响应。不同的是，testbench 需要工作在一个很宽的抽象层次范围内，同时创建事件和激励序列并最终转换成比特向量。而测试仪器则只工作在比特级上。
+在仿真时，**testbench 会把整个 DUT 包围起来**，就像一个硬件测试器连接到一个物理芯片上一样，如[图 7](#图7) 所示。testbench 和测试仪器都会产生激励并捕捉响应。不同的是，testbench 需要工作在一个很宽的抽象层次范围内，同时创建事件和激励序列并最终转换成比特向量。而测试仪器则只工作在比特级上。
 
-<span id="图1.7"></span>
-<div align="center">
-  <img src="../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-070-TheTestbenchDesignEnvironment.png" width=450px alt="图 1.7 Testbench 与设计环境"/>
-</div>
+<a id="图7"></a>
 
-Testbench 模块里都包含了什么呢？有很多的 BFM (Bus Functional Models, 总线功能模型)，可以把它们看成是 testbench 构件 (components) ——从 DUT 的角度看，它们和真实的构件没什么两样，但它们其实只是 testbench 的组成部分，并非 RTL 设计。如果实际应用中设备被连接到 AMBA、USB、PCI 和 SPI 总线上，那么就必须**在 testbench 中建立能够产生激励并校验响应的等效构件**，如[图 1.8](#图1.8) 所示。这些构件并不是带有细节的可综合模型，而是遵循协议并且执行速度更快的高层次事件处理器。如果把设计原型在 FPGA 上实现或者是进行硬件仿真，那么这些 BFM 就需要是可综合的。
+![图 7 Testbench 与设计环境](../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-070-TheTestbenchDesignEnvironment.png){width=450px}
 
-<span id="图1.8"></span>
-<div align="center">
-  <img src="../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-080-TestbenchComponents.png" width=450px alt="图 1.8 Testbench 构件"/>
-</div>
+Testbench 模块里都包含了什么呢？有很多的 BFM (Bus Functional Models, 总线功能模型)，可以把它们看成是 testbench 构件 (components) ——从 DUT 的角度看，它们和真实的构件没什么两样，但它们其实只是 testbench 的组成部分，并非 RTL 设计。如果实际应用中设备被连接到 AMBA、USB、PCI 和 SPI 总线上，那么就必须**在 testbench 中建立能够产生激励并校验响应的等效构件**，如[图 8](#图8) 所示。这些构件并不是带有细节的可综合模型，而是遵循协议并且执行速度更快的高层次事件处理器。如果把设计原型在 FPGA 上实现或者是进行硬件仿真，那么这些 BFM 就需要是可综合的。
+
+<a id="图8"></a>
+
+![图 8 Testbench 构件](../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-080-TestbenchComponents.png){width=450px}
 
 # 9. 分层 testbench
 
@@ -249,7 +241,7 @@ Testbench 模块里都包含了什么呢？有很多的 BFM (Bus Functional Mode
 
 在刚开始学习 Verilog 并尝试写测试程序的时候，这些程序看起来可能会和[例 1.1](#例1.1) 所示的用于执行一个简单 APB (AMBA Peripheral Bus, AMBA 外设总线）写入的低层次代码很相似。
 
-<span id="例1.1"></span>
+<a id="例1.1"></a>
 
 ``` verilog 例 1.1 驱动 APB 引脚
 module test(PAddr,PWrite,PSel,PWData,PEnable,Rst,clk);
@@ -285,7 +277,7 @@ endmodule
 
 经过几天连续编写这种代码以后，我们可能会意识到这是一种重复性的劳动，所以会尝试创建可用于总线写入这种普通操作的任务，如[例 1.2](#例1.2) 所示。
 
-<span id="例1.2"></span>
+<a id="例1.2"></a>
 
 ``` verilog 例 1.2 一个用于驱动 APB 引脚的任务
 task write(reg [15:0] addr, reg [31:0] data);
@@ -306,7 +298,7 @@ endtask
 
 这样，testbench 就会变得简单一些，如[例 1.3](#例1.3)。
 
-<span id="例1.3"></span>
+<a id="例1.3"></a>
 
 ``` verilog 例 1.3 低层次的 Verilog 测试
 module test(PAddr,PWrite,PSel,PWData,PEnable,Rst,clk);
@@ -331,12 +323,11 @@ endmodule
 
 ## 9.2. 信号和命令层
 
-[图 1.9](#图1.9) 所示为一个 testbench 中最低的几个层次。
+[图 9](#图9) 所示为一个 testbench 中最低的几个层次。
 
-<span id="图1.9"></span>
-<div align="center">
-  <img src="../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-090-SignalAndCommandLlayers.png" width=500px alt="图 1.9 信号和命令层"/>
-</div>
+<a id="图9"></a>
+
+![图 9 信号和命令层](../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-090-SignalAndCommandLlayers.png){width=500px}
 
 在底部的**信号层** (*signal*)，包含 DUT 和把 DUT 连接到 testbench 的信号。
 
@@ -344,36 +335,33 @@ endmodule
 
 ## 9.3. 功能层
 
-[图 1.10](#图1.10) 给出了为加上**功能层** (*functional*) 的 testbench，功能层向下面对的是命令层。代理 (agent, 在 VMM 中称为事件处理器) 接收到来自上层的事件，例如，DMA 读或写，把它们分解成独立的命令。这些命令也被送往用于预测事件结果的记分板 (scoreboard)。检验器 (checker) 则负责比较来自监视器和记分板的命令。
+[图 10](#图10) 给出了为加上**功能层** (*functional*) 的 testbench，功能层向下面对的是命令层。代理 (agent, 在 VMM 中称为事件处理器) 接收到来自上层的事件，例如，DMA 读或写，把它们分解成独立的命令。这些命令也被送往用于预测事件结果的记分板 (scoreboard)。检验器 (checker) 则负责比较来自监视器和记分板的命令。
 
-<span id="图1.10"></span>
-<div align="center">
-  <img src="../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-100-TestbenchWithFunctionalLlayerAdded.png" width=500px alt="图 1.10 加上功能层的 testbench"/>
-</div>
+<a id="图10"></a>
+
+![图 10 加上功能层的 testbench](../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-100-TestbenchWithFunctionalLlayerAdded.png){width=500px}
 
 ## 9.4. 场景层
 
-[图 1.11](#图1.11) 所示，功能层被位于**场景层** (*scenario*) 中的发生器 (generator) 所驱动。什么是场景呢？记住一点，验证工程师的工作是确保 DUT 能够完成预期的任务。比如 MP3 播放器，它能一边播放事先存储好的音乐，一边从一台主机上下载新的音乐，并且同时对用户输入如音量调整或音轨控制等操作保持响应。这中间的每一个操作都能称为一个场景。下载一个音乐文件需要若于步骤，例如前期准备时的控制寄存器的读写操作，歌曲传送过程中多次 DMA 写操作，以及之后的很多读写操作。场景层就是负责组织协调这些步骤的，操作的参数如音轨大小和寄存器位置等都采用约束下的随机值。
+[图 11](#图11) 所示，功能层被位于**场景层** (*scenario*) 中的发生器 (generator) 所驱动。什么是场景呢？记住一点，验证工程师的工作是确保 DUT 能够完成预期的任务。比如 MP3 播放器，它能一边播放事先存储好的音乐，一边从一台主机上下载新的音乐，并且同时对用户输入如音量调整或音轨控制等操作保持响应。这中间的每一个操作都能称为一个场景。下载一个音乐文件需要若于步骤，例如前期准备时的控制寄存器的读写操作，歌曲传送过程中多次 DMA 写操作，以及之后的很多读写操作。场景层就是负责组织协调这些步骤的，操作的参数如音轨大小和寄存器位置等都采用约束下的随机值。
 
-<span id="图1.11"></span>
-<div align="center">
-  <img src="../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-110-TestbenchWithScenarioLayerAdded.png" width=500px alt="图 1.11 加上场景层的 testbench"/>
-</div>
+<a id="图11"></a>
 
-在 testbench **环境** (*environment*) 中的这些块 ([图 1.11](#图1.11) 虚线框内) 是在刚开始开发的时候画出来的。随着项目的进展，它们可能会有一些变化，也可能会加入一些功能，但是这些块对于每个独立的测试都是不应改变的。可以通过在代码中留下“hook”来做到这一点，这样即使这些块的行为需要在测试时改变，也不必重新编写代码。“hook”可以使用工厂模式 (factory patterns) 和回调函数 (callbacks) 来创建。
+![图 11 加上场景层的 testbench](../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-110-TestbenchWithScenarioLayerAdded.png){width=500px}
+
+在 testbench **环境** (*environment*) 中的这些块 ([图 11](#图11) 虚线框内) 是在刚开始开发的时候画出来的。随着项目的进展，它们可能会有一些变化，也可能会加入一些功能，但是这些块对于每个独立的测试都是不应改变的。可以通过在代码中留下“hook”来做到这一点，这样即使这些块的行为需要在测试时改变，也不必重新编写代码。“hook”可以使用工厂模式 (factory patterns) 和回调函数 (callbacks) 来创建。
 
 ## 9.5. 测试的层次和功能覆盖率
 
-现在到了 testbench 的最顶层——测试层，如[图 1.12](#图1.12)。DUT 模块间的 bug 是比较难以发现的，因为这些模块可能是不同的人按照不同的规范设计出来的。
+现在到了 testbench 的最顶层——测试层，如[图 12](#图12)。DUT 模块间的 bug 是比较难以发现的，因为这些模块可能是不同的人按照不同的规范设计出来的。
 
-<span id="图1.12"></span>
-<div align="center">
-  <img src="../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-120-FullTestbenchWithAllLayers.png" width=500px alt="图 1.12 带着所有层次的完整 testbench"/>
-</div>
+<a id="图12"></a>
+
+![图 12 带着所有层次的完整 testbench](../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-120-FullTestbenchWithAllLayers.png){width=500px}
 
 这个顶层的测试 (test) 就像一个指挥官：他不演奏任何乐器，但引领着其他人的表演。测试包含了用于创建激励的约束。
 
-功能覆盖率 (fonctional coverage) 可以衡量所有测试在满足验证计划要求方面的进展。随着各项测量标准的完成，功能覆盖率代码在整个项目过程中会经常变化。由于代码经常被修改，所以它不作为测试环境的组成部分。
+功能覆盖率 (functional coverage) 可以衡量所有测试在满足验证计划要求方面的进展。随着各项测量标准的完成，功能覆盖率代码在整个项目过程中会经常变化。由于代码经常被修改，所以它不作为测试环境的组成部分。
 
 我们可以在约束下的随机环境中创建“定向测试”。只需在随机序列中间插入定向测试的代码，或者把两部分代码并列。定向代码执行期望的任务，而随机的“背景噪声”可能会使 bug 暴露出来，而且 bug 还有可能来自从未被关注过的模块。
 
@@ -382,7 +370,7 @@ Testbench 中是否需要所有的层次呢？答案要视 DUT 而定。设计�
 当然，可能还需要更多的层次。如果 DUT 有多个协议层，那么每个层都应该在 testbench 环境中有对应的层。例如使用 IP 封装了 TCP 流量，然后通过以太网数据包的形式发送，对这种情况的测试应该考虑使用三个独立的层来产生和校验数据，如
 果能够使用已有的验证构件则更好。
 
-[图 1.12](#图1.12) 中需要注意的最后一点是，它只给出了各块之间一些可能的连接方式，testbench 模块间的连接可能会与之不同。比如测试层可能需要连接到驱动器层以迫使物理 bug 出现。这里给出的只是一些引导——实际当中应该是，需要什么就创建什么。
+[图 12](#图12) 中需要注意的最后一点是，它只给出了各块之间一些可能的连接方式，testbench 模块间的连接可能会与之不同。比如测试层可能需要连接到驱动器层以迫使物理 bug 出现。这里给出的只是一些引导——实际当中应该是，需要什么就创建什么。
 
 # 10. 建立一个分层的 testbench
 
@@ -390,14 +378,13 @@ Testbench 中是否需要所有的层次呢？答案要视 DUT 而定。设计�
 
 ## 10.1. 创建一个简单的驱动器
 
-首先，来仔细看看其中的一个模块——驱动器。[图 1.13](#图1.13) 所示的驱动器接收来自代理的命令。驱动器可能会注入错误或者增加时延，然后再把命令分解成一些信号的变化，例如总线请求或握手。这样一个 testbench 模块通常被称为“事件处理器 (transactor)”，它的核心部分是一个循环：有关事件处理器的示范代码如[例 1.4](#例1.4) 所示。
+首先，来仔细看看其中的一个模块——驱动器。[图 13](#图13) 所示的驱动器接收来自代理的命令。驱动器可能会注入错误或者增加时延，然后再把命令分解成一些信号的变化，例如总线请求或握手。这样一个 testbench 模块通常被称为“事件处理器 (transactor)”，它的核心部分是一个循环：有关事件处理器的示范代码如[例 1.4](#例1.4) 所示。
 
-<span id="图1.13"></span>
-<div align="center">
-  <img src="../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-130-ConnectionsForTheDriver.png" width=120px alt="图 1.13 带着所有层次的完整 testbench"/>
-</div>
+<a id="图13"></a>
 
-<span id="例1.4"></span>
+![图 13 带着所有层次的完整 testbench](../images/post/2022-05-30-josh-systemverilog-1/2022-05-30-josh-systemverilog-1-130-ConnectionsForTheDriver.png){width=120px}
+
+<a id="例1.4"></a>
 
 ``` verilog 例 1.4 基本的事件处理器代码
 task run();
@@ -437,7 +424,7 @@ endtask
   1. **清空** (*Sweep*)：在最下层完成以后，需要等待 DUT 清空最后的事务。
   2. **报告** (*Report*)：一旦 DUT 空闲下来，就可以清空遗留在 testbench 中的数据了。有时候保存在记分板里面的数据从来就没有送出来过，这些数据可能是被 DUT 丢弃掉的。可以根据这些信息创建最终报告，说明测试通过或者失败。如果测试失败，务必把相应的功能覆盖率结果删除，因为它们可能是不正确的。
 
-如[图 1.12](#图1.12) 所示，测试启动环境以后，环境就会按上述步骤运行。
+如[图 12](#图12) 所示，测试启动环境以后，环境就会按上述步骤运行。
 
 # 12. 最大限度的代码重用
 
