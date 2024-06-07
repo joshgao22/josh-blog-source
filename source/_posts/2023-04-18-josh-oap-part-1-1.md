@@ -423,5 +423,5 @@ $$\begin{equation}
 
 # 参考文献
 
-1. Van Trees, Harry L. *Optimum array processing: Part IV of detection, estimation, and modulation theory.* John Wiley & Sons, 2002.
-2. Van Trees, Harry L, 汤俊. *最优阵列处理技术.* 清华大学出版社. 2008.
+1. Harry L. Van Trees. *Optimum array processing: Part IV of detection, estimation, and modulation theory.* New York, NY, USA: John Wiley & Sons, 2002.
+2. Harry L. Van Trees, 汤俊. *最优阵列处理技术.* 北京：清华大学出版社. 2008.
