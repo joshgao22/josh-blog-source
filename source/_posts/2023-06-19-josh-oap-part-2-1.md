@@ -792,8 +792,8 @@ ylabel('Beam pattern (dB)')
 
 # 参考文献
 
-1. Van Trees, Harry L. _Optimum array processing: Part IV of detection, estimation, and modulation theory._ John Wiley & Sons, 2002.
-2. Van Trees, Harry L, 汤俊. _最优阵列处理技术._ 清华大学出版社. 2008.
+1. Harry L. Van Trees. *Optimum array processing: Part IV of detection, estimation, and modulation theory.* New York, NY, USA: John Wiley & Sons, 2002.
+2. Harry L. Van Trees, 汤俊. *最优阵列处理技术.* 北京：清华大学出版社. 2008.
 
 [^1]: 参数 $D_N$ 是阵列的归一化方向性。它是相对于一个均匀加权阵列的方向性进行归一化的。对于标准线阵, $D_N$ 也是归一化的白噪声增益。
 
