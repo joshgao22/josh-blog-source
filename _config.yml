@@ -113,7 +113,10 @@ deploy:
     repo: josh@168.138.185.92:/home/josh/documents/josh-blog-deploy.git
     branch: master
   - type: git
-    repo: git@github.com:joshgao22/joshgao22.github.io.git
+    repo: josh@129.153.124.210:/home/josh/documents/josh-blog-deploy.git
+    branch: master
+  - type: git
+    repo: https://github.com/joshgao22/joshgao22.github.io.git
     branch: master
 
 # MathJax [Redundant]
