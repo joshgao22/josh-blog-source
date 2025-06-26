@@ -110,20 +110,11 @@ theme: next
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   - type: git
-    repo: josh@168.138.185.92:/home/josh/documents/josh-blog-deploy.git
-    branch: master
-  - type: git
     repo: josh@129.153.124.210:/home/josh/documents/josh-blog-deploy.git
     branch: master
   - type: git
     repo: https://github.com/joshgao22/joshgao22.github.io.git
     branch: master
-
-# MathJax [Redundant]
-# math:
-#   engine: 'mathjax'
-#   mathjax:
-#     src: https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js
 
 # Local Search
 search:
@@ -198,12 +189,18 @@ neat_js:
 
 related_posts:
   enabled: true
+  enable_env_name: deploy
   filter_threshold: 0.13
   related_count: 5
   weight:
     title: 0.1
-    description: 0
-    keywords: 0
-    tags: 0.01
-    categories: 0.05
-    text: 0
+    description: 0.01
+    keywords: 0.01
+    tags: 0.005
+    categories: 0.005
+    text: 0.2
+
+# config of hexo-renderer-pandoc
+pandoc:
+  args:
+    - --mathjax
