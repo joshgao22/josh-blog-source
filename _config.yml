@@ -189,7 +189,7 @@ neat_js:
 
 related_posts:
   enabled: true
-  enable_env_name: deploy
+  enable_env_name: prod
   filter_threshold: 0.13
   related_count: 5
   weight:
