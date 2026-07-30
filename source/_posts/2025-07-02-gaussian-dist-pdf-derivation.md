@@ -18,8 +18,6 @@ categories:
   - [数学, 概率论]
 ---
 
-$\newcommand\diff{\mathop{}\!\mathrm{d}}$
-
 # 背景与目标
 
 在统计建模中，我们常常面临这样一个问题：**已知某个连续随机变量的期望和方差，如何合理地确定它的概率分布？** 最大熵原理（Maximum Entropy Principle）提供了一个具有信息论意义的答案：

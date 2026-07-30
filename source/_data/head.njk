@@ -1,0 +1,57 @@
+<script>
+  /*
+   * 全站 MathJax 宏定义。
+   *
+   * 为什么要拦截赋值而不是直接预设 window.MathJax：
+   * NexT 的 third-party/math/mathjax.js 仅在 typeof MathJax === 'undefined'
+   * 时才建立配置对象并加载 MathJax 本体。若在此之前直接给 window.MathJax
+   * 赋值，它会转而走 else 分支去调用尚不存在的 MathJax.startup，导致本体
+   * 永远不加载。这里用 getter 返回 undefined 让那个守卫成立，再用 setter
+   * 在 NexT 写入配置对象的瞬间注入宏，时序确定。
+   *
+   * 宏体逐字沿用原先写在正文里的定义，不额外包花括号——{\mathop{...}} 会
+   * 把 Op 原子降级为 Ord 原子，丢失算子间距。
+   *
+   * 注意：\P \H \d \iint 与 LaTeX / amsmath 内置命令冲突，已在正文中就地
+   * 展开，不要加回这里。尤其 \iint 在 oap-part-2-1 中是真正的二重积分。
+   */
+  (function () {
+    var MACROS = {
+      // 集合与空间
+      bfR:    '\\mathbf{R}',
+      bfS:    '\\mathbf{S}',
+      E:      '\\mathcal{E}',
+      // 转置与微分
+      TT:     '\\mathrm{T}',
+      dd:     '\\mathrm{d}',
+      diff:   '\\mathop{}\\!\\mathrm{d}',
+      // 凸分析算子
+      aff:    '\\mathop{\\bf aff}',
+      bd:     '\\mathop{\\bf bd}',
+      cl:     '\\mathop{\\bf cl}',
+      conv:   '\\mathop{\\bf conv}',
+      diag:   '\\mathop{\\bf diag}',
+      dist:   '\\mathop{\\bf dist}',
+      dom:    '\\mathop{\\bf dom}',
+      epi:    '\\mathop{\\bf epi}',
+      hypo:   '\\mathop{\\bf hypo}',
+      // 集合内部。不能叫 \iint —— 那是 amsmath 的二重积分 ∬
+      intr:   '\\mathop{\\bf int}',
+      prob:   '\\mathop{\\bf prob}',
+      relint: '\\mathop{\\bf relint}',
+      tr:     '\\mathop{\\bf tr}'
+    };
+    var store;
+    Object.defineProperty(window, 'MathJax', {
+      configurable: true,
+      get: function () { return store; },
+      set: function (value) {
+        // 正文内的 \newcommand 仍可覆盖同名全局宏
+        if (value && value.tex) {
+          value.tex.macros = Object.assign({}, MACROS, value.tex.macros);
+        }
+        store = value;
+      }
+    });
+  })();
+</script>

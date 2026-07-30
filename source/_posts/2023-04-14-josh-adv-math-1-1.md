@@ -25,8 +25,6 @@ categories:
     - 微积分
 ---
 
-$\newcommand\diff{\mathop{}\!\mathrm{d}}$
-
 # 1. 常见等价无穷小
 
 ||||
